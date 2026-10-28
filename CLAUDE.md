@@ -1,0 +1,59 @@
+# hanguledu.com: working notes
+
+Site for the Hangul Hero app (learn Korean). The owner speaks Russian: reply in Russian, keep site copy in English.
+Setup and commands: README.md.
+
+## State (2026-10-28)
+- Live at https://hanguledu.com on GitHub Pages. Public repo vicso-name/hanguledu-site; every push to `main`
+  deploys (.github/workflows/deploy.yml; the build runs the X-Ray engine test and scripts/check-build.mjs).
+  DNS at GoDaddy (4 GitHub A records + `www` CNAME to vicso-name.github.io), HTTPS enforced.
+- Branches: `sprint/1-alphabet`, `sprint/2-phrases`, `main`. 21 pages: home, alphabet hub, chart, consonants,
+  vowels, /phrases/ hub (240 app phrases, filters), k-drama, love, basic-korean-phrases,
+  10 `/phrases/{phrase}-in-korean/` pages, privacy, 404.
+- Android app is live on Google Play (`com.vicsothemes.hangulhero`). iOS is in development:
+  the App Store badge stays hidden (`url: null` in src/data/site.ts).
+- Next: the owner has design fixes from the live site; ask for the list first.
+- Postponed by the owner: Google Search Console (only after the design fixes), og:image, analytics (undecided).
+- Before launch: a native speaker reviews the Korean facts (register advice, FAQ etiquette).
+
+## Semantic core (SEO research)
+Stored in the vicsotheme-site repo, `docs/seo/research/hangulhero/`, on the local branch `seo/semantic-core`.
+That branch is not pushed and the vicsotheme-site repo is public, so ask before pushing it.
+- `site-structure-v2.md`: modules, URL tree and waves (W1 first).
+- `pages-v2.csv`: one row per URL (`primary_keyword`, `primary_volume`, `wave`, `secondary_keywords`).
+- `url-map-v2.csv`: every keyword mapped to a URL.
+- Coverage: the built URLs take about 42% of the mapped volume (2.56M of 6.08M).
+  Largest unbuilt: /learn-korean/, /korean-words/family/, /phrases/korean-swear-words/ (brand risk, owner decides),
+  /korean-honorifics/oppa/, /korean-names/, /korean-numbers/, /phrases/holiday-greetings/, /korean-nicknames/,
+  /korean-keyboard/, /hangul-writing-practice/.
+- Keyword gaps on built pages: the home page does not target the app queries
+  ("app for learning korean language"); /phrases/ does not use "how do you say … in korean".
+
+## How the owner wants pages
+- Value first: every page needs a signature interactive element and real learner value, not text.
+  Phrase pages, for example, have a "who are you talking to?" picker, a sound X-Ray and a one-question check.
+- Mobile first (check at 390px), light and dark themes, a clean background (no gradients), no generic AI-looking copy.
+- Design sources (claude.ai artifacts): canvas "hanguledu.com templates" https://claude.ai/artifact/6tMSKrXBiEAh2AByvJdPej,
+  design system "HangulEdu Web" https://claude.ai/artifact/HRiQoNFEtokorB89VTe2fX.
+
+## Audio
+- All audio is Google Cloud TTS (ko-KR-Chirp3-HD-Aoede), not a native speaker.
+  Never write "native audio" / "native speaker" in copy.
+- New forms: feed the voice the pronounced form from the X-Ray (감사합니다 → 감사함니다). Read from the spelling,
+  the voice swallows the last syllables. The voice varies between runs: the owner listens to every clip before it
+  is copied in. Process: README.md, `scripts/tts/web_forms.json`.
+- Run TTS (a paid API) only with the owner's OK. Never read, print or commit
+  `~/Developer/android/hangul_hero/tools/korean_tts/gcloud-key.json`.
+- The app's own 240 phrase clips were made from the spelling and may swallow endings too; not checked yet.
+
+## Rules
+- Commit only when the owner asks, on a branch; pushing `main` deploys the live site.
+  Commit trailer: `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
+- Paid APIs (YepAPI, DataForSEO, Google TTS) only with the owner's approval and a spend cap.
+- App content (phrases, letter clips) comes from the app via `npm run sync:app`; fix content in the app, not here.
+- Screenshots: playwright-core + system Chrome against `npm run preview`. The old helper lived in a temp folder
+  and is gone; write a new one if needed.
+
+## Open items elsewhere
+- Canvas templates still say "native audio at two speeds"; the Play listing may say the same.
+- vicsotheme-site `src/pages/apps.astro` links to a wrong Play id (`com.VicsoTheme.hangulhero`).
