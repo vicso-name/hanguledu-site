@@ -6,7 +6,8 @@
 /* Plain text links only: classed links (buttons, cards, nav) keep their own colours. */
 /* one blue for everything you can press: links and outline buttons share the action colour */
 .pg a:not([class]), .pg a.pack-tag { color: var(--action); }
-[data-theme="dark"] .pg a:not([class]), [data-theme="dark"].pg a:not([class]) { color: var(--focus); }
+[data-theme="dark"] .pg a:not([class]), [data-theme="dark"].pg a:not([class]),
+[data-theme="dark"] .pg a.pack-tag, [data-theme="dark"].pg a.pack-tag { color: var(--focus); }
 .pg:not([data-theme="dark"]) .he-btn--outline { color: var(--action); }
 .pg .he-btn[disabled] { opacity: .4; }
 .pg :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
@@ -36,7 +37,7 @@
 .pg a.brand { color: var(--textPrimary); }
 .brand img { width: 36px; height: 36px; border-radius: 9px; display: block; }
 .nav { display: flex; gap: 4px; flex: 1; flex-wrap: wrap; }
-.pg .nav a { color: var(--textPrimary); text-decoration: none; font: 600 15px/20px var(--font-ui); padding: 12px 12px; border-radius: var(--radius-button); }
+.pg .nav a, [data-theme="dark"].pg .nav a, [data-theme="dark"] .pg .nav a { color: var(--textPrimary); text-decoration: none; font: 600 15px/20px var(--font-ui); padding: 12px 12px; border-radius: var(--radius-button); }
 .pg .nav a:hover { background: var(--glassTint); }
 .pg .nav a[aria-current="page"] { background: var(--primaryContainer); color: var(--onPrimaryContainer); }
 .menu-btn { display: none; }
