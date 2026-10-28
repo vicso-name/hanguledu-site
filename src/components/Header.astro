@@ -11,26 +11,12 @@ const path = Astro.url.pathname;
   <nav class="nav" id="nav" aria-label="Main">
     {site.nav.map((n) => <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>)}
   </nav>
-  <a class="mine" href="/korean-alphabet/chart/" data-mine aria-label="Your letters: 0 of 40">
-    <span class="dots" aria-hidden="true">{Array.from({ length: 40 }, () => <i />)}</span>
-    <span><span class="lbl">Your letters </span><span data-mine-n>0</span>/40</span>
-  </a>
   <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
   </button>
 </header>
 
 <script>
-  import { onChange } from '../lib/progress';
-
-  const mine = document.querySelector<HTMLElement>('[data-mine]')!;
-  const dots = [...mine.querySelectorAll('.dots i')];
-  onChange((set) => {
-    dots.forEach((d, i) => d.classList.toggle('on', i < set.size));
-    mine.querySelector('[data-mine-n]')!.textContent = String(set.size);
-    mine.setAttribute('aria-label', `Your letters: ${set.size} of 40`);
-  });
-
   const hdr = document.getElementById('hdr')!;
   const btn = hdr.querySelector<HTMLButtonElement>('.menu-btn')!;
   btn.addEventListener('click', () => {
