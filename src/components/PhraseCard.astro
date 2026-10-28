@@ -10,7 +10,7 @@ import SoundXray from './SoundXray.astro';
 interface Props { p: XPhrase; heading?: 'h2' | 'h3'; open?: boolean }
 const { p, heading = 'h3', open = true } = Astro.props;
 const H = heading;
-const tones = ['purple', 'amber', 'pink', 'teal'];
+const tones = ['blue', 'amber', 'pink', 'teal'];
 const same = p.said === p.ko;
 const more = p.changes.length > 0 || p.parts.length > 0 || !!p.note;
 ---

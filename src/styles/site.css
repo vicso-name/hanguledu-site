@@ -97,7 +97,7 @@
 /* syllables sit together like a word; the hint hangs under its syllable and never widens it */
 .prog .s { position: relative; flex: none; display: grid; justify-items: center; padding: 4px 1px 24px; }
 .prog .s b { font: 700 40px/48px var(--font-ko); }
-.prog .s em { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); white-space: nowrap; font: 600 11px/15px var(--font-ui); font-style: normal; color: var(--onPrimaryContainer); background: var(--primaryContainer); border-radius: 6px; padding: 1px 4px; }
+.prog .s em { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); white-space: nowrap; font: 600 11px/15px var(--font-ui); font-style: normal; color: var(--textSecondary); background: var(--surfaceVariant); border-radius: 6px; padding: 1px 4px; }
 .prog .s.known em { visibility: hidden; }
 
 /* tool cards */
@@ -136,7 +136,7 @@
 .ti--k { background: var(--partPinkContainer); color: var(--partPinkAccent); }
 .ti--s { background: var(--soundContainer); color: var(--sound); }
 .ti--a { background: var(--partAmberContainer); color: var(--partAmberAccent); }
-.ti--p { background: var(--partPurpleContainer); color: var(--partPurpleAccent); }
+.ti--n { background: var(--surfaceVariant); color: var(--textPrimary); }
 .ti--t { background: var(--partTealContainer); color: var(--partTealAccent); }
 
 /* home hero: on a phone the first-word card comes right after the promise */
@@ -464,7 +464,7 @@
 .step { display: grid; grid-template-rows: auto 1fr auto; gap: 12px; padding: 18px; text-decoration: none; color: var(--textPrimary); }
 .pg a.step { color: var(--textPrimary); }
 .step:hover { background: var(--surfaceContainer); }
-.step-n { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--primaryContainer); color: var(--onPrimaryContainer); font: 800 15px/1 var(--font-ui); }
+.step-n { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--surfaceVariant); color: var(--textPrimary); font: 800 15px/1 var(--font-ui); }
 .step.is-done .step-n { background: var(--successContainer); color: var(--successStrong); }
 .step-body { display: grid; gap: 4px; align-content: start; }
 .step-letters { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 6px; }
@@ -521,7 +521,7 @@
 /* phrases: register chips */
 .he-register--casual { background: var(--successContainer); color: var(--successStrong); }
 .he-register--polite { background: var(--primaryContainer); color: var(--onPrimaryContainer); }
-.he-register--formal { background: var(--secondaryContainer); color: var(--onSecondaryContainer); }
+.he-register--formal { background: var(--surfaceVariant); color: var(--textPrimary); }
 
 /* phrases: hangul line with hints */
 .prog--md .s { padding-bottom: 22px; }
