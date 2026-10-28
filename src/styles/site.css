@@ -641,3 +641,28 @@ p.pcard-said { margin: 10px 0 0; }
 }
 .he-play--sm.he-play--slow { width: auto; gap: 6px; padding: 0 14px 0 10px; font: 600 14px/1 var(--font-ui); }
 .check .feedback:not([hidden]) { display: block; }
+
+/* support: contact card, answers as cards, store paths for the visitor's phone */
+.sup-jump { display: flex; flex-wrap: wrap; gap: 8px; }
+.pg .sup-jump a { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border-radius: var(--radius-pill); border: 1px solid var(--outline); background: var(--surface); color: var(--textPrimary); font: 600 14px/20px var(--font-ui); text-decoration: none; }
+.pg .sup-jump a:hover { border-color: var(--action); }
+.sup-jump .mi { color: var(--action); }
+.sup-contact { display: grid; gap: 16px; padding: clamp(20px, 3vw, 32px); }
+.pg a.sup-mail { display: inline-flex; align-items: center; gap: 10px; min-width: 0; font: 700 clamp(18px, 2.2vw, 22px)/1.3 var(--font-ui); color: var(--textPrimary); text-decoration: none; overflow-wrap: anywhere; }
+.sup-mail .mi { color: var(--action); }
+.sup-contact .row .he-btn { flex: 1 1 160px; }
+.sup-wait { display: flex; align-items: center; gap: 6px; }
+.sup-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.sup-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.sup-card { display: grid; align-content: start; gap: 12px; padding: clamp(20px, 3vw, 28px); scroll-margin-top: 24px; }
+.sup-card--ask .he-btn { justify-self: start; }
+.sup-path { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0 0; padding: 0; list-style: none; }
+.sup-path li { display: inline-flex; align-items: center; gap: 6px; }
+.sup-path li:not(:last-child)::after { content: "›"; font: 600 18px/1 var(--font-ui); color: var(--textSecondary); }
+.sup-path span { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: 8px; background: var(--surfaceVariant); font: 600 14px/20px var(--font-ui); }
+.sup-path li:last-child span { background: var(--primaryContainer); color: var(--onPrimaryContainer); }
+[data-os-view="android"] .sup-path[data-for="ios"], [data-os-view="ios"] .sup-path[data-for="android"] { display: none; }
+@media (max-width: 760px) {
+  .sup-grid { grid-template-columns: minmax(0, 1fr); }
+  .sup-head .seg { width: 100%; }
+}

@@ -1,59 +1,152 @@
 ---
+// Support for the app: a contact card that writes half the email for you, answers as cards,
+// and store paths that follow the visitor's phone (Android or iPhone).
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import type { IconName } from '../data/icons';
+import { crumbs, faqPage } from '../lib/schema';
+
+const EMAIL = 'vicsothemes@gmail.com';
+const TEMPLATE = 'Device:\nAndroid or iOS version:\nApp version:\n\nWhat happened, and what did you tap just before?\n';
+const mailto = `mailto:${EMAIL}?subject=${encodeURIComponent('Hangul Hero support')}&body=${encodeURIComponent(TEMPLATE)}`;
+
+type Os = 'android' | 'ios';
+interface Topic {
+  id: string;
+  icon: IconName;
+  q: string;
+  a: string;
+  /** Where to tap: one path for both phones, or one per phone. */
+  path?: string[] | Record<Os, string[]>;
+  note?: string;
+}
+
+const APP = 'Korean Alphabet & Phrases';
+const TOPICS: Topic[] = [
+  {
+    id: 'cancel', icon: 'credit_card_off', q: 'How do I cancel my subscription?',
+    a: 'Apple or Google bills the subscription, so you cancel it in the store, not in the app. Deleting the app does not cancel it.',
+    path: {
+      android: ['Google Play', 'Your profile icon', 'Payments & subscriptions', 'Subscriptions', APP, 'Cancel subscription'],
+      ios: ['Settings', 'Your name', 'Subscriptions', APP, 'Cancel Subscription'],
+    },
+    note: 'Premium stays active until the end of the period you have paid for.',
+  },
+  {
+    id: 'reset', icon: 'restart_alt', q: 'How do I reset my progress?',
+    a: 'Progress is stored only on your device, so resetting it means removing the app’s data. This cannot be undone.',
+    path: {
+      android: ['Settings', 'Apps', APP, 'Storage', 'Clear storage'],
+      ios: ['Delete the app', 'Install it again'],
+    },
+    note: 'Premium is not lost: tap Restore on the Premium screen afterwards.',
+  },
+  {
+    id: 'restore', icon: 'workspace_premium', q: 'How do I restore my Premium purchase?',
+    a: 'Sign in to the same Google or Apple account you bought Premium with. Restoring is free and does not charge you again.',
+    path: ['Premium screen', 'Restore'],
+  },
+  {
+    id: 'privacy', icon: 'privacy_tip', q: 'How do I change my ad privacy choices?',
+    a: 'The link is at the bottom of the Premium screen where Google’s consent rules require it, for example in the EEA, the UK and Switzerland. More in the <a href="/privacy/">Privacy Policy</a>.',
+    path: ['Premium screen', 'Privacy choices'],
+  },
+  {
+    id: 'offline', icon: 'wifi_off', q: 'Does the app work offline?',
+    a: 'Yes. Lessons, audio and images come with the app, so you can study without a connection. You need the internet only to buy or restore Premium and to watch rewarded ads.',
+  },
+];
+
+const pathText = (p: Topic['path']) => !p ? '' : Array.isArray(p) ? ` Tap ${p.join(' → ')}.` : ` Android: ${p.android.join(' → ')}. iPhone and iPad: ${p.ios.join(' → ')}.`;
+const schema = [
+  crumbs([['Support', '/support/']]),
+  faqPage(TOPICS.map((t) => ({ q: t.q, a: t.a + pathText(t.path) + (t.note ? ` ${t.note}` : '') }))),
+];
 ---
 
-<Layout title="Support | HangulEdu" description="Support for Korean Alphabet & Phrases (Hangul Hero): contact email, restoring purchases, cancelling a subscription, ad privacy choices, resetting progress and offline use.">
-  <article class="wrap sec wrap--medium prose legal">
-    <h1 class="t-h1">Support</h1>
-    <p class="t-body">Help for Korean Alphabet &amp; Phrases (Hangul Hero) on Android and iOS.</p>
+<Layout title="Support | HangulEdu" description="Support for Korean Alphabet & Phrases (Hangul Hero): contact email, restoring purchases, cancelling a subscription, ad privacy choices, resetting progress and offline use." schema={schema}>
+  <section class="wrap page-head">
+    <div class="split split--top">
+      <div class="head">
+        <h1 class="t-h1">Support</h1>
+        <p class="t-lead">Help for Korean Alphabet &amp; Phrases (Hangul Hero). The common questions are answered below, with the exact taps for your phone. Anything else, write to us.</p>
+        <nav class="sup-jump" aria-label="Questions on this page">
+          {TOPICS.map((t) => <a href={`#${t.id}`}><Icon name={t.icon} />{t.q.replace(/^(How do I|Does the app) /, '').replace(/\?$/, '').replace(/^./, (c) => c.toUpperCase())}</a>)}
+        </nav>
+      </div>
+      <div class="he-glass sup-contact">
+        <p class="t-label">Write to us</p>
+        <a class="sup-mail" href={mailto}><Icon name="mail" />{EMAIL}</a>
+        <div class="row">
+          <a class="he-btn" href={mailto}>Email us</a>
+          <button type="button" class="he-btn he-btn--outline" data-copy={EMAIL}><Icon name="content_copy" /><span>Copy address</span></button>
+        </div>
+        <p class="t-meta">The email opens with four short lines to fill in: your device, system version, app version and what you tapped. With those we can usually fix it in one reply.</p>
+        <p class="t-meta sup-wait"><Icon name="schedule" />We usually reply within a few days.</p>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h2 class="t-h2">Contact</h2>
-      <p class="t-body">Questions, bug reports or ideas: email <a href="mailto:vicsothemes@gmail.com">vicsothemes@gmail.com</a>. Tell us your device, system version and app version, and what you tapped before the problem. We usually reply within a few days.</p>
-    </section>
+  <section class="wrap sec--flush" data-os-view="android">
+    <div class="sup-head">
+      <h2 class="t-h2">Common questions</h2>
+      <div class="seg" role="group" aria-label="Your phone">
+        <button type="button" data-os="android" aria-pressed="true"><Icon name="android" />Android</button>
+        <button type="button" data-os="ios" aria-pressed="false"><Icon name="mobile" />iPhone &amp; iPad</button>
+      </div>
+    </div>
+    <div class="sup-grid">
+      {TOPICS.map((t) => (
+        <article class="he-glass sup-card" id={t.id}>
+          <span class="ti ti--s" aria-hidden="true"><Icon name={t.icon} /></span>
+          <h3 class="t-h3">{t.q}</h3>
+          <p class="t-body he-ink-2" set:html={t.a} />
+          {t.path && (Array.isArray(t.path)
+            ? <ol class="sup-path" aria-label="Where to tap">{t.path.map((s) => <li><span>{s}</span></li>)}</ol>
+            : (['android', 'ios'] as Os[]).map((os) => <ol class="sup-path" data-for={os} aria-label={`Where to tap on ${os === 'ios' ? 'iPhone and iPad' : 'Android'}`}>{(t.path as Record<Os, string[]>)[os].map((s) => <li><span>{s}</span></li>)}</ol>))}
+          {t.note && <p class="t-meta">{t.note}</p>}
+        </article>
+      ))}
+      <article class="he-glass sup-card sup-card--ask">
+        <span class="ti ti--n" aria-hidden="true"><Icon name="mail" /></span>
+        <h3 class="t-h3">Not here?</h3>
+        <p class="t-body he-ink-2">Bugs, ideas, a phrase that sounds wrong: tell us. We read every email.</p>
+        <a class="he-btn he-btn--outline" href={mailto}>Email us</a>
+      </article>
+    </div>
+  </section>
 
-    <section>
-      <h2 class="t-h2">Frequently asked questions</h2>
-    </section>
-
-    <section>
-      <h3 class="t-h3">How do I restore my Premium purchase?</h3>
-      <p class="t-body">Open the Premium screen and tap Restore. Sign in to the same Apple Account or Google account you used to buy Premium. Restoring is free and does not charge you again.</p>
-    </section>
-
-    <section>
-      <h3 class="t-h3">How do I cancel my subscription?</h3>
-      <p class="t-body">Subscriptions are billed by Apple or Google, so you cancel them in the store, not in the app. Deleting the app does not cancel a subscription.</p>
-      <ul class="t-body">
-        <li><strong>iPhone and iPad:</strong> Settings → your name (Apple Account) → Subscriptions → Korean Alphabet &amp; Phrases → Cancel Subscription.</li>
-        <li><strong>Android:</strong> Google Play → your profile icon → Payments &amp; subscriptions → Subscriptions → Korean Alphabet &amp; Phrases → Cancel subscription.</li>
-      </ul>
-      <p class="t-body">Premium stays active until the end of the period you have already paid for.</p>
-    </section>
-
-    <section>
-      <h3 class="t-h3">How do I change my ad privacy choices?</h3>
-      <p class="t-body">Open the Premium screen and tap Privacy choices at the bottom. The link appears where Google's consent rules require it, for example in the EEA, the UK and Switzerland. More in the <a href="/privacy/">Privacy Policy</a>.</p>
-    </section>
-
-    <section>
-      <h3 class="t-h3">How do I reset my progress?</h3>
-      <p class="t-body">Progress is stored only on your device, so resetting it means removing the app's data:</p>
-      <ul class="t-body">
-        <li><strong>Android:</strong> Settings → Apps → Korean Alphabet &amp; Phrases → Storage → Clear storage (or uninstall and install again).</li>
-        <li><strong>iPhone and iPad:</strong> delete the app and install it again.</li>
-      </ul>
-      <p class="t-body">This cannot be undone. Your Premium subscription is not lost: tap Restore on the Premium screen afterwards.</p>
-    </section>
-
-    <section>
-      <h3 class="t-h3">Does the app work offline?</h3>
-      <p class="t-body">Yes. Lessons, audio and images come with the app, so you can study without a connection. You need the internet to buy or restore Premium and to watch rewarded ads.</p>
-    </section>
-
-    <section>
-      <h2 class="t-h2">Legal</h2>
-      <p class="t-body">Read the <a href="/privacy/">Privacy Policy</a> and the <a href="/terms/">Terms of Service</a>.</p>
-    </section>
-  </article>
+  <section class="wrap sec--tight">
+    <p class="t-label" style="margin-bottom: 16px;">Legal</p>
+    <div class="cols-2">
+      <a class="he-glass tool deep" href="/privacy/"><span class="ti ti--n" aria-hidden="true"><Icon name="lock" /></span><span class="t-h3">Privacy Policy</span></a>
+      <a class="he-glass tool deep" href="/terms/"><span class="ti ti--n" aria-hidden="true"><Icon name="gavel" /></span><span class="t-h3">Terms of Service</span></a>
+    </div>
+  </section>
 </Layout>
+
+<script>
+  // Show the store paths for the visitor's phone; the switch overrides the guess.
+  const view = document.querySelector<HTMLElement>('[data-os-view]')!;
+  const btns = [...view.querySelectorAll<HTMLButtonElement>('[data-os]')];
+  const ua = navigator.userAgent;
+  const ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  function pick(os: string) {
+    view.dataset.osView = os;
+    btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.os === os)));
+  }
+  if (ios) pick('ios');
+  btns.forEach((b) => b.addEventListener('click', () => pick(b.dataset.os!)));
+
+  const copy = document.querySelector<HTMLButtonElement>('[data-copy]')!;
+  const label = copy.querySelector('span')!;
+  copy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(copy.dataset.copy!);
+      label.textContent = 'Copied';
+    } catch {
+      label.textContent = copy.dataset.copy!;
+    }
+    setTimeout(() => (label.textContent = 'Copy address'), 2000);
+  });
+</script>
