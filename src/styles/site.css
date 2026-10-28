@@ -331,8 +331,9 @@
 .skip:focus { top: 12px; }
 .ftr { padding-block: 32px 48px; border-top: 1px solid var(--divider); }
 .hero { padding-top: 40px; }
-.page-head { padding-block: 16px 20px; }
-.page-head .head { margin-bottom: 0; }
+.page-head { display: grid; gap: 20px; padding-block: clamp(40px, 6vw, 64px) clamp(32px, 4vw, 48px); }
+.page-head .head { margin-bottom: 0; gap: 20px; }
+.page-head .crumbs { padding-top: 0; }
 .sec--flush { padding-bottom: 56px; }
 .split--top { align-items: start; }
 .pad { padding: 24px; }
