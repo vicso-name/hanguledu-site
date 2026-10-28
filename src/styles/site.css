@@ -571,6 +571,14 @@ p.pcard-said { margin: 10px 0 0; }
 .prow-en { font: 500 15px/20px var(--font-ui); }
 .prow-reg { flex: none; }
 .prow-play { position: absolute; right: 12px; top: 12px; }
+/* desktop: centre the play button on the row's summary, and keep it there when the row opens */
+@media (min-width: 761px) {
+  @supports (anchor-name: --a) {
+    .prow { anchor-scope: --prow; }
+    .prow > details > summary { anchor-name: --prow; }
+    .prow-play { position-anchor: --prow; top: anchor(center); translate: 0 -50%; }
+  }
+}
 .prow-body { display: grid; gap: 10px; padding: 0 16px 16px; }
 .prow-body > .t-meta { margin: 0; }
 .prow.is-pick { border-color: var(--action); box-shadow: 0 0 0 1px var(--action); }
