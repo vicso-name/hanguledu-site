@@ -11,7 +11,7 @@ import { crumbs, faqPage } from '../../lib/schema';
 const HUBS: Record<string, string> = { kdrama: '/phrases/k-drama/', love: '/phrases/love/' };
 const REGS: Register[] = ['casual', 'polite', 'formal'];
 const differ = PHRASES.filter((p) => p.said !== p.ko).length;
-const PAGE = 15;
+const PAGE = 10;
 
 const FAQ = [
   { q: 'What are casual, polite and formal Korean?', a: 'Korean changes the end of a sentence for who you talk to. Casual (반말) is for friends and younger people, polite (해요체, ending in 요) is for most adults, and formal (합쇼체, ending in 니다) is for work, news and ceremonies.' },
@@ -81,7 +81,7 @@ const schema = [
   const count = root.querySelector<HTMLElement>('[data-count]')!;
   const empty = root.querySelector<HTMLElement>('[data-empty]')!;
   const more = root.querySelector<HTMLButtonElement>('[data-more]')!;
-  const PAGE = 15;
+  const PAGE = 10;
   const f = { pack: '', reg: '' };
   let limit = PAGE;
 
