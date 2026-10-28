@@ -47,14 +47,16 @@ const schema = [
 
   <section class="wrap sec--tight wrap--full" data-plist>
     <div class="pfilter">
-      <input class="psearch" aria-label="Search phrases" type="search" placeholder="Search: thank you, 주세요, taxi…" autocomplete="off" data-q />
-      <div class="seg" role="group" aria-label="Situation" data-f="pack">
-        <button type="button" data-v="" aria-pressed="true">All</button>
-        {PACKS.map((p) => <button type="button" data-v={p.id} aria-pressed="false"><Icon name={p.icon} />{p.title}</button>)}
+      <div class="pfilter-top">
+        <input class="psearch" aria-label="Search phrases" type="search" placeholder="Search: thank you, 주세요, taxi…" autocomplete="off" data-q />
+        <div class="seg" role="group" aria-label="Politeness" data-f="reg">
+          <button type="button" data-v="" aria-pressed="true">Any</button>
+          {REGS.map((r) => <button type="button" data-v={r} aria-pressed="false">{REGISTER_LABEL[r]}</button>)}
+        </div>
       </div>
-      <div class="seg" role="group" aria-label="Politeness" data-f="reg">
-        <button type="button" data-v="" aria-pressed="true">Any</button>
-        {REGS.map((r) => <button type="button" data-v={r} aria-pressed="false">{REGISTER_LABEL[r]}</button>)}
+      <div class="chips" role="group" aria-label="Situation" data-f="pack">
+        <button type="button" data-v="" aria-pressed="true">All situations</button>
+        {PACKS.map((p) => <button type="button" data-v={p.id} aria-pressed="false"><Icon name={p.icon} />{p.title}</button>)}
       </div>
       <p class="t-meta pcount" aria-live="polite" data-count>Showing {PAGE} of {PHRASES.length} phrases</p>
     </div>
