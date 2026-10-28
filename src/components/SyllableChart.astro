@@ -1,0 +1,51 @@
+---
+// Every consonant before every basic vowel: 19 × 10 = 190 blocks, each with
+// a native clip. The romanization under a block hides once the visitor knows
+// both of its letters (data-jamo, handled in Layout).
+import { BY, block, initialRom } from '../data/hangul';
+
+const ROWS = 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㄲㄸㅃㅆㅉ';
+const COLS = 'ㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣ';
+const rom = (c: string, v: string) => (c === 'ㅅ' && v === 'ㅣ' ? 'si' : initialRom(BY[c]) + BY[v].rom);
+---
+
+<div class="syl" data-syl>
+  <p class="syl-now t-body" aria-live="polite" data-syl-now>Tap any block to hear it.</p>
+  <div class="syl-scroll">
+    <div class="syl-grid" role="table" aria-label="Korean syllable chart: consonants by vowels">
+      <div class="syl-row" role="row">
+        <span class="syl-corner" role="columnheader"><span class="sr">Consonant</span></span>
+        {[...COLS].map((v) => <span class="syl-ch jm jm--v" role="columnheader" lang="ko">{v}</span>)}
+      </div>
+      {[...ROWS].map((c) => (
+        <div class="syl-row" role="row">
+          <span class="syl-rh jm jm--c" role="rowheader" lang="ko">{c}</span>
+          {[...COLS].map((v) => {
+            const b = block(c, v);
+            return (
+              <button type="button" class="syl-cell" role="cell" data-say={b} data-jamo={c + v} data-parts={`${c} + ${v}`} data-rom={rom(c, v)} aria-label={`${b}, ${rom(c, v)}`}>
+                <b lang="ko">{b}</b><em>{rom(c, v)}</em>
+              </button>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  </div>
+  <p class="t-meta">Hints disappear under blocks whose two letters are already yours. ㅇ is silent at the start, so its row is the vowels on their own.</p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-syl]').forEach((root) => {
+    const now = root.querySelector<HTMLElement>('[data-syl-now]')!;
+    root.addEventListener('click', (e) => {
+      const c = (e.target as HTMLElement).closest<HTMLElement>('.syl-cell');
+      if (!c) return;
+      root.querySelectorAll('.syl-cell[aria-pressed]').forEach((x) => x.removeAttribute('aria-pressed'));
+      c.setAttribute('aria-pressed', 'true');
+      now.innerHTML = '';
+      const k = document.createElement('b'); k.lang = 'ko'; k.className = 'ko'; k.textContent = c.dataset.parts + ' = ' + c.dataset.say;
+      now.append(k, ` · ${c.dataset.rom}`);
+    });
+  });
+</script>

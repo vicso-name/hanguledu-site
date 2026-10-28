@@ -1,0 +1,129 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LetterChart from '../../components/LetterChart.astro';
+import MouthFamilies from '../../components/MouthFamilies.astro';
+import Triplets from '../../components/Triplets.astro';
+import ListenQuiz from '../../components/ListenQuiz.astro';
+import Play from '../../components/Play.astro';
+import Faq from '../../components/Faq.astro';
+import AppCta from '../../components/AppCta.astro';
+import { LETTERS, FINALS } from '../../data/hangul';
+import { crumbs, faqPage } from '../../lib/schema';
+
+const cons = LETTERS.filter((l) => l.role === 'consonant');
+
+const FAQ = [
+  { q: 'How many consonants are there in Korean?', a: 'Hangul has 19 consonant letters: 14 basic consonants and 5 double (tense) consonants, ㄲ ㄸ ㅃ ㅆ ㅉ. At the bottom of a block, pairs of different consonants such as ㄳ or ㄺ also appear, but they are combinations of these 19, not new letters.' },
+  { q: 'Why does ㄱ sound like g and also like k?', a: 'Korean does not tell g and k apart the way English does. ㄱ is a soft, unaspirated sound: between vowels it sounds close to g (고기, gogi), at the start of a word somewhere between g and k, and at the end of a block it is a clipped k (박, bak).' },
+  { q: 'What are double consonants?', a: 'ㄲ ㄸ ㅃ ㅆ ㅉ are tense consonants. You say them with a tight throat and no puff of air, like the k in "sky" or the p in "spin". They are written by doubling the base letter.' },
+  { q: 'Is ㄹ an r or an l?', a: 'Both. At the start of a syllable ㄹ is a quick flap, like the tt in American "butter" (라, ra). At the end of a block it is an l (물, mul). Two in a row, as in 빨리, sound like a long l.' },
+  { q: 'Why is ㅇ silent?', a: 'Every Korean block must start with a consonant, so a syllable that begins with a vowel takes ㅇ as a silent placeholder: 아 is just a. At the bottom of a block, ㅇ is pronounced ng, as in 빵 (ppang).' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'LearningResource', name: 'Korean consonants with audio', learningResourceType: 'Lesson', inLanguage: 'en', teaches: 'The 19 Korean consonants', isAccessibleForFree: true },
+  crumbs([['Korean alphabet', '/korean-alphabet/'], ['Consonants', '/korean-alphabet/consonants/']]),
+  faqPage(FAQ),
+];
+---
+
+<Layout
+  title="Korean Consonants: All 19 with Audio, Names and a Chart | HangulEdu"
+  description="The 14 basic and 5 double Korean consonants with native audio, their names (기역, 니은…), the plain-aspirated-tense trio 가 카 까 to listen to side by side, and a quiz that trains your ears."
+  schema={schema}
+>
+  <section class="wrap page-head">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/korean-alphabet/">Korean alphabet</a><span aria-hidden="true">/</span><span>Consonants</span></nav>
+    <div class="head">
+      <h1 class="t-h1">Korean consonants</h1>
+      <p class="t-lead">Korean has 19 consonants: 14 basic letters and 5 doubled, tense ones. Five of them are pictures of your mouth, and the rest are built from those five. Tap a letter to hear it.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec--flush">
+    <LetterChart groups={['basicC', 'double']} filters={false} />
+  </section>
+
+  <section class="wrap sec">
+    <div class="split split--top">
+      <div class="head" style="margin: 0;">
+        <p class="t-label">How they were designed</p>
+        <h2 class="t-h2">Five shapes draw the mouth</h2>
+        <p class="t-body he-ink-2">When King Sejong created Hangul in 1443, each base consonant was drawn as the speech organ that makes it. Add a stroke and the sound gets more breath. Double the letter and it turns tense. Learn five shapes and you can guess the rest.</p>
+      </div>
+      <div class="he-glass he-glass--dense pad"><MouthFamilies /></div>
+    </div>
+  </section>
+
+  <section class="wrap sec--tight" id="plain-aspirated-tense">
+    <div class="head">
+      <p class="t-label">The hard part</p>
+      <h2 class="t-h2">가, 카 or 까? Hear the difference</h2>
+      <p class="t-body he-ink-2">English has two sounds where Korean has three. Play each row from left to right. Hold your palm in front of your mouth: you feel a puff of air on 카, and almost none on 까.</p>
+    </div>
+    <Triplets />
+  </section>
+
+  <section class="wrap sec">
+    <div class="split split--top">
+      <div class="head" style="margin: 0;">
+        <p class="t-label">Consonant names</p>
+        <h2 class="t-h2">What Koreans call each letter</h2>
+        <p class="t-body he-ink-2">Each basic consonant's name shows it twice: once at the start of a syllable and once at the end, so the name teaches both of its sounds. 기역 is g … k. Double letters add 쌍 (ssang), "pair".</p>
+      </div>
+      <div class="names">
+        {cons.map((l) => (
+          <div class="name-row">
+            <span class="jm jm--c" lang="ko">{l.g}</span>
+            <span><b lang="ko" class="ko">{l.name}</b> <span class="rom">{l.nameRom}</span></span>
+            <Play ko={l.name} label={l.nameRom} size="sm" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec--tight">
+    <div class="head">
+      <p class="t-label">Final consonants (batchim)</p>
+      <h2 class="t-h2">At the end of a block, only seven sounds</h2>
+      <p class="t-body he-ink-2">A consonant at the bottom of a block is never released, so many letters collapse into the same sound. This is why ㅅ, ㅈ and ㅎ all end in t.</p>
+    </div>
+    <div class="finals">
+      {FINALS.map((f) => (
+        <div class="he-glass he-glass--dense fin">
+          <p class="fin-sound">{f.sound}</p>
+          <div class="row" style="gap: 4px;">{[...f.letters].map((g) => <span class="jm jm--b" lang="ko">{g}</span>)}</div>
+          <div class="row fin-ex">
+            <span lang="ko" class="ko fin-ko">{f.ex.ko}</span>
+            <span class="t-meta">{f.ex.rom} · {f.ex.en}</span>
+            <Play ko={f.ex.ko} label={f.ex.rom} size="sm" />
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap sec--tight wrap--medium">
+    <div class="head">
+      <h2 class="t-h2">Train your ears</h2>
+      <p class="t-body he-ink-2">Ten sounds. The wrong answers come from the same family, so you practise exactly the contrasts that are hard.</p>
+    </div>
+    <ListenQuiz groups={['basicC', 'double']} title="Which consonant do you hear?" />
+  </section>
+
+  <section class="wrap sec--tight wrap--medium">
+    <h2 class="t-h2" style="margin-bottom: 16px;">Questions</h2>
+    <Faq items={FAQ} />
+  </section>
+
+  <section class="wrap sec--tight">
+    <div class="cols-3 next">
+      <a class="he-glass tool deep" href="/korean-alphabet/vowels/"><span class="ti ti--k" lang="ko" aria-hidden="true">ㅏ</span><span class="t-h3">Next: the 21 vowels</span></a>
+      <a class="he-glass tool deep" href="/korean-alphabet/chart/#syllables"><span class="ti ti--s" lang="ko" aria-hidden="true">가</span><span class="t-h3">Hear all 190 syllables</span></a>
+      <a class="he-glass tool deep" href="/korean-alphabet/#builder"><span class="ti ti--t" lang="ko" aria-hidden="true">한</span><span class="t-h3">Build a block</span></a>
+    </div>
+  </section>
+
+  <AppCta title="Drill the consonants on your phone" sub="Hangul Hero quizzes you on ㄱ, ㅋ and ㄲ until your ears can tell them apart. Works offline." />
+</Layout>

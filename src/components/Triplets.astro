@@ -1,0 +1,25 @@
+---
+// Plain, aspirated, tense: play the three side by side and hear the difference.
+import { TRIPLETS, BY, block } from '../data/hangul';
+
+const HEAD = [
+  ['Plain', 'relaxed, a little breath'],
+  ['Aspirated', 'a strong puff of air'],
+  ['Tense', 'tight throat, no air'],
+];
+---
+
+<div class="trip" role="table" aria-label="Plain, aspirated and tense consonants">
+  <div class="trip-row trip-head" role="row">
+    {HEAD.map(([t, d]) => <span role="columnheader"><b>{t}</b><small>{d}</small></span>)}
+  </div>
+  {TRIPLETS.map((row) => (
+    <div class="trip-row" role="row">
+      {row.map((g) => g ? (
+        <button type="button" class="trip-cell" role="cell" data-say={block(g, 'ㅏ')} aria-label={`${block(g, 'ㅏ')}, ${BY[g].rom.split(' / ')[0]}a`}>
+          <span class="jm jm--c" lang="ko">{g}</span><b lang="ko">{block(g, 'ㅏ')}</b><em>{BY[g].rom.split(' / ')[0]}a</em>
+        </button>
+      ) : <span class="trip-cell trip-cell--none" role="cell"><span class="t-meta">no aspirated s</span></span>)}
+    </div>
+  ))}
+</div>

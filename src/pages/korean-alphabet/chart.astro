@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LetterChart from '../../components/LetterChart.astro';
+import SyllableChart from '../../components/SyllableChart.astro';
+import ListenQuiz from '../../components/ListenQuiz.astro';
+import AppCta from '../../components/AppCta.astro';
+import { crumbs } from '../../lib/schema';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LearningResource',
+    name: 'Korean alphabet chart with audio',
+    description: 'All 40 Hangul letters and 190 syllable blocks, each with native audio.',
+    learningResourceType: 'Chart',
+    inLanguage: 'en',
+    teaches: 'Hangul, the Korean alphabet',
+    isAccessibleForFree: true,
+  },
+  crumbs([['Korean alphabet', '/korean-alphabet/'], ['Chart', '/korean-alphabet/chart/']]),
+];
+---
+
+<Layout
+  title="Korean Alphabet Chart with Audio: All 40 Hangul Letters | HangulEdu"
+  description="Tap any of the 40 Hangul letters to hear it, then every consonant with every vowel: 190 syllable blocks read by a native speaker. Hide the romanization to test yourself."
+  schema={schema}
+>
+  <section class="wrap page-head">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/korean-alphabet/">Korean alphabet</a><span aria-hidden="true">/</span><span>Chart</span></nav>
+    <div class="head">
+      <h1 class="t-h1">Korean alphabet chart</h1>
+      <p class="t-lead">All 40 letters of Hangul: 19 consonants and 21 vowels. Tap one to hear it from a native speaker, then mark the ones you know. Below the letters, every consonant meets every vowel in 190 blocks you can hear.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec--flush">
+    <LetterChart />
+  </section>
+
+  <section class="wrap sec" id="syllables">
+    <div class="head">
+      <p class="t-label">Syllable chart</p>
+      <h2 class="t-h2">Every consonant with every vowel, out loud</h2>
+      <p class="t-body he-ink-2">Korean children learn to read from this grid. Rows are consonants, columns are the 10 basic vowels; the block where they meet is a real syllable, read by a native speaker.</p>
+    </div>
+    <SyllableChart />
+  </section>
+
+  <section class="wrap sec--tight wrap--medium">
+    <div class="head">
+      <h2 class="t-h2">Check your ears</h2>
+      <p class="t-body he-ink-2">Ten sounds from the 24 basic letters. Every letter you get right joins your letters.</p>
+    </div>
+    <ListenQuiz groups={['basicC', 'basicV']} />
+  </section>
+
+  <section class="wrap sec--tight">
+    <div class="cols-3 next">
+      <a class="he-glass tool deep" href="/korean-alphabet/consonants/"><span class="ti ti--c" lang="ko" aria-hidden="true">ㄱ</span><span class="t-h3">Consonants: 가, 카 or 까</span></a>
+      <a class="he-glass tool deep" href="/korean-alphabet/vowels/"><span class="ti ti--k" lang="ko" aria-hidden="true">ㅏ</span><span class="t-h3">Vowels: sky, earth, person</span></a>
+      <a class="he-glass tool deep" href="/korean-alphabet/"><span class="ti ti--t" lang="ko" aria-hidden="true">한</span><span class="t-h3">How the alphabet works</span></a>
+    </div>
+  </section>
+
+  <AppCta title="Learn all 40 with spaced review" sub="Hangul Hero brings back each letter right before you would forget it. Works offline." />
+</Layout>

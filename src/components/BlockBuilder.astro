@@ -1,0 +1,103 @@
+---
+// Build a syllable: pick a consonant, a vowel and an optional final consonant,
+// watch the block take shape and hear it when a native clip exists.
+import { BY, block, initialRom, HORIZONTAL } from '../data/hangul';
+import { readdirSync } from 'node:fs';
+
+const CONS = 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㄲㄸㅃㅆㅉ';
+const VOWS = 'ㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣㅐㅔㅘㅝㅚㅟㅢ';
+const FINS = ['', 'ㄱ', 'ㄴ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅇ'];
+const FIN_ROM: Record<string, string> = { '': '', 'ㄱ': 'k', 'ㄴ': 'n', 'ㄹ': 'l', 'ㅁ': 'm', 'ㅂ': 'p', 'ㅇ': 'ng' };
+const clips = readdirSync('public/audio/ko').map((f) => f.replace('.mp3', '')).filter((f) => !f.includes('_'));
+const data = {
+  rom: Object.fromEntries([...CONS, ...VOWS].map((g) => [g, BY[g].role === 'vowel' ? BY[g].rom : initialRom(BY[g])])),
+  fin: FIN_ROM,
+  horizontal: HORIZONTAL,
+  clips,
+};
+---
+
+<div class="he-glass he-glass--dense build" data-build>
+  <div class="build-out">
+    <div class="block build-block" role="img" aria-label="Syllable block" data-b-block>
+      <div class="z z--c" data-b-c><small>1</small><span lang="ko">ㄱ</span></div>
+      <div class="z z--v" data-b-v><small>2</small><span lang="ko">ㅏ</span></div>
+      <div class="z z--b z--empty" data-b-b><small>3</small><span lang="ko"></span></div>
+    </div>
+    <div class="build-res">
+      <p class="t-label">You built</p>
+      <p class="build-syl" lang="ko" data-b-syl>{block('ㄱ', 'ㅏ')}</p>
+      <p class="d-rom" data-b-rom>ga</p>
+      <div class="row">
+        <button type="button" class="he-play" data-say="가" data-b-play aria-label="Play the block">
+          <svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg>
+        </button>
+        <span class="he-audio-missing" data-b-miss hidden>No recording of this block yet.</span>
+      </div>
+      <p class="t-meta" data-b-note>ㅏ stands up, so it goes to the right of the consonant.</p>
+    </div>
+  </div>
+  <div class="build-pick">
+    <p class="t-label">1 · Consonant</p>
+    <div class="pick-row" data-b-pick="c">{[...CONS].map((g, i) => <button type="button" class="pk pk--c" lang="ko" aria-pressed={i === 0 ? 'true' : 'false'} data-g={g}>{g}</button>)}</div>
+    <p class="t-label">2 · Vowel</p>
+    <div class="pick-row" data-b-pick="v">{[...VOWS].map((g, i) => <button type="button" class="pk pk--v" lang="ko" aria-pressed={i === 0 ? 'true' : 'false'} data-g={g}>{g}</button>)}</div>
+    <p class="t-label">3 · Final consonant (batchim)</p>
+    <div class="pick-row" data-b-pick="b">{FINS.map((g, i) => <button type="button" class="pk pk--b" lang="ko" aria-pressed={i === 0 ? 'true' : 'false'} data-g={g}>{g || 'none'}</button>)}</div>
+  </div>
+  <script type="application/json" data-b-data set:html={JSON.stringify(data)} />
+</div>
+
+<script>
+  import { say } from '../lib/audio';
+
+  const CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
+  const JUNG = 'ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ';
+  const JONG = ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ'];
+  const MIXED = 'ㅘㅝㅚㅟㅢ';
+
+  document.querySelectorAll<HTMLElement>('[data-build]').forEach((root) => {
+    const d = JSON.parse(root.querySelector('[data-b-data]')!.textContent!);
+    const clips = new Set<string>(d.clips);
+    const pick: Record<string, string> = { c: 'ㄱ', v: 'ㅏ', b: '' };
+    const $ = <T extends HTMLElement>(s: string) => root.querySelector<T>(s)!;
+    const blockEl = $('[data-b-block]');
+
+    function paint(sound: boolean) {
+      const { c, v, b } = pick;
+      const syl = String.fromCharCode(0xac00 + (CHO.indexOf(c) * 21 + JUNG.indexOf(v)) * 28 + JONG.indexOf(b));
+      $('[data-b-c] span').textContent = c;
+      $('[data-b-v] span').textContent = v;
+      $('[data-b-b] span').textContent = b;
+      $('[data-b-b]').classList.toggle('z--empty', !b);
+      blockEl.classList.toggle('block--under', d.horizontal.includes(v));
+      blockEl.classList.toggle('block--mixed', MIXED.includes(v));
+      $('[data-b-syl]').textContent = syl;
+      let rom = d.rom[c] + d.rom[v] + d.fin[b];
+      if (c === 'ㅅ' && v === 'ㅣ') rom = 'si' + d.fin[b];
+      $('[data-b-rom]').textContent = rom;
+      $('[data-b-note]').textContent = MIXED.includes(v)
+        ? `${v} is two vowels in one: its flat part goes under the consonant, its standing part to the right.`
+        : d.horizontal.includes(v)
+          ? `${v} lies flat, so it goes under the consonant.`
+          : `${v} stands up, so it goes to the right of the consonant.`;
+      const hex = syl.codePointAt(0)!.toString(16);
+      const ok = clips.has(hex);
+      const play = $<HTMLButtonElement>('[data-b-play]');
+      play.hidden = !ok;
+      play.dataset.say = syl;
+      $('[data-b-miss]').hidden = ok;
+      if (sound && ok) say(syl, { button: play });
+    }
+
+    root.addEventListener('click', (e) => {
+      const b = (e.target as HTMLElement).closest<HTMLElement>('.pk');
+      if (!b) return;
+      const row = b.closest<HTMLElement>('[data-b-pick]')!;
+      row.querySelectorAll('.pk').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      pick[row.dataset.bPick!] = b.dataset.g!;
+      paint(true);
+    });
+    paint(false);
+  });
+</script>

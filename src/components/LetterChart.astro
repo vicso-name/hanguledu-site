@@ -1,0 +1,161 @@
+---
+// The 40-letter chart: tap a tile to hear it and see it in the detail panel;
+// "I know this one" adds it to the visitor's letters. All 40 tiles are in the
+// HTML; the script only switches what is selected.
+import { LETTERS, GROUPS, ofGroup, block, initialRom, letterSyllable, type Group } from '../data/hangul';
+
+interface Props { groups?: Group[]; filters?: boolean }
+const { groups = GROUPS.map((g) => g.key), filters = true } = Astro.props;
+const shown = GROUPS.filter((g) => groups.includes(g.key));
+const first = ofGroup(shown[0].key)[0];
+
+const roleWord = (g: string, role: string) => (g === 'ㅇ' ? 'Silent / ng' : role === 'vowel' ? 'Vowel' : 'Consonant');
+const tileCls = (g: string, role: string) => 'he-tile he-tile--' + (g === 'ㅇ' ? 'silent' : role);
+const data = LETTERS.filter((l) => groups.includes(l.group)).map((l) => {
+  const c = l.role === 'vowel' ? 'ㅇ' : l.g, v = l.role === 'vowel' ? l.g : 'ㅏ';
+  return { ...l, roleWord: l.g === 'ㅇ' ? 'Consonant · silent / ng' : roleWord(l.g, l.role), syl: letterSyllable(l), exC: c, exV: v, exB: block(c, v), exRom: (l.role === 'vowel' ? '' : initialRom(l)) + (l.role === 'vowel' ? l.rom : 'a'), pos: LETTERS.indexOf(l) + 1 };
+});
+---
+
+<div class="chart" data-chart>
+  <div class="row chart-ctl">
+    {filters && (
+      <div class="seg" role="group" aria-label="Show">
+        <button type="button" aria-pressed="true" data-filter="all">All 40</button>
+        <button type="button" aria-pressed="false" data-filter="consonant">Consonants</button>
+        <button type="button" aria-pressed="false" data-filter="vowel">Vowels</button>
+      </div>
+    )}
+    <button type="button" class="switch" aria-pressed="false" data-test><i></i>Hide romanization</button>
+  </div>
+
+  <div class="aside">
+    <div class="chart-groups">
+      {shown.map((g) => (
+        <div class="chart-group" data-role={g.key === 'basicC' || g.key === 'double' ? 'consonant' : 'vowel'}>
+          <div class="he-sh"><h2 class="he-sh__title">{g.title}</h2><p class="he-sh__sub">{g.sub}</p></div>
+          <div class="tiles8">
+            {ofGroup(g.key).map((l) => (
+              <button type="button" class={tileCls(l.g, l.role)} data-g={l.g} aria-pressed={l.g === first.g ? 'true' : 'false'} aria-label={`${l.g}, ${l.rom}`}>
+                <span class="he-tile__glyph" lang="ko">{l.g}</span>
+                <span class="he-tile__rom" data-rom={l.rom}>{l.rom}</span>
+                <span class="he-tile__role">{roleWord(l.g, l.role)}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <aside class="he-glass detail" aria-live="polite" data-detail>
+      <div class="row d-head" style="justify-content: space-between;">
+        <span class="d-role he-tile--consonant"><span class="he-tile__role" data-f="roleWord">{data[0].roleWord}</span></span>
+        <span class="t-meta"><span data-f="pos">1</span> of 40</span>
+      </div>
+      <div class="d-glyph">
+        <span lang="ko" class="d-g" data-f="g">{first.g}</span>
+        <span class="d-rom" data-f="rom">{first.rom}</span>
+        <span class="t-meta d-name"><span lang="ko" class="ko" data-f="name">{first.name}</span> · <span data-f="nameRom">{first.nameRom}</span></span>
+      </div>
+      <div class="row d-play">
+        <button type="button" class="he-play" data-say={data[0].syl} data-k="syl" aria-label="Play the sound">
+          <svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg>
+        </button>
+        <button type="button" class="he-play he-play--slow" data-say={data[0].syl} data-k="syl" data-slow aria-label="Play slowly">
+          <svg class="he-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0"></path><circle cx="10" cy="13" r="8"></circle><path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6"></path></svg>Slow
+        </button>
+      </div>
+      <div class="d-say">
+        <p class="t-label">Sounds like</p>
+        <p class="t-body" data-f="say">{first.say}</p>
+      </div>
+      <div class="d-block">
+        <p class="t-label">In a block</p>
+        <div class="row"><span class="jm jm--c" lang="ko" data-f="exC">{data[0].exC}</span><span class="t-meta">+</span><span class="jm jm--v" lang="ko" data-f="exV">{data[0].exV}</span><span class="t-meta">=</span><span lang="ko" class="d-ex" data-f="exB">{data[0].exB}</span><span class="rom" data-f="exRom">{data[0].exRom}</span></div>
+      </div>
+      <div class="d-block d-word">
+        <p class="t-label">In a word</p>
+        <div class="row">
+          <button type="button" class="he-play he-play--sm" data-say={first.ex.ko} data-k="word" aria-label="Play the word">
+            <svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg>
+          </button>
+          <span lang="ko" class="d-ex" data-f="exKo">{first.ex.ko}</span>
+          <span><span class="rom" data-f="exWRom">{first.ex.rom}</span> · <span class="t-meta" data-f="exEn">{first.ex.en}</span></span>
+        </div>
+      </div>
+      <button type="button" class="he-btn he-btn--block d-learn" data-learn>I know this one</button>
+    </aside>
+  </div>
+  <script type="application/json" data-letters set:html={JSON.stringify(data)} />
+</div>
+
+<script>
+  import { say } from '../lib/audio';
+  import { learn, onChange, has } from '../lib/progress';
+
+  document.querySelectorAll<HTMLElement>('[data-chart]').forEach((root) => {
+    const letters = JSON.parse(root.querySelector('[data-letters]')!.textContent!);
+    const by = Object.fromEntries(letters.map((l: { g: string }) => [l.g, l]));
+    const tiles = [...root.querySelectorAll<HTMLButtonElement>('.he-tile[data-g]')];
+    const detail = root.querySelector<HTMLElement>('[data-detail]')!;
+    const learnBtn = detail.querySelector<HTMLButtonElement>('[data-learn]')!;
+    let sel = tiles[0].dataset.g!;
+    let test = false;
+
+    const f = (k: string, v: string) => { const el = detail.querySelector(`[data-f="${k}"]`); if (el) el.textContent = v; };
+
+    function paintLearn() {
+      const k = has(sel);
+      learnBtn.textContent = k ? 'In your letters ✓' : 'I know this one';
+      learnBtn.classList.toggle('he-btn--success', k);
+    }
+
+    function paintRom() {
+      tiles.forEach((t) => {
+        const rom = t.querySelector<HTMLElement>('.he-tile__rom')!;
+        rom.textContent = test && t.dataset.g !== sel ? '?' : rom.dataset.rom!;
+      });
+    }
+
+    function select(g: string, sound: boolean) {
+      sel = g;
+      const l = by[g];
+      tiles.forEach((t) => t.setAttribute('aria-pressed', String(t.dataset.g === g)));
+      for (const k of ['roleWord', 'pos', 'g', 'rom', 'name', 'nameRom', 'say', 'exC', 'exV', 'exB', 'exRom']) f(k, String(l[k]));
+      f('exKo', l.ex.ko); f('exWRom', l.ex.rom); f('exEn', l.ex.en);
+      const v = l.role === 'vowel';
+      detail.querySelector<HTMLElement>('[data-f="g"]')!.style.color = v ? 'var(--letterVowelInk)' : 'var(--letterConsonantInk)';
+      detail.querySelector('.d-role')!.className = 'd-role he-tile--' + (v ? 'vowel' : 'consonant');
+      detail.querySelectorAll<HTMLElement>('[data-k="syl"]').forEach((b) => (b.dataset.say = l.syl));
+      detail.querySelector<HTMLElement>('[data-k="word"]')!.dataset.say = l.ex.ko;
+      paintLearn();
+      paintRom();
+      if (sound) say(l.syl, { button: detail.querySelector('[data-k="syl"]') });
+    }
+
+    root.addEventListener('click', (e) => {
+      const t = (e.target as HTMLElement).closest<HTMLElement>('.he-tile[data-g]');
+      if (t) select(t.dataset.g!, true);
+      const fb = (e.target as HTMLElement).closest<HTMLElement>('[data-filter]');
+      if (fb) {
+        root.querySelectorAll('[data-filter]').forEach((b) => b.setAttribute('aria-pressed', String(b === fb)));
+        const want = fb.dataset.filter;
+        root.querySelectorAll<HTMLElement>('.chart-group').forEach((g) => (g.hidden = want !== 'all' && g.dataset.role !== want));
+        const firstShown = tiles.find((t) => !t.closest<HTMLElement>('.chart-group')!.hidden);
+        if (firstShown && firstShown.closest<HTMLElement>('.chart-group')!.hidden === false && by[sel].role !== want && want !== 'all') select(firstShown.dataset.g!, false);
+      }
+    });
+    root.querySelector<HTMLButtonElement>('[data-test]')!.addEventListener('click', (e) => {
+      test = !test;
+      (e.currentTarget as HTMLElement).setAttribute('aria-pressed', String(test));
+      paintRom();
+    });
+    learnBtn.addEventListener('click', () => learn(sel));
+
+    onChange((set) => {
+      tiles.forEach((t) => t.classList.toggle('he-tile--learned', set.has(t.dataset.g!)));
+      paintLearn();
+    });
+    select(sel, false);
+  });
+</script>

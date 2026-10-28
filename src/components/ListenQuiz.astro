@@ -1,0 +1,116 @@
+---
+// Hear a sound, pick the letter. Wrong options come from the same mouth family
+// (ㄱ ㅋ ㄲ) or vowel shape, so the quiz trains the contrasts that are hard,
+// never two vowels that sound the same today. A right answer adds the letter
+// to the visitor's letters.
+import { LETTERS, letterSyllable, FAMILIES, SAME_SOUND, type Group } from '../data/hangul';
+
+interface Props { groups: Group[]; title?: string; rounds?: number }
+const { groups, title = 'Listen and pick the letter', rounds = 10 } = Astro.props;
+const pool = LETTERS.filter((l) => groups.includes(l.group)).map((l) => ({ g: l.g, rom: l.rom, syl: letterSyllable(l), role: l.role }));
+const families = FAMILIES.map((f) => f.items.map(([g]) => g).join(''));
+---
+
+<div class="he-glass he-glass--dense quiz" data-quiz data-rounds={rounds}>
+  <div class="row" style="justify-content: space-between;">
+    <p class="t-label">{title}</p>
+    <p class="t-meta" data-q-score>Round 1 of {rounds}</p>
+  </div>
+  <div class="quiz-ask">
+    <button type="button" class="he-play quiz-play" data-q-play aria-label="Play the sound">
+      <svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg>
+    </button>
+    <p class="t-body" data-q-prompt>Press play, then tap the letter you hear.</p>
+  </div>
+  <div class="quiz-opts" data-q-opts></div>
+  <div class="feedback" data-q-fb hidden></div>
+  <div class="row">
+    <button type="button" class="he-btn" data-q-next hidden>Next sound</button>
+  </div>
+  <script type="application/json" data-q-data set:html={JSON.stringify({ pool, families, same: SAME_SOUND })} />
+</div>
+
+<script>
+  import { say } from '../lib/audio';
+  import { learn } from '../lib/progress';
+
+  type L = { g: string; rom: string; syl: string; role: string };
+  const shuffle = <T,>(a: T[]) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+  document.querySelectorAll<HTMLElement>('[data-quiz]').forEach((root) => {
+    const { pool, families, same } = JSON.parse(root.querySelector('[data-q-data]')!.textContent!) as { pool: L[]; families: string[]; same: string[] };
+    const rounds = Number(root.dataset.rounds);
+    const opts = root.querySelector<HTMLElement>('[data-q-opts]')!;
+    const fb = root.querySelector<HTMLElement>('[data-q-fb]')!;
+    const next = root.querySelector<HTMLButtonElement>('[data-q-next]')!;
+    const playBtn = root.querySelector<HTMLButtonElement>('[data-q-play]')!;
+    const score = root.querySelector<HTMLElement>('[data-q-score]')!;
+    let order = shuffle([...pool]);
+    let round = 0, right = 0, answer: L, done = false;
+
+    const clash = (a: string, b: string) => same.some((s) => s.includes(a) && s.includes(b));
+    function options(t: L) {
+      const fam = families.find((f) => f.includes(t.g)) ?? '';
+      const near = shuffle(pool.filter((l) => l.g !== t.g && fam.includes(l.g)));
+      const rest = shuffle(pool.filter((l) => l.g !== t.g && !fam.includes(l.g) && l.role === t.role));
+      const out: L[] = [t];
+      for (const l of [...near, ...rest]) {
+        if (out.length === 4) break;
+        if (out.every((o) => !clash(o.g, l.g))) out.push(l);
+      }
+      return shuffle(out);
+    }
+
+    function ask() {
+      done = false;
+      answer = order[round % order.length];
+      score.textContent = `Round ${round + 1} of ${rounds}` + (round ? ` · ${right} right` : '');
+      fb.hidden = true; next.hidden = true;
+      opts.replaceChildren(...options(answer).map((o) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'opt quiz-opt ' + (o.role === 'vowel' ? 'quiz-opt--v' : 'quiz-opt--c');
+        b.lang = 'ko';
+        b.dataset.g = o.g;
+        b.textContent = o.g;
+        return b;
+      }));
+    }
+
+    function finish() {
+      score.textContent = `${right} of ${rounds} right`;
+      opts.replaceChildren();
+      fb.hidden = false;
+      fb.className = 'feedback ' + (right >= rounds * 0.8 ? 'feedback--ok' : 'feedback--try');
+      fb.textContent = right >= rounds * 0.8 ? `${right} of ${rounds}: your ears already tell these apart. Every letter you got right is now in your letters.` : `${right} of ${rounds}. The close pairs are the hard part for everyone; play a round again and listen for the puff of air.`;
+      next.hidden = false;
+      next.textContent = 'Play again';
+      round = -1; right = 0; order = shuffle([...pool]);
+    }
+
+    playBtn.addEventListener('click', () => say(answer.syl, { button: playBtn }));
+    opts.addEventListener('click', (e) => {
+      const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.quiz-opt');
+      if (!b || done) return;
+      done = true;
+      const ok = b.dataset.g === answer.g;
+      if (ok) { right++; learn(answer.g); }
+      opts.querySelectorAll<HTMLElement>('.quiz-opt').forEach((o) => o.classList.add(o.dataset.g === answer.g ? 'is-right' : 'is-off'));
+      fb.hidden = false;
+      fb.className = 'feedback ' + (ok ? 'feedback--ok' : 'feedback--try');
+      fb.innerHTML = '';
+      const strong = document.createElement('b');
+      strong.textContent = ok ? `Yes: ${answer.g} (${answer.rom}).` : `That was ${answer.g} (${answer.rom}).`;
+      fb.append(strong, ok ? ` ${answer.g} is now in your letters.` : ` Tap ▶ to hear ${answer.syl} again.`);
+      next.hidden = false;
+      next.textContent = round + 1 >= rounds ? 'See your score' : 'Next sound';
+    });
+    next.addEventListener('click', () => {
+      round++;
+      if (round >= rounds) return finish();
+      ask();
+      say(answer.syl, { button: playBtn });
+    });
+    ask();
+  });
+</script>

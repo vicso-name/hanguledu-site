@@ -1,0 +1,128 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LetterChart from '../../components/LetterChart.astro';
+import VowelSeeds from '../../components/VowelSeeds.astro';
+import ListenQuiz from '../../components/ListenQuiz.astro';
+import Play from '../../components/Play.astro';
+import Faq from '../../components/Faq.astro';
+import AppCta from '../../components/AppCta.astro';
+import { BY, block, VERTICAL, HORIZONTAL } from '../../data/hangul';
+import { crumbs, faqPage } from '../../lib/schema';
+import { hasClip } from '../../lib/audio-index';
+
+const place = (vs: string) => [...vs].map((v) => ({ v, b: block('ㄱ', v), rom: 'g' + BY[v].rom, clip: hasClip(block('ㄱ', v)) }));
+
+const SAME = [
+  { set: ['ㅐ', 'ㅔ'], note: 'Both sound like e in "bed". Spelling tells them apart: 개 (dog) and 게 (crab) sound the same.' },
+  { set: ['ㅒ', 'ㅖ'], note: 'Both sound like ye in "yes".' },
+  { set: ['ㅙ', 'ㅚ', 'ㅞ'], note: 'All three sound like we in "wet": 왜 (why), 회사 (company), 웨이터 (waiter).' },
+];
+
+const FAQ = [
+  { q: 'How many vowels are there in Korean?', a: 'Hangul has 21 vowel letters: 10 basic vowels (ㅏ ㅑ ㅓ ㅕ ㅗ ㅛ ㅜ ㅠ ㅡ ㅣ) and 11 combined vowels built from them (ㅐ ㅒ ㅔ ㅖ ㅘ ㅙ ㅚ ㅝ ㅞ ㅟ ㅢ).' },
+  { q: 'Why is there a ㅇ in front of every vowel?', a: 'A Korean block always starts with a consonant. When a syllable begins with a vowel, a silent ㅇ holds that place, so ㅏ on its own is written 아.' },
+  { q: 'What is the difference between ㅓ and ㅗ?', a: 'ㅗ (o) is said with rounded lips, like o in "go". ㅓ (eo) has the mouth open and the lips relaxed, close to u in "up". Watch the stroke: pointing up for ㅗ, pointing left for ㅓ.' },
+  { q: 'Do ㅐ and ㅔ sound different?', a: 'For most speakers in Seoul today, no: both are e as in "bed". They were different sounds once, so the spelling still keeps them apart.' },
+  { q: 'Where does the vowel go in a block?', a: `Tall vowels (${[...VERTICAL].join(' ')}) stand to the right of the consonant: 가. Flat vowels (${[...HORIZONTAL].join(' ')}) sit under it: 고. Combined vowels such as ㅘ do both: 과.` },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'LearningResource', name: 'Korean vowels with audio', learningResourceType: 'Lesson', inLanguage: 'en', teaches: 'The 21 Korean vowels', isAccessibleForFree: true },
+  crumbs([['Korean alphabet', '/korean-alphabet/'], ['Vowels', '/korean-alphabet/vowels/']]),
+  faqPage(FAQ),
+];
+---
+
+<Layout
+  title="Korean Vowels: 10 Basic and 11 Combined, with Audio | HangulEdu"
+  description="All 21 Korean vowels with native audio: the 10 basic vowels, the 11 combined ones, which pairs sound the same today, where each vowel goes in a block, and a listening quiz."
+  schema={schema}
+>
+  <section class="wrap page-head">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/korean-alphabet/">Korean alphabet</a><span aria-hidden="true">/</span><span>Vowels</span></nav>
+    <div class="head">
+      <h1 class="t-h1">Korean vowels</h1>
+      <p class="t-lead">Korean has 21 vowels: 10 basic ones and 11 combined from them. All of them grow from just three strokes. Tap a vowel to hear it; it is written after a silent ㅇ, so ㅏ is said 아.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec--flush">
+    <LetterChart groups={['basicV', 'combV']} filters={false} />
+  </section>
+
+  <section class="wrap sec">
+    <div class="split split--top">
+      <div class="head" style="margin: 0;">
+        <p class="t-label">How they were designed</p>
+        <h2 class="t-h2">Sky, earth and a person</h2>
+        <p class="t-body he-ink-2">Every vowel is made of three seeds: a dot for the round sky, a flat line ㅡ for the earth, and a standing line ㅣ for a person between them. Put the dot on one side of a line and you get a vowel; add a second dot and it gains a y sound. The dots became short strokes over time.</p>
+      </div>
+      <div class="he-glass he-glass--dense pad"><VowelSeeds /></div>
+    </div>
+  </section>
+
+  <section class="wrap sec--tight">
+    <div class="head">
+      <p class="t-label">In a block</p>
+      <h2 class="t-h2">Tall vowels stand right, flat vowels sit below</h2>
+      <p class="t-body he-ink-2">The shape of a vowel decides where it goes. Tap a block to hear it with ㄱ.</p>
+    </div>
+    <div class="cols-2">
+      <div class="he-glass he-glass--dense pad">
+        <p class="t-h3" style="margin-bottom: 12px;">To the right</p>
+        <div class="vplace">{place(VERTICAL).map((p) => p.clip
+          ? <button type="button" class="vp" data-say={p.b} aria-label={`${p.b}, ${p.rom}`}><b lang="ko">{p.b}</b><small lang="ko">ㄱ + {p.v}</small></button>
+          : <span class="vp vp--mute"><b lang="ko">{p.b}</b><small lang="ko">ㄱ + {p.v}</small></span>)}</div>
+      </div>
+      <div class="he-glass he-glass--dense pad">
+        <p class="t-h3" style="margin-bottom: 12px;">Underneath</p>
+        <div class="vplace">{place(HORIZONTAL).map((p) => p.clip
+          ? <button type="button" class="vp" data-say={p.b} aria-label={`${p.b}, ${p.rom}`}><b lang="ko">{p.b}</b><small lang="ko">ㄱ + {p.v}</small></button>
+          : <span class="vp vp--mute"><b lang="ko">{p.b}</b><small lang="ko">ㄱ + {p.v}</small></span>)}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <div class="split split--top">
+      <div class="head" style="margin: 0;">
+        <p class="t-label">Good news</p>
+        <h2 class="t-h2">21 letters, fewer sounds</h2>
+        <p class="t-body he-ink-2">Some vowels that were different 500 years ago have merged. You still need them for spelling, but your ears only need to learn one sound for each group.</p>
+      </div>
+      <div class="same">
+        {SAME.map((s) => (
+          <div class="he-glass he-glass--dense same-i">
+            <div class="row" style="gap: 6px;">
+              {s.set.map((g) => <><span class="jm jm--v" lang="ko">{g}</span><Play ko={BY[g].name} label={BY[g].rom} size="sm" /></>)}
+            </div>
+            <p class="t-body">{s.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec--tight wrap--medium">
+    <div class="head">
+      <h2 class="t-h2">Which vowel do you hear?</h2>
+      <p class="t-body he-ink-2">Ten sounds from all 21 vowels. You never get two choices that sound the same today.</p>
+    </div>
+    <ListenQuiz groups={['basicV', 'combV']} title="Which vowel do you hear?" />
+  </section>
+
+  <section class="wrap sec--tight wrap--medium">
+    <h2 class="t-h2" style="margin-bottom: 16px;">Questions</h2>
+    <Faq items={FAQ} />
+  </section>
+
+  <section class="wrap sec--tight">
+    <div class="cols-3 next">
+      <a class="he-glass tool deep" href="/korean-alphabet/consonants/"><span class="ti ti--c" lang="ko" aria-hidden="true">ㄱ</span><span class="t-h3">The 19 consonants</span></a>
+      <a class="he-glass tool deep" href="/korean-alphabet/chart/#syllables"><span class="ti ti--s" lang="ko" aria-hidden="true">가</span><span class="t-h3">Hear all 190 syllables</span></a>
+      <a class="he-glass tool deep" href="/korean-alphabet/#builder"><span class="ti ti--t" lang="ko" aria-hidden="true">한</span><span class="t-h3">Build a block</span></a>
+    </div>
+  </section>
+
+  <AppCta title="Practise the vowels on your phone" sub="Hangul Hero mixes vowels into quick listening games with native audio. Works offline." />
+</Layout>

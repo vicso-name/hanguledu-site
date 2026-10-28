@@ -1,0 +1,151 @@
+/* HangulEdu Web — component styles. Every value is a token from tokens.json
+   (tokens.css loads first); only geometry the tokens do not name is literal. */
+
+body { margin: 0; background: var(--background); color: var(--textPrimary); font-family: var(--font-ui); }
+[lang="ko"] { font-family: var(--font-ko); }
+.he-container { max-width: var(--w-content); margin-inline: auto; padding-inline: max(var(--screen), var(--gutter)); box-sizing: border-box; }
+.he-section { padding-block: var(--section-y); }
+:where(.he-btn, .he-play, .he-tile, .he-cta a):focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* Backdrop — clean ground: one flat `background`, no blobs, no gradients */
+.he-backdrop { position: relative; isolation: isolate; background: var(--background); }
+
+/* GlassCard — tint over blur, 1px rim gradient, no shadow */
+.he-glass {
+  position: relative; border-radius: var(--radius-card); padding: var(--cardPadding);
+  background: var(--glassTint); -webkit-backdrop-filter: blur(var(--glass-blur)); backdrop-filter: blur(var(--glass-blur));
+}
+.he-glass::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(to bottom, var(--rimHighlight), var(--rimShadow));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.he-glass--dense { background: var(--glassDense); -webkit-backdrop-filter: none; backdrop-filter: none; }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .he-glass { background: var(--glassDense); } }
+.he-stack { display: grid; gap: var(--list); }
+
+/* Text helpers */
+.he-ink-2 { color: var(--textSecondary); }
+.he-ink-3 { color: var(--textTertiary); }
+[data-theme="dark"] .he-ink-3 { color: var(--textSecondary); }
+
+/* SectionHeader — uppercase label + subtitle, no rule or background */
+.he-sh { display: grid; gap: 2px; }
+.he-sh__title { margin: 0; font: 800 13px/16px var(--font-ui); letter-spacing: 1px; text-transform: uppercase; color: var(--textSecondary); }
+.he-sh__sub { margin: 0; font: 500 12px/16px var(--font-ui); color: var(--textSecondary); }
+
+/* Button — 50px, radius-button, one action colour */
+.he-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs);
+  min-height: var(--button-height); padding: 0 var(--space-md); border: 0; border-radius: var(--radius-button);
+  font: 600 16px/20px var(--font-ui); cursor: pointer; text-decoration: none; box-sizing: border-box;
+  background: var(--action); color: var(--onAction); transition: transform .15s, opacity .15s, filter .15s;
+}
+.he-btn:hover { filter: brightness(.92); }
+.he-btn:active { opacity: .85; transform: scale(.98); }
+.he-btn[disabled] { opacity: .45; cursor: default; filter: none; transform: none; }
+.he-btn--block { width: 100%; }
+.he-btn--success { background: var(--successStrong); }
+[data-theme="dark"] .he-btn--success { background: var(--success); color: var(--onPrimary); }
+.he-btn--outline { background: transparent; color: var(--onPrimaryContainer); border: 1px solid var(--outline); }
+.he-btn--quiet { background: transparent; color: var(--textTertiary); min-height: 48px; }
+[data-theme="dark"] .he-btn--quiet { color: var(--textSecondary); }
+
+/* PlayButton — 52px circle (normal) and Slow capsule; sound axis */
+.he-play {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  width: var(--play-size); height: var(--play-size); border-radius: var(--radius-pill); box-sizing: border-box; cursor: pointer;
+  background: var(--soundContainer); color: var(--sound); border: 2px solid var(--sound); font: 600 16px/20px var(--font-ui);
+}
+.he-play--slow { width: auto; padding: 0 var(--space-md) 0 var(--screen); }
+.he-play svg.he-icon { width: 20px; height: 20px; }
+.he-play__ring { position: absolute; inset: -2px; width: calc(100% + 4px); height: calc(100% + 4px); pointer-events: none; overflow: visible; }
+.he-play__ring rect { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; }
+.he-play:active { transform: scale(.98); }
+.he-audio-missing { font: 400 13px/18px var(--font-ui); color: var(--textTertiary); }
+[data-theme="dark"] .he-audio-missing { color: var(--textSecondary); }
+
+/* IconBadge — 48px circle, 24px icon; solid gradient or 12% wash */
+.he-badge { display: inline-grid; place-items: center; width: var(--icon-badge); height: var(--icon-badge); border-radius: 50%; color: var(--onAction); flex: none; }
+.he-badge svg { width: 24px; height: 24px; }
+.he-badge--consonant { background: linear-gradient(135deg, var(--gradientConsonantStart), var(--gradientConsonantEnd)); }
+.he-badge--vowel { background: linear-gradient(135deg, var(--gradientVowelStart), var(--gradientVowelEnd)); }
+.he-badge--reading { background: linear-gradient(135deg, var(--gradientReadingStart), var(--gradientReadingEnd)); }
+.he-badge--dictionary { background: linear-gradient(135deg, var(--gradientDictionaryStart), var(--gradientDictionaryEnd)); }
+.he-badge--challenge { background: linear-gradient(135deg, var(--gradientChallengeStart), var(--gradientChallengeEnd)); }
+.he-badge--sori { background: linear-gradient(135deg, var(--gradientSoriStart), var(--gradientSoriEnd)); }
+.he-badge--wash { position: relative; background: none; isolation: isolate; }
+.he-badge--wash::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: inherit; z-index: -1; }
+.he-badge--wash.he-badge--consonant { color: var(--gradientConsonantStart); }
+.he-badge--wash.he-badge--consonant::before { background: linear-gradient(135deg, var(--gradientConsonantStart), var(--gradientConsonantEnd)); opacity: .12; }
+.he-badge--wash.he-badge--sori { color: var(--gradientSoriEnd); }
+.he-badge--wash.he-badge--sori::before { background: linear-gradient(135deg, var(--gradientSoriStart), var(--gradientSoriEnd)); opacity: .12; }
+.he-badge--wash.he-badge--challenge { color: var(--accentStrong); }
+.he-badge--wash.he-badge--challenge::before { background: linear-gradient(135deg, var(--gradientChallengeStart), var(--gradientChallengeEnd)); opacity: .12; }
+[data-theme="dark"] .he-badge--wash.he-badge--sori { color: var(--gradientSoriStart); }
+[data-theme="dark"] .he-badge--wash.he-badge--challenge { color: var(--accent); }
+
+/* LetterTile — alphabet chart cell; role colour + role word */
+.he-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: var(--grid); }
+.he-tile {
+  display: grid; justify-items: center; gap: 2px; padding: 14px 8px 12px; border-radius: var(--radius-card);
+  background: var(--surface); text-decoration: none; color: var(--textPrimary); min-height: 120px; box-sizing: border-box;
+  border: 1.5px solid transparent; cursor: pointer;
+}
+.he-tile__glyph { font: 700 40px/48px var(--font-ko); }
+.he-tile__rom { font: 600 15px/20px var(--font-ui); }
+.he-tile__role { font: 800 11px/14px var(--font-ui); letter-spacing: .5px; text-transform: uppercase; padding: 2px 8px; border-radius: var(--radius-chip); }
+.he-tile--consonant .he-tile__glyph { color: var(--letterConsonantInk); }
+.he-tile--consonant .he-tile__role { color: var(--letterConsonantInk); background: var(--letterConsonantContainer); }
+.he-tile--vowel .he-tile__glyph { color: var(--letterVowelInk); }
+.he-tile--vowel .he-tile__role { color: var(--letterVowelInk); background: var(--letterVowelContainer); }
+.he-tile--batchim .he-tile__glyph { color: var(--letterBatchimInk); }
+.he-tile--batchim .he-tile__role { color: var(--letterBatchimInk); background: var(--letterBatchimContainer); }
+.he-tile--silent .he-tile__glyph { color: var(--letterSilentInk); }
+.he-tile--silent .he-tile__role { color: var(--textSecondary); background: var(--letterSilentContainer); }
+.he-tile--learned { border-color: var(--success); }
+.he-tile--learned .he-tile__rom::after { content: " ✓"; color: var(--success); }
+.he-tile:hover { background: var(--surfaceContainer); }
+
+/* PartChip — MEANING axis: hangul over gloss, accent underline */
+.he-parts { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; }
+.he-part { display: grid; gap: 2px; padding: 8px 12px 6px; border-radius: var(--radius-chip); border-bottom: 3px solid var(--pa); background: var(--pc); }
+.he-part__ko { font: 700 18px/24px var(--font-ko); color: var(--textPrimary); }
+.he-part__gloss { font: 600 12px/16px var(--font-ui); color: var(--pa); }
+.he-part--purple { --pa: var(--partPurpleAccent); --pc: var(--partPurpleContainer); }
+.he-part--amber  { --pa: var(--partAmberAccent);  --pc: var(--partAmberContainer); }
+.he-part--pink   { --pa: var(--partPinkAccent);   --pc: var(--partPinkContainer); }
+.he-part--teal   { --pa: var(--partTealAccent);   --pc: var(--partTealContainer); }
+.he-hl { text-decoration: underline 3px var(--pa); text-underline-offset: 8px; text-decoration-skip-ink: none; }
+
+/* RegisterBadge — three variants only */
+.he-register { display: inline-block; padding: 4px 10px; border-radius: var(--radius-badge); font: 700 12px/16px var(--font-ui); background: var(--accentContainer); color: var(--onAccentContainer); }
+
+/* PhraseCard — three glass sections */
+.he-phrase__ko { margin: var(--space-xs) 0 0; font: 700 34px/44px var(--font-ko); }
+.he-phrase__rom { margin: 0; font: 500 14px/20px var(--font-ui); color: var(--textSecondary); }
+.he-phrase__en { margin: var(--space-xs) 0 0; font: 600 17px/24px var(--font-ui); }
+.he-phrase__sit { margin: 2px 0 0; font: 400 15px/22px var(--font-ui); color: var(--textSecondary); }
+.he-phrase__audio { display: flex; align-items: center; gap: var(--list); margin-top: var(--grid); }
+.he-label { margin: 0 0 var(--list); font: 800 12px/16px var(--font-ui); letter-spacing: 1px; text-transform: uppercase; color: var(--textSecondary); }
+.he-sound { display: grid; gap: 4px; justify-items: start; font: 500 24px/32px var(--font-ko); }
+.he-sound__arrow { font: 400 16px/20px var(--font-ui); color: var(--textSecondary); padding-left: 6px; }
+.he-sound__changed { font-weight: 700; color: var(--sound); background: var(--soundContainer); border-radius: 6px; padding: 0 4px; }
+.he-rule { display: flex; gap: var(--space-xs); align-items: baseline; margin-top: var(--list); font: 400 15px/22px var(--font-ui); }
+.he-rule__tag { flex: none; font: 700 13px/18px var(--font-ko); color: var(--sound); background: var(--soundContainer); border-radius: var(--radius-chip); padding: 2px 8px; }
+.he-literal { margin: var(--list) 0 0; font: 400 15px/22px var(--font-ui); color: var(--textSecondary); }
+
+/* AppCTA — icon + pitch + official badges */
+.he-cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); }
+.he-cta__icon { width: 72px; height: 72px; border-radius: 16px; flex: none; }
+.he-cta__text { flex: 1 1 240px; }
+.he-cta__title { margin: 0; font: 700 18px/24px var(--font-ui); }
+.he-cta__sub { margin: 4px 0 0; font: 400 15px/22px var(--font-ui); color: var(--textSecondary); }
+.he-cta__badges { display: flex; flex-wrap: wrap; gap: var(--list); }
+.he-cta__badges img { height: 48px; width: auto; display: block; }
+.he-cta a { border-radius: 8px; }
+[data-theme="dark"] .he-cta__icon--light { display: none; }
+:root:not([data-theme="dark"]) .he-cta__icon--dark, [data-theme="light"] .he-cta__icon--dark { display: none; }
+
+@media (prefers-reduced-motion: reduce) { .he-btn, .he-play { transition: none; } .he-btn:active, .he-play:active { transform: none; } }

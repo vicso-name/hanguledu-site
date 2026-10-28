@@ -1,0 +1,29 @@
+---
+// How the vowels were designed: three seed strokes for sky, earth and person.
+import { BY, letterSyllable } from '../data/hangul';
+
+const lb = (g: string) => ({ g, syl: letterSyllable(BY[g]), rom: BY[g].rom });
+const ROWS = [
+  { title: 'One dot', desc: 'A dot (now a short stroke) outside the person, or above and below the earth.', items: ['ㅏ', 'ㅓ', 'ㅗ', 'ㅜ'] },
+  { title: 'Two dots add y', desc: 'The same four with a second dot: a y glide in front.', items: ['ㅑ', 'ㅕ', 'ㅛ', 'ㅠ'] },
+  { title: 'Two vowels in one', desc: 'ㅗ + ㅏ = ㅘ, ㅜ + ㅓ = ㅝ, ㅡ + ㅣ = ㅢ, ㅏ + ㅣ = ㅐ.', items: ['ㅘ', 'ㅝ', 'ㅢ', 'ㅐ'] },
+];
+---
+
+<div class="fams">
+  <div class="fam">
+    <div><h3 class="t-h3">The three seeds</h3><p class="t-meta">A dot for the sky, a flat line for the earth, a standing line for a person.</p></div>
+    <div class="chain">
+      <span class="lbtn lbtn--seed" role="img" aria-label="dot, the sky">·</span>
+      {['ㅡ', 'ㅣ'].map((g) => <button type="button" class="lbtn lbtn--v" lang="ko" data-say={lb(g).syl} aria-label={`${g}, ${lb(g).rom}`}>{g}</button>)}
+    </div>
+  </div>
+  {ROWS.map((r) => (
+    <div class="fam">
+      <div><h3 class="t-h3">{r.title}</h3><p class="t-meta">{r.desc}</p></div>
+      <div class="chain">
+        {r.items.map((g) => <button type="button" class="lbtn lbtn--v" lang="ko" data-say={lb(g).syl} aria-label={`${g}, ${lb(g).rom}`}>{g}</button>)}
+      </div>
+    </div>
+  ))}
+</div>

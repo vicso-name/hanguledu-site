@@ -1,0 +1,21 @@
+---
+// How the consonants were designed: five base shapes drawn from the mouth,
+// with the letters built from each. Every letter button plays its sound.
+import { FAMILIES, BY, letterSyllable } from '../data/hangul';
+---
+
+<div class="fams">
+  {FAMILIES.map((f) => (
+    <div class="fam">
+      <div><h3 class="t-h3">{f.title}</h3><p class="t-meta">{f.desc}</p></div>
+      <div class="chain">
+        {f.items.map(([g, op]) => (
+          <>
+            {op && <span class="arrow">{op}</span>}
+            <button type="button" class="lbtn lbtn--c" lang="ko" data-say={letterSyllable(BY[g])} aria-label={`${g}, ${BY[g].rom}`}>{g}</button>
+          </>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>

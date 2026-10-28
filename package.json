@@ -1,0 +1,19 @@
+{
+  "name": "hanguledu-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "postbuild": "node scripts/check-build.mjs",
+    "preview": "astro preview",
+    "sync:audio": "node scripts/sync-audio.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.3.5"
+  },
+  "engines": {
+    "node": ">=26"
+  }
+}

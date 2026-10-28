@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlockBuilder from '../../components/BlockBuilder.astro';
+import MouthFamilies from '../../components/MouthFamilies.astro';
+import VowelSeeds from '../../components/VowelSeeds.astro';
+import Faq from '../../components/Faq.astro';
+import AppCta from '../../components/AppCta.astro';
+import { ofGroup } from '../../data/hangul';
+import { ALL } from '../../lib/progress';
+import { crumbs, faqPage } from '../../lib/schema';
+
+const STEPS = [
+  { n: 1, title: 'Basic consonants', letters: ofGroup('basicC').map((l) => l.g).join(''), href: '/korean-alphabet/consonants/', what: 'Five mouth shapes and the letters built from them.' },
+  { n: 2, title: 'Basic vowels', letters: ofGroup('basicV').map((l) => l.g).join(''), href: '/korean-alphabet/vowels/', what: 'Three strokes: sky, earth, person.' },
+  { n: 3, title: 'Syllable blocks', letters: '', href: '#builder', what: 'Put letters together: consonant, vowel, final consonant.' },
+  { n: 4, title: 'Double consonants', letters: ofGroup('double').map((l) => l.g).join(''), href: '/korean-alphabet/consonants/#plain-aspirated-tense', what: 'Tense sounds: 까 against 가 and 카.' },
+  { n: 5, title: 'Combined vowels', letters: ofGroup('combV').map((l) => l.g).join(''), href: '/korean-alphabet/vowels/', what: 'Two vowels in one, and which ones sound the same.' },
+];
+
+const FAQ = [
+  { q: 'How many letters are in the Korean alphabet?', a: 'Modern Hangul uses 40 letters: 19 consonants (14 basic, 5 double) and 21 vowels (10 basic, 11 combined). The original 1443 alphabet had 28 letters; four fell out of use, and the double and combined letters are built from the rest.' },
+  { q: 'How long does it take to learn Hangul?', a: 'Most learners can read the letters, slowly, after a few hours of focused practice, and read comfortably after a week or two of daily review. Reading is not the same as understanding: you will be able to sound out words long before you know what they mean.' },
+  { q: 'Who invented the Korean alphabet?', a: 'King Sejong the Great and the scholars of his court created Hangul in 1443 and published it in 1446 as <i>Hunminjeongeum</i>, "the correct sounds for teaching the people". Before that, Korean was written with Chinese characters, which few people could read.' },
+  { q: 'Is Hangul hard to learn?', a: 'It is one of the easiest writing systems to learn. Each letter stands for one sound, the shapes follow a logic you can see, and there are only 24 basic letters. The harder part comes later: sound changes between blocks, which our X-Ray shows in every phrase.' },
+  { q: 'Should I learn romanization first?', a: 'No. Romanization is a crutch that teaches English sounds for Korean letters. Use it only until you know a letter; on this site it disappears under each letter as soon as you mark it as yours.' },
+];
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'Course', name: 'The Korean alphabet (Hangul)', description: 'Learn the 40 letters of Hangul in five steps, with native audio.', provider: { '@type': 'Organization', name: 'HangulEdu', sameAs: 'https://hanguledu.com/' }, isAccessibleForFree: true, inLanguage: 'en', hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: 'PT3H' }, offers: { '@type': 'Offer', price: 0, priceCurrency: 'USD', category: 'Free' } },
+  crumbs([['Korean alphabet', '/korean-alphabet/']]),
+  faqPage(FAQ),
+];
+---
+
+<Layout
+  title="Korean Alphabet (Hangul): Learn the 40 Letters with Audio | HangulEdu"
+  description="Hangul in five steps: 19 consonants and 21 vowels with native audio, how King Sejong designed each letter, a syllable block builder, and progress that stays in your browser."
+  schema={schema}
+>
+  <section class="wrap page-head">
+    <div class="split split--top">
+      <div class="head" style="margin: 0;">
+        <h1 class="t-h1">The Korean alphabet, Hangul</h1>
+        <p class="t-lead">Hangul (한글) has 40 letters: 19 consonants and 21 vowels. They were designed in 1443 to be easy, and they are. The letters are pictures of your mouth and three simple strokes, packed into square blocks of one syllable each.</p>
+        <div class="row hero-cta">
+          <a class="he-btn" href="/korean-alphabet/chart/">Open the chart</a>
+          <a class="he-btn he-btn--outline" href="#builder">Build a block</a>
+        </div>
+      </div>
+      <div class="he-glass he-glass--dense fact">
+        <div class="fact-head"><b>40</b><p class="t-meta">letters. <span data-mine-count>0</span> of them are yours.</p></div>
+        <div class="grid40" lang="ko" role="img" aria-label="Your letters out of 40" data-grid40>
+          {[...ALL].map((g, i) => <span class="cell" data-g={g} data-r={i < 19 ? 'c' : 'v'}>{g}</span>)}
+        </div>
+        <div class="legend t-meta"><span><i class="lg lg--c"></i>14 + 5 consonants</span><span><i class="lg lg--v"></i>10 + 11 vowels</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec--tight">
+    <div class="head">
+      <p class="t-label">Five steps</p>
+      <h2 class="t-h2">Learn Hangul in this order</h2>
+    </div>
+    <ol class="steps">
+      {STEPS.map((s) => (
+        <li>
+          <a class="he-glass step" href={s.href} data-step={s.letters}>
+            <span class="step-n">{s.n}</span>
+            <span class="step-body">
+              <span class="t-h3">{s.title}</span>
+              <span class="t-meta">{s.what}</span>
+              {s.letters && <span class="step-letters" lang="ko">{[...s.letters].map((g) => <i data-g={g}>{g}</i>)}</span>}
+            </span>
+            <span class="step-count t-meta">{s.letters ? <><span data-step-n>0</span>/{s.letters.length}</> : 'Try it'}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="wrap sec" id="builder">
+    <div class="head">
+      <p class="t-label">Step 3</p>
+      <h2 class="t-h2">Build a syllable block</h2>
+      <p class="t-body he-ink-2">Korean does not write letters in a line. It stacks them into one square per syllable: a consonant, a vowel, and sometimes a final consonant underneath. Pick the letters and hear the block.</p>
+    </div>
+    <BlockBuilder />
+  </section>
+
+  <section class="wrap sec--tight">
+    <div class="head">
+      <p class="t-label">Why the letters look like this</p>
+      <h2 class="t-h2">An alphabet you can work out</h2>
+      <p class="t-body he-ink-2">Most alphabets grew by accident. Hangul was designed, and its designers wrote down their logic in 1446. Tap any letter to hear it.</p>
+    </div>
+    <div class="cols-2">
+      <div class="he-glass he-glass--dense pad">
+        <h3 class="t-h2" style="margin-bottom: 4px;">Consonants draw your mouth</h3>
+        <p class="t-meta">Add a stroke for more breath, double a letter to make it tense.</p>
+        <MouthFamilies />
+        <a class="d-link" href="/korean-alphabet/consonants/">All 19 consonants</a>
+      </div>
+      <div class="he-glass he-glass--dense pad">
+        <h3 class="t-h2" style="margin-bottom: 4px;">Vowels grow from three strokes</h3>
+        <p class="t-meta">Sky, earth and person; a second dot adds y.</p>
+        <VowelSeeds />
+        <a class="d-link" href="/korean-alphabet/vowels/">All 21 vowels</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec--tight wrap--medium">
+    <h2 class="t-h2" style="margin-bottom: 16px;">Questions</h2>
+    <Faq items={FAQ} />
+  </section>
+
+  <AppCta title="Learn all 40 with spaced review" sub="Hangul Hero brings back each letter right before you would forget it. Works offline." />
+</Layout>
+
+<script>
+  import { onChange } from '../../lib/progress';
+
+  onChange((set) => {
+    document.querySelectorAll<HTMLElement>('[data-grid40] .cell').forEach((c) => {
+      c.className = 'cell' + (set.has(c.dataset.g!) ? ' on--' + c.dataset.r : '');
+    });
+    document.querySelectorAll('[data-mine-count]').forEach((el) => (el.textContent = String(set.size)));
+    document.querySelectorAll<HTMLElement>('[data-step]').forEach((s) => {
+      const letters = [...s.dataset.step!];
+      if (!letters.length) return;
+      s.querySelectorAll<HTMLElement>('.step-letters i').forEach((i) => i.classList.toggle('on', set.has(i.dataset.g!)));
+      const n = letters.filter((g) => set.has(g)).length;
+      s.querySelector('[data-step-n]')!.textContent = String(n);
+      s.classList.toggle('is-done', n === letters.length);
+    });
+  });
+</script>

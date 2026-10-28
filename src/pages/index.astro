@@ -1,0 +1,284 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AppCta from '../components/AppCta.astro';
+import { site } from '../data/site';
+import { ALL } from '../lib/progress';
+
+const FIRST = [
+  { g: 'ㅎ', rom: 'h', role: 'Consonant', cls: 'consonant', say: '하', hint: 'ㅎ sounds like h in "hat".' },
+  { g: 'ㅏ', rom: 'a', role: 'Vowel', cls: 'vowel', say: '아', hint: 'ㅏ sounds like a in "father".' },
+  { g: 'ㄴ', rom: 'n', role: 'Consonant', cls: 'consonant', say: '나', hint: 'ㄴ sounds like n in "no". At the bottom of a block it is a final consonant, a batchim.' },
+];
+
+const HELLO = [['안', 'an', 'ㅇㅏㄴ'], ['녕', 'nyeong', 'ㄴㅕㅇ'], ['하', 'ha', 'ㅎㅏ'], ['세', 'se', 'ㅅㅔ'], ['요', 'yo', 'ㅇㅛ']];
+
+// Phrases from the Hangul Hero app whose spelling and sound differ (pronunciationOverride).
+const XRAY = [
+  { w: '내가 지켜 줄게', s: '내가 지켜 줄께', en: "I'll protect you", rom: 'naega jikyeo julkke', tag: '게 → 께', rule: 'The ending -ㄹ게 is always said tense, [께], but written 게.', src: '/audio/phrases/kd_jikyeo_julge.mp3' },
+  { w: '고백할게', s: '고배칼께', en: "I'm going to confess", rom: 'gobaekalkke', tag: 'ㄱ + ㅎ → ㅋ', rule: 'ㄱ and ㅎ merge into ㅋ, and the ending -ㄹ게 turns tense.', src: '/audio/phrases/lv_gobaek.mp3' },
+  { w: '실수해서 죄송합니다', s: '실쑤해서 죄송함니다', en: "I'm sorry for the mistake", rom: 'silssuhaeseo joesonghamnida', tag: 'ㅂ → ㅁ', rule: 'ㅅ after ㄹ turns tense in 실수, and ㅂ turns into ㅁ before ㄴ.', src: '/audio/phrases/wk_silsu.mp3' },
+];
+const syls = (w: string, s: string) => [...w].map((k, i) => ({ k, hit: k !== s[i] }));
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: site.url + '/',
+  description: site.description,
+};
+---
+
+<Layout schema={schema}>
+  <section class="wrap sec hero">
+    <div class="split">
+      <div class="hero-text">
+        <p class="t-label">Free · no sign-up · native audio</p>
+        <h1 class="t-display">Read Korean in an afternoon.</h1>
+        <p class="t-lead">Hangul has 40 letters, and a king designed them in 1443 to be learned fast. Try it now: learn three letters and read your first word.</p>
+        <div class="row hero-cta">
+          <a class="he-btn" href="/korean-alphabet/chart/">See all 40 letters</a>
+          <a class="he-btn he-btn--outline" href="/korean-alphabet/">How Hangul works</a>
+        </div>
+      </div>
+
+      <div class="he-glass first" data-first>
+        <div class="row" style="justify-content: space-between;">
+          <p class="t-label">Your first word</p>
+          <p class="t-meta"><span data-first-n>0</span> of 3 letters</p>
+        </div>
+        <p class="t-body first-ask" style="font-weight: 600;" data-first-intro>Tap each letter to hear it and learn it.</p>
+        <div class="first-tiles">
+          {FIRST.map((l) => (
+            <button type="button" class={`he-tile he-tile--${l.cls}`} data-g={l.g} data-say={l.say} data-hint={l.hint} aria-pressed="false">
+              <span class="he-tile__glyph" lang="ko">{l.g}</span>
+              <span class="he-tile__rom">{l.rom}</span>
+              <span class="he-tile__role">{l.role}</span>
+            </button>
+          ))}
+        </div>
+        <p class="t-meta" style="text-align: center;" data-first-hint hidden></p>
+
+        <div class="first-row">
+          <div class="block" aria-label="Syllable block" role="img">
+            <div class="z z--c z--empty" data-z="ㅎ" style="font-size: 56px;"><small>1</small><span lang="ko"></span></div>
+            <div class="z z--v z--empty" data-z="ㅏ" style="font-size: 56px;"><small>2</small><span lang="ko"></span></div>
+            <div class="z z--b z--empty" data-z="ㄴ" style="font-size: 40px;"><small>3</small><span lang="ko"></span></div>
+          </div>
+          <div style="display: grid; gap: 10px;">
+            <p class="t-body" data-first-how>Korean packs letters into blocks. Read a block like a page: <b>top-left</b>, then <b>right</b>, then <b>bottom</b>.</p>
+            <div data-first-quiz hidden>
+              <p class="t-body" style="font-weight: 700; margin-bottom: 10px;">How do you read this block?</p>
+              <div class="first-opts">
+                {['han', 'nah', 'hun'].map((o) => <button type="button" class="opt" data-opt={o}>{o}</button>)}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="first-done" data-first-right hidden>
+          <div class="feedback feedback--ok">
+            <div><b>You just read <span lang="ko" class="ko">한</span> (han).</b> Add <span lang="ko" class="ko">글</span> (geul) and you get <span lang="ko" class="ko">한글</span>, Hangul: the name of the alphabet itself. Three letters down, 37 to go.</div>
+          </div>
+          <div class="row">
+            <a class="he-btn" href="/korean-alphabet/chart/">Learn the next letters</a>
+            <button type="button" class="he-btn he-btn--quiet" data-first-reset>Start again</button>
+          </div>
+        </div>
+        <div class="feedback feedback--try" data-first-wrong hidden>Not quite. Top-left first, then right, then bottom: h + a + n.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec--tight">
+    <div class="he-glass he-glass--dense learns">
+      <div class="split" style="align-items: start;">
+        <div class="head" style="margin: 0;">
+          <p class="t-label">Only here</p>
+          <h2 class="t-h2">The site learns with you.</h2>
+          <p class="t-body he-ink-2">Every letter you learn, in the chart, the block builder or a listening quiz, joins your 40. From then on, Korean on every page shows those letters as plain hangul and keeps a romanization hint only where you still need one. The crutch disappears as you learn.</p>
+        </div>
+        <div style="display: grid; gap: 16px;" data-levels>
+          <div class="seg" role="group" aria-label="Letters you know">
+            <button type="button" aria-pressed="true" data-level="mine">Your letters</button>
+            <button type="button" aria-pressed="false" data-level="ㅇㅏㄴㅎㅅㅔㅕㅛ">8 letters</button>
+            <button type="button" aria-pressed="false" data-level={ALL}>All 40</button>
+          </div>
+          <div class="prog" lang="ko">
+            {HELLO.map(([k, r, j]) => <span class="s" data-hello={j}><b>{k}</b><em lang="en">{r}</em></span>)}
+          </div>
+          <p class="t-meta">안녕하세요 (annyeonghaseyo), "Hello". You read <span data-readable>0</span> of 5 syllables on your own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <div class="head">
+      <p class="t-label">Tools, not articles</p>
+      <h2 class="t-h2">Every page lets you do something.</h2>
+    </div>
+    <div class="cols-4 keep-2 tools" style="gap: 12px;">
+      <a class="he-glass tool" href="/korean-alphabet/chart/"><span class="ti ti--p" lang="ko" aria-hidden="true">가</span><span class="t-h3">Alphabet chart</span><p class="t-meta">Hear all 40 letters. Hide the romanization to test yourself.</p></a>
+      <a class="he-glass tool" href="/korean-alphabet/chart/#syllables"><span class="ti ti--s" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></span><span class="t-h3">190 blocks with sound</span><p class="t-meta">Every consonant with every basic vowel, read by a native speaker.</p></a>
+      <a class="he-glass tool" href="/korean-alphabet/consonants/"><span class="ti ti--c" lang="ko" aria-hidden="true">ㄲ</span><span class="t-h3">가, 카 or 까?</span><p class="t-meta">The three-way contrast English lacks. Hear it, then test your ears.</p></a>
+      <a class="he-glass tool" href="/korean-alphabet/#builder"><span class="ti ti--t" lang="ko" aria-hidden="true">한</span><span class="t-h3">Block builder</span><p class="t-meta">Put letters together and watch a syllable take shape.</p></a>
+    </div>
+  </section>
+
+  <section class="wrap sec--tight">
+    <div class="facts facts--live">
+      <div class="he-glass he-glass--dense fact">
+        <div class="fact-head"><b>40</b><p class="t-meta">letters, each with native audio</p></div>
+        <div class="grid40" lang="ko" role="img" aria-label="Your letters out of 40" data-grid40>
+          {[...ALL].map((g, i) => <span class="cell" data-g={g} data-r={i < 19 ? 'c' : 'v'}>{g}</span>)}
+        </div>
+        <p class="t-meta"><span data-mine-count>0</span> of them are yours so far. Every letter you learn lights up here. <a href="/korean-alphabet/chart/">Open the chart</a></p>
+      </div>
+      <div class="he-glass he-glass--dense fact" data-xray>
+        <div class="fact-head"><b>240</b><p class="t-meta">phrases in the Hangul Hero app, each with an X-Ray of how it is really said</p></div>
+        {XRAY.map((x, i) => (
+          <div class="xr-item" data-xr={i} hidden={i > 0}>
+            <div class="xr" lang="ko">
+              <div class="xr-line"><span class="t-label" lang="en">Written</span><span class="xr-syl">{syls(x.w, x.s).map((s) => <span class:list={[s.hit && 'hit', s.k === ' ' && 'gap']}>{s.k}</span>)}</span></div>
+              <div class="xr-line"><span class="t-label" lang="en">Said</span><span class="xr-syl">{syls(x.s, x.w).map((s) => <span class:list={[s.hit && 'hit', s.k === ' ' && 'gap']}>{s.k}</span>)}</span></div>
+            </div>
+            <div style="display: grid; gap: 2px;">
+              <p class="t-h3">{x.en}</p>
+              <p class="rom">{x.rom}</p>
+            </div>
+            <p class="he-rule" style="margin: 0;"><span class="he-rule__tag">{x.tag}</span><span>{x.rule}</span></p>
+            <div class="row">
+              <button type="button" class="he-play" data-src={x.src} aria-label={`Play ${x.en}`}><svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></button>
+              <button type="button" class="he-btn he-btn--outline" data-xr-next>Next phrase · {i + 1}/{XRAY.length}</button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="he-glass he-glass--dense fact">
+        <div class="fact-head"><b>0</b><p class="t-meta">sign-ups. Your progress is saved in this browser, nowhere else.</p></div>
+        <div class="kept">
+          <p class="t-label">Saved here now</p>
+          <div class="row" style="gap: 6px;" data-kept hidden></div>
+          <p class="t-body" data-kept-none>Nothing yet. Tap <span lang="ko" class="ko">ㅎ</span> in "Your first word" above and watch it appear here.</p>
+        </div>
+        <button type="button" class="he-btn he-btn--outline" data-clear disabled style="justify-self: start;">Clear my progress</button>
+      </div>
+    </div>
+  </section>
+
+  <AppCta title="Take Hangul to your phone" />
+</Layout>
+
+<script>
+  import { learn, clear, onChange, has, knowsAll, list } from '../lib/progress';
+
+  // Your first word: ㅎ ㅏ ㄴ fill the block, then a one-question quiz.
+  const card = document.querySelector<HTMLElement>('[data-first]')!;
+  const q = <T extends HTMLElement>(s: string) => card.querySelector<T>(s)!;
+  const tiles = [...card.querySelectorAll<HTMLButtonElement>('.he-tile')];
+  const done = new Set<string>();
+  let picked = '';
+
+  function paintFirst() {
+    tiles.forEach((t) => {
+      const on = done.has(t.dataset.g!);
+      t.classList.toggle('he-tile--learned', on);
+      t.setAttribute('aria-pressed', String(on));
+    });
+    card.querySelectorAll<HTMLElement>('[data-z]').forEach((z) => {
+      const on = done.has(z.dataset.z!);
+      z.classList.toggle('z--empty', !on);
+      z.querySelector('span')!.textContent = on ? z.dataset.z! : '';
+    });
+    const all = done.size === 3;
+    q('[data-first-n]').textContent = String(done.size);
+    q('[data-first-intro]').hidden = all;
+    q('[data-first-how]').hidden = all;
+    q('[data-first-quiz]').hidden = !all || picked === 'han';
+    q('[data-first-right]').hidden = picked !== 'han';
+    q('[data-first-wrong]').hidden = !picked || picked === 'han';
+    if (all) q('[data-first-hint]').hidden = true;
+    card.querySelectorAll<HTMLElement>('[data-opt]').forEach((o) => {
+      o.classList.toggle('is-right', !!picked && o.dataset.opt === 'han');
+      o.classList.toggle('is-off', !!picked && o.dataset.opt !== 'han' && o.dataset.opt !== picked);
+    });
+  }
+
+  tiles.forEach((t) => t.addEventListener('click', () => {
+    done.add(t.dataset.g!);
+    learn(t.dataset.g!);
+    const hint = q('[data-first-hint]');
+    hint.textContent = t.dataset.hint!;
+    hint.hidden = done.size === 3;
+    paintFirst();
+  }));
+  card.querySelectorAll<HTMLElement>('[data-opt]').forEach((o) => o.addEventListener('click', () => {
+    picked = o.dataset.opt!;
+    paintFirst();
+  }));
+  q('[data-first-reset]').addEventListener('click', () => {
+    done.clear();
+    picked = '';
+    paintFirst();
+  });
+  // Letters already learned elsewhere arrive pre-filled.
+  tiles.forEach((t) => has(t.dataset.g!) && done.add(t.dataset.g!));
+  paintFirst();
+
+  // The site learns with you: hints under 안녕하세요 by letters known.
+  const levels = document.querySelector<HTMLElement>('[data-levels]')!;
+  let level = 'mine';
+  function paintHello(set: Set<string>) {
+    const letters = level === 'mine' ? set : new Set(level);
+    let n = 0;
+    levels.querySelectorAll<HTMLElement>('[data-hello]').forEach((s) => {
+      const k = knowsAll(s.dataset.hello!, letters);
+      s.classList.toggle('known', k);
+      n += Number(k);
+    });
+    levels.querySelector('[data-readable]')!.textContent = String(n);
+  }
+  levels.querySelectorAll<HTMLElement>('[data-level]').forEach((b) => b.addEventListener('click', () => {
+    level = b.dataset.level!;
+    levels.querySelectorAll('[data-level]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    paintHello(new Set(list()));
+  }));
+
+  // Live facts: the 40 grid and what is saved.
+  const kept = document.querySelector<HTMLElement>('[data-kept]')!;
+  onChange((set) => {
+    document.querySelectorAll<HTMLElement>('[data-grid40] .cell').forEach((c) => {
+      c.className = 'cell' + (set.has(c.dataset.g!) ? ' on--' + c.dataset.r : '');
+    });
+    document.querySelector('[data-mine-count]')!.textContent = String(set.size);
+    kept.replaceChildren(...[...set].map((g) => {
+      const s = document.createElement('span');
+      s.lang = 'ko';
+      s.className = 'jm jm--' + ('ㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣㅐㅒㅔㅖㅘㅙㅚㅝㅞㅟㅢ'.includes(g) ? 'v' : 'c');
+      s.textContent = g;
+      return s;
+    }));
+    kept.hidden = set.size === 0;
+    document.querySelector<HTMLElement>('[data-kept-none]')!.hidden = set.size > 0;
+    document.querySelector<HTMLButtonElement>('[data-clear]')!.disabled = set.size === 0;
+    const title = document.querySelector<HTMLElement>('[data-cta-title]');
+    if (title) title.textContent = set.size ? `Take your ${set.size} letters to your phone` : title.dataset.ctaTitle!;
+    paintHello(set);
+  });
+  document.querySelector('[data-clear]')!.addEventListener('click', () => {
+    clear();
+    done.clear();
+    picked = '';
+    paintFirst();
+  });
+
+  // X-Ray: step through three phrases.
+  const items = [...document.querySelectorAll<HTMLElement>('[data-xr]')];
+  items.forEach((it, i) => it.querySelector('[data-xr-next]')!.addEventListener('click', () => {
+    it.hidden = true;
+    const next = items[(i + 1) % items.length];
+    next.hidden = false;
+    next.querySelector<HTMLElement>('[data-xr-next]')!.focus();
+  }));
+</script>
