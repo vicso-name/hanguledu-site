@@ -12,6 +12,7 @@
 .pg :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 .wrap { width: 100%; max-width: var(--w-content); margin-inline: auto; padding-inline: clamp(20px, 4vw, 40px); }
 .wrap--medium { max-width: calc(var(--w-medium) + 80px); }
+.wrap--full { max-width: var(--w-content); }
 .sec { padding-block: clamp(48px, 7vw, 96px); }
 .sec--tight { padding-block: clamp(32px, 4vw, 56px); }
 
