@@ -7,12 +7,18 @@ Setup and commands: README.md.
 - Live at https://hanguledu.com on GitHub Pages. Public repo vicso-name/hanguledu-site; every push to `main`
   deploys (.github/workflows/deploy.yml; the build runs the X-Ray engine test and scripts/check-build.mjs).
   DNS at GoDaddy (4 GitHub A records + `www` CNAME to vicso-name.github.io), HTTPS enforced.
-- Branches: `sprint/1-alphabet`, `sprint/2-phrases`, `main`. 21 pages: home, alphabet hub, chart, consonants,
-  vowels, /phrases/ hub (240 app phrases, filters), k-drama, love, basic-korean-phrases,
-  10 `/phrases/{phrase}-in-korean/` pages, privacy, 404.
-- Android app is live on Google Play (`com.vicsothemes.hangulhero`). iOS is in development:
-  the App Store badge stays hidden (`url: null` in src/data/site.ts).
-- Next: the owner has design fixes from the live site; ask for the list first.
+- Branches: `sprint/1-alphabet`, `sprint/2-phrases`, `design/fixes`, `main`. 23 pages: home, alphabet hub, chart,
+  consonants, vowels, /phrases/ hub (240 app phrases, filters), k-drama, love, basic-korean-phrases,
+  10 `/phrases/{phrase}-in-korean/` pages, privacy, terms, support, 404.
+- Android app is live on Google Play (`com.vicsothemes.hangulhero`). iOS ships within days of 2026-10-28:
+  then set the App Store `url` in src/data/site.ts (now `null`, badge hidden).
+- Design pass (in progress, page by page): each fix is one commit on `design/fixes`, pushed, then `main` is
+  fast-forwarded and pushed (the owner approved deploying every fix). Done so far: #f2f4f1 background with white
+  cards; one accent #0369a1 (no violet); header without the letters counter, with a rule under it; roomier page
+  heads; Material Symbols via `src/components/Icon.astro` (no emoji anywhere); new app icon, favicon and
+  apple-touch-icon; register as quiet grey text; FAQ full width. /phrases/ hub closed by the owner; /support/ rebuilt.
+- Next: ask the owner which page to rework next.
+- tokens.css no longer matches the "HangulEdu Web" design system (background, cards, accent); update it there.
 - Postponed by the owner: Google Search Console (only after the design fixes), og:image, analytics (undecided).
 - Before launch: a native speaker reviews the Korean facts (register advice, FAQ etiquette).
 
