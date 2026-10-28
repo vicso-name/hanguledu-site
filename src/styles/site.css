@@ -513,11 +513,6 @@
 .tool.deep .ti { grid-row: auto; }
 .trip-cell--none { justify-content: center; align-items: center; text-align: center; }
 
-/* phrases: register chips */
-.he-register--casual { background: var(--successContainer); color: var(--successStrong); }
-.he-register--polite { background: var(--primaryContainer); color: var(--onPrimaryContainer); }
-.he-register--formal { background: var(--surfaceVariant); color: var(--textPrimary); }
-
 /* phrases: hangul line with hints */
 .prog--md .s { padding-bottom: 22px; }
 .prog--md .s b { font-size: 34px; line-height: 42px; }
@@ -572,7 +567,7 @@ p.pcard-said { margin: 10px 0 0; }
 .prow-ko { font: 700 20px/28px var(--font-ko); }
 .prow-en { font: 500 15px/20px var(--font-ui); }
 .prow-ko { margin-right: 64px; }
-.prow .prow-reg { position: absolute; top: 16px; right: 20px; padding: 0; background: none; color: var(--textSecondary); font: 600 12px/16px var(--font-ui); }
+.prow .prow-reg { position: absolute; top: 16px; right: 20px; }
 .prow-play { position: absolute; left: 24px; top: 20px; }
 /* centre the play button on the row's summary, and keep it there when the row opens */
 @supports (anchor-name: --a) {
