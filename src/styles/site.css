@@ -347,6 +347,8 @@
 .learns { padding: clamp(20px, 3vw, 40px); display: grid; gap: 28px; }
 .prose { display: grid; gap: 14px; }
 .prose h2 { margin-top: 12px; }
+.legal section { display: grid; gap: 10px; }
+.legal ul { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
 .prose code { font-size: 14px; padding: 1px 6px; border-radius: 6px; background: var(--surfaceVariant); }
 .he-ink-2 { color: var(--textSecondary); }
 

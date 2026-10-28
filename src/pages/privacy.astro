@@ -2,19 +2,102 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Privacy | HangulEdu" description="HangulEdu keeps your progress in your own browser. No account, no cookies, no tracking.">
-  <section class="wrap sec wrap--medium prose">
-    <h1 class="t-h1">Privacy</h1>
-    <p class="t-meta">Updated 28 October 2026</p>
-    <h2 class="t-h2">What this website stores</h2>
-    <p class="t-body">The letters you mark as known are saved in your browser's local storage under the key <code>hanguledu.letters.v1</code>. They never leave your device: there is no account, no server-side database and no cookie. Clear your progress at any time with the "Clear my progress" button on the home page, or by clearing this site's data in your browser.</p>
-    <h2 class="t-h2">Analytics</h2>
-    <p class="t-body">This website does not use analytics or advertising trackers. Links to Google Play carry a tag naming the page you came from, so we can see which pages lead to app installs; Google handles that data under its own policy.</p>
-    <h2 class="t-h2">Fonts and audio</h2>
-    <p class="t-body">Korean text is set in Noto Sans KR, loaded from Google Fonts, which receives your IP address when it serves the font. The Korean audio is synthesized speech (Google Cloud Text-to-Speech) and is served from this website.</p>
-    <h2 class="t-h2">The Hangul Hero app</h2>
-    <p class="t-body">The app has its own privacy policy, linked from its store page.</p>
-    <h2 class="t-h2">Contact</h2>
-    <p class="t-body">Questions: see <a href="https://vicsotheme.com/">vicsotheme.com</a>.</p>
-  </section>
+<Layout title="Privacy Policy | HangulEdu" description="Privacy Policy for the Hangul Hero apps on Android and iOS and the hanguledu.com website: what is stored, which services process data, ads consent and your rights.">
+  <article class="wrap sec wrap--medium prose legal">
+    <h1 class="t-h1">Privacy Policy</h1>
+    <p class="t-meta">Last updated: October 28, 2026</p>
+
+    <section>
+      <h2 class="t-h2">Introduction</h2>
+      <p class="t-body">Learn Korean Alphabet: Hangul (also referred to as Hangul Hero), developed by VIKTOR SOKOLIUK ("we", "our", or "us"), respects your privacy. This Privacy Policy describes how information is handled when you use our mobile application distributed through Google Play and the Apple App Store ("the App") and the hanguledu.com website ("the Website"). Practices may differ depending on the platform and app version; where they do, this Policy says so.</p>
+    </section>
+
+    <section>
+      <h2 class="t-h2">1. Information the App Handles</h2>
+      <p class="t-body">The App does not require an account, login, or social login. We do not ask you for your name, email address, or other profile information. Your learning progress, streaks, saved words and phrases, and settings are stored locally on your device and are not sent to us. We do not run our own server for the App: lessons, audio, and images are bundled with the App. On Android, letter lesson content may also be refreshed from Google Cloud Firestore; this is a read-only download of course content and sends none of your learning data.</p>
+      <p class="t-body"><strong>Analytics (Firebase).</strong> Both the Android and iOS apps use Firebase Analytics, a service provided by Google, to understand how the App is used. It processes an app instance identifier, usage events (such as screens opened, lessons and quizzes completed, scores, and subscription purchases with their product and price), device and app version information, and approximate location derived from your IP address. Event data contains app identifiers and counters, not names, email addresses, or text you type. On iOS, the App uses the Firebase Analytics variant that does not access the advertising identifier (IDFA), and ad personalization signals from Analytics are turned off. On Android, Firebase Analytics may use the Android Advertising ID where your device makes it available.</p>
+      <p class="t-body"><strong>Notifications.</strong> Both apps can send local study reminders, which are scheduled on your device. On Android, the App also includes Firebase Cloud Messaging, which assigns your device a registration token so that general notifications can be delivered; we do not store this token on any server of our own.</p>
+      <p class="t-body"><strong>Subscriptions (RevenueCat).</strong> For Premium subscriptions, RevenueCat is used as a third-party subscription-management service to check entitlement status and restore purchases. RevenueCat processes an anonymous app user ID it generates, purchase and subscription status, and related transaction information. On iOS, the Firebase app instance identifier is also attached to that anonymous RevenueCat record so purchases can be counted in analytics. RevenueCat does not receive payment-card details. Apple or Google Play handles payment credentials and billing for purchases made through its store.</p>
+      <p class="t-body"><strong>Permissions.</strong> The App asks only for permission to show notifications. It does not request access to your location, camera, microphone, contacts, calendar, photos, or Bluetooth.</p>
+    </section>
+
+    <section>
+      <h2 class="t-h2">2. The Website</h2>
+      <p class="t-body">The Website has no accounts, no analytics, no advertising trackers, and sets no cookies. The letters you mark as known are saved in your browser's local storage under the key <code>hanguledu.letters.v1</code> and never leave your device. You can clear them with the "Clear my progress" button on the home page or by clearing this site's data in your browser.</p>
+      <p class="t-body">Korean text is set in Noto Sans KR, loaded from Google Fonts, which receives your IP address when it serves the font. The Website is hosted on GitHub Pages, which may log technical request data such as IP addresses. Links to Google Play carry a tag naming the page you came from, so we can see which pages lead to app installs; Google handles that data under its own policy.</p>
+    </section>
+
+    <section>
+      <h2 class="t-h2">3. Advertising (Google AdMob)</h2>
+      <p class="t-body">The free version of the App shows Google AdMob rewarded ads only: no banner or interstitial ads. Ads are opt-in: an ad is shown only when you tap a button such as "Watch ad" to receive a reward, such as an extra practice session or extra letter views. Premium subscribers are not shown ads; on iOS, the ads SDK is not started for subscribers.</p>
+      <p class="t-body">When ads are requested or shown, Google may process device and advertising identifiers (such as the IDFV on iOS or the Android Advertising ID), IP address, approximate location derived from IP address, and ad interaction and diagnostic data. This information is used to serve and measure ads, limit how often ads are shown, prevent fraud, and personalize ads where you have consented. Learn more in <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use its services</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+    </section>
+
+    <section>
+      <h2 class="t-h2">4. Consent and Your Privacy Choices</h2>
+      <p class="t-body">The App uses Google's User Messaging Platform (UMP) to manage advertising consent. If you are in the European Economic Area (EEA), the United Kingdom, or Switzerland, you will see a consent form before any ad is requested. If you decline consent, only non-personalized ads may be shown.</p>
+      <ul class="t-body">
+        <li><strong>iOS and Android:</strong> you can change your choice at any time via the "Privacy choices" link at the bottom of the Premium screen. The link appears where Google's consent rules require it, for example in the EEA, the UK, and Switzerland.</li>
+        <li>You can also reset your choice by clearing the App's data or reinstalling the App, or contact us.</li>
+      </ul>
+      <p class="t-body"><strong>App Tracking Transparency (iOS):</strong> the iOS app does not ask for permission to track you and does not access the advertising identifier (IDFA). Ads may therefore be less personalized.</p>
+    </section>
+
+    <section>
+      <h2 class="t-h2">5. Data Retention and Security</h2>
+      <p class="t-body">Local progress and settings remain on your device until you delete them, remove the App, or clear the Website's data in your browser. Information processed by analytics, subscription, advertising, or store providers is retained according to the providers' practices and as needed to provide, secure, and administer their services. We use reasonable measures intended to protect information, but no method of storage or transmission is completely secure.</p>
+    </section>
+
+    <section>
+      <h2 class="t-h2">6. Children's Privacy</h2>
+      <p class="t-body">The App and the Website are not directed to children under 13, and we do not knowingly collect personal information from children under 13. If we become aware that such information was provided to us, we will take reasonable steps to delete it promptly.</p>
+    </section>
+
+    <section>
+      <h2 class="t-h2">7. Data Deletion Rights</h2>
+      <p class="t-body">You have the right to request access to, correction of, or deletion of personal data that we control, subject to applicable law. Because the App does not require an account and your learning data is stored locally, you can also remove that data by deleting the App or using your device's app controls. To make a request, please contact us via email: <a href="mailto:vicsothemes@gmail.com">vicsothemes@gmail.com</a></p>
+      <p class="t-body">We will respond as soon as possible and act in accordance with applicable data protection laws.</p>
+    </section>
+
+    <section>
+      <h2 class="t-h2">8. Users in the EEA and UK (GDPR)</h2>
+      <p class="t-body">If you are in the European Economic Area or the United Kingdom, the following applies in addition to the rest of this Policy.</p>
+      <ul class="t-body">
+        <li><strong>Controller:</strong> VIKTOR SOKOLIUK, <a href="mailto:vicsothemes@gmail.com">vicsothemes@gmail.com</a>.</li>
+        <li><strong>Legal bases:</strong> performance of a contract (providing the App and Premium); consent (personalized advertising); legitimate interests (analytics to improve the App, security, fraud prevention, and non-personalized ads).</li>
+        <li><strong>Your rights:</strong> you may request access, rectification, erasure, restriction of processing, objection to processing, and data portability, and you may withdraw consent at any time without affecting processing carried out before withdrawal. Contact us by email to exercise these rights.</li>
+        <li><strong>Complaints:</strong> you have the right to lodge a complaint with a data protection supervisory authority, in particular in the country where you live or work.</li>
+        <li><strong>International transfers:</strong> our service providers (Google, including Firebase and AdMob; RevenueCat; and GitHub for the Website) may process information outside your country under the safeguards they provide for such transfers.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="t-h2">9. External Services and Links</h2>
+      <p class="t-body">The App and the Website rely on the following services as described above. Their handling of information is governed by their own terms and privacy policies:</p>
+      <ul class="t-body">
+        <li>Apple (App Store and in-app purchases on iOS): <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
+        <li>Google Play (distribution, in-app purchases, reviews, and updates on Android): <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+        <li>Firebase (Analytics on both platforms; Cloud Firestore and Cloud Messaging on Android): <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy and Security in Firebase</a></li>
+        <li>Google AdMob and User Messaging Platform: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+        <li>RevenueCat (subscription management): <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">RevenueCat Privacy Policy</a></li>
+        <li>Google Fonts and GitHub Pages (the Website): <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>, <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a></li>
+      </ul>
+      <p class="t-body">If we provide a link to an external website, review that site's privacy policy before providing information.</p>
+    </section>
+
+    <section>
+      <h2 class="t-h2">10. Changes to This Policy</h2>
+      <p class="t-body">We may update this Privacy Policy from time to time. Any significant changes will be reflected in the App or posted through an updated version of this page. We recommend reviewing this page occasionally to stay informed of updates.</p>
+    </section>
+
+    <section>
+      <h2 class="t-h2">11. Contact Us</h2>
+      <p class="t-body">If you have any questions or concerns about this Privacy Policy, feel free to reach out:</p>
+      <ul class="t-body">
+        <li><strong>Developer:</strong> VIKTOR SOKOLIUK</li>
+        <li><strong>Email:</strong> <a href="mailto:vicsothemes@gmail.com">vicsothemes@gmail.com</a></li>
+      </ul>
+      <p class="t-body">Thank you for using Learn Korean Alphabet: Hangul!</p>
+    </section>
+  </article>
 </Layout>
