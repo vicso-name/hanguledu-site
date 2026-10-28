@@ -5,7 +5,7 @@
 .pg *, .pg *::before, .pg *::after { box-sizing: border-box; }
 /* Plain text links only: classed links (buttons, cards, nav) keep their own colours. */
 /* one blue for everything you can press: links and outline buttons share the action colour */
-.pg a:not([class]) { color: var(--action); }
+.pg a:not([class]), .pg a.pack-tag { color: var(--action); }
 [data-theme="dark"] .pg a:not([class]), [data-theme="dark"].pg a:not([class]) { color: var(--focus); }
 .pg:not([data-theme="dark"]) .he-btn--outline { color: var(--action); }
 .pg .he-btn[disabled] { opacity: .4; }
