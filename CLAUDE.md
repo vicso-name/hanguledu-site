@@ -26,8 +26,14 @@ That branch is not pushed and the vicsotheme-site repo is public, so ask before 
   Largest unbuilt: /learn-korean/, /korean-words/family/, /phrases/korean-swear-words/ (brand risk, owner decides),
   /korean-honorifics/oppa/, /korean-names/, /korean-numbers/, /phrases/holiday-greetings/, /korean-nicknames/,
   /korean-keyboard/, /hangul-writing-practice/.
-- Keyword gaps on built pages: the home page does not target the app queries
-  ("app for learning korean language"); /phrases/ does not use "how do you say … in korean".
+- Keyword gaps on built pages (titles were written from the URL topic; `primary_keyword` was not
+  checked before building):
+  - to fix: home does not target the app queries ("app for learning korean language", 9.9K);
+    /phrases/ does not use "how do you say … in korean" (6.6K);
+  - cosmetic: vowels ("korean language vowels"), basic-korean-phrases ("basic korean expressions");
+  - wrong pick in the core: /phrases/k-drama/ ("what is a kdrama"), /phrases/love/ ("i love u in korean word").
+- From now on: before building a page, take its `primary_keyword` and `secondary_keywords` from pages-v2.csv
+  and put them into the title, H1, description and lead.
 
 ## How the owner wants pages
 - Value first: every page needs a signature interactive element and real learner value, not text.
