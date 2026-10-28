@@ -16,6 +16,7 @@ const PAGES: [string, string][] = [
   ...PHRASE_PAGES.map((p): [string, string] => [`/phrases/${p.slug}/`, '2026-10-28']),
   ['/privacy/', '2026-10-28'],
   ['/terms/', '2026-10-28'],
+  ['/support/', '2026-10-28'],
 ];
 
 export const GET: APIRoute = () =>
