@@ -612,7 +612,7 @@ p.pcard-said { margin: 10px 0 0; }
 .psearch:focus { outline: 2px solid var(--focus); outline-offset: 1px; }
 .pcount { margin: 0; }
 .pack-tag { display: inline-flex; align-items: center; gap: 5px; }
-.pmore { display: flex; width: 100%; margin-top: 12px; }
+.pmore { display: flex; width: 100%; margin-top: 40px; }
 .pmore[hidden] { display: none; }
 .packs { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
 .pack { display: grid; gap: 4px; padding: 16px; text-decoration: none; }
