@@ -6,6 +6,7 @@ import type { XPhrase } from '../data/phrases';
 import { REGISTER_LABEL } from '../data/phrases';
 import XrayLine from './XrayLine.astro';
 import SoundXray from './SoundXray.astro';
+import Icon from './Icon.astro';
 
 interface Props { p: XPhrase; heading?: 'h2' | 'h3'; open?: boolean }
 const { p, heading = 'h3', open = true } = Astro.props;
@@ -18,7 +19,7 @@ const more = p.changes.length > 0 || p.parts.length > 0 || !!p.note;
 <article class="he-glass pcard" id={p.id}>
   <div class="row pcard-top">
     <span class={`he-register he-register--${p.register}`}>{REGISTER_LABEL[p.register]}</span>
-    {p.pack && <span class="t-meta">{p.pack.emoji} {p.pack.title}</span>}
+    {p.pack && <span class="t-meta pack-tag"><Icon name={p.pack.icon} />{p.pack.title}</span>}
   </div>
   <XrayLine syl={p.written} size="md" />
   <H class="pcard-en">{p.en}</H>

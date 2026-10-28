@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PhraseRow from '../../components/PhraseRow.astro';
 import Faq from '../../components/Faq.astro';
 import AppCta from '../../components/AppCta.astro';
+import Icon from '../../components/Icon.astro';
 import { PACKS, PHRASES, REGISTER_LABEL, type Register } from '../../data/phrases';
 import { PHRASE_PAGES } from '../../data/phrase-pages';
 import { crumbs, faqPage } from '../../lib/schema';
@@ -49,7 +50,7 @@ const schema = [
       <input class="psearch" aria-label="Search phrases" type="search" placeholder="Search: thank you, 주세요, taxi…" autocomplete="off" data-q />
       <div class="seg" role="group" aria-label="Situation" data-f="pack">
         <button type="button" data-v="" aria-pressed="true">All</button>
-        {PACKS.map((p) => <button type="button" data-v={p.id} aria-pressed="false">{p.emoji} {p.title}</button>)}
+        {PACKS.map((p) => <button type="button" data-v={p.id} aria-pressed="false"><Icon name={p.icon} />{p.title}</button>)}
       </div>
       <div class="seg" role="group" aria-label="Politeness" data-f="reg">
         <button type="button" data-v="" aria-pressed="true">Any</button>
@@ -60,7 +61,7 @@ const schema = [
     <ul class="plist" style="margin-top: 12px;">{PHRASES.map((p, i) => <PhraseRow p={p} hidden={i >= PAGE} />)}</ul>
     <button type="button" class="he-btn he-btn--outline pmore" data-more>Show {PAGE} more</button>
     <p class="t-body he-ink-2" data-empty hidden>No phrase matches. Try a shorter word.</p>
-    <p class="t-meta" style="margin-top: 16px;">Packs with their own page: {PACKS.filter((p) => HUBS[p.id]).map((p, i) => <>{i > 0 && ' · '}<a href={HUBS[p.id]}>{p.emoji} {p.title}</a></>)}</p>
+    <p class="t-meta" style="margin-top: 16px;">Packs with their own page: {PACKS.filter((p) => HUBS[p.id]).map((p, i) => <>{i > 0 && ' · '}<a class="pack-tag" href={HUBS[p.id]}><Icon name={p.icon} />{p.title}</a></>)}</p>
   </section>
 
   <section class="wrap sec--tight wrap--medium">

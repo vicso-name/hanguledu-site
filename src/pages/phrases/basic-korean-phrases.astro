@@ -5,6 +5,7 @@ import Faq from '../../components/Faq.astro';
 import AppCta from '../../components/AppCta.astro';
 import { form, phrase } from '../../data/phrases';
 import { crumbs, faqPage } from '../../lib/schema';
+import Icon from '../../components/Icon.astro';
 
 // A starter kit by situation, from every pack. The first group is the polite
 // basics; 안녕하세요 and 감사합니다 are not app phrases and are worked out by the engine.
@@ -46,7 +47,7 @@ const schema = [
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/phrases/">Phrases</a><span aria-hidden="true">/</span><span>Basic phrases</span></nav>
     <div class="head">
       <h1 class="t-h1">Basic Korean phrases</h1>
-      <p class="t-lead">{count} phrases for a first trip or a first week of Korean, grouped by where you will need them. Tap ▶ to hear one; tap the phrase to see how it really sounds.</p>
+      <p class="t-lead">{count} phrases for a first trip or a first week of Korean, grouped by where you will need them. Tap <Icon name="play_arrow" class="mi--inline" /><span class="sr-only">play</span> to hear one; tap the phrase to see how it really sounds.</p>
     </div>
   </section>
 

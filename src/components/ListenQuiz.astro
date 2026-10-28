@@ -101,7 +101,7 @@ const families = FAMILIES.map((f) => f.items.map(([g]) => g).join(''));
       fb.innerHTML = '';
       const strong = document.createElement('b');
       strong.textContent = ok ? `Yes: ${answer.g} (${answer.rom}).` : `That was ${answer.g} (${answer.rom}).`;
-      fb.append(strong, ok ? ` ${answer.g} is now in your letters.` : ` Tap ▶ to hear ${answer.syl} again.`);
+      fb.append(strong, ok ? ` ${answer.g} is now in your letters.` : ` Tap play to hear ${answer.syl} again.`);
       next.hidden = false;
       next.textContent = round + 1 >= rounds ? 'See your score' : 'Next sound';
     });

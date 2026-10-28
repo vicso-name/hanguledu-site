@@ -1,0 +1,9 @@
+---
+// A Material Symbol drawn inline, 1.25em, in currentColor. Used wherever an emoji would go.
+import { ICONS, type IconName } from '../data/icons';
+
+interface Props { name: IconName; class?: string }
+const { name, class: cls } = Astro.props;
+---
+
+<svg class:list={['mi', cls]} viewBox="0 -960 960 960" aria-hidden="true"><path d={ICONS[name]} fill="currentColor"></path></svg>

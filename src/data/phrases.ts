@@ -5,10 +5,11 @@ import app from './app/phrases.json';
 import { analyzeWithTrace, romanize, romanizePronounced, romanizeSyllables, soundChanges, RULE_LINE, RULE_SHEET, RULE_TAG, type RuleId } from '../lib/xray';
 import { hasClip } from '../lib/audio-index';
 import { existsSync } from 'node:fs';
+import type { IconName } from './icons';
 
 export type Register = 'casual' | 'polite' | 'formal';
 
-export interface Pack { id: string; title: string; emoji: string; description: string; free: boolean }
+export interface Pack { id: string; title: string; icon: IconName; description: string; free: boolean }
 
 export interface Syl { k: string; hit: boolean; space: boolean; rom: string; jamo: string }
 
@@ -35,7 +36,12 @@ export interface XPhrase {
   audio: string | null;
 }
 
-export const PACKS: Pack[] = app.packs.map((p) => ({ id: p.id, title: p.title, emoji: p.emoji, description: p.description, free: !!p.free }));
+// The app marks packs with emoji; the site draws a Material Symbol instead.
+const PACK_ICON: Record<string, IconName> = {
+  kdrama: 'movie', food: 'ramen_dining', around: 'directions_subway', shopping: 'shopping_bag',
+  feelings: 'chat_bubble', love: 'favorite', health: 'stethoscope', work: 'work',
+};
+export const PACKS: Pack[] = app.packs.map((p) => ({ id: p.id, title: p.title, icon: PACK_ICON[p.id], description: p.description, free: !!p.free }));
 const packBy = Object.fromEntries(PACKS.map((p) => [p.id, p]));
 
 export const REGISTER_LABEL: Record<Register, string> = { casual: 'Casual', polite: 'Polite', formal: 'Formal' };
