@@ -28,8 +28,9 @@ That branch is not pushed and the vicsotheme-site repo is public, so ask before 
   /korean-keyboard/, /hangul-writing-practice/.
 - Keyword gaps on built pages (titles were written from the URL topic; `primary_keyword` was not
   checked before building):
-  - to fix: home does not target the app queries ("app for learning korean language", 9.9K);
-    /phrases/ does not use "how do you say … in korean" (6.6K);
+  - fixed in title, description and lead: home now targets the app queries ("app for learning korean
+    language", 9.9K); /phrases/ uses "how do you say it in korean" (6.6K). The home H1 stays the hook
+    "Read Korean in an afternoon." on purpose;
   - cosmetic: vowels ("korean language vowels"), basic-korean-phrases ("basic korean expressions");
   - wrong pick in the core: /phrases/k-drama/ ("what is a kdrama"), /phrases/love/ ("i love u in korean word").
 - From now on: before building a page, take its `primary_keyword` and `secondary_keywords` from pages-v2.csv
