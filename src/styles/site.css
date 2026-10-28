@@ -561,7 +561,8 @@ p.pcard-said { margin: 10px 0 0; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
 
 /* phrases: list rows */
-.plist { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.plist { display: grid; gap: 18px; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 900px) { .plist--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; } }
 .prow { position: relative; border-radius: var(--radius-card); background: var(--glassTint); border: 1px solid var(--outline); }
 .prow > details > summary { display: flex; align-items: center; gap: 12px; padding: 12px 64px 12px 16px; cursor: pointer; list-style: none; }
 .prow > details > summary::-webkit-details-marker { display: none; }
@@ -582,7 +583,7 @@ p.pcard-said { margin: 10px 0 0; }
 .who button[aria-pressed="true"] { border-color: var(--action); background: var(--action); color: var(--onAction); }
 .who-say { display: flex; align-items: center; gap: 12px; }
 .who-say b { font: 700 24px/32px var(--font-ko); }
-.ladder { display: grid; gap: 12px; }
+.ladder { display: grid; gap: 18px; }
 
 /* phrases: one-question check */
 .check { display: grid; gap: 14px; padding: 22px; }
