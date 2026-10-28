@@ -91,7 +91,7 @@ body { margin: 0; background: var(--background); color: var(--textPrimary); font
 .he-tile {
   display: grid; justify-items: center; gap: 2px; padding: 14px 8px 12px; border-radius: var(--radius-card);
   background: var(--surface); text-decoration: none; color: var(--textPrimary); min-height: 120px; box-sizing: border-box;
-  border: 1.5px solid transparent; cursor: pointer;
+  border: 1.5px solid var(--hairline); cursor: pointer;
 }
 .he-tile__glyph { font: 700 40px/48px var(--font-ko); }
 .he-tile__rom { font: 600 15px/20px var(--font-ui); }
