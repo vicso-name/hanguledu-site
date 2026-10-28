@@ -564,22 +564,23 @@ p.pcard-said { margin: 10px 0 0; }
 .plist { display: grid; gap: 18px; margin: 0; padding: 0; list-style: none; }
 @media (min-width: 900px) { .plist--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; } }
 .prow { position: relative; border-radius: var(--radius-card); background: var(--glassTint); border: 1px solid var(--outline); }
-.prow > details > summary { display: flex; align-items: center; gap: 12px; padding: 12px 64px 12px 16px; cursor: pointer; list-style: none; }
+/* phrase row: play on the left, the register as quiet text in the top-right corner */
+.prow > details > summary { display: flex; align-items: center; gap: 12px; padding: 20px 24px 20px 80px; cursor: pointer; list-style: none; }
+.prow:not(:has(.prow-play)) > details > summary { padding-left: 24px; }
 .prow > details > summary::-webkit-details-marker { display: none; }
 .prow-main { display: grid; gap: 2px; min-width: 0; flex: 1; }
 .prow-ko { font: 700 20px/28px var(--font-ko); }
 .prow-en { font: 500 15px/20px var(--font-ui); }
-.prow-reg { flex: none; }
-.prow-play { position: absolute; right: 12px; top: 12px; }
-/* desktop: centre the play button on the row's summary, and keep it there when the row opens */
-@media (min-width: 761px) {
-  @supports (anchor-name: --a) {
-    .prow { anchor-scope: --prow; }
-    .prow > details > summary { anchor-name: --prow; }
-    .prow-play { position-anchor: --prow; top: anchor(center); translate: 0 -50%; }
-  }
+.prow-ko { margin-right: 64px; }
+.prow .prow-reg { position: absolute; top: 16px; right: 20px; padding: 0; background: none; color: var(--textSecondary); font: 600 12px/16px var(--font-ui); }
+.prow-play { position: absolute; left: 24px; top: 20px; }
+/* centre the play button on the row's summary, and keep it there when the row opens */
+@supports (anchor-name: --a) {
+  .prow { anchor-scope: --prow; }
+  .prow > details > summary { anchor-name: --prow; }
+  .prow-play { position-anchor: --prow; top: anchor(center); translate: 0 -50%; }
 }
-.prow-body { display: grid; gap: 10px; padding: 0 16px 16px; }
+.prow-body { display: grid; gap: 10px; padding: 0 24px 20px 80px; }
 .prow-body > .t-meta { margin: 0; }
 .prow.is-pick { border-color: var(--action); box-shadow: 0 0 0 1px var(--action); }
 .prow-note { display: block; margin-top: 2px; font: 600 13px/18px var(--font-ui); color: var(--action); }
@@ -632,11 +633,12 @@ p.pcard-said { margin: 10px 0 0; }
 @media (max-width: 760px) {
   .pcard { padding: 16px; }
   .cards { grid-template-columns: minmax(0, 1fr); }
-  .prow > details > summary { padding-right: 84px; }
-  .prow-reg { position: absolute; right: 12px; top: 60px; }
-  .prow:not(:has(.prow-play)) .prow-reg { top: 14px; }
   .prog--md .s b { font-size: 30px; line-height: 38px; }
-  .prow > details > summary { padding: 12px 60px 12px 14px; flex-wrap: wrap; }
+  .prow > details > summary { padding: 16px 16px 16px 68px; }
+  .prow:not(:has(.prow-play)) > details > summary { padding-left: 16px; }
+  .prow-play { left: 16px; }
+  .prow .prow-reg { top: 14px; right: 16px; }
+  .prow-body { padding: 0 16px 16px; }
   .check { padding: 18px; }
   .packs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pack { padding: 14px; }
