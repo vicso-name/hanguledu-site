@@ -474,7 +474,7 @@
 .faq-i summary::-webkit-details-marker { display: none; }
 .faq-i summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font: 500 22px/1 var(--font-ui); color: var(--textSecondary); }
 .faq-i[open] summary::after { content: "−"; }
-.faq-i p { padding-bottom: 16px; color: var(--textSecondary); }
+.faq-i p { padding-bottom: 16px; color: var(--textSecondary); max-width: 72ch; }
 
 /* x-ray: keep the word gap between syllables */
 .xr-syl .gap { width: 10px; }

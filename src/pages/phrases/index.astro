@@ -64,7 +64,7 @@ const schema = [
     <p class="t-meta" style="margin-top: 16px;">Packs with their own page: {PACKS.filter((p) => HUBS[p.id]).map((p, i) => <>{i > 0 && ' · '}<a class="pack-tag" href={HUBS[p.id]}><Icon name={p.icon} />{p.title}</a></>)}</p>
   </section>
 
-  <section class="wrap sec--tight wrap--medium">
+  <section class="wrap sec--tight wrap--full">
     <h2 class="t-h2" style="margin-bottom: 16px;">Questions</h2>
     <Faq items={FAQ} />
   </section>
