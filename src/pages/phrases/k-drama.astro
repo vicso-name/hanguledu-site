@@ -1,0 +1,19 @@
+---
+import PackPage from '../../components/PackPage.astro';
+
+const FAQ = [
+  { q: 'Why do K-drama characters speak casually?', a: 'Most drama lines are between friends, couples and family, so they use banmal (casual speech). Say the same line to a stranger and add 요: 괜찮아 becomes 괜찮아요.' },
+  { q: 'Why does 괜찮아 sound like 괜차나?', a: 'The ㅎ in 찮 goes quiet before a vowel and the ㄴ slides into the next block. Open the X-Ray on any card to see each change.' },
+  { q: 'What does daebak mean?', a: '대박 means "jackpot". People shout it at good news and at shocking news alike: awesome, or no way.' },
+];
+---
+
+<PackPage
+  pack="kdrama"
+  title="30 K-Drama Korean Phrases with Audio and Meaning | HangulEdu"
+  description="The 30 Korean lines you hear in every K-drama: 사랑해, 괜찮아, 대박, 보고 싶어 and more. Each with audio, meaning, and an X-Ray of how it really sounds."
+  h1="30 Korean phrases from K-dramas"
+  lead="The lines you hear in every episode, from 괜찮아 to 가지 마. Play each one and open How it sounds: most are said differently from how they are written."
+  faq={FAQ}
+  cta="The K-Drama pack is free in the app"
+/>

@@ -1,4 +1,4 @@
-// Build time only: which Korean strings have a native clip in public/audio/ko/.
+// Build time only: which Korean strings have a clip in public/audio/ko/.
 import { readdirSync } from 'node:fs';
 
 const files = new Set(readdirSync('public/audio/ko'));

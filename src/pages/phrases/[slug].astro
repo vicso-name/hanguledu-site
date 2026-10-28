@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PhraseCard from '../../components/PhraseCard.astro';
+import PhraseRow from '../../components/PhraseRow.astro';
+import Faq from '../../components/Faq.astro';
+import AppCta from '../../components/AppCta.astro';
+import { PHRASE_PAGES, checkOptions, type PhrasePage } from '../../data/phrase-pages';
+import { REGISTER_LABEL, REGISTER_WHO } from '../../data/phrases';
+import { crumbs, faqPage } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return PHRASE_PAGES.map((p) => ({ params: { slug: p.slug }, props: { page: p } }));
+}
+
+interface Props { page: PhrasePage }
+const { page } = Astro.props;
+const hero = page.forms[page.hero];
+const options = checkOptions(page);
+const answer = (page.forms.length > 1 ? page.forms : page.more)[page.check.answer];
+const others = PHRASE_PAGES.filter((p) => p.slug !== page.slug).slice(0, 6);
+const name = page.h1.replace(/^How to say /, '').replace(/ in Korean$/, '');
+const path = `/phrases/${page.slug}/`;
+
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'LearningResource', name: page.h1, learningResourceType: 'Lesson', inLanguage: 'en', teaches: `How to say ${name} in Korean`, isAccessibleForFree: true },
+  crumbs([['Phrases', '/phrases/'], [`${name[0].toUpperCase()}${name.slice(1)} in Korean`, path]]),
+  faqPage(page.faq),
+];
+---
+
+<Layout title={page.title} description={page.description} schema={schema}>
+  <section class="wrap page-head">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/phrases/">Phrases</a><span aria-hidden="true">/</span><span>{name[0].toUpperCase() + name.slice(1)}</span></nav>
+    <div class="head">
+      <h1 class="t-h1">{page.h1}</h1>
+      <p class="t-lead">{page.lead}</p>
+    </div>
+  </section>
+
+  <section class="wrap sec--flush wrap--medium">
+    <div class="pcard-hero">
+      <p class="t-label">{page.heroNote}</p>
+      <PhraseCard p={hero} heading="h2" />
+    </div>
+  </section>
+
+  {page.forms.length > 1 && (
+    <section class="wrap sec wrap--medium" data-picker>
+      <div class="head">
+        <p class="t-label">{page.forms.length} forms</p>
+        <h2 class="t-h2">{page.pick?.title ?? 'Every form'}</h2>
+        <p class="t-body he-ink-2">{page.pick?.sub}</p>
+      </div>
+      {page.pick && (
+        <div class="he-glass he-glass--dense pad" style="display: grid; gap: 14px; margin-bottom: 16px;">
+          <div class="who" role="group" aria-label="Who are you talking to?">
+            {page.pick.who.map((w) => <button type="button" data-form={w.form} aria-pressed="false">{w.label}</button>)}
+          </div>
+          {page.forms.map((f, i) => (
+            <div class="who-say" data-say-for={i} hidden>
+              {f.audio && <button type="button" class="he-play he-play--sm" data-src={f.audio} aria-label={`Play ${f.ko}`}><svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></button>}
+              <span><span class="t-meta">Say</span> <b lang="ko">{f.ko}</b> <span class="t-meta">{f.rom} · {REGISTER_LABEL[f.register]}</span></span>
+            </div>
+          ))}
+        </div>
+      )}
+      <ul class="plist ladder">
+        {page.forms.map((f, i) => <PhraseRow p={f} note={i === page.hero ? page.heroNote : f.situation || REGISTER_WHO[f.register]} />)}
+      </ul>
+    </section>
+  )}
+
+  <section class="wrap sec--tight wrap--medium">
+    <div class="he-glass he-glass--dense check" data-check data-answer={answer.id}>
+      <p class="t-label">Quick check</p>
+      <p class="t-h3">{page.check.q}</p>
+      <div class="check-opts">
+        {options.map((o) => <button type="button" class="opt" data-id={o.id}><b lang="ko">{o.ko}</b><small>{o.rom}</small></button>)}
+      </div>
+      <div class="feedback feedback--ok" data-ok hidden><b>Right.</b> {page.check.why}</div>
+      <div class="feedback feedback--try" data-no hidden><b>Not quite.</b> {page.check.wrong}</div>
+    </div>
+  </section>
+
+  <section class="wrap sec--tight wrap--medium">
+    <div class="head">
+      <h2 class="t-h2">{page.moreTitle}</h2>
+      <p class="t-body he-ink-2">Tap a phrase to see how it really sounds.</p>
+    </div>
+    <ul class="plist">{page.more.map((p) => <PhraseRow p={p} />)}</ul>
+  </section>
+
+  <section class="wrap sec--tight wrap--medium">
+    <h2 class="t-h2" style="margin-bottom: 16px;">Questions</h2>
+    <Faq items={page.faq} />
+  </section>
+
+  <section class="wrap sec--tight">
+    <div class="head"><h2 class="t-h2">More phrases</h2></div>
+    <div class="packs">
+      {others.map((o) => <a class="he-glass pack" href={`/phrases/${o.slug}/`}><b lang="ko" class="prow-ko">{o.forms[o.hero].ko}</b><span class="t-body">{o.h1.replace('How to say ', '').replace(/^./, (c) => c.toUpperCase())}</span></a>)}
+      <a class="he-glass pack" href="/phrases/"><b class="prow-ko">240</b><span class="t-body">All phrases with audio</span></a>
+    </div>
+  </section>
+
+  <AppCta title={page.cta} />
+</Layout>
+
+<script>
+  import { play } from '../../lib/audio';
+
+  document.querySelectorAll<HTMLElement>('[data-picker]').forEach((root) => {
+    const rows = [...root.querySelectorAll<HTMLElement>('.ladder > .prow')];
+    const says = [...root.querySelectorAll<HTMLElement>('[data-say-for]')];
+    root.querySelectorAll<HTMLButtonElement>('.who button').forEach((b, _, all) => {
+      b.addEventListener('click', () => {
+        const i = Number(b.dataset.form);
+        all.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        rows.forEach((r, j) => r.classList.toggle('is-pick', j === i));
+        says.forEach((s, j) => (s.hidden = j !== i));
+        const btn = says[i].querySelector<HTMLButtonElement>('[data-src]');
+        if (btn) play(btn.dataset.src!, { button: btn });
+      });
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>('[data-check]').forEach((root) => {
+    const ok = root.querySelector<HTMLElement>('[data-ok]')!;
+    const no = root.querySelector<HTMLElement>('[data-no]')!;
+    root.querySelectorAll<HTMLButtonElement>('.opt').forEach((b, _, all) => {
+      b.addEventListener('click', () => {
+        const right = b.dataset.id === root.dataset.answer;
+        all.forEach((x) => {
+          x.classList.toggle('is-right', x.dataset.id === root.dataset.answer);
+          x.setAttribute('aria-pressed', String(x === b));
+        });
+        ok.hidden = !right;
+        no.hidden = right;
+      });
+    });
+  });
+</script>

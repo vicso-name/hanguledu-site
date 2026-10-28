@@ -1,0 +1,5722 @@
+{
+  "packs": [
+    {
+      "id": "kdrama",
+      "title": "K-Drama Hits",
+      "emoji": "🎬",
+      "description": "Lines you hear in every drama",
+      "cover": "sky",
+      "free": true
+    },
+    {
+      "id": "food",
+      "title": "Food & Café",
+      "emoji": "🍜",
+      "free": false,
+      "description": "Order, pay and compliment the chef",
+      "cover": "rose"
+    },
+    {
+      "id": "around",
+      "title": "Getting Around",
+      "emoji": "🚇",
+      "free": false,
+      "description": "Subway, taxi and directions",
+      "cover": "teal"
+    },
+    {
+      "id": "shopping",
+      "title": "Shopping & Money",
+      "emoji": "🛍️",
+      "free": false,
+      "description": "Prices, sizes and bargains",
+      "cover": "indigo"
+    },
+    {
+      "id": "feelings",
+      "title": "Feelings & Reactions",
+      "emoji": "💬",
+      "free": false,
+      "description": "Say how you really feel",
+      "cover": "pink"
+    },
+    {
+      "id": "love",
+      "title": "Love & Dating",
+      "emoji": "💘",
+      "free": false,
+      "description": "From first crush to forever",
+      "cover": "violet"
+    },
+    {
+      "id": "health",
+      "title": "Health & Emergencies",
+      "emoji": "🩺",
+      "free": false,
+      "description": "Pharmacy, doctor and getting help",
+      "cover": "emerald"
+    },
+    {
+      "id": "work",
+      "title": "At Work",
+      "emoji": "🦺",
+      "free": false,
+      "description": "Your first job in Korea, from day one",
+      "cover": "slate"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "kd_saranghae",
+      "packId": "kdrama",
+      "text": "사랑해",
+      "register": "casual",
+      "translation": "I love you",
+      "situation": "Confession scene, couples",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "사랑",
+          "gloss": "love"
+        },
+        {
+          "text": "해",
+          "gloss": "do (casual)"
+        }
+      ],
+      "literal": "love do",
+      "audio": "phrases/audio/kdrama/kd_saranghae.mp3"
+    },
+    {
+      "id": "kd_bogo_sipeo",
+      "packId": "kdrama",
+      "text": "보고 싶어",
+      "register": "casual",
+      "translation": "I miss you",
+      "situation": "Long-distance call, reunion",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "보고",
+          "gloss": "seeing"
+        },
+        {
+          "text": "싶어",
+          "gloss": "want (casual)"
+        }
+      ],
+      "literal": "want to see (you)",
+      "audio": "phrases/audio/kdrama/kd_bogo_sipeo.mp3"
+    },
+    {
+      "id": "kd_gwaenchana",
+      "packId": "kdrama",
+      "text": "괜찮아",
+      "register": "casual",
+      "translation": "Are you okay? / I'm okay",
+      "situation": "Comforting a friend; question or answer by intonation",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "괜찮",
+          "gloss": "be okay"
+        },
+        {
+          "text": "아",
+          "gloss": "casual ending"
+        }
+      ],
+      "literal": "(it) is okay",
+      "audio": "phrases/audio/kdrama/kd_gwaenchana.mp3"
+    },
+    {
+      "id": "kd_gwaenchanayo",
+      "packId": "kdrama",
+      "text": "괜찮아요",
+      "register": "polite",
+      "translation": "It's okay / Are you okay?",
+      "situation": "Polite version for strangers and elders",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "괜찮",
+          "gloss": "be okay"
+        },
+        {
+          "text": "아요",
+          "gloss": "polite ending"
+        }
+      ],
+      "literal": "(it) is okay",
+      "audio": "phrases/audio/kdrama/kd_gwaenchanayo.mp3"
+    },
+    {
+      "id": "kd_eotteokae",
+      "packId": "kdrama",
+      "text": "어떡해",
+      "register": "casual",
+      "translation": "What do I do?! / Oh no!",
+      "situation": "Panic moment, bad news",
+      "pronunciationOverride": null,
+      "pronunciationNote": "Sounds the same as 어떻게 [어떠케] in fast speech",
+      "parts": [
+        {
+          "text": "어떡",
+          "gloss": "how (short for 어떻게)"
+        },
+        {
+          "text": "해",
+          "gloss": "do (casual)"
+        }
+      ],
+      "literal": "how do",
+      "audio": "phrases/audio/kdrama/kd_eotteokae.mp3"
+    },
+    {
+      "id": "kd_daebak",
+      "packId": "kdrama",
+      "text": "대박",
+      "register": "casual",
+      "translation": "Awesome! / No way!",
+      "situation": "Surprise, amazement",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "대박",
+          "gloss": "jackpot, huge hit"
+        }
+      ],
+      "literal": "jackpot",
+      "audio": "phrases/audio/kdrama/kd_daebak.mp3"
+    },
+    {
+      "id": "kd_mianhae",
+      "packId": "kdrama",
+      "text": "미안해",
+      "register": "casual",
+      "translation": "I'm sorry",
+      "situation": "Apology to a friend or partner",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "미안",
+          "gloss": "sorry"
+        },
+        {
+          "text": "해",
+          "gloss": "do (casual)"
+        }
+      ],
+      "literal": "sorry do",
+      "audio": "phrases/audio/kdrama/kd_mianhae.mp3"
+    },
+    {
+      "id": "kd_gomawo",
+      "packId": "kdrama",
+      "text": "고마워",
+      "register": "casual",
+      "translation": "Thanks",
+      "situation": "Thanking a friend",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "고마워",
+          "gloss": "thankful (casual)"
+        }
+      ],
+      "literal": "(I'm) thankful",
+      "audio": "phrases/audio/kdrama/kd_gomawo.mp3"
+    },
+    {
+      "id": "kd_museun_iriya",
+      "packId": "kdrama",
+      "text": "무슨 일이야",
+      "register": "casual",
+      "translation": "What's going on?",
+      "situation": "Something is clearly wrong",
+      "pronunciationOverride": null,
+      "pronunciationNote": "In fast speech often [무슨 니리야] — an extra ㄴ sound slips in",
+      "parts": [
+        {
+          "text": "무슨",
+          "gloss": "what kind of"
+        },
+        {
+          "text": "일",
+          "gloss": "matter, thing"
+        },
+        {
+          "text": "이야",
+          "gloss": "is it (casual)"
+        }
+      ],
+      "literal": "what matter is it",
+      "audio": "phrases/audio/kdrama/kd_museun_iriya.mp3"
+    },
+    {
+      "id": "kd_gachi_gaja",
+      "packId": "kdrama",
+      "text": "같이 가자",
+      "register": "casual",
+      "translation": "Let's go together",
+      "situation": "Walking home, invitation",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "같이",
+          "gloss": "together"
+        },
+        {
+          "text": "가",
+          "gloss": "go"
+        },
+        {
+          "text": "자",
+          "gloss": "let's"
+        }
+      ],
+      "literal": "together go let's",
+      "audio": "phrases/audio/kdrama/kd_gachi_gaja.mp3"
+    },
+    {
+      "id": "kd_mani_meogeo",
+      "packId": "kdrama",
+      "text": "많이 먹어",
+      "register": "casual",
+      "translation": "Eat a lot! / Enjoy your meal",
+      "situation": "Mom or friend serving food",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "많이",
+          "gloss": "a lot"
+        },
+        {
+          "text": "먹어",
+          "gloss": "eat (casual)"
+        }
+      ],
+      "literal": "a lot eat",
+      "audio": "phrases/audio/kdrama/kd_mani_meogeo.mp3"
+    },
+    {
+      "id": "kd_joahae",
+      "packId": "kdrama",
+      "text": "좋아해",
+      "register": "casual",
+      "translation": "I like you",
+      "situation": "First confession",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "좋아",
+          "gloss": "like"
+        },
+        {
+          "text": "해",
+          "gloss": "do (casual)"
+        }
+      ],
+      "literal": "like do",
+      "audio": "phrases/audio/kdrama/kd_joahae.mp3"
+    },
+    {
+      "id": "kd_jalsaenggyeotda",
+      "packId": "kdrama",
+      "text": "잘생겼다",
+      "register": "casual",
+      "translation": "So handsome!",
+      "situation": "Male lead appears",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "잘",
+          "gloss": "well"
+        },
+        {
+          "text": "생겼다",
+          "gloss": "was formed"
+        }
+      ],
+      "literal": "well formed",
+      "audio": "phrases/audio/kdrama/kd_jalsaenggyeotda.mp3"
+    },
+    {
+      "id": "kd_algesseo",
+      "packId": "kdrama",
+      "text": "알겠어",
+      "register": "casual",
+      "translation": "Got it / Okay",
+      "situation": "Agreeing, ending an argument",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "알",
+          "gloss": "know"
+        },
+        {
+          "text": "겠어",
+          "gloss": "will (casual)"
+        }
+      ],
+      "literal": "(I) will know",
+      "audio": "phrases/audio/kdrama/kd_algesseo.mp3"
+    },
+    {
+      "id": "kd_geokjeonghaji_ma",
+      "packId": "kdrama",
+      "text": "걱정하지 마",
+      "register": "casual",
+      "translation": "Don't worry",
+      "situation": "Reassuring someone",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "걱정",
+          "gloss": "worry"
+        },
+        {
+          "text": "하지",
+          "gloss": "do"
+        },
+        {
+          "text": "마",
+          "gloss": "don't"
+        }
+      ],
+      "literal": "worry do don't",
+      "audio": "phrases/audio/kdrama/kd_geokjeonghaji_ma.mp3"
+    },
+    {
+      "id": "kd_chukahae",
+      "packId": "kdrama",
+      "text": "축하해",
+      "register": "casual",
+      "translation": "Congratulations",
+      "situation": "Birthday, promotion, good news",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "축하",
+          "gloss": "congratulation"
+        },
+        {
+          "text": "해",
+          "gloss": "do (casual)"
+        }
+      ],
+      "literal": "congratulation do",
+      "audio": "phrases/audio/kdrama/kd_chukahae.mp3"
+    },
+    {
+      "id": "kd_jikyeo_julge",
+      "packId": "kdrama",
+      "text": "내가 지켜 줄게",
+      "register": "casual",
+      "translation": "I'll protect you",
+      "situation": "Hero moment",
+      "pronunciationOverride": "내가 지켜 줄께",
+      "pronunciationNote": "The ending -ㄹ게 is always pronounced tense [께], but written 게",
+      "parts": [
+        {
+          "text": "내가",
+          "gloss": "I"
+        },
+        {
+          "text": "지켜",
+          "gloss": "protect"
+        },
+        {
+          "text": "줄게",
+          "gloss": "will (do it for you)"
+        }
+      ],
+      "literal": "I protect (for you) will",
+      "audio": "phrases/audio/kdrama/kd_jikyeo_julge.mp3"
+    },
+    {
+      "id": "kd_mideo_jwo",
+      "packId": "kdrama",
+      "text": "믿어 줘",
+      "register": "casual",
+      "translation": "Trust me / Believe me",
+      "situation": "Misunderstanding, pleading",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "믿어",
+          "gloss": "believe"
+        },
+        {
+          "text": "줘",
+          "gloss": "(do it) for me"
+        }
+      ],
+      "literal": "believe for me",
+      "audio": "phrases/audio/kdrama/kd_mideo_jwo.mp3"
+    },
+    {
+      "id": "kd_haengbokae",
+      "packId": "kdrama",
+      "text": "행복해",
+      "register": "casual",
+      "translation": "I'm happy",
+      "situation": "Happy ending",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "행복",
+          "gloss": "happiness"
+        },
+        {
+          "text": "해",
+          "gloss": "be (casual)"
+        }
+      ],
+      "literal": "happiness is",
+      "audio": "phrases/audio/kdrama/kd_haengbokae.mp3"
+    },
+    {
+      "id": "kd_neujeosseo",
+      "packId": "kdrama",
+      "text": "늦었어",
+      "register": "casual",
+      "translation": "You're late / It's too late",
+      "situation": "Waiting at a date; dramatic farewell",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "늦",
+          "gloss": "late"
+        },
+        {
+          "text": "었어",
+          "gloss": "past (casual)"
+        }
+      ],
+      "literal": "was late",
+      "audio": "phrases/audio/kdrama/kd_neujeosseo.mp3"
+    },
+    {
+      "id": "kd_yeollakae",
+      "packId": "kdrama",
+      "text": "연락해",
+      "register": "casual",
+      "translation": "Call me / Keep in touch",
+      "situation": "Saying goodbye",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "연락",
+          "gloss": "contact"
+        },
+        {
+          "text": "해",
+          "gloss": "do (casual)"
+        }
+      ],
+      "literal": "contact do",
+      "audio": "phrases/audio/kdrama/kd_yeollakae.mp3"
+    },
+    {
+      "id": "kd_kkeunnasseo",
+      "packId": "kdrama",
+      "text": "끝났어",
+      "register": "casual",
+      "translation": "It's over",
+      "situation": "Breakup scene",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "끝",
+          "gloss": "end"
+        },
+        {
+          "text": "났어",
+          "gloss": "came (casual, past)"
+        }
+      ],
+      "literal": "the end came",
+      "audio": "phrases/audio/kdrama/kd_kkeunnasseo.mp3"
+    },
+    {
+      "id": "kd_jinsimiya",
+      "packId": "kdrama",
+      "text": "진심이야",
+      "register": "casual",
+      "translation": "I mean it",
+      "situation": "Serious confession",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "진심",
+          "gloss": "sincerity, true heart"
+        },
+        {
+          "text": "이야",
+          "gloss": "it is (casual)"
+        }
+      ],
+      "literal": "it is true heart",
+      "audio": "phrases/audio/kdrama/kd_jinsimiya.mp3"
+    },
+    {
+      "id": "kd_daedapae",
+      "packId": "kdrama",
+      "text": "대답해",
+      "register": "casual",
+      "translation": "Answer me!",
+      "situation": "Confrontation",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "대답",
+          "gloss": "answer"
+        },
+        {
+          "text": "해",
+          "gloss": "do (casual)"
+        }
+      ],
+      "literal": "answer do",
+      "audio": "phrases/audio/kdrama/kd_daedapae.mp3"
+    },
+    {
+      "id": "kd_na_mitji",
+      "packId": "kdrama",
+      "text": "나 믿지",
+      "register": "casual",
+      "translation": "You trust me, right?",
+      "situation": "Before a risky plan",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "나",
+          "gloss": "me"
+        },
+        {
+          "text": "믿지",
+          "gloss": "trust, right? (casual)"
+        }
+      ],
+      "literal": "me (you) trust, right",
+      "audio": "phrases/audio/kdrama/kd_na_mitji.mp3"
+    },
+    {
+      "id": "kd_bap_meogeosseo",
+      "packId": "kdrama",
+      "text": "밥 먹었어",
+      "register": "casual",
+      "translation": "Have you eaten?",
+      "situation": "Everyday way to show care",
+      "pronunciationOverride": null,
+      "pronunciationNote": "Said slowly, word by word: [밥 머거써]",
+      "parts": [
+        {
+          "text": "밥",
+          "gloss": "meal, rice"
+        },
+        {
+          "text": "먹었어",
+          "gloss": "ate (casual)"
+        }
+      ],
+      "literal": "meal ate",
+      "audio": "phrases/audio/kdrama/kd_bap_meogeosseo.mp3"
+    },
+    {
+      "id": "kd_hwanasseo",
+      "packId": "kdrama",
+      "text": "화났어",
+      "register": "casual",
+      "translation": "Are you angry?",
+      "situation": "Partner goes silent",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "화",
+          "gloss": "anger"
+        },
+        {
+          "text": "났어",
+          "gloss": "came out (casual, past)"
+        }
+      ],
+      "literal": "anger came out",
+      "audio": "phrases/audio/kdrama/kd_hwanasseo.mp3"
+    },
+    {
+      "id": "kd_gaji_ma",
+      "packId": "kdrama",
+      "text": "가지 마",
+      "register": "casual",
+      "translation": "Don't go",
+      "situation": "Airport scene",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "가지",
+          "gloss": "go"
+        },
+        {
+          "text": "마",
+          "gloss": "don't"
+        }
+      ],
+      "literal": "go don't",
+      "audio": "phrases/audio/kdrama/kd_gaji_ma.mp3"
+    },
+    {
+      "id": "kd_jeongmariya",
+      "packId": "kdrama",
+      "text": "정말이야",
+      "register": "casual",
+      "translation": "Really? / It's true",
+      "situation": "Shock or reassurance",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "정말",
+          "gloss": "truth, really"
+        },
+        {
+          "text": "이야",
+          "gloss": "it is (casual)"
+        }
+      ],
+      "literal": "it is truth",
+      "audio": "phrases/audio/kdrama/kd_jeongmariya.mp3"
+    },
+    {
+      "id": "kd_jal_jinaesseo",
+      "packId": "kdrama",
+      "text": "잘 지냈어",
+      "register": "casual",
+      "translation": "How have you been?",
+      "situation": "Meeting again after years",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "잘",
+          "gloss": "well"
+        },
+        {
+          "text": "지냈어",
+          "gloss": "got along (casual, past)"
+        }
+      ],
+      "literal": "well got along",
+      "audio": "phrases/audio/kdrama/kd_jal_jinaesseo.mp3"
+    },
+    {
+      "id": "fc_jeogiyo",
+      "packId": "food",
+      "text": "저기요",
+      "register": "polite",
+      "translation": "Excuse me! (calling a server)",
+      "situation": "Calling staff — the normal way in Korea",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "저기",
+          "gloss": "over there"
+        },
+        {
+          "text": "요",
+          "gloss": "polite ending"
+        }
+      ],
+      "literal": "over there (polite)",
+      "audio": "phrases/audio/food/fc_jeogiyo.mp3"
+    },
+    {
+      "id": "fc_menyupan",
+      "packId": "food",
+      "text": "메뉴판 주세요",
+      "register": "polite",
+      "translation": "The menu, please",
+      "situation": "Sitting down",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "메뉴판",
+          "gloss": "menu board"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "menu please give",
+      "audio": "phrases/audio/food/fc_menyupan.mp3"
+    },
+    {
+      "id": "fc_igeo_juseyo",
+      "packId": "food",
+      "text": "이거 주세요",
+      "register": "polite",
+      "translation": "This one, please",
+      "situation": "Pointing at the menu",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "이거",
+          "gloss": "this"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "this please give",
+      "audio": "phrases/audio/food/fc_igeo_juseyo.mp3"
+    },
+    {
+      "id": "fc_chucheon",
+      "packId": "food",
+      "text": "추천해 주세요",
+      "register": "polite",
+      "translation": "What do you recommend?",
+      "situation": "Can't decide",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "추천해",
+          "gloss": "recommend"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please (for me)"
+        }
+      ],
+      "literal": "recommend please",
+      "audio": "phrases/audio/food/fc_chucheon.mp3"
+    },
+    {
+      "id": "fc_tteokbokki",
+      "packId": "food",
+      "text": "떡볶이 주세요",
+      "register": "polite",
+      "translation": "Tteokbokki, please",
+      "situation": "Street food stall",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "떡볶이",
+          "gloss": "spicy rice cakes"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "tteokbokki please give",
+      "audio": "phrases/audio/food/fc_tteokbokki.mp3"
+    },
+    {
+      "id": "fc_maewoyo",
+      "packId": "food",
+      "text": "이거 매워요",
+      "register": "polite",
+      "translation": "Is this spicy?",
+      "situation": "Before ordering — rising intonation",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "이거",
+          "gloss": "this"
+        },
+        {
+          "text": "매워요",
+          "gloss": "is spicy"
+        }
+      ],
+      "literal": "this is spicy?",
+      "audio": "phrases/audio/food/fc_maewoyo.mp3"
+    },
+    {
+      "id": "fc_maepji_anke",
+      "packId": "food",
+      "text": "맵지 않게 해 주세요",
+      "register": "polite",
+      "translation": "Not spicy, please",
+      "situation": "Ordering for a sensitive stomach",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "맵지",
+          "gloss": "spicy"
+        },
+        {
+          "text": "않게",
+          "gloss": "not (so that)"
+        },
+        {
+          "text": "해",
+          "gloss": "make"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "not-spicy make please",
+      "audio": "phrases/audio/food/fc_maepji_anke.mp3"
+    },
+    {
+      "id": "fc_mul",
+      "packId": "food",
+      "text": "물 좀 주세요",
+      "register": "polite",
+      "translation": "Some water, please",
+      "situation": "Water is usually free and self-serve",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "물",
+          "gloss": "water"
+        },
+        {
+          "text": "좀",
+          "gloss": "a bit (softener)"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "water a bit please give",
+      "audio": "phrases/audio/food/fc_mul.mp3"
+    },
+    {
+      "id": "fc_apjeopsi",
+      "packId": "food",
+      "text": "앞접시 주세요",
+      "register": "polite",
+      "translation": "A small plate, please",
+      "situation": "Sharing dishes",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "앞접시",
+          "gloss": "small side plate"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "side plate please give",
+      "audio": "phrases/audio/food/fc_apjeopsi.mp3"
+    },
+    {
+      "id": "fc_banchan",
+      "packId": "food",
+      "text": "반찬 더 주세요",
+      "register": "polite",
+      "translation": "More side dishes, please",
+      "situation": "Refills are free",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "반찬",
+          "gloss": "side dishes"
+        },
+        {
+          "text": "더",
+          "gloss": "more"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "side dishes more please give",
+      "audio": "phrases/audio/food/fc_banchan.mp3"
+    },
+    {
+      "id": "fc_gungmul",
+      "packId": "food",
+      "text": "국물 더 주세요",
+      "register": "polite",
+      "translation": "More broth, please",
+      "situation": "Soup and hot pot",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "국물",
+          "gloss": "broth"
+        },
+        {
+          "text": "더",
+          "gloss": "more"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "broth more please give",
+      "audio": "phrases/audio/food/fc_gungmul.mp3"
+    },
+    {
+      "id": "fc_americano",
+      "packId": "food",
+      "text": "아이스 아메리카노 주세요",
+      "register": "polite",
+      "translation": "An iced americano, please",
+      "situation": "Café order",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "아이스",
+          "gloss": "iced"
+        },
+        {
+          "text": "아메리카노",
+          "gloss": "americano"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "iced americano please give",
+      "audio": "phrases/audio/food/fc_americano.mp3"
+    },
+    {
+      "id": "fc_ttatteutan",
+      "packId": "food",
+      "text": "따뜻한 거로 주세요",
+      "register": "polite",
+      "translation": "A hot one, please",
+      "situation": "Café — choosing hot over iced",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "따뜻한",
+          "gloss": "warm"
+        },
+        {
+          "text": "거로",
+          "gloss": "one (as choice)"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "warm one please give",
+      "audio": "phrases/audio/food/fc_ttatteutan.mp3"
+    },
+    {
+      "id": "fc_eoreum",
+      "packId": "food",
+      "text": "얼음 빼 주세요",
+      "register": "polite",
+      "translation": "No ice, please",
+      "situation": "Café drinks",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "얼음",
+          "gloss": "ice"
+        },
+        {
+          "text": "빼",
+          "gloss": "take out"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "ice take out please",
+      "audio": "phrases/audio/food/fc_eoreum.mp3"
+    },
+    {
+      "id": "fc_meogeulgeyo",
+      "packId": "food",
+      "text": "여기서 먹을게요",
+      "register": "polite",
+      "translation": "I'll eat here",
+      "situation": "Café — eat in or take away?",
+      "pronunciationOverride": "여기서 머글께요",
+      "pronunciationNote": "The ending -ㄹ게 is always pronounced tense [께], but written 게",
+      "parts": [
+        {
+          "text": "여기서",
+          "gloss": "here"
+        },
+        {
+          "text": "먹을게요",
+          "gloss": "I'll eat"
+        }
+      ],
+      "literal": "here (I) will eat",
+      "audio": "phrases/audio/food/fc_meogeulgeyo.mp3"
+    },
+    {
+      "id": "fc_pojang",
+      "packId": "food",
+      "text": "포장해 주세요",
+      "register": "polite",
+      "translation": "To go, please",
+      "situation": "Takeaway",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "포장해",
+          "gloss": "wrap up"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "wrap up please",
+      "audio": "phrases/audio/food/fc_pojang.mp3"
+    },
+    {
+      "id": "fc_meokgetseumnida",
+      "packId": "food",
+      "text": "잘 먹겠습니다",
+      "register": "formal",
+      "translation": "Thanks for the food! (before eating)",
+      "situation": "Said before every meal",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "잘",
+          "gloss": "well"
+        },
+        {
+          "text": "먹겠습니다",
+          "gloss": "will eat (formal)"
+        }
+      ],
+      "literal": "(I) will eat well",
+      "audio": "phrases/audio/food/fc_meokgetseumnida.mp3"
+    },
+    {
+      "id": "fc_masisseoyo",
+      "packId": "food",
+      "text": "맛있어요",
+      "register": "polite",
+      "translation": "It's delicious",
+      "situation": "Complimenting the food",
+      "pronunciationOverride": null,
+      "pronunciationNote": "Also heard as [마디써요] — both are standard",
+      "parts": [
+        {
+          "text": "맛",
+          "gloss": "taste"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "there is taste",
+      "audio": "phrases/audio/food/fc_masisseoyo.mp3"
+    },
+    {
+      "id": "fc_jinjja_masitda",
+      "packId": "food",
+      "text": "진짜 맛있다",
+      "register": "casual",
+      "translation": "So good!",
+      "situation": "Reacting with friends",
+      "pronunciationOverride": null,
+      "pronunciationNote": "Also heard as [마딛따] — both are standard",
+      "parts": [
+        {
+          "text": "진짜",
+          "gloss": "really"
+        },
+        {
+          "text": "맛있다",
+          "gloss": "tasty"
+        }
+      ],
+      "literal": "really tasty",
+      "audio": "phrases/audio/food/fc_jinjja_masitda.mp3"
+    },
+    {
+      "id": "fc_masitge",
+      "packId": "food",
+      "text": "맛있게 드세요",
+      "register": "polite",
+      "translation": "Enjoy your meal",
+      "situation": "Staff to customers",
+      "pronunciationOverride": null,
+      "pronunciationNote": "Also heard as [마딛께] — both are standard",
+      "parts": [
+        {
+          "text": "맛있게",
+          "gloss": "deliciously"
+        },
+        {
+          "text": "드세요",
+          "gloss": "eat (honorific)"
+        }
+      ],
+      "literal": "eat deliciously",
+      "audio": "phrases/audio/food/fc_masitge.mp3"
+    },
+    {
+      "id": "fc_mani_deuseyo",
+      "packId": "food",
+      "text": "많이 드세요",
+      "register": "polite",
+      "translation": "Eat plenty!",
+      "situation": "Host or grandma serving food",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "많이",
+          "gloss": "a lot"
+        },
+        {
+          "text": "드세요",
+          "gloss": "eat (honorific)"
+        }
+      ],
+      "literal": "eat a lot",
+      "audio": "phrases/audio/food/fc_mani_deuseyo.mp3"
+    },
+    {
+      "id": "fc_baegopayo",
+      "packId": "food",
+      "text": "배고파요",
+      "register": "polite",
+      "translation": "I'm hungry",
+      "situation": "Before lunch",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "배",
+          "gloss": "stomach"
+        },
+        {
+          "text": "고파요",
+          "gloss": "is hungry"
+        }
+      ],
+      "literal": "stomach is hungry",
+      "audio": "phrases/audio/food/fc_baegopayo.mp3"
+    },
+    {
+      "id": "fc_baebulleoyo",
+      "packId": "food",
+      "text": "배불러요",
+      "register": "polite",
+      "translation": "I'm full",
+      "situation": "Refusing seconds",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "배",
+          "gloss": "stomach"
+        },
+        {
+          "text": "불러요",
+          "gloss": "is full"
+        }
+      ],
+      "literal": "stomach is full",
+      "audio": "phrases/audio/food/fc_baebulleoyo.mp3"
+    },
+    {
+      "id": "fc_meogeotseumnida",
+      "packId": "food",
+      "text": "잘 먹었습니다",
+      "register": "formal",
+      "translation": "Thanks for the meal! (after eating)",
+      "situation": "Leaving the table or the restaurant",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "잘",
+          "gloss": "well"
+        },
+        {
+          "text": "먹었습니다",
+          "gloss": "ate (formal)"
+        }
+      ],
+      "literal": "(I) ate well",
+      "audio": "phrases/audio/food/fc_meogeotseumnida.mp3"
+    },
+    {
+      "id": "fc_gyesan",
+      "packId": "food",
+      "text": "계산해 주세요",
+      "register": "polite",
+      "translation": "The bill, please",
+      "situation": "Paying at the counter",
+      "pronunciationOverride": null,
+      "pronunciationNote": "계 is usually pronounced [게] in everyday speech",
+      "parts": [
+        {
+          "text": "계산해",
+          "gloss": "calculate"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "calculate please",
+      "audio": "phrases/audio/food/fc_gyesan.mp3"
+    },
+    {
+      "id": "fc_kadeu",
+      "packId": "food",
+      "text": "카드 돼요",
+      "register": "polite",
+      "translation": "Can I pay by card?",
+      "situation": "Small shops and stalls",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "카드",
+          "gloss": "card"
+        },
+        {
+          "text": "돼요",
+          "gloss": "works"
+        }
+      ],
+      "literal": "card works?",
+      "audio": "phrases/audio/food/fc_kadeu.mp3"
+    },
+    {
+      "id": "fc_yeongsujeung",
+      "packId": "food",
+      "text": "영수증 주세요",
+      "register": "polite",
+      "translation": "A receipt, please",
+      "situation": "After paying",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "영수증",
+          "gloss": "receipt"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "receipt please give",
+      "audio": "phrases/audio/food/fc_yeongsujeung.mp3"
+    },
+    {
+      "id": "fc_myeot_bun",
+      "packId": "food",
+      "text": "몇 분이세요",
+      "register": "polite",
+      "translation": "How many in your party?",
+      "situation": "Staff greeting you at the door",
+      "pronunciationOverride": null,
+      "pronunciationNote": "In connected speech 분 turns tense after 몇: [멷뿌니세요]",
+      "parts": [
+        {
+          "text": "몇",
+          "gloss": "how many"
+        },
+        {
+          "text": "분",
+          "gloss": "people (honorific)"
+        },
+        {
+          "text": "이세요",
+          "gloss": "are"
+        }
+      ],
+      "literal": "how many people are (you)",
+      "audio": "phrases/audio/food/fc_myeot_bun.mp3"
+    },
+    {
+      "id": "fc_du_myeong",
+      "packId": "food",
+      "text": "두 명이요",
+      "register": "polite",
+      "translation": "Two people",
+      "situation": "Answering at the door",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "두",
+          "gloss": "two"
+        },
+        {
+          "text": "명",
+          "gloss": "people"
+        },
+        {
+          "text": "이요",
+          "gloss": "polite ending"
+        }
+      ],
+      "literal": "two people",
+      "audio": "phrases/audio/food/fc_du_myeong.mp3"
+    },
+    {
+      "id": "fc_geonbae",
+      "packId": "food",
+      "text": "건배",
+      "register": "casual",
+      "translation": "Cheers!",
+      "situation": "Raising glasses",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "건배",
+          "gloss": "toast (dry the cup)"
+        }
+      ],
+      "literal": "dry the cup",
+      "audio": "phrases/audio/food/fc_geonbae.mp3"
+    },
+    {
+      "id": "ga_hwajangsil",
+      "packId": "around",
+      "text": "화장실 어디예요",
+      "register": "polite",
+      "translation": "Where's the restroom?",
+      "situation": "Anywhere",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "화장실",
+          "gloss": "restroom"
+        },
+        {
+          "text": "어디",
+          "gloss": "where"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "restroom where is",
+      "audio": "phrases/audio/around/ga_hwajangsil.mp3"
+    },
+    {
+      "id": "ga_jihacheol",
+      "packId": "around",
+      "text": "지하철역 어디예요",
+      "register": "polite",
+      "translation": "Where's the subway station?",
+      "situation": "Asking a passer-by",
+      "pronunciationOverride": "지하철력 어디예요",
+      "pronunciationNote": "An extra ㄴ slips in before 역 and turns into ㄹ after ㄹ — like 서울역 [서울력]",
+      "parts": [
+        {
+          "text": "지하철역",
+          "gloss": "subway station"
+        },
+        {
+          "text": "어디",
+          "gloss": "where"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "subway station where is",
+      "audio": "phrases/audio/around/ga_jihacheol.mp3"
+    },
+    {
+      "id": "ga_jeongnyujang",
+      "packId": "around",
+      "text": "버스 정류장 어디예요",
+      "register": "polite",
+      "translation": "Where's the bus stop?",
+      "situation": "Asking a passer-by",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "버스",
+          "gloss": "bus"
+        },
+        {
+          "text": "정류장",
+          "gloss": "stop"
+        },
+        {
+          "text": "어디",
+          "gloss": "where"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "bus stop where is",
+      "audio": "phrases/audio/around/ga_jeongnyujang.mp3"
+    },
+    {
+      "id": "ga_myeongdong",
+      "packId": "around",
+      "text": "이 버스 명동 가요",
+      "register": "polite",
+      "translation": "Does this bus go to Myeongdong?",
+      "situation": "Boarding a bus — rising intonation",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "이",
+          "gloss": "this"
+        },
+        {
+          "text": "버스",
+          "gloss": "bus"
+        },
+        {
+          "text": "명동",
+          "gloss": "Myeongdong"
+        },
+        {
+          "text": "가요",
+          "gloss": "goes"
+        }
+      ],
+      "literal": "this bus Myeongdong goes?",
+      "audio": "phrases/audio/around/ga_myeongdong.mp3"
+    },
+    {
+      "id": "ga_chulgu",
+      "packId": "around",
+      "text": "몇 번 출구예요",
+      "register": "polite",
+      "translation": "Which exit number?",
+      "situation": "Subway stations have numbered exits",
+      "pronunciationOverride": null,
+      "pronunciationNote": "In connected speech 번 turns tense after 몇: [멷뻔]",
+      "parts": [
+        {
+          "text": "몇",
+          "gloss": "how many"
+        },
+        {
+          "text": "번",
+          "gloss": "number"
+        },
+        {
+          "text": "출구",
+          "gloss": "exit"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "what number exit is",
+      "audio": "phrases/audio/around/ga_chulgu.mp3"
+    },
+    {
+      "id": "ga_garataya",
+      "packId": "around",
+      "text": "갈아타야 돼요",
+      "register": "polite",
+      "translation": "Do I need to transfer?",
+      "situation": "Subway transfers",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "갈아타야",
+          "gloss": "transfer (must)"
+        },
+        {
+          "text": "돼요",
+          "gloss": "is it so"
+        }
+      ],
+      "literal": "must transfer is it so?",
+      "audio": "phrases/audio/around/ga_garataya.mp3"
+    },
+    {
+      "id": "ga_daeum_yeok",
+      "packId": "around",
+      "text": "다음 역이 어디예요",
+      "register": "polite",
+      "translation": "What's the next station?",
+      "situation": "On the train",
+      "pronunciationOverride": null,
+      "pronunciationNote": "In fast speech an extra ㄴ slips in: [다음녀기]",
+      "parts": [
+        {
+          "text": "다음",
+          "gloss": "next"
+        },
+        {
+          "text": "역이",
+          "gloss": "station"
+        },
+        {
+          "text": "어디",
+          "gloss": "where"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "next station where is",
+      "audio": "phrases/audio/around/ga_daeum_yeok.mp3"
+    },
+    {
+      "id": "ga_naerilgeyo",
+      "packId": "around",
+      "text": "여기서 내릴게요",
+      "register": "polite",
+      "translation": "I'm getting off here",
+      "situation": "Squeezing out of a full train",
+      "pronunciationOverride": "여기서 내릴께요",
+      "pronunciationNote": "The ending -ㄹ게 is always pronounced tense [께], but written 게",
+      "parts": [
+        {
+          "text": "여기서",
+          "gloss": "here"
+        },
+        {
+          "text": "내릴게요",
+          "gloss": "I'll get off"
+        }
+      ],
+      "literal": "here (I) will get off",
+      "audio": "phrases/audio/around/ga_naerilgeyo.mp3"
+    },
+    {
+      "id": "ga_makcha",
+      "packId": "around",
+      "text": "막차가 몇 시예요",
+      "register": "polite",
+      "translation": "When is the last train?",
+      "situation": "Late night",
+      "pronunciationOverride": null,
+      "pronunciationNote": "In connected speech 시 turns tense after 몇: [멷씨]",
+      "parts": [
+        {
+          "text": "막차가",
+          "gloss": "the last train"
+        },
+        {
+          "text": "몇",
+          "gloss": "what"
+        },
+        {
+          "text": "시",
+          "gloss": "hour"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "last train what hour is",
+      "audio": "phrases/audio/around/ga_makcha.mp3"
+    },
+    {
+      "id": "ga_pyo",
+      "packId": "around",
+      "text": "표 한 장 주세요",
+      "register": "polite",
+      "translation": "One ticket, please",
+      "situation": "Buying a ticket",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "표",
+          "gloss": "ticket"
+        },
+        {
+          "text": "한",
+          "gloss": "one"
+        },
+        {
+          "text": "장",
+          "gloss": "sheet (counter)"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "ticket one sheet please give",
+      "audio": "phrases/audio/around/ga_pyo.mp3"
+    },
+    {
+      "id": "ga_wangbok",
+      "packId": "around",
+      "text": "왕복이요",
+      "register": "polite",
+      "translation": "Round trip",
+      "situation": "At the ticket counter",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "왕복",
+          "gloss": "round trip"
+        },
+        {
+          "text": "이요",
+          "gloss": "polite ending"
+        }
+      ],
+      "literal": "round trip (polite)",
+      "audio": "phrases/audio/around/ga_wangbok.mp3"
+    },
+    {
+      "id": "ga_gyotongkadeu",
+      "packId": "around",
+      "text": "교통카드 충전해 주세요",
+      "register": "polite",
+      "translation": "Top up my transit card, please",
+      "situation": "Convenience store or station",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "교통카드",
+          "gloss": "transit card"
+        },
+        {
+          "text": "충전해",
+          "gloss": "charge"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "transit card charge please",
+      "audio": "phrases/audio/around/ga_gyotongkadeu.mp3"
+    },
+    {
+      "id": "ga_taeksi",
+      "packId": "around",
+      "text": "택시 불러 주세요",
+      "register": "polite",
+      "translation": "Please call a taxi",
+      "situation": "Hotel front desk",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "택시",
+          "gloss": "taxi"
+        },
+        {
+          "text": "불러",
+          "gloss": "call"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "taxi call please",
+      "audio": "phrases/audio/around/ga_taeksi.mp3"
+    },
+    {
+      "id": "ga_juso",
+      "packId": "around",
+      "text": "이 주소로 가 주세요",
+      "register": "polite",
+      "translation": "Please go to this address",
+      "situation": "Showing the taxi driver your phone",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "이",
+          "gloss": "this"
+        },
+        {
+          "text": "주소로",
+          "gloss": "to address"
+        },
+        {
+          "text": "가",
+          "gloss": "go"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "this address-to go please",
+      "audio": "phrases/audio/around/ga_juso.mp3"
+    },
+    {
+      "id": "ga_gonghang",
+      "packId": "around",
+      "text": "공항까지 얼마예요",
+      "register": "polite",
+      "translation": "How much to the airport?",
+      "situation": "Taxi or shuttle",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "공항까지",
+          "gloss": "to the airport"
+        },
+        {
+          "text": "얼마",
+          "gloss": "how much"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "airport-to how much is",
+      "audio": "phrases/audio/around/ga_gonghang.mp3"
+    },
+    {
+      "id": "ga_eolmana",
+      "packId": "around",
+      "text": "얼마나 걸려요",
+      "register": "polite",
+      "translation": "How long does it take?",
+      "situation": "Planning the route",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "얼마나",
+          "gloss": "how much"
+        },
+        {
+          "text": "걸려요",
+          "gloss": "takes (time)"
+        }
+      ],
+      "literal": "how much takes",
+      "audio": "phrases/audio/around/ga_eolmana.mp3"
+    },
+    {
+      "id": "ga_cheoncheonhi",
+      "packId": "around",
+      "text": "천천히 가 주세요",
+      "register": "polite",
+      "translation": "Please drive slowly",
+      "situation": "Nervous in a taxi",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "천천히",
+          "gloss": "slowly"
+        },
+        {
+          "text": "가",
+          "gloss": "go"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "slowly go please",
+      "audio": "phrases/audio/around/ga_cheoncheonhi.mp3"
+    },
+    {
+      "id": "ga_ppalli",
+      "packId": "around",
+      "text": "빨리 가 주세요",
+      "register": "polite",
+      "translation": "Please hurry",
+      "situation": "Running late",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "빨리",
+          "gloss": "quickly"
+        },
+        {
+          "text": "가",
+          "gloss": "go"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "quickly go please",
+      "audio": "phrases/audio/around/ga_ppalli.mp3"
+    },
+    {
+      "id": "ga_seweo",
+      "packId": "around",
+      "text": "여기서 세워 주세요",
+      "register": "polite",
+      "translation": "Stop here, please",
+      "situation": "Getting out of a taxi",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "여기서",
+          "gloss": "here"
+        },
+        {
+          "text": "세워",
+          "gloss": "stop"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "here stop please",
+      "audio": "phrases/audio/around/ga_seweo.mp3"
+    },
+    {
+      "id": "ga_teureongkeu",
+      "packId": "around",
+      "text": "트렁크 열어 주세요",
+      "register": "polite",
+      "translation": "Please open the trunk",
+      "situation": "Taxi with luggage",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "트렁크",
+          "gloss": "trunk"
+        },
+        {
+          "text": "열어",
+          "gloss": "open"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "trunk open please",
+      "audio": "phrases/audio/around/ga_teureongkeu.mp3"
+    },
+    {
+      "id": "ga_ttokbaro",
+      "packId": "around",
+      "text": "똑바로 가세요",
+      "register": "polite",
+      "translation": "Go straight",
+      "situation": "Directions you'll hear",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "똑바로",
+          "gloss": "straight"
+        },
+        {
+          "text": "가세요",
+          "gloss": "go (polite)"
+        }
+      ],
+      "literal": "straight go",
+      "audio": "phrases/audio/around/ga_ttokbaro.mp3"
+    },
+    {
+      "id": "ga_oreunjjok",
+      "packId": "around",
+      "text": "오른쪽으로 가세요",
+      "register": "polite",
+      "translation": "Go right",
+      "situation": "Directions you'll hear",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "오른쪽으로",
+          "gloss": "to the right"
+        },
+        {
+          "text": "가세요",
+          "gloss": "go (polite)"
+        }
+      ],
+      "literal": "right-to go",
+      "audio": "phrases/audio/around/ga_oreunjjok.mp3"
+    },
+    {
+      "id": "ga_oenjjok",
+      "packId": "around",
+      "text": "왼쪽으로 가세요",
+      "register": "polite",
+      "translation": "Go left",
+      "situation": "Directions you'll hear",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "왼쪽으로",
+          "gloss": "to the left"
+        },
+        {
+          "text": "가세요",
+          "gloss": "go (polite)"
+        }
+      ],
+      "literal": "left-to go",
+      "audio": "phrases/audio/around/ga_oenjjok.mp3"
+    },
+    {
+      "id": "ga_georeoseo",
+      "packId": "around",
+      "text": "걸어서 갈 수 있어요",
+      "register": "polite",
+      "translation": "Can I walk there?",
+      "situation": "Asking for directions",
+      "pronunciationOverride": "거러서 갈 쑤 이써요",
+      "pronunciationNote": "After the -ㄹ ending, the next sound turns tense: 갈 수 [갈쑤]",
+      "parts": [
+        {
+          "text": "걸어서",
+          "gloss": "on foot"
+        },
+        {
+          "text": "갈",
+          "gloss": "go"
+        },
+        {
+          "text": "수",
+          "gloss": "way, ability"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "on foot go way there is?",
+      "audio": "phrases/audio/around/ga_georeoseo.mp3"
+    },
+    {
+      "id": "ga_jido",
+      "packId": "around",
+      "text": "지도 좀 보여 주세요",
+      "register": "polite",
+      "translation": "Show me on the map, please",
+      "situation": "Asking for directions",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "지도",
+          "gloss": "map"
+        },
+        {
+          "text": "좀",
+          "gloss": "a bit (softener)"
+        },
+        {
+          "text": "보여",
+          "gloss": "show"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "map a bit show please",
+      "audio": "phrases/audio/around/ga_jido.mp3"
+    },
+    {
+      "id": "ga_yeogiga",
+      "packId": "around",
+      "text": "여기가 어디예요",
+      "register": "polite",
+      "translation": "Where am I?",
+      "situation": "Map app gave up",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "여기가",
+          "gloss": "here"
+        },
+        {
+          "text": "어디",
+          "gloss": "where"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "here where is",
+      "audio": "phrases/audio/around/ga_yeogiga.mp3"
+    },
+    {
+      "id": "ga_gireul",
+      "packId": "around",
+      "text": "길을 잃었어요",
+      "register": "polite",
+      "translation": "I'm lost",
+      "situation": "Asking for help",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "길을",
+          "gloss": "the way"
+        },
+        {
+          "text": "잃었어요",
+          "gloss": "lost"
+        }
+      ],
+      "literal": "(I) lost the way",
+      "audio": "phrases/audio/around/ga_gireul.mp3"
+    },
+    {
+      "id": "ga_sajin",
+      "packId": "around",
+      "text": "사진 좀 찍어 주세요",
+      "register": "polite",
+      "translation": "Could you take a photo of us?",
+      "situation": "Sightseeing",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "사진",
+          "gloss": "photo"
+        },
+        {
+          "text": "좀",
+          "gloss": "a bit (softener)"
+        },
+        {
+          "text": "찍어",
+          "gloss": "take"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "photo a bit take please",
+      "audio": "phrases/audio/around/ga_sajin.mp3"
+    },
+    {
+      "id": "ga_waipai",
+      "packId": "around",
+      "text": "와이파이 비밀번호 뭐예요",
+      "register": "polite",
+      "translation": "What's the Wi-Fi password?",
+      "situation": "Café or hotel",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "와이파이",
+          "gloss": "Wi-Fi"
+        },
+        {
+          "text": "비밀번호",
+          "gloss": "password"
+        },
+        {
+          "text": "뭐",
+          "gloss": "what"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "Wi-Fi password what is",
+      "audio": "phrases/audio/around/ga_waipai.mp3"
+    },
+    {
+      "id": "ga_dowajuseyo",
+      "packId": "around",
+      "text": "도와주세요",
+      "register": "polite",
+      "translation": "Help me, please!",
+      "situation": "Any emergency",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "도와",
+          "gloss": "help"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "help please",
+      "audio": "phrases/audio/around/ga_dowajuseyo.mp3"
+    },
+    {
+      "id": "sm_eolmayeyo",
+      "packId": "shopping",
+      "text": "이거 얼마예요",
+      "register": "polite",
+      "translation": "How much is this?",
+      "situation": "Any shop",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "이거",
+          "gloss": "this"
+        },
+        {
+          "text": "얼마",
+          "gloss": "how much"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "this how much is",
+      "audio": "phrases/audio/shopping/sm_eolmayeyo.mp3"
+    },
+    {
+      "id": "sm_bissayo",
+      "packId": "shopping",
+      "text": "너무 비싸요",
+      "register": "polite",
+      "translation": "It's too expensive",
+      "situation": "Before haggling",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "너무",
+          "gloss": "too"
+        },
+        {
+          "text": "비싸요",
+          "gloss": "is expensive"
+        }
+      ],
+      "literal": "too expensive",
+      "audio": "phrases/audio/shopping/sm_bissayo.mp3"
+    },
+    {
+      "id": "sm_kkakka",
+      "packId": "shopping",
+      "text": "좀 깎아 주세요",
+      "register": "polite",
+      "translation": "Can you give me a discount?",
+      "situation": "Markets — not in department stores",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "좀",
+          "gloss": "a bit (softener)"
+        },
+        {
+          "text": "깎아",
+          "gloss": "cut (the price)"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "a bit cut please",
+      "audio": "phrases/audio/shopping/sm_kkakka.mp3"
+    },
+    {
+      "id": "sm_harin",
+      "packId": "shopping",
+      "text": "할인돼요",
+      "register": "polite",
+      "translation": "Is there a discount?",
+      "situation": "Asking politely",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "할인",
+          "gloss": "discount"
+        },
+        {
+          "text": "돼요",
+          "gloss": "works"
+        }
+      ],
+      "literal": "discount works?",
+      "audio": "phrases/audio/shopping/sm_harin.mp3"
+    },
+    {
+      "id": "sm_seil",
+      "packId": "shopping",
+      "text": "세일해요",
+      "register": "polite",
+      "translation": "Is it on sale?",
+      "situation": "Rising intonation",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "세일",
+          "gloss": "sale"
+        },
+        {
+          "text": "해요",
+          "gloss": "does"
+        }
+      ],
+      "literal": "sale does?",
+      "audio": "phrases/audio/shopping/sm_seil.mp3"
+    },
+    {
+      "id": "sm_gugyeong",
+      "packId": "shopping",
+      "text": "그냥 구경하는 거예요",
+      "register": "polite",
+      "translation": "I'm just looking",
+      "situation": "Shop staff approaches",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "그냥",
+          "gloss": "just"
+        },
+        {
+          "text": "구경하는",
+          "gloss": "looking around"
+        },
+        {
+          "text": "거예요",
+          "gloss": "it is"
+        }
+      ],
+      "literal": "just looking-around it is",
+      "audio": "phrases/audio/shopping/sm_gugyeong.mp3"
+    },
+    {
+      "id": "sm_ibeo",
+      "packId": "shopping",
+      "text": "이거 입어 봐도 돼요",
+      "register": "polite",
+      "translation": "Can I try this on?",
+      "situation": "Clothes shop",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "이거",
+          "gloss": "this"
+        },
+        {
+          "text": "입어",
+          "gloss": "wear"
+        },
+        {
+          "text": "봐도",
+          "gloss": "try (even if)"
+        },
+        {
+          "text": "돼요",
+          "gloss": "is it okay"
+        }
+      ],
+      "literal": "this wear try okay?",
+      "audio": "phrases/audio/shopping/sm_ibeo.mp3"
+    },
+    {
+      "id": "sm_saekkkal",
+      "packId": "shopping",
+      "text": "다른 색깔 있어요",
+      "register": "polite",
+      "translation": "Do you have other colors?",
+      "situation": "Clothes shop",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "다른",
+          "gloss": "other"
+        },
+        {
+          "text": "색깔",
+          "gloss": "color"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "other color there is?",
+      "audio": "phrases/audio/shopping/sm_saekkkal.mp3"
+    },
+    {
+      "id": "sm_keun",
+      "packId": "shopping",
+      "text": "더 큰 사이즈 있어요",
+      "register": "polite",
+      "translation": "Do you have a bigger size?",
+      "situation": "Clothes shop",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "더",
+          "gloss": "more"
+        },
+        {
+          "text": "큰",
+          "gloss": "big"
+        },
+        {
+          "text": "사이즈",
+          "gloss": "size"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "more big size there is?",
+      "audio": "phrases/audio/shopping/sm_keun.mp3"
+    },
+    {
+      "id": "sm_jageun",
+      "packId": "shopping",
+      "text": "더 작은 거 있어요",
+      "register": "polite",
+      "translation": "Do you have a smaller one?",
+      "situation": "Clothes shop",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "더",
+          "gloss": "more"
+        },
+        {
+          "text": "작은",
+          "gloss": "small"
+        },
+        {
+          "text": "거",
+          "gloss": "one"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "more small one there is?",
+      "audio": "phrases/audio/shopping/sm_jageun.mp3"
+    },
+    {
+      "id": "sm_yeppeoyo",
+      "packId": "shopping",
+      "text": "너무 예뻐요",
+      "register": "polite",
+      "translation": "It's so pretty",
+      "situation": "Complimenting",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "너무",
+          "gloss": "so"
+        },
+        {
+          "text": "예뻐요",
+          "gloss": "is pretty"
+        }
+      ],
+      "literal": "so pretty",
+      "audio": "phrases/audio/shopping/sm_yeppeoyo.mp3"
+    },
+    {
+      "id": "sm_eoullyeoyo",
+      "packId": "shopping",
+      "text": "잘 어울려요",
+      "register": "polite",
+      "translation": "It suits you",
+      "situation": "Staff or friends when you try something on",
+      "pronunciationOverride": null,
+      "pronunciationNote": "In connected speech the words link: [자러울려요]",
+      "parts": [
+        {
+          "text": "잘",
+          "gloss": "well"
+        },
+        {
+          "text": "어울려요",
+          "gloss": "matches"
+        }
+      ],
+      "literal": "well matches",
+      "audio": "phrases/audio/shopping/sm_eoullyeoyo.mp3"
+    },
+    {
+      "id": "sm_pumjeol",
+      "packId": "shopping",
+      "text": "품절이에요",
+      "register": "polite",
+      "translation": "It's sold out",
+      "situation": "What staff may say",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "품절",
+          "gloss": "sold out"
+        },
+        {
+          "text": "이에요",
+          "gloss": "it is"
+        }
+      ],
+      "literal": "sold out it is",
+      "audio": "phrases/audio/shopping/sm_pumjeol.mp3"
+    },
+    {
+      "id": "sm_igeollo",
+      "packId": "shopping",
+      "text": "이걸로 할게요",
+      "register": "polite",
+      "translation": "I'll take this one",
+      "situation": "Deciding",
+      "pronunciationOverride": "이걸로 할께요",
+      "pronunciationNote": "The ending -ㄹ게 is always pronounced tense [께], but written 게",
+      "parts": [
+        {
+          "text": "이걸로",
+          "gloss": "with this"
+        },
+        {
+          "text": "할게요",
+          "gloss": "I'll do"
+        }
+      ],
+      "literal": "with this (I) will do",
+      "audio": "phrases/audio/shopping/sm_igeollo.mp3"
+    },
+    {
+      "id": "sm_kadeuro",
+      "packId": "shopping",
+      "text": "카드로 계산할게요",
+      "register": "polite",
+      "translation": "I'll pay by card",
+      "situation": "At the counter",
+      "pronunciationOverride": "카드로 계산할께요",
+      "pronunciationNote": "The ending -ㄹ게 is always pronounced tense [께], but written 게; 계 usually sounds [게]",
+      "parts": [
+        {
+          "text": "카드로",
+          "gloss": "by card"
+        },
+        {
+          "text": "계산할게요",
+          "gloss": "I'll pay"
+        }
+      ],
+      "literal": "by card (I) will pay",
+      "audio": "phrases/audio/shopping/sm_kadeuro.mp3"
+    },
+    {
+      "id": "sm_hyeongeum",
+      "packId": "shopping",
+      "text": "현금으로 할게요",
+      "register": "polite",
+      "translation": "I'll pay in cash",
+      "situation": "At the counter",
+      "pronunciationOverride": "현그므로 할께요",
+      "pronunciationNote": "The ending -ㄹ게 is always pronounced tense [께], but written 게",
+      "parts": [
+        {
+          "text": "현금으로",
+          "gloss": "in cash"
+        },
+        {
+          "text": "할게요",
+          "gloss": "I'll do"
+        }
+      ],
+      "literal": "in cash (I) will do",
+      "audio": "phrases/audio/shopping/sm_hyeongeum.mp3"
+    },
+    {
+      "id": "sm_gyesaneun",
+      "packId": "shopping",
+      "text": "계산은 어디서 해요",
+      "register": "polite",
+      "translation": "Where do I pay?",
+      "situation": "Big stores",
+      "pronunciationOverride": null,
+      "pronunciationNote": "계 usually sounds [게] in everyday speech",
+      "parts": [
+        {
+          "text": "계산은",
+          "gloss": "paying"
+        },
+        {
+          "text": "어디서",
+          "gloss": "where"
+        },
+        {
+          "text": "해요",
+          "gloss": "do"
+        }
+      ],
+      "literal": "paying where do",
+      "audio": "phrases/audio/shopping/sm_gyesaneun.mp3"
+    },
+    {
+      "id": "sm_bongtu_q",
+      "packId": "shopping",
+      "text": "봉투 필요하세요",
+      "register": "polite",
+      "translation": "Do you need a bag?",
+      "situation": "Staff asks — bags usually cost extra",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "봉투",
+          "gloss": "bag"
+        },
+        {
+          "text": "필요하세요",
+          "gloss": "need (honorific)"
+        }
+      ],
+      "literal": "bag need?",
+      "audio": "phrases/audio/shopping/sm_bongtu_q.mp3"
+    },
+    {
+      "id": "sm_bongtu",
+      "packId": "shopping",
+      "text": "봉투 하나 주세요",
+      "register": "polite",
+      "translation": "One bag, please",
+      "situation": "At the counter",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "봉투",
+          "gloss": "bag"
+        },
+        {
+          "text": "하나",
+          "gloss": "one"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "bag one please give",
+      "audio": "phrases/audio/shopping/sm_bongtu.mp3"
+    },
+    {
+      "id": "sm_jeongnip",
+      "packId": "shopping",
+      "text": "포인트 적립해 드릴까요",
+      "register": "polite",
+      "translation": "Shall I add points to your card?",
+      "situation": "Staff at the counter",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "포인트",
+          "gloss": "points"
+        },
+        {
+          "text": "적립해",
+          "gloss": "save up"
+        },
+        {
+          "text": "드릴까요",
+          "gloss": "shall I (for you)"
+        }
+      ],
+      "literal": "points save-up shall I",
+      "audio": "phrases/audio/shopping/sm_jeongnip.mp3"
+    },
+    {
+      "id": "sm_seonmul",
+      "packId": "shopping",
+      "text": "선물 포장해 주세요",
+      "register": "polite",
+      "translation": "Please gift-wrap it",
+      "situation": "Buying a gift",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "선물",
+          "gloss": "gift"
+        },
+        {
+          "text": "포장해",
+          "gloss": "wrap"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "gift wrap please",
+      "audio": "phrases/audio/shopping/sm_seonmul.mp3"
+    },
+    {
+      "id": "sm_hwanbul",
+      "packId": "shopping",
+      "text": "환불해 주세요",
+      "register": "polite",
+      "translation": "I'd like a refund",
+      "situation": "Returning an item",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "환불해",
+          "gloss": "refund"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "refund please",
+      "audio": "phrases/audio/shopping/sm_hwanbul.mp3"
+    },
+    {
+      "id": "sm_gyohwan",
+      "packId": "shopping",
+      "text": "교환해 주세요",
+      "register": "polite",
+      "translation": "I'd like to exchange it",
+      "situation": "Wrong size",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "교환해",
+          "gloss": "exchange"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "exchange please",
+      "audio": "phrases/audio/shopping/sm_gyohwan.mp3"
+    },
+    {
+      "id": "sm_myeonse",
+      "packId": "shopping",
+      "text": "면세 돼요",
+      "register": "polite",
+      "translation": "Is it tax-free?",
+      "situation": "Tourist shops",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "면세",
+          "gloss": "tax-free"
+        },
+        {
+          "text": "돼요",
+          "gloss": "works"
+        }
+      ],
+      "literal": "tax-free works?",
+      "audio": "phrases/audio/shopping/sm_myeonse.mp3"
+    },
+    {
+      "id": "sm_jandon",
+      "packId": "shopping",
+      "text": "잔돈 있어요",
+      "register": "polite",
+      "translation": "Do you have change?",
+      "situation": "Paying with a big bill",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "잔돈",
+          "gloss": "small change"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "change there is?",
+      "audio": "phrases/audio/shopping/sm_jandon.mp3"
+    },
+    {
+      "id": "sm_hwanjeon",
+      "packId": "shopping",
+      "text": "환전하고 싶어요",
+      "register": "polite",
+      "translation": "I'd like to exchange money",
+      "situation": "Bank or exchange office",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "환전하고",
+          "gloss": "exchange money"
+        },
+        {
+          "text": "싶어요",
+          "gloss": "want"
+        }
+      ],
+      "literal": "exchange-money want",
+      "audio": "phrases/audio/shopping/sm_hwanjeon.mp3"
+    },
+    {
+      "id": "sm_don_chatgo",
+      "packId": "shopping",
+      "text": "돈 찾고 싶어요",
+      "register": "polite",
+      "translation": "I want to withdraw money",
+      "situation": "At the bank",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "돈",
+          "gloss": "money"
+        },
+        {
+          "text": "찾고",
+          "gloss": "take out"
+        },
+        {
+          "text": "싶어요",
+          "gloss": "want"
+        }
+      ],
+      "literal": "money take-out want",
+      "audio": "phrases/audio/shopping/sm_don_chatgo.mp3"
+    },
+    {
+      "id": "sm_inchulgi",
+      "packId": "shopping",
+      "text": "현금인출기 어디 있어요",
+      "register": "polite",
+      "translation": "Where's an ATM?",
+      "situation": "Need cash",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "현금인출기",
+          "gloss": "ATM"
+        },
+        {
+          "text": "어디",
+          "gloss": "where"
+        },
+        {
+          "text": "있어요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "ATM where is",
+      "audio": "phrases/audio/shopping/sm_inchulgi.mp3"
+    },
+    {
+      "id": "sm_hwanyul",
+      "packId": "shopping",
+      "text": "오늘 환율 얼마예요",
+      "register": "polite",
+      "translation": "What's today's exchange rate?",
+      "situation": "Exchange office",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "오늘",
+          "gloss": "today"
+        },
+        {
+          "text": "환율",
+          "gloss": "exchange rate"
+        },
+        {
+          "text": "얼마",
+          "gloss": "how much"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "today rate how much is",
+      "audio": "phrases/audio/shopping/sm_hwanyul.mp3"
+    },
+    {
+      "id": "sm_yeongeop",
+      "packId": "shopping",
+      "text": "영업시간이 어떻게 돼요",
+      "register": "polite",
+      "translation": "What are your opening hours?",
+      "situation": "Calling or at the door",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "영업시간이",
+          "gloss": "business hours"
+        },
+        {
+          "text": "어떻게",
+          "gloss": "how"
+        },
+        {
+          "text": "돼요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "business hours how is",
+      "audio": "phrases/audio/shopping/sm_yeongeop.mp3"
+    },
+    {
+      "id": "fr_jinjja",
+      "packId": "feelings",
+      "text": "진짜",
+      "register": "casual",
+      "translation": "Really?! / Seriously?",
+      "situation": "Reacting to news — tone does the work",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "진짜",
+          "gloss": "real, really"
+        }
+      ],
+      "literal": "really",
+      "audio": "phrases/audio/feelings/fr_jinjja.mp3"
+    },
+    {
+      "id": "fr_heol",
+      "packId": "feelings",
+      "text": "헐",
+      "register": "casual",
+      "translation": "OMG / No way",
+      "situation": "Texting and shock",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "헐",
+          "gloss": "(exclamation)"
+        }
+      ],
+      "literal": "(gasp)",
+      "audio": "phrases/audio/feelings/fr_heol.mp3"
+    },
+    {
+      "id": "fr_molla",
+      "packId": "feelings",
+      "text": "몰라",
+      "register": "casual",
+      "translation": "I don't know",
+      "situation": "Shrugging it off",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "몰라",
+          "gloss": "don't know (casual)"
+        }
+      ],
+      "literal": "(I) don't know",
+      "audio": "phrases/audio/feelings/fr_molla.mp3"
+    },
+    {
+      "id": "fr_pigonhae",
+      "packId": "feelings",
+      "text": "피곤해",
+      "register": "casual",
+      "translation": "I'm tired",
+      "situation": "End of a long day",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "피곤",
+          "gloss": "tiredness"
+        },
+        {
+          "text": "해",
+          "gloss": "am (casual)"
+        }
+      ],
+      "literal": "tiredness am",
+      "audio": "phrases/audio/feelings/fr_pigonhae.mp3"
+    },
+    {
+      "id": "fr_jollyeo",
+      "packId": "feelings",
+      "text": "졸려",
+      "register": "casual",
+      "translation": "I'm sleepy",
+      "situation": "Late night",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "졸려",
+          "gloss": "sleepy (casual)"
+        }
+      ],
+      "literal": "sleepy",
+      "audio": "phrases/audio/feelings/fr_jollyeo.mp3"
+    },
+    {
+      "id": "fr_simsimhae",
+      "packId": "feelings",
+      "text": "심심해",
+      "register": "casual",
+      "translation": "I'm bored",
+      "situation": "Nothing to do",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "심심",
+          "gloss": "boredom"
+        },
+        {
+          "text": "해",
+          "gloss": "am (casual)"
+        }
+      ],
+      "literal": "boredom am",
+      "audio": "phrases/audio/feelings/fr_simsimhae.mp3"
+    },
+    {
+      "id": "fr_jjajeungna",
+      "packId": "feelings",
+      "text": "짜증나",
+      "register": "casual",
+      "translation": "I'm so annoyed",
+      "situation": "Bad day",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "짜증",
+          "gloss": "irritation"
+        },
+        {
+          "text": "나",
+          "gloss": "comes out"
+        }
+      ],
+      "literal": "irritation comes out",
+      "audio": "phrases/audio/feelings/fr_jjajeungna.mp3"
+    },
+    {
+      "id": "fr_neomu_joa",
+      "packId": "feelings",
+      "text": "너무 좋아",
+      "register": "casual",
+      "translation": "I love it!",
+      "situation": "Something great happened",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "너무",
+          "gloss": "so"
+        },
+        {
+          "text": "좋아",
+          "gloss": "good (casual)"
+        }
+      ],
+      "literal": "so good",
+      "audio": "phrases/audio/feelings/fr_neomu_joa.mp3"
+    },
+    {
+      "id": "fr_sireo",
+      "packId": "feelings",
+      "text": "싫어",
+      "register": "casual",
+      "translation": "No! / I don't like it",
+      "situation": "Refusing",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "싫어",
+          "gloss": "dislike (casual)"
+        }
+      ],
+      "literal": "(I) dislike",
+      "audio": "phrases/audio/feelings/fr_sireo.mp3"
+    },
+    {
+      "id": "fr_utgyeo",
+      "packId": "feelings",
+      "text": "웃겨",
+      "register": "casual",
+      "translation": "That's so funny",
+      "situation": "Laughing at a joke",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "웃겨",
+          "gloss": "makes laugh"
+        }
+      ],
+      "literal": "makes (me) laugh",
+      "audio": "phrases/audio/feelings/fr_utgyeo.mp3"
+    },
+    {
+      "id": "fr_gwiyeowo",
+      "packId": "feelings",
+      "text": "귀여워",
+      "register": "casual",
+      "translation": "So cute!",
+      "situation": "Puppies, babies, idols",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "귀여워",
+          "gloss": "cute (casual)"
+        }
+      ],
+      "literal": "cute",
+      "audio": "phrases/audio/feelings/fr_gwiyeowo.mp3"
+    },
+    {
+      "id": "fr_meositda",
+      "packId": "feelings",
+      "text": "멋있다",
+      "register": "casual",
+      "translation": "So cool!",
+      "situation": "Someone looks or does great",
+      "pronunciationOverride": null,
+      "pronunciationNote": "Also heard as [머딛따] — both are standard",
+      "parts": [
+        {
+          "text": "멋",
+          "gloss": "style, coolness"
+        },
+        {
+          "text": "있다",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "there is coolness",
+      "audio": "phrases/audio/feelings/fr_meositda.mp3"
+    },
+    {
+      "id": "fr_seolle",
+      "packId": "feelings",
+      "text": "설레",
+      "register": "casual",
+      "translation": "My heart is fluttering",
+      "situation": "Before a date",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "설레",
+          "gloss": "flutter (casual)"
+        }
+      ],
+      "literal": "(heart) flutters",
+      "audio": "phrases/audio/feelings/fr_seolle.mp3"
+    },
+    {
+      "id": "fr_bureopda",
+      "packId": "feelings",
+      "text": "부럽다",
+      "register": "casual",
+      "translation": "I'm so jealous",
+      "situation": "Friend's vacation photos",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "부럽",
+          "gloss": "envious"
+        },
+        {
+          "text": "다",
+          "gloss": "plain ending"
+        }
+      ],
+      "literal": "envious",
+      "audio": "phrases/audio/feelings/fr_bureopda.mp3"
+    },
+    {
+      "id": "fr_jokketda",
+      "packId": "feelings",
+      "text": "좋겠다",
+      "register": "casual",
+      "translation": "Lucky you!",
+      "situation": "Friend shares good news",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "좋",
+          "gloss": "good"
+        },
+        {
+          "text": "겠다",
+          "gloss": "must be"
+        }
+      ],
+      "literal": "(it) must be good",
+      "audio": "phrases/audio/feelings/fr_jokketda.mp3"
+    },
+    {
+      "id": "fr_museowo",
+      "packId": "feelings",
+      "text": "무서워",
+      "register": "casual",
+      "translation": "I'm scared",
+      "situation": "Horror movie",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "무서워",
+          "gloss": "scary (casual)"
+        }
+      ],
+      "literal": "scary",
+      "audio": "phrases/audio/feelings/fr_museowo.mp3"
+    },
+    {
+      "id": "fr_soksanghae",
+      "packId": "feelings",
+      "text": "속상해",
+      "register": "casual",
+      "translation": "I'm upset",
+      "situation": "Something went wrong",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "속상",
+          "gloss": "hurt inside"
+        },
+        {
+          "text": "해",
+          "gloss": "am (casual)"
+        }
+      ],
+      "literal": "hurt-inside am",
+      "audio": "phrases/audio/feelings/fr_soksanghae.mp3"
+    },
+    {
+      "id": "fr_geokjeongdwae",
+      "packId": "feelings",
+      "text": "걱정돼",
+      "register": "casual",
+      "translation": "I'm worried",
+      "situation": "Waiting for news",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "걱정",
+          "gloss": "worry"
+        },
+        {
+          "text": "돼",
+          "gloss": "becomes"
+        }
+      ],
+      "literal": "worry becomes",
+      "audio": "phrases/audio/feelings/fr_geokjeongdwae.mp3"
+    },
+    {
+      "id": "fr_dahaengida",
+      "packId": "feelings",
+      "text": "다행이다",
+      "register": "casual",
+      "translation": "What a relief",
+      "situation": "Good news after worry",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "다행",
+          "gloss": "good fortune"
+        },
+        {
+          "text": "이다",
+          "gloss": "it is"
+        }
+      ],
+      "literal": "it is good fortune",
+      "audio": "phrases/audio/feelings/fr_dahaengida.mp3"
+    },
+    {
+      "id": "fr_aswipda",
+      "packId": "feelings",
+      "text": "아쉽다",
+      "register": "casual",
+      "translation": "What a shame",
+      "situation": "Missed out on something",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "아쉽",
+          "gloss": "regrettable"
+        },
+        {
+          "text": "다",
+          "gloss": "plain ending"
+        }
+      ],
+      "literal": "regrettable",
+      "audio": "phrases/audio/feelings/fr_aswipda.mp3"
+    },
+    {
+      "id": "fr_sinnanda",
+      "packId": "feelings",
+      "text": "신난다",
+      "register": "casual",
+      "translation": "I'm so excited!",
+      "situation": "Weekend, concert, trip",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "신",
+          "gloss": "excitement"
+        },
+        {
+          "text": "난다",
+          "gloss": "comes out"
+        }
+      ],
+      "literal": "excitement comes out",
+      "audio": "phrases/audio/feelings/fr_sinnanda.mp3"
+    },
+    {
+      "id": "fr_baegopa_jukgesseo",
+      "packId": "feelings",
+      "text": "배고파 죽겠어",
+      "register": "casual",
+      "translation": "I'm starving",
+      "situation": "Exaggerating, like 'dying of hunger'",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "배고파",
+          "gloss": "hungry"
+        },
+        {
+          "text": "죽겠어",
+          "gloss": "could die"
+        }
+      ],
+      "literal": "hungry (I) could die",
+      "audio": "phrases/audio/feelings/fr_baegopa_jukgesseo.mp3"
+    },
+    {
+      "id": "fr_eoieopseo",
+      "packId": "feelings",
+      "text": "어이없어",
+      "register": "casual",
+      "translation": "Unbelievable / That's absurd",
+      "situation": "Exasperated",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "어이",
+          "gloss": "sense"
+        },
+        {
+          "text": "없어",
+          "gloss": "there isn't"
+        }
+      ],
+      "literal": "there is no sense",
+      "audio": "phrases/audio/feelings/fr_eoieopseo.mp3"
+    },
+    {
+      "id": "fr_maldo_an_dwae",
+      "packId": "feelings",
+      "text": "말도 안 돼",
+      "register": "casual",
+      "translation": "No way! / That's ridiculous",
+      "situation": "Can't believe it",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "말도",
+          "gloss": "even words"
+        },
+        {
+          "text": "안",
+          "gloss": "not"
+        },
+        {
+          "text": "돼",
+          "gloss": "work"
+        }
+      ],
+      "literal": "even words don't work",
+      "audio": "phrases/audio/feelings/fr_maldo_an_dwae.mp3"
+    },
+    {
+      "id": "fr_nollatjana",
+      "packId": "feelings",
+      "text": "놀랐잖아",
+      "register": "casual",
+      "translation": "You scared me!",
+      "situation": "Someone sneaks up on you",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "놀랐",
+          "gloss": "was startled"
+        },
+        {
+          "text": "잖아",
+          "gloss": "you know"
+        }
+      ],
+      "literal": "(I) was startled, you know",
+      "audio": "phrases/audio/feelings/fr_nollatjana.mp3"
+    },
+    {
+      "id": "fr_michigetda",
+      "packId": "feelings",
+      "text": "미치겠다",
+      "register": "casual",
+      "translation": "It's driving me crazy",
+      "situation": "Frustration — or overwhelming joy",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "미치",
+          "gloss": "go crazy"
+        },
+        {
+          "text": "겠다",
+          "gloss": "going to"
+        }
+      ],
+      "literal": "(I'm) going to go crazy",
+      "audio": "phrases/audio/feelings/fr_michigetda.mp3"
+    },
+    {
+      "id": "fr_gibun_joa",
+      "packId": "feelings",
+      "text": "기분 좋아",
+      "register": "casual",
+      "translation": "I'm in a good mood",
+      "situation": "Sunny day",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "기분",
+          "gloss": "mood"
+        },
+        {
+          "text": "좋아",
+          "gloss": "good (casual)"
+        }
+      ],
+      "literal": "mood good",
+      "audio": "phrases/audio/feelings/fr_gibun_joa.mp3"
+    },
+    {
+      "id": "fr_gunggeumhae",
+      "packId": "feelings",
+      "text": "궁금해",
+      "register": "casual",
+      "translation": "I'm curious",
+      "situation": "Wanting to know more",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "궁금",
+          "gloss": "curiosity"
+        },
+        {
+          "text": "해",
+          "gloss": "am (casual)"
+        }
+      ],
+      "literal": "curiosity am",
+      "audio": "phrases/audio/feelings/fr_gunggeumhae.mp3"
+    },
+    {
+      "id": "fr_himnae",
+      "packId": "feelings",
+      "text": "힘내",
+      "register": "casual",
+      "translation": "Cheer up! / You can do it",
+      "situation": "Supporting a friend",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "힘",
+          "gloss": "strength"
+        },
+        {
+          "text": "내",
+          "gloss": "put out"
+        }
+      ],
+      "literal": "put out strength",
+      "audio": "phrases/audio/feelings/fr_himnae.mp3"
+    },
+    {
+      "id": "fr_sugohaesseo",
+      "packId": "feelings",
+      "text": "수고했어",
+      "register": "casual",
+      "translation": "Good job / You worked hard",
+      "situation": "End of work or exams",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "수고",
+          "gloss": "hard work"
+        },
+        {
+          "text": "했어",
+          "gloss": "did (casual)"
+        }
+      ],
+      "literal": "did hard work",
+      "audio": "phrases/audio/feelings/fr_sugohaesseo.mp3"
+    },
+    {
+      "id": "lv_cheonnune",
+      "packId": "love",
+      "text": "첫눈에 반했어",
+      "register": "casual",
+      "translation": "It was love at first sight",
+      "situation": "Telling a friend about someone",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "첫눈에",
+          "gloss": "at first sight"
+        },
+        {
+          "text": "반했어",
+          "gloss": "fell for (them)"
+        }
+      ],
+      "literal": "at first sight fell for",
+      "audio": "phrases/audio/love/lv_cheonnune.mp3"
+    },
+    {
+      "id": "lv_neo_joahae",
+      "packId": "love",
+      "text": "너 좋아해",
+      "register": "casual",
+      "translation": "I like you",
+      "situation": "The classic confession",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "너",
+          "gloss": "you"
+        },
+        {
+          "text": "좋아해",
+          "gloss": "like"
+        }
+      ],
+      "literal": "you like",
+      "audio": "phrases/audio/love/lv_neo_joahae.mp3"
+    },
+    {
+      "id": "lv_simkung",
+      "packId": "love",
+      "text": "심쿵",
+      "register": "casual",
+      "translation": "My heart skipped a beat!",
+      "situation": "Someone smiles at you",
+      "pronunciationOverride": null,
+      "pronunciationNote": "Slang: 심 from 심장 (heart) + 쿵 (thump)",
+      "parts": [
+        {
+          "text": "심",
+          "gloss": "heart (from 심장)"
+        },
+        {
+          "text": "쿵",
+          "gloss": "thump"
+        }
+      ],
+      "literal": "heart thump",
+      "audio": "phrases/audio/love/lv_simkung.mp3"
+    },
+    {
+      "id": "lv_sseom",
+      "packId": "love",
+      "text": "썸 타는 중이야",
+      "register": "casual",
+      "translation": "We're in the talking stage",
+      "situation": "Not dating yet, but something's there",
+      "pronunciationOverride": null,
+      "pronunciationNote": "썸 comes from English 'some(thing)'",
+      "parts": [
+        {
+          "text": "썸",
+          "gloss": "'something' between two people"
+        },
+        {
+          "text": "타는",
+          "gloss": "riding"
+        },
+        {
+          "text": "중이야",
+          "gloss": "in the middle of"
+        }
+      ],
+      "literal": "riding 'something' in the middle of",
+      "audio": "phrases/audio/love/lv_sseom.mp3"
+    },
+    {
+      "id": "lv_sigan",
+      "packId": "love",
+      "text": "오늘 시간 있어",
+      "register": "casual",
+      "translation": "Are you free today?",
+      "situation": "Asking someone out casually",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "오늘",
+          "gloss": "today"
+        },
+        {
+          "text": "시간",
+          "gloss": "time"
+        },
+        {
+          "text": "있어",
+          "gloss": "have"
+        }
+      ],
+      "literal": "today time have?",
+      "audio": "phrases/audio/love/lv_sigan.mp3"
+    },
+    {
+      "id": "lv_yeonghwa",
+      "packId": "love",
+      "text": "같이 영화 볼래",
+      "register": "casual",
+      "translation": "Want to watch a movie together?",
+      "situation": "First date idea",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "같이",
+          "gloss": "together"
+        },
+        {
+          "text": "영화",
+          "gloss": "movie"
+        },
+        {
+          "text": "볼래",
+          "gloss": "want to watch"
+        }
+      ],
+      "literal": "together movie want-to-watch?",
+      "audio": "phrases/audio/love/lv_yeonghwa.mp3"
+    },
+    {
+      "id": "lv_deiteu",
+      "packId": "love",
+      "text": "데이트 신청해도 돼요",
+      "register": "polite",
+      "translation": "May I ask you out?",
+      "situation": "Asking politely — someone you don't know well",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "데이트",
+          "gloss": "date"
+        },
+        {
+          "text": "신청해도",
+          "gloss": "ask for (even if)"
+        },
+        {
+          "text": "돼요",
+          "gloss": "is it okay"
+        }
+      ],
+      "literal": "date ask-for okay?",
+      "audio": "phrases/audio/love/lv_deiteu.mp3"
+    },
+    {
+      "id": "lv_gobaek",
+      "packId": "love",
+      "text": "고백할게",
+      "register": "casual",
+      "translation": "I'm going to confess",
+      "situation": "Working up the courage",
+      "pronunciationOverride": "고배칼께",
+      "pronunciationNote": "ㄱ and ㅎ merge into ㅋ; the ending -ㄹ게 is pronounced tense [께]",
+      "parts": [
+        {
+          "text": "고백",
+          "gloss": "confession"
+        },
+        {
+          "text": "할게",
+          "gloss": "I'll do"
+        }
+      ],
+      "literal": "confession (I) will do",
+      "audio": "phrases/audio/love/lv_gobaek.mp3"
+    },
+    {
+      "id": "lv_sagwillae",
+      "packId": "love",
+      "text": "우리 사귈래",
+      "register": "casual",
+      "translation": "Will you go out with me?",
+      "situation": "Asking to be a couple",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "우리",
+          "gloss": "we"
+        },
+        {
+          "text": "사귈래",
+          "gloss": "want to date"
+        }
+      ],
+      "literal": "we want-to-date?",
+      "audio": "phrases/audio/love/lv_sagwillae.mp3"
+    },
+    {
+      "id": "lv_sagwija",
+      "packId": "love",
+      "text": "나랑 사귀자",
+      "register": "casual",
+      "translation": "Let's go out",
+      "situation": "Confident version",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "나랑",
+          "gloss": "with me"
+        },
+        {
+          "text": "사귀자",
+          "gloss": "let's date"
+        }
+      ],
+      "literal": "with me let's date",
+      "audio": "phrases/audio/love/lv_sagwija.mp3"
+    },
+    {
+      "id": "lv_son",
+      "packId": "love",
+      "text": "손 잡아도 돼",
+      "register": "casual",
+      "translation": "Can I hold your hand?",
+      "situation": "Walking side by side",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "손",
+          "gloss": "hand"
+        },
+        {
+          "text": "잡아도",
+          "gloss": "hold (even if)"
+        },
+        {
+          "text": "돼",
+          "gloss": "is it okay"
+        }
+      ],
+      "literal": "hand hold okay?",
+      "audio": "phrases/audio/love/lv_son.mp3"
+    },
+    {
+      "id": "lv_yeppeuda",
+      "packId": "love",
+      "text": "너 진짜 예쁘다",
+      "register": "casual",
+      "translation": "You're so pretty",
+      "situation": "Compliment",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "너",
+          "gloss": "you"
+        },
+        {
+          "text": "진짜",
+          "gloss": "really"
+        },
+        {
+          "text": "예쁘다",
+          "gloss": "pretty"
+        }
+      ],
+      "literal": "you really pretty",
+      "audio": "phrases/audio/love/lv_yeppeuda.mp3"
+    },
+    {
+      "id": "lv_meosisseo",
+      "packId": "love",
+      "text": "너 정말 멋있어",
+      "register": "casual",
+      "translation": "You're so cool",
+      "situation": "Compliment",
+      "pronunciationOverride": null,
+      "pronunciationNote": "Also heard as [머디써] — both are standard",
+      "parts": [
+        {
+          "text": "너",
+          "gloss": "you"
+        },
+        {
+          "text": "정말",
+          "gloss": "really"
+        },
+        {
+          "text": "멋있어",
+          "gloss": "cool"
+        }
+      ],
+      "literal": "you really cool",
+      "audio": "phrases/audio/love/lv_meosisseo.mp3"
+    },
+    {
+      "id": "lv_bakke",
+      "packId": "love",
+      "text": "너밖에 없어",
+      "register": "casual",
+      "translation": "You're the only one for me",
+      "situation": "Sweet talk",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "너",
+          "gloss": "you"
+        },
+        {
+          "text": "밖에",
+          "gloss": "except"
+        },
+        {
+          "text": "없어",
+          "gloss": "there is none"
+        }
+      ],
+      "literal": "except you there is none",
+      "audio": "phrases/audio/love/lv_bakke.mp3"
+    },
+    {
+      "id": "lv_naman",
+      "packId": "love",
+      "text": "나만 봐",
+      "register": "casual",
+      "translation": "Look only at me",
+      "situation": "Playful jealousy",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "나만",
+          "gloss": "only me"
+        },
+        {
+          "text": "봐",
+          "gloss": "look"
+        }
+      ],
+      "literal": "only me look",
+      "audio": "phrases/audio/love/lv_naman.mp3"
+    },
+    {
+      "id": "lv_jiltu",
+      "packId": "love",
+      "text": "질투 나",
+      "register": "casual",
+      "translation": "I'm jealous",
+      "situation": "Partner talks to someone else",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "질투",
+          "gloss": "jealousy"
+        },
+        {
+          "text": "나",
+          "gloss": "comes out"
+        }
+      ],
+      "literal": "jealousy comes out",
+      "audio": "phrases/audio/love/lv_jiltu.mp3"
+    },
+    {
+      "id": "lv_jagiya",
+      "packId": "love",
+      "text": "자기야",
+      "register": "casual",
+      "translation": "Honey / Babe",
+      "situation": "What couples call each other",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "자기",
+          "gloss": "darling (lit. oneself)"
+        },
+        {
+          "text": "야",
+          "gloss": "calling ending"
+        }
+      ],
+      "literal": "darling!",
+      "audio": "phrases/audio/love/lv_jagiya.mp3"
+    },
+    {
+      "id": "lv_bogo_sipeosseo",
+      "packId": "love",
+      "text": "너 보고 싶었어",
+      "register": "casual",
+      "translation": "I missed you",
+      "situation": "Seeing each other again",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "너",
+          "gloss": "you"
+        },
+        {
+          "text": "보고",
+          "gloss": "seeing"
+        },
+        {
+          "text": "싶었어",
+          "gloss": "wanted"
+        }
+      ],
+      "literal": "you seeing wanted",
+      "audio": "phrases/audio/love/lv_bogo_sipeosseo.mp3"
+    },
+    {
+      "id": "lv_jibe",
+      "packId": "love",
+      "text": "집에 데려다줄게",
+      "register": "casual",
+      "translation": "I'll walk you home",
+      "situation": "End of a date",
+      "pronunciationOverride": "지베 데려다줄께",
+      "pronunciationNote": "The ending -ㄹ게 is always pronounced tense [께], but written 게",
+      "parts": [
+        {
+          "text": "집에",
+          "gloss": "to home"
+        },
+        {
+          "text": "데려다줄게",
+          "gloss": "I'll take (you)"
+        }
+      ],
+      "literal": "to home (I) will take you",
+      "audio": "phrases/audio/love/lv_jibe.mp3"
+    },
+    {
+      "id": "lv_jal_ja",
+      "packId": "love",
+      "text": "잘 자",
+      "register": "casual",
+      "translation": "Good night",
+      "situation": "Last text of the day",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "잘",
+          "gloss": "well"
+        },
+        {
+          "text": "자",
+          "gloss": "sleep"
+        }
+      ],
+      "literal": "sleep well",
+      "audio": "phrases/audio/love/lv_jal_ja.mp3"
+    },
+    {
+      "id": "lv_kkume",
+      "packId": "love",
+      "text": "꿈에서 만나",
+      "register": "casual",
+      "translation": "See you in my dreams",
+      "situation": "Good-night text",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "꿈에서",
+          "gloss": "in a dream"
+        },
+        {
+          "text": "만나",
+          "gloss": "meet"
+        }
+      ],
+      "literal": "in a dream meet",
+      "audio": "phrases/audio/love/lv_kkume.mp3"
+    },
+    {
+      "id": "lv_yeollak",
+      "packId": "love",
+      "text": "연락 기다릴게",
+      "register": "casual",
+      "translation": "I'll wait for your message",
+      "situation": "After a first date",
+      "pronunciationOverride": "열락 기다릴께",
+      "pronunciationNote": "ㄴ next to ㄹ turns into ㄹ; the ending -ㄹ게 is pronounced tense [께]",
+      "parts": [
+        {
+          "text": "연락",
+          "gloss": "contact"
+        },
+        {
+          "text": "기다릴게",
+          "gloss": "I'll wait"
+        }
+      ],
+      "literal": "contact (I) will wait",
+      "audio": "phrases/audio/love/lv_yeollak.mp3"
+    },
+    {
+      "id": "lv_nado",
+      "packId": "love",
+      "text": "나도 사랑해",
+      "register": "casual",
+      "translation": "I love you too",
+      "situation": "The answer everyone hopes for",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "나도",
+          "gloss": "me too"
+        },
+        {
+          "text": "사랑해",
+          "gloss": "love"
+        }
+      ],
+      "literal": "me too love",
+      "audio": "phrases/audio/love/lv_nado.mp3"
+    },
+    {
+      "id": "lv_ttaemune",
+      "packId": "love",
+      "text": "너 때문에 미치겠어",
+      "register": "casual",
+      "translation": "You're driving me crazy",
+      "situation": "Can be sweet or angry",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "너",
+          "gloss": "you"
+        },
+        {
+          "text": "때문에",
+          "gloss": "because of"
+        },
+        {
+          "text": "미치겠어",
+          "gloss": "going crazy"
+        }
+      ],
+      "literal": "you because-of going crazy",
+      "audio": "phrases/audio/love/lv_ttaemune.mp3"
+    },
+    {
+      "id": "lv_sireo",
+      "packId": "love",
+      "text": "나 싫어",
+      "register": "casual",
+      "translation": "Don't you like me?",
+      "situation": "Feeling insecure — rising intonation",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "나",
+          "gloss": "me"
+        },
+        {
+          "text": "싫어",
+          "gloss": "dislike"
+        }
+      ],
+      "literal": "me dislike?",
+      "audio": "phrases/audio/love/lv_sireo.mp3"
+    },
+    {
+      "id": "lv_heeojija",
+      "packId": "love",
+      "text": "우리 헤어지자",
+      "register": "casual",
+      "translation": "Let's break up",
+      "situation": "Breakup scene",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "우리",
+          "gloss": "we"
+        },
+        {
+          "text": "헤어지자",
+          "gloss": "let's part"
+        }
+      ],
+      "literal": "we let's part",
+      "audio": "phrases/audio/love/lv_heeojija.mp3"
+    },
+    {
+      "id": "lv_chayeosseo",
+      "packId": "love",
+      "text": "차였어",
+      "register": "casual",
+      "translation": "I got dumped",
+      "situation": "Telling a friend",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "차였어",
+          "gloss": "got kicked (dumped)"
+        }
+      ],
+      "literal": "(I) got kicked",
+      "audio": "phrases/audio/love/lv_chayeosseo.mp3"
+    },
+    {
+      "id": "lv_dasi",
+      "packId": "love",
+      "text": "다시 시작하자",
+      "register": "casual",
+      "translation": "Let's start over",
+      "situation": "Getting back together",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "다시",
+          "gloss": "again"
+        },
+        {
+          "text": "시작하자",
+          "gloss": "let's start"
+        }
+      ],
+      "literal": "again let's start",
+      "audio": "phrases/audio/love/lv_dasi.mp3"
+    },
+    {
+      "id": "lv_yeongwonhi",
+      "packId": "love",
+      "text": "영원히 함께하자",
+      "register": "casual",
+      "translation": "Let's be together forever",
+      "situation": "Anniversary",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "영원히",
+          "gloss": "forever"
+        },
+        {
+          "text": "함께하자",
+          "gloss": "let's be together"
+        }
+      ],
+      "literal": "forever let's be together",
+      "audio": "phrases/audio/love/lv_yeongwonhi.mp3"
+    },
+    {
+      "id": "lv_gyeolhon",
+      "packId": "love",
+      "text": "결혼해 줄래",
+      "register": "casual",
+      "translation": "Will you marry me?",
+      "situation": "The proposal",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "결혼해",
+          "gloss": "marry"
+        },
+        {
+          "text": "줄래",
+          "gloss": "will you (for me)"
+        }
+      ],
+      "literal": "marry (me) will you",
+      "audio": "phrases/audio/love/lv_gyeolhon.mp3"
+    },
+    {
+      "id": "hl_yakguk",
+      "packId": "health",
+      "text": "약국 어디예요",
+      "register": "polite",
+      "translation": "Where's a pharmacy?",
+      "situation": "Look for the green 약 sign",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "약국",
+          "gloss": "pharmacy"
+        },
+        {
+          "text": "어디",
+          "gloss": "where"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "pharmacy where is",
+      "audio": "phrases/audio/health/hl_yakguk.mp3"
+    },
+    {
+      "id": "hl_byeongwon",
+      "packId": "health",
+      "text": "병원에 가고 싶어요",
+      "register": "polite",
+      "translation": "I want to go to a hospital",
+      "situation": "Feeling unwell",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "병원에",
+          "gloss": "to hospital"
+        },
+        {
+          "text": "가고",
+          "gloss": "go"
+        },
+        {
+          "text": "싶어요",
+          "gloss": "want"
+        }
+      ],
+      "literal": "to hospital go want",
+      "audio": "phrases/audio/health/hl_byeongwon.mp3"
+    },
+    {
+      "id": "hl_meori",
+      "packId": "health",
+      "text": "머리가 아파요",
+      "register": "polite",
+      "translation": "I have a headache",
+      "situation": "Pharmacy or doctor",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "머리가",
+          "gloss": "head"
+        },
+        {
+          "text": "아파요",
+          "gloss": "hurts"
+        }
+      ],
+      "literal": "head hurts",
+      "audio": "phrases/audio/health/hl_meori.mp3"
+    },
+    {
+      "id": "hl_bae",
+      "packId": "health",
+      "text": "배가 아파요",
+      "register": "polite",
+      "translation": "I have a stomachache",
+      "situation": "Pharmacy or doctor",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "배가",
+          "gloss": "stomach"
+        },
+        {
+          "text": "아파요",
+          "gloss": "hurts"
+        }
+      ],
+      "literal": "stomach hurts",
+      "audio": "phrases/audio/health/hl_bae.mp3"
+    },
+    {
+      "id": "hl_mok",
+      "packId": "health",
+      "text": "목이 아파요",
+      "register": "polite",
+      "translation": "I have a sore throat",
+      "situation": "Pharmacy or doctor",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "목이",
+          "gloss": "throat"
+        },
+        {
+          "text": "아파요",
+          "gloss": "hurts"
+        }
+      ],
+      "literal": "throat hurts",
+      "audio": "phrases/audio/health/hl_mok.mp3"
+    },
+    {
+      "id": "hl_yeogi",
+      "packId": "health",
+      "text": "여기가 아파요",
+      "register": "polite",
+      "translation": "It hurts here",
+      "situation": "Pointing to the spot",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "여기가",
+          "gloss": "here"
+        },
+        {
+          "text": "아파요",
+          "gloss": "hurts"
+        }
+      ],
+      "literal": "here hurts",
+      "audio": "phrases/audio/health/hl_yeogi.mp3"
+    },
+    {
+      "id": "hl_yeori",
+      "packId": "health",
+      "text": "열이 나요",
+      "register": "polite",
+      "translation": "I have a fever",
+      "situation": "Pharmacy or doctor",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "열이",
+          "gloss": "fever"
+        },
+        {
+          "text": "나요",
+          "gloss": "comes out"
+        }
+      ],
+      "literal": "fever comes out",
+      "audio": "phrases/audio/health/hl_yeori.mp3"
+    },
+    {
+      "id": "hl_gichim",
+      "packId": "health",
+      "text": "기침이 나요",
+      "register": "polite",
+      "translation": "I have a cough",
+      "situation": "Pharmacy or doctor",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "기침이",
+          "gloss": "cough"
+        },
+        {
+          "text": "나요",
+          "gloss": "comes out"
+        }
+      ],
+      "literal": "cough comes out",
+      "audio": "phrases/audio/health/hl_gichim.mp3"
+    },
+    {
+      "id": "hl_gamgi",
+      "packId": "health",
+      "text": "감기에 걸렸어요",
+      "register": "polite",
+      "translation": "I caught a cold",
+      "situation": "Pharmacy or doctor",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "감기에",
+          "gloss": "a cold"
+        },
+        {
+          "text": "걸렸어요",
+          "gloss": "caught"
+        }
+      ],
+      "literal": "(I) caught a cold",
+      "audio": "phrases/audio/health/hl_gamgi.mp3"
+    },
+    {
+      "id": "hl_tohal",
+      "packId": "health",
+      "text": "토할 것 같아요",
+      "register": "polite",
+      "translation": "I feel like I'm going to throw up",
+      "situation": "Urgent — say it fast",
+      "pronunciationOverride": "토할 껃 가타요",
+      "pronunciationNote": "After the -ㄹ ending, 것 turns tense: [껃]",
+      "parts": [
+        {
+          "text": "토할",
+          "gloss": "vomit (going to)"
+        },
+        {
+          "text": "것",
+          "gloss": "thing"
+        },
+        {
+          "text": "같아요",
+          "gloss": "seems"
+        }
+      ],
+      "literal": "going-to-vomit thing seems",
+      "audio": "phrases/audio/health/hl_tohal.mp3"
+    },
+    {
+      "id": "hl_eojireowo",
+      "packId": "health",
+      "text": "어지러워요",
+      "register": "polite",
+      "translation": "I feel dizzy",
+      "situation": "Heat, tiredness, travel",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "어지러워요",
+          "gloss": "am dizzy"
+        }
+      ],
+      "literal": "(I) am dizzy",
+      "audio": "phrases/audio/health/hl_eojireowo.mp3"
+    },
+    {
+      "id": "hl_sum",
+      "packId": "health",
+      "text": "숨쉬기 힘들어요",
+      "register": "polite",
+      "translation": "It's hard to breathe",
+      "situation": "Urgent",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "숨쉬기",
+          "gloss": "breathing"
+        },
+        {
+          "text": "힘들어요",
+          "gloss": "is hard"
+        }
+      ],
+      "literal": "breathing is hard",
+      "audio": "phrases/audio/health/hl_sum.mp3"
+    },
+    {
+      "id": "hl_pi",
+      "packId": "health",
+      "text": "피가 나요",
+      "register": "polite",
+      "translation": "I'm bleeding",
+      "situation": "Cuts and injuries",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "피가",
+          "gloss": "blood"
+        },
+        {
+          "text": "나요",
+          "gloss": "comes out"
+        }
+      ],
+      "literal": "blood comes out",
+      "audio": "phrases/audio/health/hl_pi.mp3"
+    },
+    {
+      "id": "hl_balmok",
+      "packId": "health",
+      "text": "발목을 삐었어요",
+      "register": "polite",
+      "translation": "I sprained my ankle",
+      "situation": "After a fall",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "발목을",
+          "gloss": "ankle"
+        },
+        {
+          "text": "삐었어요",
+          "gloss": "sprained"
+        }
+      ],
+      "literal": "(I) sprained ankle",
+      "audio": "phrases/audio/health/hl_balmok.mp3"
+    },
+    {
+      "id": "hl_allereugi",
+      "packId": "health",
+      "text": "알레르기가 있어요",
+      "register": "polite",
+      "translation": "I have an allergy",
+      "situation": "Tell the doctor or pharmacist",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "알레르기가",
+          "gloss": "allergy"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "allergy there is",
+      "audio": "phrases/audio/health/hl_allereugi.mp3"
+    },
+    {
+      "id": "hl_yak_meokgo",
+      "packId": "health",
+      "text": "약 먹고 있어요",
+      "register": "polite",
+      "translation": "I'm taking medication",
+      "situation": "Tell the doctor or pharmacist",
+      "pronunciationOverride": null,
+      "pronunciationNote": "Said slowly, word by word: [약 먹꼬]",
+      "parts": [
+        {
+          "text": "약",
+          "gloss": "medicine"
+        },
+        {
+          "text": "먹고",
+          "gloss": "taking"
+        },
+        {
+          "text": "있어요",
+          "gloss": "am"
+        }
+      ],
+      "literal": "medicine taking am",
+      "audio": "phrases/audio/health/hl_yak_meokgo.mp3"
+    },
+    {
+      "id": "hl_jintongje",
+      "packId": "health",
+      "text": "진통제 주세요",
+      "register": "polite",
+      "translation": "Painkillers, please",
+      "situation": "Pharmacy",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "진통제",
+          "gloss": "painkiller"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "painkiller please give",
+      "audio": "phrases/audio/health/hl_jintongje.mp3"
+    },
+    {
+      "id": "hl_sohwaje",
+      "packId": "health",
+      "text": "소화제 있어요",
+      "register": "polite",
+      "translation": "Do you have something for indigestion?",
+      "situation": "Pharmacy — after too much BBQ",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "소화제",
+          "gloss": "digestive medicine"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "digestive medicine there is?",
+      "audio": "phrases/audio/health/hl_sohwaje.mp3"
+    },
+    {
+      "id": "hl_gamgiyak",
+      "packId": "health",
+      "text": "감기약 주세요",
+      "register": "polite",
+      "translation": "Cold medicine, please",
+      "situation": "Pharmacy",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "감기약",
+          "gloss": "cold medicine"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please give"
+        }
+      ],
+      "literal": "cold medicine please give",
+      "audio": "phrases/audio/health/hl_gamgiyak.mp3"
+    },
+    {
+      "id": "hl_haru",
+      "packId": "health",
+      "text": "하루에 몇 번 먹어요",
+      "register": "polite",
+      "translation": "How many times a day do I take it?",
+      "situation": "Pharmacy",
+      "pronunciationOverride": null,
+      "pronunciationNote": "In connected speech 번 turns tense after 몇: [멷뻔]",
+      "parts": [
+        {
+          "text": "하루에",
+          "gloss": "per day"
+        },
+        {
+          "text": "몇",
+          "gloss": "how many"
+        },
+        {
+          "text": "번",
+          "gloss": "times"
+        },
+        {
+          "text": "먹어요",
+          "gloss": "take"
+        }
+      ],
+      "literal": "per day how many times take",
+      "audio": "phrases/audio/health/hl_haru.mp3"
+    },
+    {
+      "id": "hl_sikhu",
+      "packId": "health",
+      "text": "식후에 드세요",
+      "register": "polite",
+      "translation": "Take it after meals",
+      "situation": "What the pharmacist says",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "식후에",
+          "gloss": "after meals"
+        },
+        {
+          "text": "드세요",
+          "gloss": "take (honorific)"
+        }
+      ],
+      "literal": "after meals take",
+      "audio": "phrases/audio/health/hl_sikhu.mp3"
+    },
+    {
+      "id": "hl_cheobang",
+      "packId": "health",
+      "text": "처방전 있어요",
+      "register": "polite",
+      "translation": "I have a prescription",
+      "situation": "Pharmacy",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "처방전",
+          "gloss": "prescription"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "prescription there is",
+      "audio": "phrases/audio/health/hl_cheobang.mp3"
+    },
+    {
+      "id": "hl_yeyak",
+      "packId": "health",
+      "text": "예약했어요",
+      "register": "polite",
+      "translation": "I have an appointment",
+      "situation": "Clinic reception",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "예약",
+          "gloss": "reservation"
+        },
+        {
+          "text": "했어요",
+          "gloss": "did"
+        }
+      ],
+      "literal": "reservation did",
+      "audio": "phrases/audio/health/hl_yeyak.mp3"
+    },
+    {
+      "id": "hl_yeongeo",
+      "packId": "health",
+      "text": "영어 하는 의사 있어요",
+      "register": "polite",
+      "translation": "Is there an English-speaking doctor?",
+      "situation": "Hospital reception",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "영어",
+          "gloss": "English"
+        },
+        {
+          "text": "하는",
+          "gloss": "speaking"
+        },
+        {
+          "text": "의사",
+          "gloss": "doctor"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "English speaking doctor there is?",
+      "audio": "phrases/audio/health/hl_yeongeo.mp3"
+    },
+    {
+      "id": "hl_boheom",
+      "packId": "health",
+      "text": "보험 있어요",
+      "register": "polite",
+      "translation": "I have insurance",
+      "situation": "Hospital reception",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "보험",
+          "gloss": "insurance"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "insurance there is",
+      "audio": "phrases/audio/health/hl_boheom.mp3"
+    },
+    {
+      "id": "hl_eonje",
+      "packId": "health",
+      "text": "언제 나아요",
+      "register": "polite",
+      "translation": "When will I get better?",
+      "situation": "Asking the doctor",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "언제",
+          "gloss": "when"
+        },
+        {
+          "text": "나아요",
+          "gloss": "get better"
+        }
+      ],
+      "literal": "when get better",
+      "audio": "phrases/audio/health/hl_eonje.mp3"
+    },
+    {
+      "id": "hl_gwaenchaneul",
+      "packId": "health",
+      "text": "괜찮을까요",
+      "register": "polite",
+      "translation": "Will I be okay?",
+      "situation": "Asking the doctor",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "괜찮을까요",
+          "gloss": "will it be okay"
+        }
+      ],
+      "literal": "will (it) be okay?",
+      "audio": "phrases/audio/health/hl_gwaenchaneul.mp3"
+    },
+    {
+      "id": "hl_gugeupcha",
+      "packId": "health",
+      "text": "구급차 불러 주세요",
+      "register": "polite",
+      "translation": "Please call an ambulance",
+      "situation": "Emergency — the number is 119",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "구급차",
+          "gloss": "ambulance"
+        },
+        {
+          "text": "불러",
+          "gloss": "call"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "ambulance call please",
+      "audio": "phrases/audio/health/hl_gugeupcha.mp3"
+    },
+    {
+      "id": "hl_gyeongchal",
+      "packId": "health",
+      "text": "경찰 불러 주세요",
+      "register": "polite",
+      "translation": "Please call the police",
+      "situation": "Emergency — the number is 112",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "경찰",
+          "gloss": "police"
+        },
+        {
+          "text": "불러",
+          "gloss": "call"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "police call please",
+      "audio": "phrases/audio/health/hl_gyeongchal.mp3"
+    },
+    {
+      "id": "hl_jigap",
+      "packId": "health",
+      "text": "지갑을 잃어버렸어요",
+      "register": "polite",
+      "translation": "I lost my wallet",
+      "situation": "Police box or lost and found",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "지갑을",
+          "gloss": "wallet"
+        },
+        {
+          "text": "잃어버렸어요",
+          "gloss": "lost"
+        }
+      ],
+      "literal": "(I) lost wallet",
+      "audio": "phrases/audio/health/hl_jigap.mp3"
+    },
+    {
+      "id": "wk_annyeonghasimnikka",
+      "packId": "work",
+      "text": "안녕하십니까",
+      "register": "formal",
+      "translation": "Hello (formal)",
+      "situation": "Greeting your boss in the morning",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "안녕",
+          "gloss": "peace, well-being"
+        },
+        {
+          "text": "하십니까",
+          "gloss": "are you (formal)"
+        }
+      ],
+      "literal": "are you at peace?",
+      "audio": "phrases/audio/work/wk_annyeonghasimnikka.mp3"
+    },
+    {
+      "id": "wk_cheoeum_boep",
+      "packId": "work",
+      "text": "처음 뵙겠습니다",
+      "register": "formal",
+      "translation": "Nice to meet you",
+      "situation": "Your first day at work",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "처음",
+          "gloss": "first time"
+        },
+        {
+          "text": "뵙겠습니다",
+          "gloss": "will see you (humble)"
+        }
+      ],
+      "literal": "(I) will see you for the first time",
+      "audio": "phrases/audio/work/wk_cheoeum_boep.mp3"
+    },
+    {
+      "id": "wk_butak",
+      "packId": "work",
+      "text": "잘 부탁드립니다",
+      "register": "formal",
+      "translation": "I look forward to working with you",
+      "situation": "Introducing yourself to the team",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "잘",
+          "gloss": "well"
+        },
+        {
+          "text": "부탁",
+          "gloss": "request"
+        },
+        {
+          "text": "드립니다",
+          "gloss": "I give (humble)"
+        }
+      ],
+      "literal": "(I) give you my request well",
+      "audio": "phrases/audio/work/wk_butak.mp3"
+    },
+    {
+      "id": "wk_algetseumnida",
+      "packId": "work",
+      "text": "알겠습니다",
+      "register": "formal",
+      "translation": "Understood",
+      "situation": "Taking an instruction",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "알",
+          "gloss": "know"
+        },
+        {
+          "text": "겠습니다",
+          "gloss": "will (formal)"
+        }
+      ],
+      "literal": "(I) will know",
+      "audio": "phrases/audio/work/wk_algetseumnida.mp3"
+    },
+    {
+      "id": "wk_jal_moreu",
+      "packId": "work",
+      "text": "잘 모르겠습니다",
+      "register": "formal",
+      "translation": "I don't quite understand",
+      "situation": "An instruction wasn't clear",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "잘",
+          "gloss": "well"
+        },
+        {
+          "text": "모르겠습니다",
+          "gloss": "don't know (formal)"
+        }
+      ],
+      "literal": "(I) don't know well",
+      "audio": "phrases/audio/work/wk_jal_moreu.mp3"
+    },
+    {
+      "id": "wk_dasi",
+      "packId": "work",
+      "text": "다시 한번 말씀해 주세요",
+      "register": "polite",
+      "translation": "Could you say that once more?",
+      "situation": "Didn't catch an instruction",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "다시",
+          "gloss": "again"
+        },
+        {
+          "text": "한번",
+          "gloss": "once"
+        },
+        {
+          "text": "말씀해",
+          "gloss": "speak (honorific)"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "again once speak please",
+      "audio": "phrases/audio/work/wk_dasi.mp3"
+    },
+    {
+      "id": "wk_cheoncheonhi",
+      "packId": "work",
+      "text": "천천히 말씀해 주세요",
+      "register": "polite",
+      "translation": "Please speak slowly",
+      "situation": "Instructions are too fast",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "천천히",
+          "gloss": "slowly"
+        },
+        {
+          "text": "말씀해",
+          "gloss": "speak (honorific)"
+        },
+        {
+          "text": "주세요",
+          "gloss": "please"
+        }
+      ],
+      "literal": "slowly speak please",
+      "audio": "phrases/audio/work/wk_cheoncheonhi.mp3"
+    },
+    {
+      "id": "wk_eotteoke",
+      "packId": "work",
+      "text": "이거 어떻게 해요",
+      "register": "polite",
+      "translation": "How do I do this?",
+      "situation": "Asking a coworker",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "이거",
+          "gloss": "this"
+        },
+        {
+          "text": "어떻게",
+          "gloss": "how"
+        },
+        {
+          "text": "해요",
+          "gloss": "do"
+        }
+      ],
+      "literal": "this how do",
+      "audio": "phrases/audio/work/wk_eotteoke.mp3"
+    },
+    {
+      "id": "wk_dowa",
+      "packId": "work",
+      "text": "도와주실 수 있어요",
+      "register": "polite",
+      "translation": "Could you help me?",
+      "situation": "Asking a coworker for help",
+      "pronunciationOverride": "도와주실 쑤 이써요",
+      "pronunciationNote": "After the -ㄹ ending, the next sound turns tense: 수 [쑤], 것 [껃]",
+      "parts": [
+        {
+          "text": "도와",
+          "gloss": "help"
+        },
+        {
+          "text": "주실",
+          "gloss": "would give"
+        },
+        {
+          "text": "수",
+          "gloss": "way, possibility"
+        },
+        {
+          "text": "있어요",
+          "gloss": "there is"
+        }
+      ],
+      "literal": "help-give way there is?",
+      "audio": "phrases/audio/work/wk_dowa.mp3"
+    },
+    {
+      "id": "wk_cheoeumieyo",
+      "packId": "work",
+      "text": "이 일은 처음이에요",
+      "register": "polite",
+      "translation": "This is my first time doing this",
+      "situation": "Before a new task",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "이",
+          "gloss": "this"
+        },
+        {
+          "text": "일은",
+          "gloss": "work"
+        },
+        {
+          "text": "처음이에요",
+          "gloss": "is the first time"
+        }
+      ],
+      "literal": "this work is the first time",
+      "audio": "phrases/audio/work/wk_cheoeumieyo.mp3"
+    },
+    {
+      "id": "wk_kkeunnat",
+      "packId": "work",
+      "text": "다 끝났습니다",
+      "register": "formal",
+      "translation": "It's all done",
+      "situation": "Reporting a finished task",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "다",
+          "gloss": "all"
+        },
+        {
+          "text": "끝났습니다",
+          "gloss": "finished (formal)"
+        }
+      ],
+      "literal": "all finished",
+      "audio": "phrases/audio/work/wk_kkeunnat.mp3"
+    },
+    {
+      "id": "wk_eonjekkaji",
+      "packId": "work",
+      "text": "언제까지 해야 돼요",
+      "register": "polite",
+      "translation": "By when do I need to finish it?",
+      "situation": "Getting a task",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "언제까지",
+          "gloss": "until when"
+        },
+        {
+          "text": "해야",
+          "gloss": "must do"
+        },
+        {
+          "text": "돼요",
+          "gloss": "is it so"
+        }
+      ],
+      "literal": "until when must do?",
+      "audio": "phrases/audio/work/wk_eonjekkaji.mp3"
+    },
+    {
+      "id": "wk_myeot_si",
+      "packId": "work",
+      "text": "오늘 몇 시에 끝나요",
+      "register": "polite",
+      "translation": "What time do we finish today?",
+      "situation": "Planning your evening",
+      "pronunciationOverride": null,
+      "pronunciationNote": "In connected speech 시 turns tense after 몇: [멷씨]",
+      "parts": [
+        {
+          "text": "오늘",
+          "gloss": "today"
+        },
+        {
+          "text": "몇",
+          "gloss": "what"
+        },
+        {
+          "text": "시에",
+          "gloss": "at hour"
+        },
+        {
+          "text": "끝나요",
+          "gloss": "finishes"
+        }
+      ],
+      "literal": "today what hour finishes",
+      "audio": "phrases/audio/work/wk_myeot_si.mp3"
+    },
+    {
+      "id": "wk_swieodo",
+      "packId": "work",
+      "text": "잠깐 쉬어도 돼요",
+      "register": "polite",
+      "translation": "May I take a short break?",
+      "situation": "Feeling tired",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "잠깐",
+          "gloss": "a moment"
+        },
+        {
+          "text": "쉬어도",
+          "gloss": "rest (even if)"
+        },
+        {
+          "text": "돼요",
+          "gloss": "is it okay"
+        }
+      ],
+      "literal": "a moment rest okay?",
+      "audio": "phrases/audio/work/wk_swieodo.mp3"
+    },
+    {
+      "id": "wk_hwajangsil",
+      "packId": "work",
+      "text": "화장실에 다녀와도 될까요",
+      "register": "polite",
+      "translation": "May I go to the restroom?",
+      "situation": "Asking your supervisor",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "화장실에",
+          "gloss": "to the restroom"
+        },
+        {
+          "text": "다녀와도",
+          "gloss": "go and come back (even if)"
+        },
+        {
+          "text": "될까요",
+          "gloss": "would it be okay"
+        }
+      ],
+      "literal": "restroom-to go-and-back would it be okay?",
+      "audio": "phrases/audio/work/wk_hwajangsil.mp3"
+    },
+    {
+      "id": "wk_neujeul",
+      "packId": "work",
+      "text": "오늘 좀 늦을 것 같아요",
+      "register": "polite",
+      "translation": "I think I'll be a little late today",
+      "situation": "Calling your supervisor",
+      "pronunciationOverride": "오늘 좀 느즐 껃 가타요",
+      "pronunciationNote": "After the -ㄹ ending, the next sound turns tense: 수 [쑤], 것 [껃]",
+      "parts": [
+        {
+          "text": "오늘",
+          "gloss": "today"
+        },
+        {
+          "text": "좀",
+          "gloss": "a little"
+        },
+        {
+          "text": "늦을",
+          "gloss": "going to be late"
+        },
+        {
+          "text": "것",
+          "gloss": "thing"
+        },
+        {
+          "text": "같아요",
+          "gloss": "seems"
+        }
+      ],
+      "literal": "today a little going-to-be-late thing seems",
+      "audio": "phrases/audio/work/wk_neujeul.mp3"
+    },
+    {
+      "id": "wk_apaseo",
+      "packId": "work",
+      "text": "몸이 아파서 병원에 가야 해요",
+      "register": "polite",
+      "translation": "I'm sick — I need to go to the hospital",
+      "situation": "Asking to leave early",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "몸이",
+          "gloss": "body"
+        },
+        {
+          "text": "아파서",
+          "gloss": "hurts so"
+        },
+        {
+          "text": "병원에",
+          "gloss": "to the hospital"
+        },
+        {
+          "text": "가야",
+          "gloss": "must go"
+        },
+        {
+          "text": "해요",
+          "gloss": "do"
+        }
+      ],
+      "literal": "body hurts so hospital-to must go",
+      "audio": "phrases/audio/work/wk_apaseo.mp3"
+    },
+    {
+      "id": "wk_naeil",
+      "packId": "work",
+      "text": "내일 쉬어도 될까요",
+      "register": "polite",
+      "translation": "Could I take tomorrow off?",
+      "situation": "Asking for a day off",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "내일",
+          "gloss": "tomorrow"
+        },
+        {
+          "text": "쉬어도",
+          "gloss": "rest (even if)"
+        },
+        {
+          "text": "될까요",
+          "gloss": "would it be okay"
+        }
+      ],
+      "literal": "tomorrow rest would it be okay?",
+      "audio": "phrases/audio/work/wk_naeil.mp3"
+    },
+    {
+      "id": "wk_wolgeup",
+      "packId": "work",
+      "text": "월급날이 언제예요",
+      "register": "polite",
+      "translation": "When is payday?",
+      "situation": "Your first month",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "월급날이",
+          "gloss": "payday"
+        },
+        {
+          "text": "언제",
+          "gloss": "when"
+        },
+        {
+          "text": "예요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "payday when is",
+      "audio": "phrases/audio/work/wk_wolgeup.mp3"
+    },
+    {
+      "id": "wk_josim",
+      "packId": "work",
+      "text": "조심하세요",
+      "register": "polite",
+      "translation": "Be careful!",
+      "situation": "Warning a coworker",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "조심",
+          "gloss": "caution"
+        },
+        {
+          "text": "하세요",
+          "gloss": "do (polite)"
+        }
+      ],
+      "literal": "do caution",
+      "audio": "phrases/audio/work/wk_josim.mp3"
+    },
+    {
+      "id": "wk_wiheom",
+      "packId": "work",
+      "text": "위험해요",
+      "register": "polite",
+      "translation": "It's dangerous!",
+      "situation": "A safety warning",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "위험",
+          "gloss": "danger"
+        },
+        {
+          "text": "해요",
+          "gloss": "is"
+        }
+      ],
+      "literal": "danger is",
+      "audio": "phrases/audio/work/wk_wiheom.mp3"
+    },
+    {
+      "id": "wk_anjeonmo",
+      "packId": "work",
+      "text": "안전모를 쓰세요",
+      "register": "polite",
+      "translation": "Wear your safety helmet",
+      "situation": "Safety instruction",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "안전모를",
+          "gloss": "safety helmet"
+        },
+        {
+          "text": "쓰세요",
+          "gloss": "wear (polite)"
+        }
+      ],
+      "literal": "safety helmet wear",
+      "audio": "phrases/audio/work/wk_anjeonmo.mp3"
+    },
+    {
+      "id": "wk_janggap",
+      "packId": "work",
+      "text": "장갑을 끼세요",
+      "register": "polite",
+      "translation": "Put on your gloves",
+      "situation": "Safety instruction",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "장갑을",
+          "gloss": "gloves"
+        },
+        {
+          "text": "끼세요",
+          "gloss": "put on (polite)"
+        }
+      ],
+      "literal": "gloves put on",
+      "audio": "phrases/audio/work/wk_janggap.mp3"
+    },
+    {
+      "id": "wk_gigye",
+      "packId": "work",
+      "text": "기계를 끄세요",
+      "register": "polite",
+      "translation": "Turn off the machine",
+      "situation": "Safety instruction",
+      "pronunciationOverride": null,
+      "pronunciationNote": "계 is usually pronounced [게] in everyday speech",
+      "parts": [
+        {
+          "text": "기계를",
+          "gloss": "machine"
+        },
+        {
+          "text": "끄세요",
+          "gloss": "turn off (polite)"
+        }
+      ],
+      "literal": "machine turn off",
+      "audio": "phrases/audio/work/wk_gigye.mp3"
+    },
+    {
+      "id": "wk_bul",
+      "packId": "work",
+      "text": "불이 났어요",
+      "register": "polite",
+      "translation": "There's a fire!",
+      "situation": "Emergency — call 119",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "불이",
+          "gloss": "fire"
+        },
+        {
+          "text": "났어요",
+          "gloss": "broke out"
+        }
+      ],
+      "literal": "fire broke out",
+      "audio": "phrases/audio/work/wk_bul.mp3"
+    },
+    {
+      "id": "wk_banjang",
+      "packId": "work",
+      "text": "반장님 어디 계세요",
+      "register": "polite",
+      "translation": "Where is the team leader?",
+      "situation": "Looking for your supervisor",
+      "pronunciationOverride": null,
+      "pronunciationNote": "계 is usually pronounced [게] in everyday speech",
+      "parts": [
+        {
+          "text": "반장님",
+          "gloss": "team leader (honorific)"
+        },
+        {
+          "text": "어디",
+          "gloss": "where"
+        },
+        {
+          "text": "계세요",
+          "gloss": "is (honorific)"
+        }
+      ],
+      "literal": "team leader where is",
+      "audio": "phrases/audio/work/wk_banjang.mp3"
+    },
+    {
+      "id": "wk_jilmun",
+      "packId": "work",
+      "text": "질문이 있습니다",
+      "register": "formal",
+      "translation": "I have a question",
+      "situation": "In a meeting or training",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "질문이",
+          "gloss": "question"
+        },
+        {
+          "text": "있습니다",
+          "gloss": "there is (formal)"
+        }
+      ],
+      "literal": "there is a question",
+      "audio": "phrases/audio/work/wk_jilmun.mp3"
+    },
+    {
+      "id": "wk_silsu",
+      "packId": "work",
+      "text": "실수해서 죄송합니다",
+      "register": "formal",
+      "translation": "I'm sorry for the mistake",
+      "situation": "Apologizing to your boss",
+      "pronunciationOverride": "실쑤해서 죄송함니다",
+      "pronunciationNote": "In the Sino-Korean word 실수, ㅅ after ㄹ is pronounced tense: [실쑤]",
+      "parts": [
+        {
+          "text": "실수해서",
+          "gloss": "made a mistake, so"
+        },
+        {
+          "text": "죄송합니다",
+          "gloss": "I'm sorry (formal)"
+        }
+      ],
+      "literal": "made a mistake so (I'm) sorry",
+      "audio": "phrases/audio/work/wk_silsu.mp3"
+    },
+    {
+      "id": "wk_josimhagetseumnida",
+      "packId": "work",
+      "text": "다음부터 조심하겠습니다",
+      "register": "formal",
+      "translation": "I'll be more careful from now on",
+      "situation": "After a mistake",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "다음부터",
+          "gloss": "from next time"
+        },
+        {
+          "text": "조심하겠습니다",
+          "gloss": "will be careful (formal)"
+        }
+      ],
+      "literal": "from next time will be careful",
+      "audio": "phrases/audio/work/wk_josimhagetseumnida.mp3"
+    },
+    {
+      "id": "wk_sugo",
+      "packId": "work",
+      "text": "수고하셨습니다",
+      "register": "formal",
+      "translation": "Thank you for your hard work",
+      "situation": "End of the shift",
+      "pronunciationOverride": null,
+      "pronunciationNote": null,
+      "parts": [
+        {
+          "text": "수고",
+          "gloss": "hard work"
+        },
+        {
+          "text": "하셨습니다",
+          "gloss": "did (honorific, formal)"
+        }
+      ],
+      "literal": "(you) did hard work",
+      "audio": "phrases/audio/work/wk_sugo.mp3"
+    }
+  ]
+}

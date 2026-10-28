@@ -33,7 +33,7 @@ const schema = {
   <section class="wrap sec hero">
     <div class="split">
       <div class="hero-text">
-        <p class="t-label">Free · no sign-up · native audio</p>
+        <p class="t-label">Free · no sign-up · audio on every letter</p>
         <h1 class="t-display">Read Korean in an afternoon.</h1>
         <p class="t-lead">Hangul has 40 letters, and a king designed them in 1443 to be learned fast. Try it now: learn three letters and read your first word.</p>
         <div class="row hero-cta">
@@ -120,7 +120,7 @@ const schema = {
     </div>
     <div class="cols-4 keep-2 tools" style="gap: 12px;">
       <a class="he-glass tool" href="/korean-alphabet/chart/"><span class="ti ti--p" lang="ko" aria-hidden="true">가</span><span class="t-h3">Alphabet chart</span><p class="t-meta">Hear all 40 letters. Hide the romanization to test yourself.</p></a>
-      <a class="he-glass tool" href="/korean-alphabet/chart/#syllables"><span class="ti ti--s" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></span><span class="t-h3">190 blocks with sound</span><p class="t-meta">Every consonant with every basic vowel, read by a native speaker.</p></a>
+      <a class="he-glass tool" href="/korean-alphabet/chart/#syllables"><span class="ti ti--s" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></span><span class="t-h3">190 blocks with sound</span><p class="t-meta">Every consonant with every basic vowel, out loud.</p></a>
       <a class="he-glass tool" href="/korean-alphabet/consonants/"><span class="ti ti--c" lang="ko" aria-hidden="true">ㄲ</span><span class="t-h3">가, 카 or 까?</span><p class="t-meta">The three-way contrast English lacks. Hear it, then test your ears.</p></a>
       <a class="he-glass tool" href="/korean-alphabet/#builder"><span class="ti ti--t" lang="ko" aria-hidden="true">한</span><span class="t-h3">Block builder</span><p class="t-meta">Put letters together and watch a syllable take shape.</p></a>
     </div>
@@ -129,7 +129,7 @@ const schema = {
   <section class="wrap sec--tight">
     <div class="facts facts--live">
       <div class="he-glass he-glass--dense fact">
-        <div class="fact-head"><b>40</b><p class="t-meta">letters, each with native audio</p></div>
+        <div class="fact-head"><b>40</b><p class="t-meta">letters, each one you can hear</p></div>
         <div class="grid40" lang="ko" role="img" aria-label="Your letters out of 40" data-grid40>
           {[...ALL].map((g, i) => <span class="cell" data-g={g} data-r={i < 19 ? 'c' : 'v'}>{g}</span>)}
         </div>

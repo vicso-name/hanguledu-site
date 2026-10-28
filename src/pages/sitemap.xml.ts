@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { site } from '../data/site';
+import { PHRASE_PAGES } from '../data/phrase-pages';
 
 // Every indexable page with the date its content last changed.
 const PAGES: [string, string][] = [
@@ -8,6 +9,11 @@ const PAGES: [string, string][] = [
   ['/korean-alphabet/chart/', '2026-10-28'],
   ['/korean-alphabet/consonants/', '2026-10-28'],
   ['/korean-alphabet/vowels/', '2026-10-28'],
+  ['/phrases/', '2026-10-28'],
+  ['/phrases/basic-korean-phrases/', '2026-10-28'],
+  ['/phrases/k-drama/', '2026-10-28'],
+  ['/phrases/love/', '2026-10-28'],
+  ...PHRASE_PAGES.map((p): [string, string] => [`/phrases/${p.slug}/`, '2026-10-28']),
   ['/privacy/', '2026-10-28'],
 ];
 

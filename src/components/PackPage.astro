@@ -1,0 +1,40 @@
+---
+// A pack hub (/phrases/k-drama/, /phrases/love/): every phrase of one app pack as a card.
+import Layout from '../layouts/Layout.astro';
+import PhraseCard from './PhraseCard.astro';
+import Faq from './Faq.astro';
+import AppCta from './AppCta.astro';
+import { PACKS, ofPack } from '../data/phrases';
+import { crumbs, faqPage } from '../lib/schema';
+
+interface Props { pack: string; title: string; description: string; h1: string; lead: string; faq: { q: string; a: string }[]; cta: string }
+const { pack: id, title, description, h1, lead, faq, cta } = Astro.props;
+const pack = PACKS.find((p) => p.id === id)!;
+const list = ofPack(id);
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'ItemList', name: h1, numberOfItems: list.length, itemListElement: list.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: `${p.ko} (${p.rom}): ${p.en}`, url: `https://hanguledu.com${Astro.url.pathname}#${p.id}` })) },
+  crumbs([['Phrases', '/phrases/'], [pack.title, Astro.url.pathname]]),
+  faqPage(faq),
+];
+---
+
+<Layout title={title} description={description} schema={schema}>
+  <section class="wrap page-head">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/phrases/">Phrases</a><span aria-hidden="true">/</span><span>{pack.title}</span></nav>
+    <div class="head">
+      <h1 class="t-h1">{h1}</h1>
+      <p class="t-lead">{lead}</p>
+    </div>
+  </section>
+
+  <section class="wrap sec--flush">
+    <div class="cards">{list.map((p) => <PhraseCard p={p} open={false} />)}</div>
+  </section>
+
+  <section class="wrap sec wrap--medium">
+    <h2 class="t-h2" style="margin-bottom: 16px;">Questions</h2>
+    <Faq items={faq} />
+  </section>
+
+  <AppCta title={cta} />
+</Layout>

@@ -1,0 +1,700 @@
+{
+ "source": "hangul_hero app/src/test …/feature/sori (RomanizationGoldenSet.kt, PronunciationTraceTest.kt)",
+ "romanization": [
+  {
+   "ko": "한국",
+   "rom": "hanguk"
+  },
+  {
+   "ko": "음식",
+   "rom": "eumsik"
+  },
+  {
+   "ko": "서울",
+   "rom": "seoul"
+  },
+  {
+   "ko": "사랑",
+   "rom": "sarang"
+  },
+  {
+   "ko": "안녕하세요",
+   "rom": "annyeonghaseyo"
+  },
+  {
+   "ko": "김치",
+   "rom": "gimchi"
+  },
+  {
+   "ko": "사람",
+   "rom": "saram"
+  },
+  {
+   "ko": "나라",
+   "rom": "nara"
+  },
+  {
+   "ko": "바다",
+   "rom": "bada"
+  },
+  {
+   "ko": "하늘",
+   "rom": "haneul"
+  },
+  {
+   "ko": "시간",
+   "rom": "sigan"
+  },
+  {
+   "ko": "친구",
+   "rom": "chingu"
+  },
+  {
+   "ko": "가족",
+   "rom": "gajok"
+  },
+  {
+   "ko": "공부",
+   "rom": "gongbu"
+  },
+  {
+   "ko": "운동",
+   "rom": "undong"
+  },
+  {
+   "ko": "아침",
+   "rom": "achim"
+  },
+  {
+   "ko": "저녁",
+   "rom": "jeonyeok"
+  },
+  {
+   "ko": "점심",
+   "rom": "jeomsim"
+  },
+  {
+   "ko": "여행",
+   "rom": "yeohaeng"
+  },
+  {
+   "ko": "시장",
+   "rom": "sijang"
+  },
+  {
+   "ko": "병원",
+   "rom": "byeongwon"
+  },
+  {
+   "ko": "선물",
+   "rom": "seonmul"
+  },
+  {
+   "ko": "노래",
+   "rom": "norae"
+  },
+  {
+   "ko": "그림",
+   "rom": "geurim"
+  },
+  {
+   "ko": "마음",
+   "rom": "maeum"
+  },
+  {
+   "ko": "생각",
+   "rom": "saenggak"
+  },
+  {
+   "ko": "이름",
+   "rom": "ireum"
+  },
+  {
+   "ko": "아버지",
+   "rom": "abeoji"
+  },
+  {
+   "ko": "어머니",
+   "rom": "eomeoni"
+  },
+  {
+   "ko": "동생",
+   "rom": "dongsaeng"
+  },
+  {
+   "ko": "창문",
+   "rom": "changmun"
+  },
+  {
+   "ko": "책",
+   "rom": "chaek"
+  },
+  {
+   "ko": "가방",
+   "rom": "gabang"
+  },
+  {
+   "ko": "모자",
+   "rom": "moja"
+  },
+  {
+   "ko": "바지",
+   "rom": "baji"
+  },
+  {
+   "ko": "구름",
+   "rom": "gureum"
+  },
+  {
+   "ko": "나무",
+   "rom": "namu"
+  },
+  {
+   "ko": "거리",
+   "rom": "geori"
+  },
+  {
+   "ko": "우유",
+   "rom": "uyu"
+  },
+  {
+   "ko": "오이",
+   "rom": "oi"
+  },
+  {
+   "ko": "꽃이",
+   "rom": "kkochi"
+  },
+  {
+   "ko": "할아버지",
+   "rom": "harabeoji"
+  },
+  {
+   "ko": "음악",
+   "rom": "eumak"
+  },
+  {
+   "ko": "한국어",
+   "rom": "hangugeo"
+  },
+  {
+   "ko": "직업",
+   "rom": "jigeop"
+  },
+  {
+   "ko": "목요일",
+   "rom": "mogyoil"
+  },
+  {
+   "ko": "옷이",
+   "rom": "osi"
+  },
+  {
+   "ko": "낮에",
+   "rom": "naje"
+  },
+  {
+   "ko": "앞에",
+   "rom": "ape"
+  },
+  {
+   "ko": "밖에",
+   "rom": "bakke"
+  },
+  {
+   "ko": "있어요",
+   "rom": "isseoyo"
+  },
+  {
+   "ko": "책이",
+   "rom": "chaegi"
+  },
+  {
+   "ko": "집에",
+   "rom": "jibe"
+  },
+  {
+   "ko": "눈이",
+   "rom": "nuni"
+  },
+  {
+   "ko": "손이",
+   "rom": "soni"
+  },
+  {
+   "ko": "밥을",
+   "rom": "babeul"
+  },
+  {
+   "ko": "먹어요",
+   "rom": "meogeoyo"
+  },
+  {
+   "ko": "웃음",
+   "rom": "useum"
+  },
+  {
+   "ko": "믿음",
+   "rom": "mideum"
+  },
+  {
+   "ko": "죽음",
+   "rom": "jugeum"
+  },
+  {
+   "ko": "꽃",
+   "rom": "kkot"
+  },
+  {
+   "ko": "옷",
+   "rom": "ot"
+  },
+  {
+   "ko": "밭",
+   "rom": "bat"
+  },
+  {
+   "ko": "낮",
+   "rom": "nat"
+  },
+  {
+   "ko": "앞",
+   "rom": "ap"
+  },
+  {
+   "ko": "부엌",
+   "rom": "bueok"
+  },
+  {
+   "ko": "밖",
+   "rom": "bak"
+  },
+  {
+   "ko": "빛",
+   "rom": "bit"
+  },
+  {
+   "ko": "끝",
+   "rom": "kkeut"
+  },
+  {
+   "ko": "입",
+   "rom": "ip"
+  },
+  {
+   "ko": "닭",
+   "rom": "dak"
+  },
+  {
+   "ko": "읽다",
+   "rom": "ikda"
+  },
+  {
+   "ko": "삶",
+   "rom": "sam"
+  },
+  {
+   "ko": "값",
+   "rom": "gap"
+  },
+  {
+   "ko": "여덟",
+   "rom": "yeodeol"
+  },
+  {
+   "ko": "넓다",
+   "rom": "neolda"
+  },
+  {
+   "ko": "앉다",
+   "rom": "anda"
+  },
+  {
+   "ko": "없다",
+   "rom": "eopda"
+  },
+  {
+   "ko": "젊다",
+   "rom": "jeomda"
+  },
+  {
+   "ko": "닭고기",
+   "rom": "dakgogi"
+  },
+  {
+   "ko": "닭이",
+   "rom": "dalgi"
+  },
+  {
+   "ko": "앉아요",
+   "rom": "anjayo"
+  },
+  {
+   "ko": "없어요",
+   "rom": "eopseoyo"
+  },
+  {
+   "ko": "읽어요",
+   "rom": "ilgeoyo"
+  },
+  {
+   "ko": "한국말",
+   "rom": "hangungmal"
+  },
+  {
+   "ko": "감사합니다",
+   "rom": "gamsahamnida"
+  },
+  {
+   "ko": "입니다",
+   "rom": "imnida"
+  },
+  {
+   "ko": "십만",
+   "rom": "simman"
+  },
+  {
+   "ko": "국물",
+   "rom": "gungmul"
+  },
+  {
+   "ko": "작년",
+   "rom": "jangnyeon"
+  },
+  {
+   "ko": "학년",
+   "rom": "hangnyeon"
+  },
+  {
+   "ko": "앞문",
+   "rom": "ammun"
+  },
+  {
+   "ko": "밥맛",
+   "rom": "bammat"
+  },
+  {
+   "ko": "받는다",
+   "rom": "banneunda"
+  },
+  {
+   "ko": "심리",
+   "rom": "simni"
+  },
+  {
+   "ko": "종로",
+   "rom": "jongno"
+  },
+  {
+   "ko": "대통령",
+   "rom": "daetongnyeong"
+  },
+  {
+   "ko": "음료수",
+   "rom": "eumnyosu"
+  },
+  {
+   "ko": "정류장",
+   "rom": "jeongnyujang"
+  },
+  {
+   "ko": "독립",
+   "rom": "dongnip"
+  },
+  {
+   "ko": "국립",
+   "rom": "gungnip"
+  },
+  {
+   "ko": "십리",
+   "rom": "simni"
+  },
+  {
+   "ko": "몇 명",
+   "rom": "myeon myeong"
+  },
+  {
+   "ko": "먹는다",
+   "rom": "meongneunda"
+  },
+  {
+   "ko": "신라",
+   "rom": "silla"
+  },
+  {
+   "ko": "연락",
+   "rom": "yeollak"
+  },
+  {
+   "ko": "설날",
+   "rom": "seollal"
+  },
+  {
+   "ko": "난로",
+   "rom": "nallo"
+  },
+  {
+   "ko": "실내",
+   "rom": "sillae"
+  },
+  {
+   "ko": "권력",
+   "rom": "gwollyeok"
+  },
+  {
+   "ko": "일년",
+   "rom": "illyeon"
+  },
+  {
+   "ko": "전라도",
+   "rom": "jeollado"
+  },
+  {
+   "ko": "관리",
+   "rom": "gwalli"
+  },
+  {
+   "ko": "달나라",
+   "rom": "dallara"
+  },
+  {
+   "ko": "놀람",
+   "rom": "nollam"
+  },
+  {
+   "ko": "텔레비전",
+   "rom": "tellebijeon"
+  },
+  {
+   "ko": "같이",
+   "rom": "gachi"
+  },
+  {
+   "ko": "해돋이",
+   "rom": "haedoji"
+  },
+  {
+   "ko": "굳이",
+   "rom": "guji"
+  },
+  {
+   "ko": "미닫이",
+   "rom": "midaji"
+  },
+  {
+   "ko": "끝이",
+   "rom": "kkeuchi"
+  },
+  {
+   "ko": "밭이",
+   "rom": "bachi"
+  },
+  {
+   "ko": "붙이다",
+   "rom": "buchida"
+  },
+  {
+   "ko": "좋다",
+   "rom": "jota"
+  },
+  {
+   "ko": "놓다",
+   "rom": "nota"
+  },
+  {
+   "ko": "많다",
+   "rom": "manta"
+  },
+  {
+   "ko": "싫다",
+   "rom": "silta"
+  },
+  {
+   "ko": "놓고",
+   "rom": "noko"
+  },
+  {
+   "ko": "그렇다",
+   "rom": "geureota"
+  },
+  {
+   "ko": "좋고",
+   "rom": "joko"
+  },
+  {
+   "ko": "국화",
+   "rom": "gukhwa"
+  },
+  {
+   "ko": "축하",
+   "rom": "chukha"
+  },
+  {
+   "ko": "입학",
+   "rom": "iphak"
+  },
+  {
+   "ko": "백화점",
+   "rom": "baekhwajeom"
+  },
+  {
+   "ko": "법학",
+   "rom": "beophak"
+  },
+  {
+   "ko": "급행",
+   "rom": "geuphaeng"
+  },
+  {
+   "ko": "묵호",
+   "rom": "mukho"
+  },
+  {
+   "ko": "학교",
+   "rom": "hakgyo"
+  },
+  {
+   "ko": "식당",
+   "rom": "sikdang"
+  },
+  {
+   "ko": "젓가락",
+   "rom": "jeotgarak"
+  },
+  {
+   "ko": "국밥",
+   "rom": "gukbap"
+  },
+  {
+   "ko": "숟가락",
+   "rom": "sutgarak"
+  },
+  {
+   "ko": "식탁",
+   "rom": "siktak"
+  },
+  {
+   "ko": "세탁기",
+   "rom": "setakgi"
+  },
+  {
+   "ko": "있다",
+   "rom": "itda"
+  },
+  {
+   "ko": "덥다",
+   "rom": "deopda"
+  },
+  {
+   "ko": "춥다",
+   "rom": "chupda"
+  }
+ ],
+ "unsupported": [
+  "꽃잎",
+  "담요",
+  "맛있다",
+  "색연필",
+  "솜이불",
+  "지하철역",
+  "한여름"
+ ],
+ "pronounced": [
+  {
+   "ko": "감사합니다",
+   "said": "감사함니다"
+  },
+  {
+   "ko": "맛있게",
+   "said": "마싣께"
+  },
+  {
+   "ko": "학교",
+   "said": "학꾜"
+  },
+  {
+   "ko": "같이",
+   "said": "가치"
+  },
+  {
+   "ko": "좋아요",
+   "said": "조아요"
+  },
+  {
+   "ko": "독립",
+   "said": "동닙"
+  },
+  {
+   "ko": "신라",
+   "said": "실라"
+  },
+  {
+   "ko": "축하해",
+   "said": "추카해"
+  },
+  {
+   "ko": "연락해",
+   "said": "열라캐"
+  },
+  {
+   "ko": "읽다",
+   "said": "익따"
+  },
+  {
+   "ko": "식당",
+   "said": "식땅"
+  },
+  {
+   "ko": "국밥",
+   "said": "국빱"
+  },
+  {
+   "ko": "젓가락",
+   "said": "젇까락"
+  },
+  {
+   "ko": "있다",
+   "said": "읻따"
+  },
+  {
+   "ko": "덥다",
+   "said": "덥따"
+  },
+  {
+   "ko": "춥다",
+   "said": "춥따"
+  },
+  {
+   "ko": "행복해",
+   "said": "행보캐"
+  },
+  {
+   "ko": "대답해",
+   "said": "대다패"
+  },
+  {
+   "ko": "어떡해",
+   "said": "어떠캐"
+  },
+  {
+   "ko": "따뜻한",
+   "said": "따뜨탄"
+  },
+  {
+   "ko": "식후",
+   "said": "시쿠"
+  },
+  {
+   "ko": "좋다",
+   "said": "조타"
+  },
+  {
+   "ko": "않다",
+   "said": "안타"
+  },
+  {
+   "ko": "값이",
+   "said": "갑씨"
+  }
+ ]
+}

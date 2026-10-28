@@ -1,5 +1,5 @@
 // The 40 letters of Hangul, in chart order. Example words come from the
-// Hangul Hero app (assets/alphabet/*.json) and every one has a native clip in
+// Hangul Hero app (assets/alphabet/*.json) and every one has a clip in
 // public/audio/ko/. Facts here need a native-speaker review before launch.
 
 export type Role = 'consonant' | 'vowel';

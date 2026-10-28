@@ -1,0 +1,14 @@
+---
+// Hangul with a romanization hint under each syllable; the hint hides once the
+// visitor knows every letter in it (data-jamo, handled in Layout).
+import type { Syl } from '../data/phrases';
+
+interface Props { syl: Syl[]; size?: 'lg' | 'md' }
+const { syl, size = 'lg' } = Astro.props;
+---
+
+<div class:list={['prog', size === 'md' && 'prog--md']} lang="ko">
+  {syl.map((s) => s.space
+    ? <span class="s s--gap" aria-hidden="true"></span>
+    : <span class="s" data-jamo={s.jamo || undefined}><b>{s.k}</b>{s.rom && <em lang="en">{s.rom}</em>}</span>)}
+</div>

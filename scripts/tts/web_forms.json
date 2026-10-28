@@ -1,0 +1,130 @@
+{
+  "phrases": [
+    {
+      "id": "web_c548_b155_d558_c138_c694",
+      "written": "안녕하세요",
+      "text": "안녕하세요",
+      "audio": "c548_b155_d558_c138_c694.mp3"
+    },
+    {
+      "id": "web_ac10_c0ac_d569_b2c8_b2e4",
+      "written": "감사합니다",
+      "text": "감사함니다",
+      "audio": "ac10_c0ac_d569_b2c8_b2e4.mp3"
+    },
+    {
+      "id": "web_ace0_b9d9_c2b5_b2c8_b2e4",
+      "written": "고맙습니다",
+      "text": "고맙씀니다",
+      "audio": "ace0_b9d9_c2b5_b2c8_b2e4.mp3"
+    },
+    {
+      "id": "web_ace0_b9c8_c6cc_c694",
+      "written": "고마워요",
+      "text": "고마워요",
+      "audio": "ace0_b9c8_c6cc_c694.mp3"
+    },
+    {
+      "id": "web_c8c4_c1a1_d569_b2c8_b2e4",
+      "written": "죄송합니다",
+      "text": "죄송함니다",
+      "audio": "c8c4_c1a1_d569_b2c8_b2e4.mp3"
+    },
+    {
+      "id": "web_c8c4_c1a1_d574_c694",
+      "written": "죄송해요",
+      "text": "죄송해요",
+      "audio": "c8c4_c1a1_d574_c694.mp3"
+    },
+    {
+      "id": "web_bbf8_c548_d574_c694",
+      "written": "미안해요",
+      "text": "미안해요",
+      "audio": "bbf8_c548_d574_c694.mp3"
+    },
+    {
+      "id": "web_c0ac_b791_d574_c694",
+      "written": "사랑해요",
+      "text": "사랑해요",
+      "audio": "c0ac_b791_d574_c694.mp3"
+    },
+    {
+      "id": "web_c0ac_b791_d569_b2c8_b2e4",
+      "written": "사랑합니다",
+      "text": "사랑함니다",
+      "audio": "c0ac_b791_d569_b2c8_b2e4.mp3"
+    },
+    {
+      "id": "web_c548_b155",
+      "written": "안녕",
+      "text": "안녕",
+      "audio": "c548_b155.mp3"
+    },
+    {
+      "id": "web_c5ec_bcf4_c138_c694",
+      "written": "여보세요",
+      "text": "여보세요",
+      "audio": "c5ec_bcf4_c138_c694.mp3"
+    },
+    {
+      "id": "web_c798_0020_c9c0_b0c8_c5b4_c694",
+      "written": "잘 지냈어요",
+      "text": "잘 지내써요",
+      "audio": "c798_0020_c9c0_b0c8_c5b4_c694.mp3"
+    },
+    {
+      "id": "web_c798_0020_c9c0_b0b4_c168_c5b4_c694",
+      "written": "잘 지내셨어요",
+      "text": "잘 지내셔써요",
+      "audio": "c798_0020_c9c0_b0b4_c168_c5b4_c694.mp3"
+    },
+    {
+      "id": "web_adc0_c5ec_c6cc_c694",
+      "written": "귀여워요",
+      "text": "귀여워요",
+      "audio": "adc0_c5ec_c6cc_c694.mp3"
+    },
+    {
+      "id": "web_adc0_c5fd_b2e4",
+      "written": "귀엽다",
+      "text": "귀엽따",
+      "audio": "adc0_c5fd_b2e4.mp3"
+    },
+    {
+      "id": "web_b9db_c788_c5b4",
+      "written": "맛있어",
+      "text": "마시써",
+      "audio": "b9db_c788_c5b4.mp3"
+    },
+    {
+      "id": "web_b9db_c788_c2b5_b2c8_b2e4",
+      "written": "맛있습니다",
+      "text": "마싣씀니다",
+      "audio": "b9db_c788_c2b5_b2c8_b2e4.mp3"
+    },
+    {
+      "id": "web_c9e0",
+      "written": "짠",
+      "text": "짠",
+      "audio": "c9e0.mp3"
+    },
+    {
+      "id": "web_c704_d558_c5ec",
+      "written": "위하여",
+      "text": "위하여",
+      "audio": "c704_d558_c5ec.mp3"
+    },
+    {
+      "id": "web_c918",
+      "written": "줘",
+      "text": "줘",
+      "audio": "c918.mp3"
+    },
+    {
+      "id": "web_c8fc_c2ed_c2dc_c624",
+      "written": "주십시오",
+      "text": "주십씨오",
+      "audio": "c8fc_c2ed_c2dc_c624.mp3"
+    }
+  ]
+}

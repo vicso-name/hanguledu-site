@@ -8,7 +8,9 @@
     "build": "astro build",
     "postbuild": "node scripts/check-build.mjs",
     "preview": "astro preview",
-    "sync:audio": "node scripts/sync-audio.mjs"
+    "test:engine": "node scripts/test-engine.ts",
+    "prebuild": "npm run test:engine",
+    "sync:app": "node scripts/sync-app.mjs"
   },
   "dependencies": {
     "astro": "^7.3.5"

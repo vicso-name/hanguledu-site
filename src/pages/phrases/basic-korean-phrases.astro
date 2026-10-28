@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PhraseRow from '../../components/PhraseRow.astro';
+import Faq from '../../components/Faq.astro';
+import AppCta from '../../components/AppCta.astro';
+import { form, phrase } from '../../data/phrases';
+import { crumbs, faqPage } from '../../lib/schema';
+
+// A starter kit by situation, from every pack. The first group is the polite
+// basics; 안녕하세요 and 감사합니다 are not app phrases and are worked out by the engine.
+const GROUPS = [
+  { title: 'The first ten', sub: 'Polite, safe with anyone.', link: null, list: [
+    form({ ko: '안녕하세요', en: 'Hello', register: 'polite', situation: 'Strangers, staff, most adults' }),
+    form({ ko: '감사합니다', en: 'Thank you', register: 'formal', situation: 'Shops, strangers, older people' }),
+    form({ ko: '죄송합니다', en: "I'm sorry", register: 'formal', situation: 'A real apology, or excuse me' }),
+    phrase('fc_jeogiyo'), phrase('kd_gwaenchanayo'), phrase('wk_cheoeum_boep'),
+    phrase('wk_jal_moreu'), phrase('wk_dasi'), phrase('wk_cheoncheonhi'), phrase('ga_dowajuseyo'),
+  ] },
+  { title: 'At a café or restaurant', sub: 'From the Food & Café pack.', link: '/phrases/coffee-in-korean/', list: ['fc_menyupan', 'fc_igeo_juseyo', 'fc_mul', 'fc_masisseoyo', 'fc_gyesan', 'fc_kadeu'].map(phrase) },
+  { title: 'Getting around', sub: 'Subway, bus and taxi.', link: null, list: ['ga_hwajangsil', 'ga_jihacheol', 'ga_juso', 'ga_seweo', 'ga_gireul', 'ga_waipai'].map(phrase) },
+  { title: 'Shopping', sub: 'Prices, sizes and paying.', link: null, list: ['sm_eolmayeyo', 'sm_bissayo', 'sm_gugyeong', 'sm_igeollo', 'sm_kadeuro', 'sm_bongtu'].map(phrase) },
+  { title: 'When something goes wrong', sub: 'Pharmacy, doctor, police.', link: null, list: ['hl_yakguk', 'hl_meori', 'hl_allereugi', 'hl_jigap', 'hl_gyeongchal', 'hl_gugeupcha'].map(phrase) },
+  { title: 'With friends', sub: 'Casual speech, as in K-dramas.', link: '/phrases/k-drama/', list: ['kd_gomawo', 'kd_mianhae', 'kd_bap_meogeosseo', 'fr_jinjja', 'kd_daebak', 'kd_algesseo'].map(phrase) },
+];
+
+const FAQ = [
+  { q: 'Which Korean phrases should I learn first?', a: '안녕하세요 (hello), 감사합니다 (thank you), 죄송합니다 (sorry), 저기요 (excuse me) and 이거 주세요 (this one, please) get you through most first days in Korea.' },
+  { q: 'Should I learn casual or polite Korean first?', a: 'Polite. The 요 form (해요체) is safe with strangers, staff and anyone older. Casual speech is for friends, and it can sound rude to a stranger.' },
+  { q: 'Do I need to read Hangul to use these?', a: 'No, the romanization and audio are enough to start. But Hangul takes about an afternoon to learn, and it shows you why 감사합니다 is said 감사함니다.' },
+];
+
+const count = GROUPS.reduce((n, g) => n + g.list.length, 0);
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'LearningResource', name: 'Basic Korean phrases', learningResourceType: 'Lesson', inLanguage: 'en', teaches: 'Basic Korean phrases for travel and daily life', isAccessibleForFree: true },
+  crumbs([['Phrases', '/phrases/'], ['Basic Korean phrases', '/phrases/basic-korean-phrases/']]),
+  faqPage(FAQ),
+];
+---
+
+<Layout
+  title={`${count} Basic Korean Phrases for Beginners, with Audio | HangulEdu`}
+  description="Basic Korean phrases for beginners and travel: hello, thank you, sorry, ordering food, asking the way, shopping and emergencies. With audio and how each one really sounds."
+  schema={schema}
+>
+  <section class="wrap page-head">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/phrases/">Phrases</a><span aria-hidden="true">/</span><span>Basic phrases</span></nav>
+    <div class="head">
+      <h1 class="t-h1">Basic Korean phrases</h1>
+      <p class="t-lead">{count} phrases for a first trip or a first week of Korean, grouped by where you will need them. Tap ▶ to hear one; tap the phrase to see how it really sounds.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec--flush wrap--medium">
+    {GROUPS.map((g) => (
+      <div class="group">
+        <div class="head">
+          <h2 class="t-h2">{g.title}</h2>
+          <p class="t-body he-ink-2">{g.sub}{g.link && <> <a href={g.link}>More</a></>}</p>
+        </div>
+        <ul class="plist">{g.list.map((p) => <PhraseRow p={p} />)}</ul>
+      </div>
+    ))}
+  </section>
+
+  <section class="wrap sec wrap--medium">
+    <h2 class="t-h2" style="margin-bottom: 16px;">Questions</h2>
+    <Faq items={FAQ} />
+  </section>
+
+  <AppCta title="240 phrases in 8 packs, offline" />
+</Layout>

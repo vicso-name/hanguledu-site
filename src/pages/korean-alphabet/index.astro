@@ -26,7 +26,7 @@ const FAQ = [
 ];
 
 const schema = [
-  { '@context': 'https://schema.org', '@type': 'Course', name: 'The Korean alphabet (Hangul)', description: 'Learn the 40 letters of Hangul in five steps, with native audio.', provider: { '@type': 'Organization', name: 'HangulEdu', sameAs: 'https://hanguledu.com/' }, isAccessibleForFree: true, inLanguage: 'en', hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: 'PT3H' }, offers: { '@type': 'Offer', price: 0, priceCurrency: 'USD', category: 'Free' } },
+  { '@context': 'https://schema.org', '@type': 'Course', name: 'The Korean alphabet (Hangul)', description: 'Learn the 40 letters of Hangul in five steps, with audio.', provider: { '@type': 'Organization', name: 'HangulEdu', sameAs: 'https://hanguledu.com/' }, isAccessibleForFree: true, inLanguage: 'en', hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: 'PT3H' }, offers: { '@type': 'Offer', price: 0, priceCurrency: 'USD', category: 'Free' } },
   crumbs([['Korean alphabet', '/korean-alphabet/']]),
   faqPage(FAQ),
 ];
@@ -34,7 +34,7 @@ const schema = [
 
 <Layout
   title="Korean Alphabet (Hangul): Learn the 40 Letters with Audio | HangulEdu"
-  description="Hangul in five steps: 19 consonants and 21 vowels with native audio, how King Sejong designed each letter, a syllable block builder, and progress that stays in your browser."
+  description="Hangul in five steps: 19 consonants and 21 vowels with audio, how King Sejong designed each letter, a syllable block builder, and progress that stays in your browser."
   schema={schema}
 >
   <section class="wrap page-head">

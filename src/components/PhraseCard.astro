@@ -1,0 +1,60 @@
+---
+// One phrase, as in the app's card: register, hangul with hints, meaning, audio,
+// how it is really said, and (behind a tap) the rules and the words it is built from.
+// open: the full X-Ray is shown up front (a page's lead phrase).
+import type { XPhrase } from '../data/phrases';
+import { REGISTER_LABEL } from '../data/phrases';
+import XrayLine from './XrayLine.astro';
+import SoundXray from './SoundXray.astro';
+
+interface Props { p: XPhrase; heading?: 'h2' | 'h3'; open?: boolean }
+const { p, heading = 'h3', open = true } = Astro.props;
+const H = heading;
+const tones = ['purple', 'amber', 'pink', 'teal'];
+const same = p.said === p.ko;
+const more = p.changes.length > 0 || p.parts.length > 0 || !!p.note;
+---
+
+<article class="he-glass pcard" id={p.id}>
+  <div class="row pcard-top">
+    <span class={`he-register he-register--${p.register}`}>{REGISTER_LABEL[p.register]}</span>
+    {p.pack && <span class="t-meta">{p.pack.emoji} {p.pack.title}</span>}
+  </div>
+  <XrayLine syl={p.written} size="md" />
+  <H class="pcard-en">{p.en}</H>
+  <p class="he-phrase__rom">{p.rom}</p>
+  {p.situation && <p class="he-phrase__sit">{p.situation}</p>}
+  {p.audio
+    ? <div class="row pcard-audio">
+        <button type="button" class="he-play he-play--sm" data-src={p.audio} aria-label={`Play ${p.ko}`}><svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></button>
+        <button type="button" class="he-play he-play--sm he-play--slow" data-src={p.audio} data-slow aria-label={`Play ${p.ko} slowly`}><svg class="he-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0"></path><circle cx="10" cy="13" r="8"></circle><path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6"></path></svg>Slow</button>
+        {!open && !same && <span class="pcard-said" lang="ko"><span class="t-label" lang="en">Said</span> <span class="xr-syl">{p.spoken.map((s) => <span class:list={[s.hit && 'hit', s.space && 'gap']}>{s.k}</span>)}</span></span>}
+      </div>
+    : <p class="he-audio-missing">No recording of this form yet.</p>}
+  {!open && !p.audio && !same && <p class="pcard-said" lang="ko"><span class="t-label" lang="en">Said</span> <span class="xr-syl">{p.spoken.map((s) => <span class:list={[s.hit && 'hit', s.space && 'gap']}>{s.k}</span>)}</span></p>}
+  {open
+    ? <div class="pcard-more pcard-more--open">
+        <p class="he-label">How it sounds</p>
+        <SoundXray p={p} />
+        {p.parts.length > 0 && (
+          <div class="pcard-parts">
+            <ul class="he-parts">
+              {p.parts.map((pt, i) => <li class={`he-part he-part--${tones[i % 4]}`}><span class="he-part__ko" lang="ko">{pt.ko}</span><span class="he-part__gloss">{pt.gloss}</span></li>)}
+            </ul>
+            {p.literal && <p class="he-literal">Literally: {p.literal}</p>}
+          </div>
+        )}
+      </div>
+    : more && <details class="pcard-more">
+        <summary class="he-label">{[p.changes.length && 'Why it sounds like that', p.parts.length && 'word by word'].filter(Boolean).join(' · ').replace(/^w/, 'W') || 'Note'}</summary>
+        <SoundXray p={p} lines={false} />
+        {p.parts.length > 0 && (
+          <div class="pcard-parts">
+            <ul class="he-parts">
+              {p.parts.map((pt, i) => <li class={`he-part he-part--${tones[i % 4]}`}><span class="he-part__ko" lang="ko">{pt.ko}</span><span class="he-part__gloss">{pt.gloss}</span></li>)}
+            </ul>
+            {p.literal && <p class="he-literal">Literally: {p.literal}</p>}
+          </div>
+        )}
+      </details>}
+</article>

@@ -1,0 +1,32 @@
+---
+// "How it sounds": written over said, the changed syllables marked, and each
+// numbered change with the rule behind it (tap to read the full rule).
+// lines={false} leaves out the written/said pair when the card already shows it.
+import type { XPhrase } from '../data/phrases';
+
+interface Props { p: XPhrase; lines?: boolean }
+const { p, lines = true } = Astro.props;
+const same = p.said === p.ko;
+---
+
+<div class="sx">
+  {lines && <div class="sx-lines" lang="ko">
+    <div class="xr-line"><span class="t-label" lang="en">Written</span><span class="xr-syl">{p.written.map((s) => <span class:list={[s.hit && 'hit', s.space && 'gap']}>{s.k}</span>)}</span></div>
+    {!same && <div class="xr-line"><span class="t-label" lang="en">Said</span><span class="xr-syl">{p.spoken.map((s) => <span class:list={[s.hit && 'hit', s.space && 'gap']}>{s.k}</span>)}</span></div>}
+  </div>}
+  {lines && same && <p class="he-literal">Read exactly as written.</p>}
+  {p.changes.length > 0 && (
+    <ol class="sx-changes">
+      {p.changes.map((c) => (
+        <li>
+          <details>
+            <summary><span class="sx-n">{c.n}</span><span lang="ko" class="ko sx-ba">{c.before} → {c.after}</span><span class="he-rule__tag">{c.tag}</span></summary>
+            <p class="t-meta">{c.line}.</p>
+            {c.sheets.map((s) => <p class="t-body sx-sheet"><b>{s.title}.</b> {s.text}</p>)}
+          </details>
+        </li>
+      ))}
+    </ol>
+  )}
+  {p.note && <p class="he-rule" style="margin: 0;"><span class="he-rule__tag">Note</span><span>{p.note}</span></p>}
+</div>

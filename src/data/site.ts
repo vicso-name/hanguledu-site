@@ -33,13 +33,14 @@ export function storeHref(store: Store, page: string): string | null {
 export const site = {
   name: 'HangulEdu',
   url: 'https://hanguledu.com',
-  title: 'Learn the Korean Alphabet (Hangul) with Native Audio | HangulEdu',
-  description: 'Learn to read Korean: all 40 Hangul letters with native audio, a sound chart of every syllable, and quizzes that remember what you know. Free, no sign-up.',
+  title: 'Learn the Korean Alphabet (Hangul) with Audio | HangulEdu',
+  description: 'Learn to read Korean: all 40 Hangul letters with audio, a sound chart of every syllable, and quizzes that remember what you know. Free, no sign-up.',
   stores: [googlePlay, appStore],
   nav: [
     { href: '/korean-alphabet/', label: 'Alphabet' },
     { href: '/korean-alphabet/chart/', label: 'Chart' },
     { href: '/korean-alphabet/consonants/', label: 'Consonants' },
     { href: '/korean-alphabet/vowels/', label: 'Vowels' },
+    { href: '/phrases/', label: 'Phrases' },
   ],
 };

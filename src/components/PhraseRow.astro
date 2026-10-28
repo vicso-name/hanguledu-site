@@ -1,0 +1,28 @@
+---
+// A phrase in a long list: hangul, meaning, register, play; the X-Ray opens in place.
+import type { XPhrase } from '../data/phrases';
+import { REGISTER_LABEL } from '../data/phrases';
+import SoundXray from './SoundXray.astro';
+
+interface Props { p: XPhrase; note?: string }
+const { p, note } = Astro.props;
+---
+
+<li class="prow" id={p.id} data-reg={p.register} data-pack={p.pack?.id} data-q={`${p.ko} ${p.rom} ${p.en} ${p.situation}`.toLowerCase()}>
+  <details>
+    <summary class="prow-sum">
+      <span class="prow-main">
+        <b lang="ko" class="prow-ko">{p.ko}</b>
+        <span class="prow-en">{p.en}</span>
+        <span class="t-meta">{p.rom}{p.said !== p.ko && <> · said <span lang="ko" class="ko">{p.said}</span></>}</span>
+        {note && <span class="prow-note">{note}</span>}
+      </span>
+      <span class={`he-register he-register--${p.register} prow-reg`}>{REGISTER_LABEL[p.register]}</span>
+    </summary>
+    <div class="prow-body">
+      {p.situation && p.situation !== note && <p class="t-meta">{p.situation}</p>}
+      <SoundXray p={p} />
+    </div>
+  </details>
+  {p.audio && <button type="button" class="he-play he-play--sm prow-play" data-src={p.audio} aria-label={`Play ${p.ko}`}><svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></button>}
+</li>

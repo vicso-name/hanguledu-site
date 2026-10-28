@@ -4,7 +4,7 @@ import icon from '../assets/app-icon.png';
 import { Image } from 'astro:assets';
 
 interface Props { title: string; sub?: string }
-const { title, sub = 'Korean alphabet, 240 phrases and quiz games with native audio. Works offline.' } = Astro.props;
+const { title, sub = 'Korean alphabet, 240 phrases and quiz games with Korean audio. Works offline.' } = Astro.props;
 const badges = site.stores
   .map((s) => ({ ...s, href: storeHref(s, Astro.url.pathname) }))
   .filter((s) => s.href);
