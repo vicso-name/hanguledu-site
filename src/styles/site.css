@@ -29,6 +29,7 @@
 .head { display: grid; gap: 12px; margin-bottom: 28px; }
 
 /* header */
+.hdr-bar { border-bottom: 1px solid var(--divider); }
 .hdr { display: flex; align-items: center; gap: 24px; min-height: 72px; flex-wrap: wrap; padding-block: 12px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 800 18px/1 var(--font-ui); }
 .pg a.brand { color: var(--textPrimary); }
