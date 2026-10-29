@@ -5,15 +5,16 @@ import MouthFamilies from '../../components/MouthFamilies.astro';
 import VowelSeeds from '../../components/VowelSeeds.astro';
 import Faq from '../../components/Faq.astro';
 import AppCta from '../../components/AppCta.astro';
+import Icon from '../../components/Icon.astro';
 import { ofGroup, letterSyllable } from '../../data/hangul';
 import { crumbs, faqPage } from '../../lib/schema';
 
 const STEPS = [
-  { n: 1, title: 'Basic consonants', letters: ofGroup('basicC').map((l) => l.g).join(''), href: '/korean-alphabet/consonants/', what: 'Five mouth shapes and the letters built from them.' },
-  { n: 2, title: 'Basic vowels', letters: ofGroup('basicV').map((l) => l.g).join(''), href: '/korean-alphabet/vowels/', what: 'Three strokes: sky, earth, person.' },
-  { n: 3, title: 'Syllable blocks', letters: '', href: '#builder', what: 'Put letters together: consonant, vowel, final consonant.' },
-  { n: 4, title: 'Double consonants', letters: ofGroup('double').map((l) => l.g).join(''), href: '/korean-alphabet/consonants/#plain-aspirated-tense', what: 'Tense sounds: 까 against 가 and 카.' },
-  { n: 5, title: 'Combined vowels', letters: ofGroup('combV').map((l) => l.g).join(''), href: '/korean-alphabet/vowels/', what: 'Two vowels in one, and which ones sound the same.' },
+  { n: 1, r: 'c', title: 'Basic consonants', letters: ofGroup('basicC').map((l) => l.g).join(''), href: '/korean-alphabet/consonants/', what: 'Five mouth shapes and the letters built from them.' },
+  { n: 2, r: 'v', title: 'Basic vowels', letters: ofGroup('basicV').map((l) => l.g).join(''), href: '/korean-alphabet/vowels/', what: 'Three strokes: sky, earth, person.' },
+  { n: 3, r: 'c', title: 'Syllable blocks', letters: '', href: '#builder', what: 'Put letters together: consonant, vowel, final consonant.' },
+  { n: 4, r: 'c', title: 'Double consonants', letters: ofGroup('double').map((l) => l.g).join(''), href: '/korean-alphabet/consonants/#plain-aspirated-tense', what: 'Tense sounds: 까 against 가 and 카.' },
+  { n: 5, r: 'v', title: 'Combined vowels', letters: ofGroup('combV').map((l) => l.g).join(''), href: '/korean-alphabet/vowels/', what: 'Two vowels in one, and which ones sound the same.' },
 ];
 
 // "Your 40": consonants and vowels as a table; each double consonant sits under the letter it doubles.
@@ -93,18 +94,33 @@ const schema = [
     <div class="head">
       <p class="t-label">Five steps</p>
       <h2 class="t-h2">Learn Hangul in this order</h2>
+      <p class="t-body he-ink-2">Each step builds on the one before. The cards fill in as you mark letters in the chart.</p>
     </div>
-    <ol class="steps">
+    <ol class="path">
       {STEPS.map((s) => (
-        <li>
-          <a class="he-glass step" href={s.href} data-step={s.letters}>
-            <span class="step-n">{s.n}</span>
-            <span class="step-body">
-              <span class="t-h3">{s.title}</span>
+        <li class="path-i" data-step={s.letters}>
+          <span class="path-node" aria-hidden="true"><span class="path-n">{s.n}</span><Icon name="check" /></span>
+          <a class="he-glass he-glass--dense path-card" href={s.href}>
+            <span class="path-main">
+              <span class="path-title"><span class="t-h3">{s.title}</span><span class="path-tag">Up next</span></span>
               <span class="t-meta">{s.what}</span>
-              {s.letters && <span class="step-letters" lang="ko">{[...s.letters].map((g) => <i data-g={g}>{g}</i>)}</span>}
             </span>
-            <span class="step-count t-meta">{s.letters ? <><span data-step-n>0</span>/{s.letters.length}</> : 'Try it'}</span>
+            {s.letters ? (
+              <span class="path-letters" lang="ko">{[...s.letters].map((g) => <i data-g={g} data-r={s.r}>{g}</i>)}</span>
+            ) : (
+              <span class="path-letters path-letters--block" lang="ko"><i data-r="c" class="on">ㄱ</i><em>+</em><i data-r="v" class="on">ㅏ</i><em>=</em><b>가</b></span>
+            )}
+            <span class="path-prog">
+              {s.letters ? (
+                <>
+                  <span class="t-meta path-count"><b data-step-n>0</b> of {s.letters.length}</span>
+                  <span class={`path-bar path-bar--${s.r}`}><i data-step-bar></i></span>
+                </>
+              ) : (
+                <span class="t-meta path-count">Try the builder</span>
+              )}
+            </span>
+            <Icon name="chevron_right" class="path-go" />
           </a>
         </li>
       ))}
@@ -172,13 +188,19 @@ const schema = [
     card.querySelector('[data-next]')!.textContent = next ?? '';
     card.querySelector('[data-left]')!.textContent = String(40 - set.size);
     document.querySelectorAll('[data-mine-count]').forEach((el) => (el.textContent = String(set.size)));
+    // the first step not finished yet is "up next"; step 3 has no letters and is never marked
+    let nextSet = false;
     document.querySelectorAll<HTMLElement>('[data-step]').forEach((s) => {
       const letters = [...s.dataset.step!];
       if (!letters.length) return;
-      s.querySelectorAll<HTMLElement>('.step-letters i').forEach((i) => i.classList.toggle('on', set.has(i.dataset.g!)));
+      s.querySelectorAll<HTMLElement>('.path-letters i').forEach((i) => i.classList.toggle('on', set.has(i.dataset.g!)));
       const n = letters.filter((g) => set.has(g)).length;
+      const done = n === letters.length;
       s.querySelector('[data-step-n]')!.textContent = String(n);
-      s.classList.toggle('is-done', n === letters.length);
+      s.querySelector<HTMLElement>('[data-step-bar]')!.style.width = (n / letters.length) * 100 + '%';
+      s.classList.toggle('is-done', done);
+      s.classList.toggle('is-next', !done && !nextSet);
+      if (!done) nextSet = true;
     });
   });
 </script>
