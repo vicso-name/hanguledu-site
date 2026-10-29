@@ -499,7 +499,7 @@
   .m40-meter { flex-basis: 180px; }
   .m40-meter .t-body { font-size: 15px; line-height: 22px; }
   .m40-top .d-link { margin-left: 0; }
-  .m40-row { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+  .m40-row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
   .m40-rows { gap: 6px; }
   .m40-row--under .m40-c { grid-column: auto; }
   .m40-c { aspect-ratio: auto; height: 54px; border-radius: 10px; gap: 2px; }
