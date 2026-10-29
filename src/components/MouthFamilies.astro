@@ -1,19 +1,30 @@
 ---
-// How the consonants were designed: five base shapes drawn from the mouth,
-// with the letters built from each. Every letter button plays its sound.
+// How the consonants were designed: five base shapes drawn from the mouth, laid out as a table
+// so each operation has its own column (+ stroke, doubled, variant). Every letter plays its sound.
 import { FAMILIES, BY, letterSyllable } from '../data/hangul';
+
+const HEAD = ['shape', '+ stroke', '+ stroke', 'doubled', 'variant'];
+const rows = FAMILIES.map((f) => {
+  let stroke = 1, doubled = 0;
+  const cells = f.items.map(([g, op]) => {
+    const col = op === '' ? 1 : op.startsWith('+') ? ++stroke : op === 'doubled' ? 4 : 5;
+    const row = op === 'doubled' ? ++doubled : 1;
+    return { g, col, row, rom: BY[g].rom.replaceAll(' ', ''), syl: letterSyllable(BY[g]) };
+  });
+  return { ...f, cells };
+});
 ---
 
-<div class="fams">
-  {FAMILIES.map((f) => (
-    <div class="fam">
-      <div><h3 class="t-h3">{f.title}</h3><p class="t-meta">{f.desc}</p></div>
-      <div class="chain">
-        {f.items.map(([g, op]) => (
-          <>
-            {op && <span class="arrow">{op}</span>}
-            <button type="button" class="lbtn lbtn--c" lang="ko" data-say={letterSyllable(BY[g])} aria-label={`${g}, ${BY[g].rom}`}>{g}</button>
-          </>
+<div class="ft" style="--cols: 5">
+  <div class="ft-head" aria-hidden="true">{HEAD.map((h) => <span>{h}</span>)}</div>
+  {rows.map((f) => (
+    <div class="ft-row">
+      <div class="ft-lab"><h3 class="t-h3">{f.title}</h3><p class="t-meta">{f.desc}</p></div>
+      <div class="ft-cells" lang="ko">
+        {f.cells.map((c) => (
+          <button type="button" class="ft-c ft-c--c" data-say={c.syl} aria-label={`${c.g}, ${c.rom}`} style={`grid-column: ${c.col}; grid-row: ${c.row}`}>
+            <b>{c.g}</b><small lang="en">{c.rom}</small>
+          </button>
         ))}
       </div>
     </div>

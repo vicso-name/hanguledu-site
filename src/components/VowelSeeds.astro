@@ -1,29 +1,45 @@
 ---
-// How the vowels were designed: three seed strokes for sky, earth and person.
+// How the vowels were designed: three seeds (sky, earth, person), a dot beside a line makes a
+// vowel, a second dot adds y, and two vowels merge into one. Every letter plays its sound.
 import { BY, letterSyllable } from '../data/hangul';
 
 const lb = (g: string) => ({ g, syl: letterSyllable(BY[g]), rom: BY[g].rom });
 const ROWS = [
-  { title: 'One dot', desc: 'A dot (now a short stroke) outside the person, or above and below the earth.', items: ['ㅏ', 'ㅓ', 'ㅗ', 'ㅜ'] },
-  { title: 'Two dots add y', desc: 'The same four with a second dot: a y glide in front.', items: ['ㅑ', 'ㅕ', 'ㅛ', 'ㅠ'] },
-  { title: 'Two vowels in one', desc: 'ㅗ + ㅏ = ㅘ, ㅜ + ㅓ = ㅝ, ㅡ + ㅣ = ㅢ, ㅏ + ㅣ = ㅐ.', items: ['ㅘ', 'ㅝ', 'ㅢ', 'ㅐ'] },
+  { title: 'Person ㅣ', desc: 'A dot right or left of the line.', items: ['ㅏ', 'ㅓ', 'ㅑ', 'ㅕ'] },
+  { title: 'Earth ㅡ', desc: 'A dot above or below the line.', items: ['ㅗ', 'ㅜ', 'ㅛ', 'ㅠ'] },
 ];
+const MERGED = [['ㅗ', 'ㅏ', 'ㅘ'], ['ㅜ', 'ㅓ', 'ㅝ'], ['ㅡ', 'ㅣ', 'ㅢ'], ['ㅏ', 'ㅣ', 'ㅐ']];
 ---
 
-<div class="fams">
-  <div class="fam">
-    <div><h3 class="t-h3">The three seeds</h3><p class="t-meta">A dot for the sky, a flat line for the earth, a standing line for a person.</p></div>
-    <div class="chain">
-      <span class="lbtn lbtn--seed" role="img" aria-label="dot, the sky">·</span>
-      {['ㅡ', 'ㅣ'].map((g) => <button type="button" class="lbtn lbtn--v" lang="ko" data-say={lb(g).syl} aria-label={`${g}, ${lb(g).rom}`}>{g}</button>)}
+<div class="ft" style="--cols: 4">
+  <div class="ft-row">
+    <div class="ft-lab"><h3 class="t-h3">The three seeds</h3><p class="t-meta">A dot for the round sky, a flat line for the earth, a standing line for a person.</p></div>
+    <div class="ft-cells" lang="ko">
+      <span class="ft-c ft-c--seed" role="img" aria-label="dot, the sky"><b>·</b><small lang="en">sky</small></span>
+      <button type="button" class="ft-c ft-c--v" data-say={lb('ㅡ').syl} aria-label="ㅡ, earth, eu"><b>ㅡ</b><small lang="en">earth</small></button>
+      <button type="button" class="ft-c ft-c--v" data-say={lb('ㅣ').syl} aria-label="ㅣ, person, i"><b>ㅣ</b><small lang="en">person</small></button>
     </div>
   </div>
-  {ROWS.map((r) => (
-    <div class="fam">
-      <div><h3 class="t-h3">{r.title}</h3><p class="t-meta">{r.desc}</p></div>
-      <div class="chain">
-        {r.items.map((g) => <button type="button" class="lbtn lbtn--v" lang="ko" data-say={lb(g).syl} aria-label={`${g}, ${lb(g).rom}`}>{g}</button>)}
+  <div class="ft-row">
+    <div class="ft-head ft-head--v" aria-hidden="true"><span>one dot</span><span>two dots: + y</span></div>
+    {ROWS.map((r) => (
+      <div class="ft-sub">
+        <div class="ft-lab"><h3 class="t-h3" lang="en">{r.title}</h3><p class="t-meta">{r.desc}</p></div>
+        <div class="ft-cells" lang="ko">
+          {r.items.map((g) => <button type="button" class="ft-c ft-c--v" data-say={lb(g).syl} aria-label={`${g}, ${lb(g).rom}`}><b>{g}</b><small lang="en">{lb(g).rom}</small></button>)}
+        </div>
       </div>
+    ))}
+  </div>
+  <div class="ft-row">
+    <div class="ft-lab"><h3 class="t-h3">Two vowels in one</h3><p class="t-meta">Two vowels share one letter.</p></div>
+    <div class="ft-eqs" lang="ko">
+      {MERGED.map(([a, b, r]) => (
+        <div class="ft-eq">
+          <span class="jm jm--v">{a}</span><em>+</em><span class="jm jm--v">{b}</span><em>=</em>
+          <button type="button" class="ft-c ft-c--v" data-say={lb(r).syl} aria-label={`${r}, ${lb(r).rom}`}><b>{r}</b><small lang="en">{lb(r).rom}</small></button>
+        </div>
+      ))}
     </div>
-  ))}
+  </div>
 </div>

@@ -222,13 +222,43 @@
 /* learned tick in the corner, so it never pushes the romanization sideways */
 .tiles8 .he-tile--learned .he-tile__rom::after { content: "✓"; position: absolute; top: 8px; right: 10px; font: 800 13px/1 var(--font-ui); }
 .tiles8 .he-tile[aria-pressed="true"] { border-color: var(--action); background: var(--soundContainer); }
+/* letter design tables (consonant families, vowel seeds): each operation has its own column,
+   so letters made the same way line up; every cell plays its letter */
+.ft { display: grid; align-content: start; container-type: inline-size; }
+.ft-row { display: grid; gap: 16px; padding-block: 24px; border-top: 1px solid var(--divider); }
+.ft-row:first-of-type, .ft-head + .ft-row { border-top: 0; padding-top: 0; }
+.ft-head, .ft-cells { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 64px)); gap: 8px; }
+.ft-head { padding-bottom: 20px; }
+.ft-head span { font: 600 12px/16px var(--font-ui); color: var(--textSecondary); white-space: nowrap; }
+.ft-head--v { padding-bottom: 0; }
+.ft-head--v span { grid-column: span 2; }
+.ft-sub { display: grid; gap: 12px; }
+.ft-lab { display: grid; gap: 4px; }
+.ft-c { display: grid; place-content: center; justify-items: center; gap: 3px; height: 64px; padding: 0; border: 1.5px solid transparent; border-radius: 14px; cursor: pointer; transition: transform .1s; }
+.ft-c b { font: 700 28px/1 var(--font-ko); }
+.ft-c small { font: 600 11px/13px var(--font-ui); opacity: .75; white-space: nowrap; }
+.ft-c:active { transform: scale(.94); }
+.ft-c--c { background: var(--letterConsonantContainer); color: var(--letterConsonantInk); }
+.ft-c--v { background: var(--letterVowelContainer); color: var(--letterVowelInk); }
+.ft-c--seed { background: var(--surfaceVariant); color: var(--textPrimary); cursor: default; }
+.ft-c--c:hover { border-color: var(--letterConsonant); }
+.ft-c--v:hover { border-color: var(--letterVowel); }
+.ft-eqs { display: grid; grid-template-columns: repeat(2, max-content); gap: 12px 32px; }
+.ft-eq { display: flex; align-items: center; gap: 8px; }
+.ft-eq em { font: 600 16px/1 var(--font-ui); font-style: normal; color: var(--textSecondary); }
+.ft-eq .ft-c { width: 64px; }
+.work { align-items: stretch; gap: 24px; }
+.work-card { display: grid; grid-template-rows: auto 1fr auto; gap: 28px; padding: 32px; }
+.work-head { display: grid; gap: 8px; }
+.work-card .d-link { justify-self: start; }
+/* a wide card puts the label left, so the column heads sit right above the letters */
+@container (min-width: 500px) {
+  .ft-row:has(> .ft-cells), .ft-sub { grid-template-columns: 160px minmax(0, 1fr); gap: 24px; align-items: center; }
+  .ft-head { padding-left: 184px; }
+  .ft-sub + .ft-sub { padding-top: 8px; }
+}
 .chain { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .chain .arrow { font: 600 13px/16px var(--font-ui); color: var(--textSecondary); padding-inline: 2px; }
-.lbtn { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 14px; border: 1.5px solid transparent; font: 700 30px/1 var(--font-ko); cursor: pointer; }
-.lbtn--c { background: var(--letterConsonantContainer); color: var(--letterConsonantInk); }
-.lbtn--v { background: var(--letterVowelContainer); color: var(--letterVowelInk); }
-.lbtn[aria-pressed="true"] { border-color: var(--action); }
-.fam { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 16px; align-items: center; padding: 14px 0; border-top: 1px solid var(--divider); }
 .pick { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
 
 /* home hero: first word card (3 tiles, syllable block, quiz) */
@@ -309,9 +339,14 @@
   .tiles8 .he-tile__glyph { font-size: 32px; line-height: 40px; }
   .tiles8 .he-tile--learned .he-tile__rom::after { top: 5px; right: 6px; font-size: 11px; }
   .tiles8 .he-tile__role { display: none; }
-  .fam { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-  .lbtn { width: 52px; height: 52px; font-size: 26px; }
   .glyph-row { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .work-card { padding: 24px 20px; gap: 24px; }
+  .ft-head, .ft-cells { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 6px; }
+  .ft-c { height: 58px; }
+  .ft-c b { font-size: 24px; }
+  .ft-c small { font-size: 10px; }
+  .ft-eqs { grid-template-columns: minmax(0, 1fr); }
+  .ft-eq .ft-c { width: 58px; }
   .seg { display: flex; width: 100%; }
   .seg button { flex: 1 0 auto; padding: 0 12px; }
   .glyph-box { max-width: 180px; justify-self: center; }
@@ -353,7 +388,7 @@
 .he-play--sm { width: 40px; height: 40px; border-width: 1.5px; }
 .he-play--sm svg.he-icon { width: 16px; height: 16px; }
 .he-play.is-playing { box-shadow: 0 0 0 3px var(--accent); }
-.he-tile.is-playing, .syl-cell.is-playing, .lbtn.is-playing, .trip-cell.is-playing, .vp.is-playing { box-shadow: 0 0 0 2px var(--accent); }
+.he-tile.is-playing, .syl-cell.is-playing, .ft-c.is-playing, .trip-cell.is-playing, .vp.is-playing { box-shadow: 0 0 0 2px var(--accent); }
 :where(button.he-tile, button.syl-cell, button.trip-cell, button.vp) { font: inherit; }
 
 /* letter chart */
@@ -392,9 +427,6 @@
 .quiz-opt--v { color: var(--letterVowelInk); }
 
 /* design families */
-.fams { display: grid; }
-.fams .fam:first-child { border-top: 0; }
-.lbtn--seed { background: var(--surfaceVariant); color: var(--textPrimary); cursor: default; }
 .pad .d-link { display: inline-block; margin-top: 8px; }
 
 /* plain / aspirated / tense */
