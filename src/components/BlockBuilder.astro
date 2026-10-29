@@ -27,23 +27,29 @@ const data = {
     <div class="build-res">
       <p class="t-label">You built</p>
       <p class="build-syl" lang="ko" data-b-syl>{block('ㄱ', 'ㅏ')}</p>
-      <p class="d-rom" data-b-rom>ga</p>
-      <div class="row">
+      <div class="row build-say">
         <button type="button" class="he-play" data-say="가" data-b-play aria-label="Play the block">
           <svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg>
         </button>
-        <span class="he-audio-missing" data-b-miss hidden>No recording of this block yet.</span>
+        <p class="build-rom" data-b-rom>ga</p>
       </div>
-      <p class="t-meta" data-b-note>ㅏ stands up, so it goes to the right of the consonant.</p>
+      <span class="he-audio-missing" data-b-miss hidden>No recording of this block yet.</span>
     </div>
+    <p class="t-body build-note" data-b-note>ㅏ stands up, so it goes to the right of the consonant.</p>
   </div>
   <div class="build-pick">
-    <p class="t-label">1 · Consonant</p>
-    <div class="pick-row" data-b-pick="c">{[...CONS].map((g, i) => <button type="button" class="pk pk--c" lang="ko" aria-pressed={i === 0 ? 'true' : 'false'} data-g={g}>{g}</button>)}</div>
-    <p class="t-label">2 · Vowel</p>
-    <div class="pick-row" data-b-pick="v">{[...VOWS].map((g, i) => <button type="button" class="pk pk--v" lang="ko" aria-pressed={i === 0 ? 'true' : 'false'} data-g={g}>{g}</button>)}</div>
-    <p class="t-label">3 · Final consonant (batchim)</p>
-    <div class="pick-row" data-b-pick="b">{FINS.map((g, i) => <button type="button" class="pk pk--b" lang="ko" aria-pressed={i === 0 ? 'true' : 'false'} data-g={g}>{g || 'none'}</button>)}</div>
+    <div class="build-step">
+      <p class="t-label">1 · Consonant</p>
+      <div class="pick-row" data-b-pick="c">{[...CONS].map((g, i) => <button type="button" class="pk pk--c" lang="ko" aria-pressed={i === 0 ? 'true' : 'false'} data-g={g}>{g}</button>)}</div>
+    </div>
+    <div class="build-step">
+      <p class="t-label">2 · Vowel</p>
+      <div class="pick-row" data-b-pick="v">{[...VOWS].map((g, i) => <button type="button" class="pk pk--v" lang="ko" aria-pressed={i === 0 ? 'true' : 'false'} data-g={g}>{g}</button>)}</div>
+    </div>
+    <div class="build-step">
+      <p class="t-label">3 · Final consonant (batchim)</p>
+      <div class="pick-row" data-b-pick="b">{FINS.map((g, i) => <button type="button" class="pk pk--b" lang="ko" aria-pressed={i === 0 ? 'true' : 'false'} data-g={g}>{g || 'none'}</button>)}</div>
+    </div>
   </div>
   <script type="application/json" data-b-data set:html={JSON.stringify(data)} />
 </div>

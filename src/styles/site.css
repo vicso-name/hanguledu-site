@@ -430,23 +430,27 @@
 .same-i { display: grid; gap: 10px; padding: 18px; }
 
 /* block builder */
-.build { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 28px; padding: 24px; align-items: start; }
-.build-out { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 20px; align-items: center; }
+/* the built block sits on a soft stage; the three pickers breathe on the right */
+.build { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; padding: 32px; align-items: start; }
+.build-out { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 28px 32px; align-items: center; padding: 32px; border-radius: var(--radius-card); background: var(--surfaceVariant); }
 .build-block .z { font-size: 52px; }
 .build-block .z--b { font-size: 38px; }
 .block--under { grid-template-columns: 1fr; grid-template-rows: 1fr 0.7fr 0.62fr; }
 .block--under .z--v { grid-row: 2; grid-column: 1; }
 .block--under .z--b { grid-column: 1; }
-.build-res { display: grid; gap: 8px; justify-items: start; }
-.build-syl { margin: 0; font: 700 64px/72px var(--font-ko); }
-.build-pick { display: grid; gap: 8px; }
-.build-pick .t-label:not(:first-child) { margin-top: 8px; }
-.pick-row { display: flex; flex-wrap: wrap; gap: 6px; }
-.pk { min-width: 44px; height: 44px; padding: 0 8px; border-radius: 10px; border: 1.5px solid transparent; font: 700 20px/1 var(--font-ko); cursor: pointer; }
+.build-res { display: grid; gap: 12px; justify-items: start; }
+.build-syl { margin: 0; font: 700 72px/80px var(--font-ko); }
+.build-say { gap: 14px; }
+.build-rom { margin: 0; font: 700 22px/28px var(--font-ui); }
+.build-note { grid-column: 1 / -1; padding-top: 24px; border-top: 1px solid var(--divider); color: var(--textSecondary); }
+.build-pick { display: grid; gap: 32px; }
+.build-step { display: grid; gap: 14px; }
+.pick-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); gap: 8px; }
+.pk { min-width: 44px; height: 48px; padding: 0 8px; border-radius: 12px; border: 1.5px solid transparent; font: 700 20px/1 var(--font-ko); cursor: pointer; }
 .pk--c { background: var(--letterConsonantContainer); color: var(--letterConsonantInk); }
 .pk--v { background: var(--letterVowelContainer); color: var(--letterVowelInk); }
 .pk--b { background: var(--letterBatchimContainer); color: var(--letterBatchimInk); }
-.pk[data-g=""] { font: 600 14px/1 var(--font-ui); }
+.pk[data-g=""] { padding: 0 4px; white-space: nowrap; font: 600 14px/1 var(--font-ui); }
 .pk[aria-pressed="true"] { border-color: var(--action); box-shadow: 0 0 0 1px var(--action); }
 
 /* hub: "your 40" table under the page head. Tap a letter to hear it; learned ones fill
@@ -486,6 +490,7 @@
 [data-theme="dark"] .m40-c.is-next { border-color: var(--focus); }
 .m40-c.is-playing { box-shadow: 0 0 0 2px var(--accent); }
 @media (max-width: 1100px) {
+  .build { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .m40-grp { grid-template-columns: minmax(0, 1fr); }
   .m40-lab { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 0; }
   .m40-lab .t-meta { display: block; }
@@ -547,12 +552,18 @@
   .trip-cell em { margin: 0; }
   .trip-cell .jm { display: none; }
   .names { grid-template-columns: minmax(0, 1fr); }
-  .build { grid-template-columns: minmax(0, 1fr); padding: 18px; gap: 20px; }
-  .build-out { grid-template-columns: 140px minmax(0, 1fr); gap: 16px; }
+  .build { padding: 20px; gap: 32px; }
+  .build-out { grid-template-columns: 132px minmax(0, 1fr); gap: 20px; padding: 20px; }
   .build-block .z { font-size: 38px; }
   .build-block .z--b { font-size: 28px; }
-  .build-syl { font-size: 48px; line-height: 56px; }
-  .pk { min-width: 40px; height: 40px; font-size: 18px; }
+  .build-res { gap: 8px; }
+  .build-syl { font-size: 52px; line-height: 60px; }
+  .build-rom { font-size: 18px; line-height: 24px; }
+  .build-note { padding-top: 20px; font-size: 15px; line-height: 22px; }
+  .build-pick { gap: 28px; }
+  .build-step { gap: 12px; }
+  .pick-row { grid-template-columns: repeat(auto-fill, minmax(42px, 1fr)); gap: 6px; }
+  .pk { min-width: 0; height: 46px; font-size: 19px; }
   .steps { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .step { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: none; align-items: center; gap: 12px; padding: 14px; }
   .pad { padding: 18px; }
