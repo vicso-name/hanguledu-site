@@ -1,6 +1,9 @@
 /* hanguledu.com page layer over the HangulEdu Web system (tokens.css + bundle.css).
    .pg is the body class; one breakpoint at 760px. */
 
+/* anchor links glide; anchored sections stop a little below the top edge */
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 .pg { min-height: 100vh; word-break: keep-all; overflow-wrap: break-word; color: var(--textPrimary); font-family: var(--font-ui); }
 .pg *, .pg *::before, .pg *::after { box-sizing: border-box; }
 /* Plain text links only: classed links (buttons, cards, nav) keep their own colours. */
