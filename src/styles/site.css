@@ -451,7 +451,7 @@
 
 /* hub: "your 40" table under the page head. Tap a letter to hear it; learned ones fill
    with their role colour and drop the romanization; the dashed one is next in the five steps. */
-.m40 { display: grid; gap: 24px; margin-top: 12px; padding: clamp(16px, 2.4vw, 28px); }
+.m40 { display: grid; gap: 24px; margin-top: 48px; padding: 28px; }
 .m40-top { display: flex; align-items: center; gap: 12px 32px; flex-wrap: wrap; padding-bottom: 24px; border-bottom: 1px solid var(--divider); }
 .m40-num { margin: 0; display: flex; align-items: baseline; font: 800 64px/1 var(--font-ui); letter-spacing: -2px; font-variant-numeric: tabular-nums; color: var(--primary); }
 .m40-num span { font-size: 26px; letter-spacing: 0; color: var(--textSecondary); }
@@ -462,7 +462,7 @@
 .m40-bar__v { background: var(--letterVowel); }
 .m40-meter b.ko { font-size: 18px; }
 .m40-top .d-link { margin-left: auto; }
-.m40-grp { display: grid; grid-template-columns: 172px minmax(0, 1fr); gap: 12px 24px; align-items: start; }
+.m40-grp { display: grid; grid-template-columns: 172px minmax(0, 1fr); gap: 24px; align-items: start; }
 .m40-lab { display: grid; gap: 4px; padding-top: 4px; }
 .m40-lab .t-h3 { display: flex; align-items: center; gap: 8px; }
 .m40-lab .t-meta { display: grid; }
@@ -492,7 +492,7 @@
   .m40-parts::before { content: " · "; }
 }
 @media (max-width: 760px) {
-  .m40 { gap: 20px; }
+  .m40 { gap: 24px; padding: 24px 20px; }
   .m40-top { gap: 12px 16px; padding-bottom: 20px; }
   .m40-num { font-size: 48px; }
   .m40-num span { font-size: 20px; }
