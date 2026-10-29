@@ -5,8 +5,7 @@ import MouthFamilies from '../../components/MouthFamilies.astro';
 import VowelSeeds from '../../components/VowelSeeds.astro';
 import Faq from '../../components/Faq.astro';
 import AppCta from '../../components/AppCta.astro';
-import { ofGroup } from '../../data/hangul';
-import { ALL } from '../../lib/progress';
+import { ofGroup, letterSyllable } from '../../data/hangul';
 import { crumbs, faqPage } from '../../lib/schema';
 
 const STEPS = [
@@ -16,6 +15,16 @@ const STEPS = [
   { n: 4, title: 'Double consonants', letters: ofGroup('double').map((l) => l.g).join(''), href: '/korean-alphabet/consonants/#plain-aspirated-tense', what: 'Tense sounds: 까 against 가 and 카.' },
   { n: 5, title: 'Combined vowels', letters: ofGroup('combV').map((l) => l.g).join(''), href: '/korean-alphabet/vowels/', what: 'Two vowels in one, and which ones sound the same.' },
 ];
+
+// "Your 40": consonants and vowels as a table; each double consonant sits under the letter it doubles.
+const basicC = ofGroup('basicC');
+const UNDER = Object.fromEntries(['ㄲㄱ', 'ㄸㄷ', 'ㅃㅂ', 'ㅆㅅ', 'ㅉㅈ'].map(([d, b]) => [d, basicC.findIndex((l) => l.g === b) + 1]));
+const TABLE = [
+  { r: 'c', title: 'Consonants', total: 19, parts: '14 basic, 5 double', rows: [{ letters: basicC }, { letters: ofGroup('double'), under: true }] },
+  { r: 'v', title: 'Vowels', total: 21, parts: '10 basic, 11 combined', rows: [{ letters: ofGroup('basicV') }, { letters: ofGroup('combV') }] },
+];
+// learning order of the five steps, for "next up"
+const ORDER = (['basicC', 'basicV', 'double', 'combV'] as const).flatMap((k) => ofGroup(k).map((l) => l.g)).join('');
 
 const FAQ = [
   { q: 'How many letters are in the Korean alphabet?', a: 'Modern Hangul uses 40 letters: 19 consonants (14 basic, 5 double) and 21 vowels (10 basic, 11 combined). The original 1443 alphabet had 28 letters; four fell out of use, and the double and combined letters are built from the rest.' },
@@ -38,22 +47,45 @@ const schema = [
   schema={schema}
 >
   <section class="wrap page-head">
-    <div class="split split--top">
-      <div class="head" style="margin: 0;">
-        <h1 class="t-h1">The Korean alphabet, Hangul</h1>
-        <p class="t-lead">Hangul (한글) has 40 letters: 19 consonants and 21 vowels. They were designed in 1443 to be easy, and they are. The letters are pictures of your mouth and three simple strokes, packed into square blocks of one syllable each.</p>
-        <div class="row hero-cta">
-          <a class="he-btn" href="/korean-alphabet/chart/">Open the chart</a>
-          <a class="he-btn he-btn--outline" href="#builder">Build a block</a>
-        </div>
+    <div class="head">
+      <h1 class="t-h1">The Korean alphabet, Hangul</h1>
+      <p class="t-lead">Hangul (한글) has 40 letters: 19 consonants and 21 vowels. They were designed in 1443 to be easy, and they are. The letters are pictures of your mouth and three simple strokes, packed into square blocks of one syllable each.</p>
+      <div class="row hero-cta">
+        <a class="he-btn" href="/korean-alphabet/chart/">Open the chart</a>
+        <a class="he-btn he-btn--outline" href="#builder">Build a block</a>
       </div>
-      <div class="he-glass he-glass--dense fact">
-        <div class="fact-head"><b>40</b><p class="t-meta">letters. <span data-mine-count>0</span> of them are yours.</p></div>
-        <div class="grid40" lang="ko" role="img" aria-label="Your letters out of 40" data-grid40>
-          {[...ALL].map((g, i) => <span class="cell" data-g={g} data-r={i < 19 ? 'c' : 'v'}>{g}</span>)}
+    </div>
+
+    <div class="he-glass he-glass--dense m40" data-m40 data-order={ORDER}>
+      <div class="m40-top">
+        <p class="m40-num" aria-label="Letters you know out of 40"><b data-mine-count>0</b><span>/40</span></p>
+        <div class="m40-meter">
+          <div class="m40-bar" aria-hidden="true"><i class="m40-bar__c" data-bar="c"></i><i class="m40-bar__v" data-bar="v"></i></div>
+          <p class="t-body" data-msg="0">Start with <b class="ko" lang="ko">ㄱ</b>. Tap any letter to hear it, then mark the ones you know in the chart.</p>
+          <p class="t-body" data-msg="some" hidden>Next up: <b class="ko" lang="ko" data-next>ㄱ</b>. <span data-left>40</span> letters to go.</p>
+          <p class="t-body" data-msg="all" hidden>All 40 are yours. Now read them in real words: <a href="/phrases/">try the phrases</a>.</p>
         </div>
-        <div class="legend t-meta"><span><i class="lg lg--c"></i>14 + 5 consonants</span><span><i class="lg lg--v"></i>10 + 11 vowels</span></div>
+        <a class="d-link" href="/korean-alphabet/chart/">Mark letters in the chart</a>
       </div>
+      {TABLE.map((t) => (
+        <div class="m40-grp">
+          <div class="m40-lab">
+            <p class="t-h3"><i class={`m40-dot m40-dot--${t.r}`}></i>{t.title}</p>
+            <p class="t-meta"><b class="m40-n"><span data-n={t.r}>0</span> of {t.total}</b><span class="m40-parts">{t.parts}</span></p>
+          </div>
+          <div class="m40-rows" lang="ko">
+            {t.rows.map((row) => (
+              <div class:list={['m40-row', row.under && 'm40-row--under']}>
+                {row.letters.map((l) => (
+                  <button type="button" class="m40-c" data-g={l.g} data-r={t.r} data-say={letterSyllable(l)} aria-label={`${l.g}, ${l.rom}`} style={row.under ? `--col: ${UNDER[l.g]}` : undefined}>
+                    <b>{l.g}</b><small lang="en">{l.rom.replaceAll(' ', '')}</small>
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 
@@ -122,9 +154,23 @@ const schema = [
   import { onChange } from '../../lib/progress';
 
   onChange((set) => {
-    document.querySelectorAll<HTMLElement>('[data-grid40] .cell').forEach((c) => {
-      c.className = 'cell' + (set.has(c.dataset.g!) ? ' on--' + c.dataset.r : '');
+    const card = document.querySelector<HTMLElement>('[data-m40]')!;
+    const next = [...card.dataset.order!].find((g) => !set.has(g));
+    const n = { c: 0, v: 0 };
+    card.querySelectorAll<HTMLElement>('.m40-c').forEach((c) => {
+      const on = set.has(c.dataset.g!);
+      if (on) n[c.dataset.r as 'c' | 'v']++;
+      c.classList.toggle('on--' + c.dataset.r, on);
+      c.classList.toggle('is-next', c.dataset.g === next);
     });
+    (['c', 'v'] as const).forEach((r) => {
+      card.querySelector<HTMLElement>(`[data-n="${r}"]`)!.textContent = String(n[r]);
+      card.querySelector<HTMLElement>(`[data-bar="${r}"]`)!.style.width = (n[r] / 40) * 100 + '%';
+    });
+    const state = set.size === 0 ? '0' : next ? 'some' : 'all';
+    card.querySelectorAll<HTMLElement>('[data-msg]').forEach((p) => (p.hidden = p.dataset.msg !== state));
+    card.querySelector('[data-next]')!.textContent = next ?? '';
+    card.querySelector('[data-left]')!.textContent = String(40 - set.size);
     document.querySelectorAll('[data-mine-count]').forEach((el) => (el.textContent = String(set.size)));
     document.querySelectorAll<HTMLElement>('[data-step]').forEach((s) => {
       const letters = [...s.dataset.step!];
