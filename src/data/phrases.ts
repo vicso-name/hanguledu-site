@@ -162,12 +162,3 @@ export function form(f: XInput): XPhrase {
 }
 
 export const ofPack = (id: string) => PHRASES.filter((p) => p.pack?.id === id);
-
-/**
- * The /phrases/ list mirrors the app: a free pack is open in full, a paid pack opens its
- * first OPEN_PER_PACK phrases. The rest stay listed (text for search and Google), but
- * their audio and X-Ray lead to the app.
- */
-export const OPEN_PER_PACK = 5;
-const openIds = new Set(PACKS.flatMap((k) => ofPack(k.id).filter((_, i) => k.free || i < OPEN_PER_PACK).map((p) => p.id)));
-export const isOpen = (p: XPhrase) => !p.pack || openIds.has(p.id);

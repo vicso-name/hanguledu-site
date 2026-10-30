@@ -1,43 +1,39 @@
 ---
-// "This phrase is in the app": opened by any [data-app-lock] button on the page, which
-// carries the pack id and the phrase. Phones get the store badge; a computer also gets
-// a QR code, since the app cannot be installed from a laptop.
+// "Practice in the app": opened by any [data-app-open] button on the page; data-pack names
+// the pack in view, if any. Phones get the store badge; a computer also gets a QR code,
+// since the app cannot be installed from a laptop.
 import QRCode from 'qrcode';
 import { Image } from 'astro:assets';
 import icon from '../assets/app-icon.png';
 import StoreBadges from './StoreBadges.astro';
 import Icon from './Icon.astro';
 import { site, storeHref } from '../data/site';
-import { PACKS, ofPack } from '../data/phrases';
+import { PACKS, PHRASES, ofPack } from '../data/phrases';
 
 const PAGE = '/phrases/app-dialog/';
 const play = site.stores.find((s) => s.id === 'google_play')!;
 const qr = await QRCode.toString(storeHref(play, PAGE)!, { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#1f2937', light: '#ffffff' } });
 const packs = Object.fromEntries(PACKS.map((p) => [p.id, { title: p.title, n: ofPack(p.id).length }]));
 const free = PACKS.find((p) => p.free);
+const all = `${PHRASES.length} phrases in ${PACKS.length} packs`;
 ---
 
-<dialog class="appdlg" id="appdlg" aria-labelledby="appdlg-title" data-packs={JSON.stringify(packs)}>
+<dialog class="appdlg" id="appdlg" aria-labelledby="appdlg-title" data-packs={JSON.stringify(packs)} data-all={all}>
   <div class="appdlg__in">
     <button type="button" class="appdlg__x" aria-label="Close" data-appdlg-close>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
     </button>
-    <div class="appdlg__phrase">
-      <b lang="ko" data-appdlg-ko></b>
-      <span data-appdlg-en></span>
-    </div>
     <div class="appdlg__head">
       <Image class="appdlg__icon" src={icon} width={56} height={56} densities={[1, 2]} alt="" />
       <div>
-        <h2 class="appdlg__title" id="appdlg-title">Hear it in Hangul Hero</h2>
-        <p class="t-body he-ink-2">This phrase is in the <b data-appdlg-pack></b> pack: <span data-appdlg-n></span> phrases you can hear and practice in the app.</p>
+        <h2 class="appdlg__title" id="appdlg-title">Practice them in Hangul Hero</h2>
+        <p class="t-body he-ink-2" data-appdlg-what>{all}, ready to practice.</p>
       </div>
     </div>
     <ul class="appdlg__list">
-      <li><Icon name="play_arrow" />Audio for every phrase</li>
-      <li><Icon name="check" />An X-Ray of how each one is really said</li>
       <li><Icon name="workspace_premium" />Quiz games that make phrases stick</li>
-      <li><Icon name="wifi_off" />Works offline</li>
+      <li><Icon name="play_arrow" />Audio and an X-Ray for every phrase</li>
+      <li><Icon name="wifi_off" />Works offline, on the subway or a plane</li>
     </ul>
     {free && <p class="t-meta">Free to start: the {free.title} pack is free in the app.</p>}
     <div class="appdlg__get">
@@ -53,15 +49,14 @@ const free = PACKS.find((p) => p.free);
 <script>
   const dlg = document.getElementById('appdlg') as HTMLDialogElement;
   const packs = JSON.parse(dlg.dataset.packs!) as Record<string, { title: string; n: number }>;
-  const set = (sel: string, text: string) => (dlg.querySelector(sel)!.textContent = text);
+  const what = dlg.querySelector<HTMLElement>('[data-appdlg-what]')!;
   document.addEventListener('click', (e) => {
-    const lock = (e.target as HTMLElement).closest<HTMLElement>('[data-app-lock]');
-    if (!lock) return;
-    const pack = packs[lock.dataset.appLock!];
-    set('[data-appdlg-ko]', lock.dataset.ko!);
-    set('[data-appdlg-en]', lock.dataset.en!);
-    set('[data-appdlg-pack]', pack.title);
-    set('[data-appdlg-n]', String(pack.n));
+    const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-app-open]');
+    if (!btn) return;
+    const pack = packs[btn.dataset.pack ?? ''];
+    what.textContent = pack
+      ? `The ${pack.title} pack: ${pack.n} phrases, ready to practice.`
+      : `${dlg.dataset.all}, ready to practice.`;
     dlg.showModal();
   });
   dlg.querySelector('[data-appdlg-close]')!.addEventListener('click', () => dlg.close());

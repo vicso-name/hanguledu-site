@@ -5,7 +5,9 @@ import Faq from '../../components/Faq.astro';
 import AppCta from '../../components/AppCta.astro';
 import AppDialog from '../../components/AppDialog.astro';
 import Icon from '../../components/Icon.astro';
-import { OPEN_PER_PACK, PACKS, PHRASES, REGISTER_LABEL, isOpen, type Register } from '../../data/phrases';
+import { PACKS, PHRASES, REGISTER_LABEL, ofPack, type Register } from '../../data/phrases';
+import { Image } from 'astro:assets';
+import appIcon from '../../assets/app-icon.png';
 import { PHRASE_PAGES } from '../../data/phrase-pages';
 import { crumbs, faqPage } from '../../lib/schema';
 
@@ -13,8 +15,6 @@ const HUBS: Record<string, string> = { kdrama: '/phrases/k-drama/', love: '/phra
 const REGS: Register[] = ['casual', 'polite', 'formal'];
 const differ = PHRASES.filter((p) => p.said !== p.ko).length;
 const PAGE = 10;
-const free = PACKS.filter((p) => p.free);
-const openCount = PHRASES.filter(isOpen).length;
 
 const FAQ = [
   { q: 'What are casual, polite and formal Korean?', a: 'Korean changes the end of a sentence for who you talk to. Casual (반말) is for friends and younger people, polite (해요체, ending in 요) is for most adults, and formal (합쇼체, ending in 니다) is for work, news and ceremonies.' },
@@ -37,8 +37,7 @@ const schema = [
   <section class="wrap page-head">
     <div class="head">
       <h1 class="t-h1">Korean phrases with audio</h1>
-      <p class="t-lead">How do you say it in Korean? Search {PHRASES.length} everyday phrases from the Hangul Hero app, in 8 situations. {differ} of them are said differently from how they are written; tap a phrase to see what changes.</p>
-      <p class="t-body he-ink-2">{openCount} phrases open here with audio and X-Ray: all of {free.map((p) => p.title).join(', ')} and {OPEN_PER_PACK} from every other pack. The rest are in the app.</p>
+      <p class="t-lead">How do you say it in Korean? Search {PHRASES.length} everyday phrases from the Hangul Hero app, in 8 situations. {differ} of them are said differently from how they are written; tap any phrase to see what changes.</p>
     </div>
   </section>
 
@@ -64,7 +63,27 @@ const schema = [
       </div>
       <p class="t-meta pcount" aria-live="polite" data-count>Showing {PAGE} of {PHRASES.length} phrases</p>
     </div>
-    <ul class="plist plist--2" style="margin-top: 12px;">{PHRASES.map((p, i) => <PhraseRow p={p} hidden={i >= PAGE} locked={!isOpen(p)} />)}</ul>
+    {PACKS.map((p) => (
+      <div class="pbanner" data-pbanner={p.id} hidden>
+        <span class="pbanner__icon"><Icon name={p.icon} /></span>
+        <div class="pbanner__text">
+          <b>{ofPack(p.id).length} {p.title} phrases</b>
+          <span class="t-meta">{p.free ? 'Free in Hangul Hero: practice them with quiz games, offline.' : 'Practice them in Hangul Hero: quiz games, works offline.'}</span>
+        </div>
+        <button type="button" class="he-btn" data-app-open data-pack={p.id}>Practice in the app</button>
+      </div>
+    ))}
+    <ul class="plist plist--2" style="margin-top: 12px;">{PHRASES.map((p, i) => <PhraseRow p={p} hidden={i >= PAGE} />)}</ul>
+    <template data-pinline>
+      <li class="pinline">
+        <Image class="pinline__icon" src={appIcon} width={48} height={48} densities={[1, 2]} alt="" />
+        <div class="pinline__text">
+          <b>Practice these in Hangul Hero</b>
+          <span class="t-meta">Quiz games for all {PHRASES.length} phrases. Works offline.</span>
+        </div>
+        <button type="button" class="he-btn he-btn--outline" data-app-open>Practice in the app</button>
+      </li>
+    </template>
     <button type="button" class="he-btn he-btn--outline pmore" data-more>Show {PAGE} more</button>
     <p class="t-body he-ink-2" data-empty hidden>No phrase matches. Try a shorter word.</p>
     <p class="t-meta" style="margin-top: 16px;">Packs with their own page: {PACKS.filter((p) => HUBS[p.id]).map((p, i) => <>{i > 0 && ' · '}<a class="pack-tag" href={HUBS[p.id]}><Icon name={p.icon} />{p.title}</a></>)}</p>
@@ -86,6 +105,10 @@ const schema = [
   const count = root.querySelector<HTMLElement>('[data-count]')!;
   const empty = root.querySelector<HTMLElement>('[data-empty]')!;
   const more = root.querySelector<HTMLButtonElement>('[data-more]')!;
+  const banners = [...root.querySelectorAll<HTMLElement>('[data-pbanner]')];
+  const inline = root.querySelector<HTMLTemplateElement>('[data-pinline]')!;
+  // an app card after the 10th shown phrase, then after every 20 more
+  const cardAfter = (n: number) => n === 10 || (n > 10 && (n - 10) % 20 === 0);
   const PAGE = 10;
   const f = { pack: '', reg: '' };
   let limit = PAGE;
@@ -94,11 +117,18 @@ const schema = [
   function apply() {
     const term = q.value.trim().toLowerCase();
     let n = 0;
+    root.querySelectorAll('.pinline').forEach((c) => c.remove());
     for (const r of rows) {
       const match = (!f.pack || r.dataset.pack === f.pack) && (!f.reg || r.dataset.reg === f.reg) && (!term || r.dataset.q!.includes(term));
       if (match) n++;
       r.hidden = !match || n > limit;
+      if (!r.hidden && cardAfter(n)) {
+        const card = inline.content.firstElementChild!.cloneNode(true) as HTMLElement;
+        if (f.pack) card.querySelector<HTMLElement>('[data-app-open]')!.dataset.pack = f.pack;
+        r.after(card);
+      }
     }
+    banners.forEach((b) => (b.hidden = b.dataset.pbanner !== f.pack));
     const shown = Math.min(n, limit);
     count.textContent = shown < n ? `Showing ${shown} of ${n} phrases` : `${n} phrase${n === 1 ? '' : 's'}`;
     more.hidden = shown >= n;
@@ -124,4 +154,5 @@ const schema = [
     apply();
     rows.filter((r) => !r.hidden)[before]?.querySelector('summary')?.focus();
   });
+  apply();
 </script>

@@ -1,46 +1,28 @@
 ---
 // A phrase in a long list: hangul, meaning, register, play; the X-Ray opens in place.
-// A locked row keeps the text but trades audio and X-Ray for a tap that opens the app dialog.
 import type { XPhrase } from '../data/phrases';
 import { REGISTER_LABEL } from '../data/phrases';
 import SoundXray from './SoundXray.astro';
-import Icon from './Icon.astro';
 
-interface Props { p: XPhrase; note?: string; hidden?: boolean; locked?: boolean }
-const { p, note, hidden, locked } = Astro.props;
+interface Props { p: XPhrase; note?: string; hidden?: boolean }
+const { p, note, hidden } = Astro.props;
 ---
 
-<li class:list={['prow', locked && 'prow--locked']} id={p.id} hidden={hidden} data-reg={p.register} data-pack={p.pack?.id} data-q={`${p.ko} ${p.rom} ${p.en} ${p.situation}`.toLowerCase()}>
-  {locked ? (
-    <button type="button" class="prow-sum" data-app-lock={p.pack?.id} data-ko={p.ko} data-en={p.en} aria-haspopup="dialog">
+<li class="prow" id={p.id} hidden={hidden} data-reg={p.register} data-pack={p.pack?.id} data-q={`${p.ko} ${p.rom} ${p.en} ${p.situation}`.toLowerCase()}>
+  <details>
+    <summary class="prow-sum">
       <span class="prow-main">
         <b lang="ko" class="prow-ko">{p.ko}</b>
         <span class="prow-en">{p.en}</span>
-        <span class="t-meta">{p.rom}</span>
-        <span class="prow-app">Audio and X-Ray in the app</span>
+        <span class="t-meta">{p.rom}{p.said !== p.ko && <> · said <span lang="ko" class="ko">{p.said}</span></>}</span>
+        {note && <span class="prow-note">{note}</span>}
       </span>
       <span class={`he-register he-register--${p.register} prow-reg`}>{REGISTER_LABEL[p.register]}</span>
-    </button>
-  ) : (
-    <details>
-      <summary class="prow-sum">
-        <span class="prow-main">
-          <b lang="ko" class="prow-ko">{p.ko}</b>
-          <span class="prow-en">{p.en}</span>
-          <span class="t-meta">{p.rom}{p.said !== p.ko && <> · said <span lang="ko" class="ko">{p.said}</span></>}</span>
-          {note && <span class="prow-note">{note}</span>}
-        </span>
-        <span class={`he-register he-register--${p.register} prow-reg`}>{REGISTER_LABEL[p.register]}</span>
-      </summary>
-      <div class="prow-body">
-        {p.situation && p.situation !== note && <p class="t-meta">{p.situation}</p>}
-        <SoundXray p={p} />
-      </div>
-    </details>
-  )}
-  {locked ? (
-    <span class="prow-play prow-lock" aria-hidden="true"><Icon name="lock" /></span>
-  ) : p.audio && (
-    <button type="button" class="he-play he-play--sm prow-play" data-src={p.audio} aria-label={`Play ${p.ko}`}><svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></button>
-  )}
+    </summary>
+    <div class="prow-body">
+      {p.situation && p.situation !== note && <p class="t-meta">{p.situation}</p>}
+      <SoundXray p={p} />
+    </div>
+  </details>
+  {p.audio && <button type="button" class="he-play he-play--sm prow-play" data-src={p.audio} aria-label={`Play ${p.ko}`}><svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></button>}
 </li>
