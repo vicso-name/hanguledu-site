@@ -2,27 +2,77 @@
 import { site } from '../data/site';
 import icon from '../assets/app-icon.png';
 import { Image } from 'astro:assets';
+import StoreBadges from './StoreBadges.astro';
 
 const path = Astro.url.pathname;
+const alphabet = site.nav.filter((n) => n.href.startsWith('/korean-alphabet/'));
+const rest = site.nav.filter((n) => !n.href.startsWith('/korean-alphabet/'));
 ---
 
 <div class="hdr-bar">
   <header class="wrap hdr" id="hdr">
     <a class="brand" href="/"><Image src={icon} width={36} height={36} densities={[1, 2]} alt="" loading="eager" />HangulEdu</a>
-    <nav class="nav" id="nav" aria-label="Main">
+    <nav class="nav" aria-label="Main">
       {site.nav.map((n) => <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>)}
     </nav>
-    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="msheet" data-menu-open>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
     </button>
   </header>
 </div>
 
+<!-- Mobile menu: a full-screen sheet of tiles, the app at the bottom. -->
+<dialog class="msheet" id="msheet" aria-label="Menu">
+  <div class="msheet__bar wrap">
+    <a class="brand" href="/"><Image src={icon} width={36} height={36} densities={[1, 2]} alt="" />HangulEdu</a>
+    <button class="menu-btn" type="button" aria-label="Close menu" data-menu-close>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+  </div>
+  <nav class="msheet__body wrap" aria-label="Main">
+    <p class="t-label">Alphabet</p>
+    <div class="mtiles">
+      {alphabet.map((n, i) => (
+        <a class={`mtile mtile--${n.tone}`} href={n.href} aria-current={path === n.href ? 'page' : undefined} style={`--i: ${i}`}>
+          <span class="mtile__glyph" lang="ko" aria-hidden="true">{n.glyph}</span>
+          <span class="mtile__label">{n.label}</span>
+          <span class="mtile__sub">{n.sub}</span>
+        </a>
+      ))}
+    </div>
+    <p class="t-label">Phrases</p>
+    {rest.map((n, i) => (
+      <a class={`mtile mtile--wide mtile--${n.tone}`} href={n.href} aria-current={path === n.href ? 'page' : undefined} style={`--i: ${alphabet.length + i}`}>
+        <span class="mtile__glyph" lang="ko" aria-hidden="true">{n.glyph}</span>
+        <span class="mtile__label">{n.label}</span>
+        <span class="mtile__sub">{n.sub}</span>
+      </a>
+    ))}
+    <div class="mapp" style={`--i: ${site.nav.length}`}>
+      <div class="mapp__head">
+        <Image class="mapp__icon" src={icon} width={52} height={52} densities={[1, 2]} alt="" />
+        <div>
+          <p class="mapp__title">Hangul Hero app</p>
+          <p class="t-meta">Letters, 240 phrases and quiz games. Works offline.</p>
+        </div>
+      </div>
+      <StoreBadges />
+    </div>
+  </nav>
+</dialog>
+
 <script>
-  const hdr = document.getElementById('hdr')!;
-  const btn = hdr.querySelector<HTMLButtonElement>('.menu-btn')!;
-  btn.addEventListener('click', () => {
-    const open = hdr.classList.toggle('is-open');
-    btn.setAttribute('aria-expanded', String(open));
+  const sheet = document.getElementById('msheet') as HTMLDialogElement;
+  const opener = document.querySelector<HTMLButtonElement>('[data-menu-open]')!;
+  const close = () => sheet.open && sheet.close();
+  opener.addEventListener('click', () => {
+    sheet.showModal();
+    opener.setAttribute('aria-expanded', 'true');
   });
+  sheet.addEventListener('close', () => opener.setAttribute('aria-expanded', 'false'));
+  sheet.querySelector('[data-menu-close]')!.addEventListener('click', close);
+  // A link to the page you are on, or an in-page anchor, would leave the sheet open over it.
+  sheet.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+  // The sheet is for phones: close it if the window grows to the desktop bar.
+  matchMedia('(min-width: 761px)').addEventListener('change', (e) => e.matches && close());
 </script>

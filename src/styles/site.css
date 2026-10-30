@@ -45,6 +45,44 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
 .pg .nav a[aria-current="page"] { background: var(--primaryContainer); color: var(--onPrimaryContainer); }
 .menu-btn { display: none; }
 
+/* mobile menu: a full-screen sheet with a tile per section and the app at the bottom */
+.msheet { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: var(--background); color: var(--textPrimary); }
+.msheet::backdrop { background: transparent; }
+.msheet[open] { display: flex; flex-direction: column; animation: msheet-in .2s ease-out; }
+html:has(.msheet[open]) { overflow: hidden; }
+.msheet__bar { flex: none; display: flex; align-items: center; justify-content: space-between; min-height: 72px; padding-block: 12px; border-bottom: 1px solid var(--divider); }
+.msheet__bar .menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: var(--radius-button); border: 1px solid var(--outline); background: var(--surface); color: var(--textPrimary); }
+.msheet__body { flex: 1; display: flex; flex-direction: column; gap: 14px; padding-block: 28px 24px; overflow-y: auto; }
+.msheet__body > .t-label { margin-top: 8px; }
+.msheet__body > .t-label:first-child { margin-top: 0; }
+.mtiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.mtile { display: grid; gap: 4px; align-content: start; padding: 16px; border-radius: 20px; border: 1.5px solid transparent; background: var(--surface); color: var(--textPrimary); text-decoration: none; animation: mtile-in .32s ease-out both; animation-delay: calc(var(--i) * 45ms + 60ms); }
+.pg a.mtile { color: var(--textPrimary); }
+.mtile:active { transform: scale(.98); }
+.mtile[aria-current="page"] { border-color: var(--primary); }
+.mtile__glyph { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 12px; border-radius: 14px; font: 700 26px/1 var(--font-ko); }
+.mtile__label { font: 700 17px/22px var(--font-ui); }
+.mtile__sub { font: 500 13px/18px var(--font-ui); color: var(--textSecondary); }
+.mtile--a .mtile__glyph { background: var(--primaryContainer); color: var(--onPrimaryContainer); }
+.mtile--n .mtile__glyph { background: var(--surfaceVariant); color: var(--textPrimary); }
+.mtile--c .mtile__glyph { background: var(--letterConsonantContainer); color: var(--letterConsonantInk); }
+.mtile--v .mtile__glyph { background: var(--letterVowelContainer); color: var(--letterVowelInk); }
+.mtile--p .mtile__glyph { width: auto; padding: 0 12px; background: var(--action); color: var(--onAction); font-size: 22px; }
+.mtile--wide { grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; align-items: center; }
+.mtile--wide .mtile__glyph { grid-row: span 2; margin: 0; }
+.mapp { margin-top: auto; display: grid; gap: 16px; padding: 20px; border-radius: 20px; background: var(--primaryContainer); animation: mtile-in .32s ease-out both; animation-delay: calc(var(--i) * 45ms + 60ms); }
+/* at least 28px above the app card, more when the screen is tall */
+.msheet__body > .mtile--wide { margin-bottom: 14px; }
+.mapp__head { display: flex; align-items: center; gap: 14px; }
+.mapp__icon { width: 52px; height: 52px; border-radius: 13px; flex: none; }
+.mapp__title { margin: 0 0 2px; font: 700 17px/22px var(--font-ui); color: var(--textPrimary); }
+.mapp .he-cta__badges img { height: 48px; }
+@keyframes msheet-in { from { opacity: 0; } }
+@keyframes mtile-in { from { opacity: 0; transform: translateY(12px); } }
+@media (prefers-reduced-motion: reduce) {
+  .msheet[open], .mtile, .mapp { animation: none; }
+}
+
 /* generic layout */
 .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
@@ -798,9 +836,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
   .hero { padding-top: 36px; }
   .hero .split { gap: 48px; }
   .head { gap: 14px; margin-bottom: 32px; }
-  .hdr { position: relative; }
-  .hdr.is-open .nav { display: grid; position: absolute; top: 100%; left: 16px; right: 16px; z-index: 20; gap: 2px; padding: 8px; border-radius: var(--radius-card); background: var(--glassDense); border: 1px solid var(--outline); }
-  .pg .hdr.is-open .nav a { padding: 14px 12px; }
   .chart-ctl .seg { order: 0; }
   .quiz { padding: 18px; }
   .quiz-opts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
