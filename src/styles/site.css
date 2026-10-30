@@ -265,12 +265,41 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
 .pick { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
 
 /* home hero: first word card (3 tiles, syllable block, quiz) */
-.first { display: grid; gap: 18px; padding: 24px; }
+/* home hero: store badges up front, "read your first word" card with the block on a blue stage */
+.hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 4px; }
+.hero-cta .he-btn { min-height: 52px; }
+.hero-badges img { height: 52px; }
+.hero-app { display: flex; align-items: center; gap: 12px; }
+.hero-app__icon { width: 44px; height: 44px; border-radius: 11px; flex: none; }
+.hero-app .t-meta { font-size: 14px; line-height: 20px; }
+.hero-app b { color: var(--textPrimary); }
+.first { display: grid; gap: 20px; padding: 28px; }
+.first-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; }
+.first-head .t-label { white-space: nowrap; }
+.nw { white-space: nowrap; }
+.first-steps { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; counter-reset: step; }
+.first-steps li { counter-increment: step; display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px 0 4px; border-radius: var(--radius-pill); background: var(--surfaceVariant); font: 700 12px/1 var(--font-ui); color: var(--textSecondary); }
+.first-steps li::before { content: counter(step); display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--surface); font-size: 11px; }
+.first-steps li[aria-current] { background: var(--primaryContainer); color: var(--onPrimaryContainer); }
+.first-steps li[aria-current]::before { background: var(--action); color: var(--onAction); }
+.first-steps li.is-done { background: var(--successContainer); color: var(--successStrong); }
+.first-steps li.is-done::before { content: "✓"; background: var(--success); color: #fff; }
+[data-theme="dark"] .first-steps li.is-done { color: var(--success); }
 .first-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: stretch; }
 .first-tiles .he-tile { width: 100%; height: 100%; font: inherit; align-content: center; }
 .first-tiles .he-tile__role { white-space: nowrap; }
-.first-row { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 20px; align-items: center; }
+.first-hint { margin-top: -6px; text-align: center; }
+.first-row { display: grid; grid-template-columns: 184px minmax(0, 1fr); gap: 24px; align-items: center; padding: 20px; border-radius: 18px; background: var(--primaryContainer); }
+.first-row .block { border-color: transparent; }
+.first-side { display: grid; gap: 10px; }
 .first-opts { display: grid; gap: 10px; }
+.first-win { display: grid; gap: 8px; }
+.first-word { margin: 0; display: flex; align-items: baseline; gap: 10px; font: 700 52px/1 var(--font-ko); color: var(--textPrimary); }
+.first-word small { font: 700 18px/1 var(--font-ui); color: var(--successStrong); }
+[data-theme="dark"] .first-word small { color: var(--success); }
+.is-won .first-row { background: var(--successContainer); }
+.first-done { display: grid; gap: 14px; }
+.first-done__row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
 
 /* letter family card (ㄱ ㅋ ㄲ): light grey rim, gently rounded */
 .kin { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 14px; border-radius: var(--radius-chip); background: var(--surface); border: 1px solid var(--outline); }
@@ -291,11 +320,9 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
   .menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: var(--radius-button); border: 1px solid var(--outline); background: var(--glassDense); color: var(--textPrimary); margin-left: auto; }
   .hdr { flex-wrap: nowrap; gap: 10px; }
   .brand { font-size: 17px; }
-  .hero-text { display: contents; }
-  .hero-cta { order: 1; }
-  .hero-cta .he-btn { flex: 1 1 100%; }
-  .tools .tool { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; gap: 10px; min-height: 0; padding: 16px; align-content: start; }
-  .tools .tool .ti { grid-row: auto; }
+  .hero-text { gap: 16px; }
+  .hero-cta .he-btn { min-height: 48px; }
+  .hero-badges img { height: 48px; }
   .he-cta { gap: 16px; }
   .he-cta__icon { width: 56px; height: 56px; border-radius: 13px; }
   .he-cta__text { flex: 1 1 180px; }
@@ -354,6 +381,10 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
   .seg button { flex: 1 0 auto; padding: 0 12px; }
   .glyph-box { max-width: 180px; justify-self: center; }
   .first { padding: 18px; gap: 16px; }
+  .first-row { padding: 16px; }
+  .first-steps li { height: 26px; padding-right: 8px; font-size: 11px; }
+  .first-steps li::before { width: 18px; height: 18px; font-size: 10px; }
+  .first-word { font-size: 44px; }
   .first-tiles { gap: 8px; }
   .first-tiles .he-tile { min-height: 108px; padding: 12px 4px 10px; }
   .first-tiles .he-tile__glyph { font-size: 36px; line-height: 44px; }

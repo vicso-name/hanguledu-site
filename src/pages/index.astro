@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AppCta from '../components/AppCta.astro';
+import StoreBadges from '../components/StoreBadges.astro';
+import { Image } from 'astro:assets';
+import appIcon from '../assets/app-icon.png';
 import { site } from '../data/site';
 import Play from '../components/Play.astro';
 import Icon from '../components/Icon.astro';
@@ -57,21 +60,28 @@ const schema = {
   <section class="wrap sec hero">
     <div class="split">
       <div class="hero-text">
-        <p class="t-label">Korean learning app · try it free here, no sign-up</p>
+        <p class="t-label">Hangul Hero · Korean learning app</p>
         <h1 class="t-display">Read Korean in an afternoon.</h1>
-        <p class="t-lead">Hangul has 40 letters, and a king designed them in 1443 to be learned fast. Try it now: learn three letters and read your first word.</p>
-        <div class="row hero-cta">
-          <a class="he-btn" href="/korean-alphabet/chart/">See all 40 letters</a>
-          <a class="he-btn he-btn--outline" href="/korean-alphabet/">How Hangul works</a>
+        <p class="t-lead">Hangul has 40 letters, and a king designed them in 1443 to be learned fast. Hangul Hero teaches them, then 240 everyday phrases with audio. Start right here: read your first word.</p>
+        <div class="hero-cta">
+          <StoreBadges class="hero-badges" />
+          <a class="he-btn he-btn--outline" href="/korean-alphabet/chart/">See all 40 letters</a>
+        </div>
+        <div class="hero-app">
+          <Image class="hero-app__icon" src={appIcon} width={44} height={44} densities={[1, 2]} alt="" />
+          <p class="t-meta"><b>Free to start.</b> Quiz games, Korean audio, works offline.</p>
         </div>
       </div>
 
       <div class="he-glass first" data-first>
-        <div class="row" style="justify-content: space-between;">
+        <div class="first-head">
           <p class="t-label">Your first word</p>
-          <p class="t-meta"><span data-first-n>0</span> of 3 letters</p>
+          <ol class="first-steps" aria-label="Steps">
+            <li data-step="1" aria-current="step">Hear</li>
+            <li data-step="2">Read</li>
+          </ol>
         </div>
-        <p class="t-body first-ask" style="font-weight: 600;" data-first-intro>Tap each letter to hear it and learn it.</p>
+        <p class="t-body" style="font-weight: 600;" data-first-intro>Tap the three letters to hear them.</p>
         <div class="first-tiles">
           {FIRST.map((l) => (
             <button type="button" class={`he-tile he-tile--${l.cls}`} data-g={l.g} data-say={l.say} data-hint={l.hint} aria-pressed="false">
@@ -81,7 +91,7 @@ const schema = {
             </button>
           ))}
         </div>
-        <p class="t-meta" style="text-align: center;" data-first-hint hidden></p>
+        <p class="t-meta first-hint" data-first-hint hidden></p>
 
         <div class="first-row">
           <div class="block" aria-label="Syllable block" role="img">
@@ -89,27 +99,29 @@ const schema = {
             <div class="z z--v z--empty" data-z="ㅏ" style="font-size: 56px;"><small>2</small><span lang="ko"></span></div>
             <div class="z z--b z--empty" data-z="ㄴ" style="font-size: 40px;"><small>3</small><span lang="ko"></span></div>
           </div>
-          <div style="display: grid; gap: 10px;">
-            <p class="t-body" data-first-how>Korean packs letters into blocks. Read a block like a page: <b>top-left</b>, then <b>right</b>, then <b>bottom</b>.</p>
+          <div class="first-side">
+            <p class="t-body" data-first-how>Each letter drops into the block. Korean is read like a page: <b class="nw">top-left</b>, then <b>right</b>, then <b>bottom</b>.</p>
             <div data-first-quiz hidden>
               <p class="t-body" style="font-weight: 700; margin-bottom: 10px;">How do you read this block?</p>
               <div class="first-opts">
                 {['han', 'nah', 'hun'].map((o) => <button type="button" class="opt" data-opt={o}>{o}</button>)}
               </div>
+              <div class="feedback feedback--try" data-first-wrong hidden style="margin-top: 10px;">Not quite. Top-left first, then right, then bottom: h + a + n.</div>
+            </div>
+            <div class="first-win" data-first-right hidden>
+              <p class="first-word" lang="ko">한<small lang="en">han</small></p>
+              <p class="t-body">You just read Korean. Add <span lang="ko" class="ko">글</span> (geul) and you get <span lang="ko" class="ko">한글</span>, Hangul: the name of the alphabet itself.</p>
             </div>
           </div>
         </div>
 
-        <div class="first-done" data-first-right hidden>
-          <div class="feedback feedback--ok">
-            <div><b>You just read <span lang="ko" class="ko">한</span> (han).</b> Add <span lang="ko" class="ko">글</span> (geul) and you get <span lang="ko" class="ko">한글</span>, Hangul: the name of the alphabet itself. Three letters down, 37 to go.</div>
-          </div>
-          <div class="row">
-            <a class="he-btn" href="/korean-alphabet/chart/">Learn the next letters</a>
+        <div class="first-done" data-first-done hidden>
+          <p class="t-body" style="font-weight: 600;">37 letters to go. Hangul Hero takes you through them, then on to real phrases.</p>
+          <div class="first-done__row">
+            <StoreBadges />
             <button type="button" class="he-btn he-btn--quiet" data-first-reset>Start again</button>
           </div>
         </div>
-        <div class="feedback feedback--try" data-first-wrong hidden>Not quite. Top-left first, then right, then bottom: h + a + n.</div>
       </div>
     </div>
   </section>
@@ -284,7 +296,7 @@ const schema = {
         <div class="kept">
           <p class="t-label">Saved here now</p>
           <div class="row" style="gap: 6px;" data-kept hidden></div>
-          <p class="t-body" data-kept-none>Nothing yet. Tap <span lang="ko" class="ko">ㅎ</span> in "Your first word" above and watch it appear here.</p>
+          <p class="t-body" data-kept-none>Nothing yet. Tap a letter in the <a href="/korean-alphabet/chart/">chart</a> and watch it appear here.</p>
         </div>
         <button type="button" class="he-btn he-btn--outline" data-clear disabled style="justify-self: start;">Clear my progress</button>
       </div>
@@ -295,9 +307,9 @@ const schema = {
 </Layout>
 
 <script>
-  import { learn, clear, onChange, has } from '../lib/progress';
+  import { clear, onChange } from '../lib/progress';
 
-  // Your first word: ㅎ ㅏ ㄴ fill the block, then a one-question quiz.
+  // Your first word: ㅎ ㅏ ㄴ fill the block, then a one-question quiz. Nothing is saved.
   const card = document.querySelector<HTMLElement>('[data-first]')!;
   const q = <T extends HTMLElement>(s: string) => card.querySelector<T>(s)!;
   const tiles = [...card.querySelectorAll<HTMLButtonElement>('.he-tile')];
@@ -316,13 +328,20 @@ const schema = {
       z.querySelector('span')!.textContent = on ? z.dataset.z! : '';
     });
     const all = done.size === 3;
-    q('[data-first-n]').textContent = String(done.size);
+    const won = picked === 'han';
+    card.querySelectorAll<HTMLElement>('[data-step]').forEach((s) => {
+      const n = Number(s.dataset.step);
+      s.classList.toggle('is-done', n === 1 ? all : won);
+      s.toggleAttribute('aria-current', n === 1 ? !all : all && !won);
+    });
     q('[data-first-intro]').hidden = all;
     q('[data-first-how]').hidden = all;
-    q('[data-first-quiz]').hidden = !all || picked === 'han';
-    q('[data-first-right]').hidden = picked !== 'han';
-    q('[data-first-wrong]').hidden = !picked || picked === 'han';
+    q('[data-first-quiz]').hidden = !all || won;
+    q('[data-first-right]').hidden = !won;
+    q('[data-first-done]').hidden = !won;
+    q('[data-first-wrong]').hidden = !picked || won;
     if (all) q('[data-first-hint]').hidden = true;
+    card.classList.toggle('is-won', won);
     card.querySelectorAll<HTMLElement>('[data-opt]').forEach((o) => {
       o.classList.toggle('is-right', !!picked && o.dataset.opt === 'han');
       o.classList.toggle('is-off', !!picked && o.dataset.opt !== 'han' && o.dataset.opt !== picked);
@@ -331,7 +350,6 @@ const schema = {
 
   tiles.forEach((t) => t.addEventListener('click', () => {
     done.add(t.dataset.g!);
-    learn(t.dataset.g!);
     const hint = q('[data-first-hint]');
     hint.textContent = t.dataset.hint!;
     hint.hidden = done.size === 3;
@@ -346,8 +364,6 @@ const schema = {
     picked = '';
     paintFirst();
   });
-  // Letters already learned elsewhere arrive pre-filled.
-  tiles.forEach((t) => has(t.dataset.g!) && done.add(t.dataset.g!));
   paintFirst();
 
   // How Hangul Hero teaches: tap a block of 안녕하세요 to take it apart.
@@ -378,12 +394,7 @@ const schema = {
     const title = document.querySelector<HTMLElement>('[data-cta-title]');
     if (title) title.textContent = set.size ? `Take your ${set.size} letters to your phone` : title.dataset.ctaTitle!;
   });
-  document.querySelector('[data-clear]')!.addEventListener('click', () => {
-    clear();
-    done.clear();
-    picked = '';
-    paintFirst();
-  });
+  document.querySelector('[data-clear]')!.addEventListener('click', () => clear());
 
   // X-Ray: step through three phrases.
   const items = [...document.querySelectorAll<HTMLElement>('[data-xr]')];

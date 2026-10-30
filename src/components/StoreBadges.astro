@@ -1,0 +1,13 @@
+---
+// Store badges for the stores the app is live in; a store with no url renders nothing.
+import { site, storeHref } from '../data/site';
+
+interface Props { class?: string }
+const badges = site.stores
+  .map((s) => ({ ...s, href: storeHref(s, Astro.url.pathname) }))
+  .filter((s) => s.href);
+---
+
+<div class:list={['he-cta__badges', Astro.props.class]}>
+  {badges.map((b) => <a href={b.href} data-store={b.id} rel="noopener"><img src={b.badge} alt={b.label} width="150" height="44" /></a>)}
+</div>

@@ -1,21 +1,16 @@
 ---
-import { site, storeHref } from '../data/site';
+import StoreBadges from './StoreBadges.astro';
 import icon from '../assets/app-icon.png';
 import { Image } from 'astro:assets';
 
 interface Props { title: string; sub?: string }
 const { title, sub = 'Korean alphabet, 240 phrases and quiz games with Korean audio. Works offline.' } = Astro.props;
-const badges = site.stores
-  .map((s) => ({ ...s, href: storeHref(s, Astro.url.pathname) }))
-  .filter((s) => s.href);
 ---
 
 <section class="wrap sec--tight">
   <div class="he-glass he-cta">
     <Image class="he-cta__icon" src={icon} width={72} height={72} densities={[1, 2]} alt="Hangul Hero app icon" />
     <div class="he-cta__text"><p class="he-cta__title" data-cta-title={title}>{title}</p><p class="he-cta__sub">{sub}</p></div>
-    <div class="he-cta__badges">
-      {badges.map((b) => <a href={b.href} data-store={b.id} rel="noopener"><img src={b.badge} alt={b.label} width="150" height="44" /></a>)}
-    </div>
+    <StoreBadges />
   </div>
 </section>
