@@ -39,10 +39,50 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 800 18px/1 var(--font-ui); }
 .pg a.brand { color: var(--textPrimary); }
 .brand img { width: 36px; height: 36px; border-radius: 9px; display: block; }
-.nav { display: flex; gap: 4px; flex: 1; flex-wrap: wrap; }
-.pg .nav a, [data-theme="dark"].pg .nav a, [data-theme="dark"] .pg .nav a { color: var(--textPrimary); text-decoration: none; font: 600 15px/20px var(--font-ui); padding: 12px 12px; border-radius: var(--radius-button); }
-.pg .nav a:hover { background: var(--glassTint); }
-.pg .nav a[aria-current="page"] { background: var(--primaryContainer); color: var(--onPrimaryContainer); }
+.nav { display: flex; gap: 6px; flex: 1; }
+/* desktop menus: a trigger with its glyph, a panel of tiles that opens on hover or keyboard focus */
+.ndrop { position: relative; }
+.pg a.ntrig { display: inline-flex; align-items: center; gap: 10px; padding: 6px 10px 6px 6px; border-radius: 14px; border: 1px solid transparent; color: var(--textPrimary); text-decoration: none; font: 600 15px/20px var(--font-ui); transition: background .15s, border-color .15s; }
+.ntrig__glyph { display: grid; place-items: center; min-width: 32px; height: 32px; padding: 0 6px; border-radius: 9px; font: 700 15px/1 var(--font-ko); }
+.ntrig__glyph--a { background: var(--primaryContainer); color: var(--onPrimaryContainer); }
+.ntrig__glyph--p { background: var(--action); color: var(--onAction); font-size: 13px; }
+.ntrig__chev { color: var(--textSecondary); transition: rotate .2s; }
+.pg a.ntrig[data-here] { background: var(--surface); border-color: var(--outline); }
+.ndrop:is(:hover, :has(:focus-visible), .is-open):not(.is-shut) > .ntrig { background: var(--surface); border-color: var(--outline); }
+.ndrop:is(:hover, :has(:focus-visible), .is-open):not(.is-shut) .ntrig__chev { rotate: 180deg; }
+.npanel { position: absolute; top: 100%; left: -8px; z-index: 60; padding-top: 12px; opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .16s, transform .16s, visibility 0s linear .16s; }
+.ndrop:is(:hover, :has(:focus-visible), .is-open):not(.is-shut) > .npanel { opacity: 1; visibility: visible; transform: none; transition: opacity .16s .06s, transform .16s .06s, visibility 0s .06s; }
+.npanel__in { padding: 16px; border-radius: 24px; border: 1px solid var(--outline); background: var(--surface); box-shadow: 0 24px 56px rgb(15 23 42 / .14); }
+[data-theme="dark"] .npanel__in { box-shadow: 0 24px 56px rgb(0 0 0 / .5); }
+.npanel .mtile { background: var(--surfaceVariant); animation: none; transition: border-color .15s; }
+.npanel .mtile:hover { border-color: var(--outline); }
+.npanel .mtile[aria-current="page"] { border-color: var(--primary); }
+.npanel .mtile__glyph { justify-self: start; }
+.npanel .mtile--n .mtile__glyph { background: var(--surface); }
+.npanel--alpha .npanel__in { display: grid; grid-template-columns: repeat(4, 176px); gap: 10px; }
+.npanel--phr .npanel__in { display: grid; grid-template-columns: 236px 400px; gap: 20px; }
+.nphr__side { display: grid; gap: 4px; align-content: start; }
+.nphr__side .mtile { margin-bottom: 8px; }
+.nphr__say { display: grid; gap: 10px; align-content: start; padding-left: 20px; border-left: 1px solid var(--divider); }
+.nphr__say .t-label { padding: 6px 10px 0; }
+.nphr__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 6px; }
+.pg a.nlink { display: grid; gap: 1px; padding: 8px 10px; border-radius: 12px; color: var(--textPrimary); text-decoration: none; transition: background .15s; }
+.nlink b { font: 700 16px/22px var(--font-ko); }
+.nlink span { font: 500 13px/18px var(--font-ui); color: var(--textSecondary); }
+.nlink:hover { background: var(--surfaceVariant); }
+.nlink[aria-current="page"] { background: var(--primaryContainer); }
+/* the app: a pill on the right, its panel has a QR code for the phone */
+.napp { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px 0 8px; border-radius: 999px; border: 1px solid var(--outline); background: var(--surface); color: var(--textPrimary); font: 600 15px/20px var(--font-ui); cursor: pointer; transition: border-color .15s; }
+.napp img { width: 28px; height: 28px; border-radius: 8px; display: block; }
+.ndrop--app:is(:hover, .is-open) .napp { border-color: var(--primary); }
+.napp:focus-visible, .pg a.ntrig:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.npanel--app { left: auto; right: 0; }
+.npanel--app .npanel__in { display: grid; gap: 16px; width: 340px; padding: 20px; }
+.napp__get { display: flex; align-items: center; gap: 18px; padding-top: 16px; border-top: 1px solid var(--divider); }
+.npanel .appdlg__qr svg { display: block; width: 104px; height: 104px; padding: 6px; border-radius: 12px; background: #fff; }
+.npanel .appdlg__qr .t-meta { font-size: 12px; text-align: center; }
+.npanel .he-cta__badges img { height: 44px; }
+@media (prefers-reduced-motion: reduce) { .npanel, .ntrig__chev { transition: none !important; } }
 .menu-btn { display: none; }
 
 /* mobile menu: a full-screen sheet with a tile per section and the app at the bottom */
@@ -379,7 +419,7 @@ html:has(.msheet[open]) { overflow: hidden; }
   .t-lead { font-size: 16px; line-height: 24px; }
   .split, .cols-2, .cols-3, .cols-4, .facts { grid-template-columns: minmax(0, 1fr); }
   .cols-4.keep-2, .cols-3.keep-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .nav { display: none; }
+  .nav, .ndrop--app { display: none; }
   .menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: var(--radius-button); border: 1px solid var(--outline); background: var(--glassDense); color: var(--textPrimary); margin-left: auto; }
   .hdr { flex-wrap: nowrap; gap: 10px; }
   .brand { font-size: 17px; }
@@ -1118,4 +1158,10 @@ html:has(.pdlg[open]) { overflow: hidden; }
 @media (max-width: 760px) {
   .sup-grid { grid-template-columns: minmax(0, 1fr); }
   .sup-head .seg { width: 100%; }
+}
+/* desktop menus on a narrow window: tiles in two rows, the phrase panel narrower and shifted left */
+@media (max-width: 1100px) and (min-width: 761px) {
+  .npanel--alpha .npanel__in { grid-template-columns: repeat(2, 176px); }
+  .npanel--phr { left: -128px; }
+  .npanel--phr .npanel__in { grid-template-columns: 196px 310px; }
 }

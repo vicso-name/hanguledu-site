@@ -1,20 +1,101 @@
 ---
-import { site } from '../data/site';
+import QRCode from 'qrcode';
+import { site, storeHref } from '../data/site';
+import { PHRASE_PAGES } from '../data/phrase-pages';
 import icon from '../assets/app-icon.png';
 import { Image } from 'astro:assets';
 import StoreBadges from './StoreBadges.astro';
+import Icon from './Icon.astro';
 
 const path = Astro.url.pathname;
 const alphabet = site.nav.filter((n) => n.href.startsWith('/korean-alphabet/'));
 const rest = site.nav.filter((n) => !n.href.startsWith('/korean-alphabet/'));
+const phrases = rest.find((n) => n.href === '/phrases/')!;
+
+// Desktop: two menus that open on hover or focus, and the app with a QR code for the phone.
+const say = PHRASE_PAGES.map((o) => ({ href: `/phrases/${o.slug}/`, ko: o.forms[o.hero].ko, label: o.h1.replace('How to say ', '').replace(' in Korean', '').replace(/^./, (c) => c.toUpperCase()) }));
+const sets = [
+  { href: '/phrases/basic-korean-phrases/', ko: '기본', label: 'Basic phrases' },
+  { href: '/phrases/k-drama/', ko: '대박', label: 'K-drama phrases' },
+  { href: '/phrases/love/', ko: '사랑', label: 'Love phrases' },
+];
+const APP_PAGE = '/header/';
+const play = site.stores.find((s) => s.id === 'google_play')!;
+const qr = await QRCode.toString(storeHref(play, APP_PAGE)!, { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#1f2937', light: '#ffffff' } });
+const here = (prefix: string) => path.startsWith(prefix);
 ---
 
 <div class="hdr-bar">
   <header class="wrap hdr" id="hdr">
     <a class="brand" href="/"><Image src={icon} width={36} height={36} densities={[1, 2]} alt="" loading="eager" />HangulEdu</a>
     <nav class="nav" aria-label="Main">
-      {site.nav.map((n) => <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>)}
+      <div class="ndrop">
+        <a class="ntrig" href="/korean-alphabet/" aria-current={path === '/korean-alphabet/' ? 'page' : undefined} data-here={here('/korean-alphabet/') || undefined}>
+          <span class="ntrig__glyph ntrig__glyph--a" lang="ko" aria-hidden="true">한</span>Alphabet<svg class="ntrig__chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </a>
+        <div class="npanel npanel--alpha">
+          <div class="npanel__in">
+            {alphabet.map((n) => (
+              <a class={`mtile mtile--${n.tone}`} href={n.href} aria-current={path === n.href ? 'page' : undefined}>
+                <span class="mtile__glyph" lang="ko" aria-hidden="true">{n.glyph}</span>
+                <span class="mtile__label">{n.label}</span>
+                <span class="mtile__sub">{n.sub}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="ndrop">
+        <a class="ntrig" href="/phrases/" aria-current={path === '/phrases/' ? 'page' : undefined} data-here={here('/phrases/') || undefined}>
+          <span class="ntrig__glyph ntrig__glyph--p" lang="ko" aria-hidden="true">안녕</span>Phrases<svg class="ntrig__chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </a>
+        <div class="npanel npanel--phr">
+          <div class="npanel__in">
+            <div class="nphr__side">
+              <a class="mtile mtile--p" href="/phrases/" aria-current={path === '/phrases/' ? 'page' : undefined}>
+                <span class="mtile__glyph" lang="ko" aria-hidden="true">{phrases.glyph}</span>
+                <span class="mtile__label">All phrases</span>
+                <span class="mtile__sub">{phrases.sub}</span>
+              </a>
+              {sets.map((s) => <a class="nlink" href={s.href} aria-current={path === s.href ? 'page' : undefined}><b lang="ko">{s.ko}</b><span>{s.label}</span></a>)}
+            </div>
+            <div class="nphr__say">
+              <p class="t-label">How to say…</p>
+              <div class="nphr__grid">
+                {say.map((s) => <a class="nlink" href={s.href} aria-current={path === s.href ? 'page' : undefined}><b lang="ko">{s.ko}</b><span>{s.label}</span></a>)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
+    <div class="ndrop ndrop--app">
+      <button type="button" class="napp" aria-haspopup="true">
+        <Image src={icon} width={28} height={28} densities={[1, 2]} alt="" />Get the app
+      </button>
+      <div class="npanel npanel--app">
+        <div class="npanel__in">
+          <div class="mapp__head">
+            <Image class="mapp__icon" src={icon} width={52} height={52} densities={[1, 2]} alt="" />
+            <div>
+              <p class="mapp__title">Hangul Hero</p>
+              <p class="t-meta">Letters, 240 phrases and quiz games.</p>
+            </div>
+          </div>
+          <ul class="appdlg__list">
+            <li><Icon name="workspace_premium" />Quiz games that make letters stick</li>
+            <li><Icon name="wifi_off" />Works offline</li>
+          </ul>
+          <div class="napp__get">
+            <div class="appdlg__qr" aria-hidden="true">
+              <span set:html={qr} />
+              <p class="t-meta">Scan with your phone</p>
+            </div>
+            <StoreBadges page={APP_PAGE} />
+          </div>
+        </div>
+      </div>
+    </div>
     <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="msheet" data-menu-open>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
     </button>
@@ -75,4 +156,20 @@ const rest = site.nav.filter((n) => !n.href.startsWith('/korean-alphabet/'));
   sheet.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
   // The sheet is for phones: close it if the window grows to the desktop bar.
   matchMedia('(min-width: 761px)').addEventListener('change', (e) => e.matches && close());
+
+  // Desktop menus open on hover or keyboard focus (CSS); Esc closes the one you are in.
+  document.querySelectorAll<HTMLElement>('.ndrop').forEach((d) => {
+    d.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || !d.contains(document.activeElement)) return;
+      d.classList.add('is-shut');
+      d.querySelector<HTMLElement>('.ntrig, .napp')!.focus();
+    });
+    d.addEventListener('mouseleave', () => d.classList.remove('is-shut'));
+    d.addEventListener('focusout', (e) => !d.contains(e.relatedTarget as Node) && d.classList.remove('is-shut'));
+    // the app button has no page of its own: a click opens or closes its panel
+    d.querySelector('.napp')?.addEventListener('click', () => d.classList.toggle('is-open'));
+  });
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('.ndrop.is-open').forEach((d) => !d.contains(e.target as Node) && d.classList.remove('is-open'));
+  });
 </script>
