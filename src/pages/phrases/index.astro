@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PhraseRow from '../../components/PhraseRow.astro';
 import Faq from '../../components/Faq.astro';
 import AppCta from '../../components/AppCta.astro';
-import AppDialog from '../../components/AppDialog.astro';
+import PhraseDialog from '../../components/PhraseDialog.astro';
 import Icon from '../../components/Icon.astro';
 import { PACKS, PHRASES, REGISTER_LABEL, ofPack, type Register } from '../../data/phrases';
 import { Image } from 'astro:assets';
@@ -95,7 +95,7 @@ const schema = [
   </section>
 
   <AppCta title="All 240 phrases, offline, with games" />
-  <AppDialog />
+  <PhraseDialog />
 </Layout>
 
 <script>
@@ -152,7 +152,7 @@ const schema = [
     const before = rows.filter((r) => !r.hidden).length;
     limit += PAGE;
     apply();
-    rows.filter((r) => !r.hidden)[before]?.querySelector('summary')?.focus();
+    rows.filter((r) => !r.hidden)[before]?.querySelector<HTMLElement>('.prow-sum')?.focus();
   });
   apply();
 </script>

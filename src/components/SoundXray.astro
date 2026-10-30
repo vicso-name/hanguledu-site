@@ -1,11 +1,12 @@
 ---
 // "How it sounds": written over said, the changed syllables marked, and each
 // numbered change with the rule behind it (tap to read the full rule).
-// lines={false} leaves out the written/said pair when the card already shows it.
+// lines={false} leaves out the written/said pair when the card already shows it;
+// open shows every rule expanded (the phrase dialog has the room).
 import type { XPhrase } from '../data/phrases';
 
-interface Props { p: XPhrase; lines?: boolean }
-const { p, lines = true } = Astro.props;
+interface Props { p: XPhrase; lines?: boolean; open?: boolean }
+const { p, lines = true, open = false } = Astro.props;
 const same = p.said === p.ko;
 ---
 
@@ -19,7 +20,7 @@ const same = p.said === p.ko;
     <ol class="sx-changes">
       {p.changes.map((c) => (
         <li>
-          <details>
+          <details open={open}>
             <summary><span class="sx-n">{c.n}</span><span lang="ko" class="ko sx-ba">{c.before} → {c.after}</span><span class="he-rule__tag">{c.tag}</span></summary>
             <p class="t-meta">{c.line}.</p>
             {c.sheets.map((s) => <p class="t-body sx-sheet"><b>{s.title}.</b> {s.text}</p>)}

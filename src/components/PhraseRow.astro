@@ -1,28 +1,63 @@
 ---
-// A phrase in a long list: hangul, meaning, register, play; the X-Ray opens in place.
+// A phrase in a long list: hangul, meaning, register, play. Tapping the row opens the
+// phrase dialog (PhraseDialog, once per page), which shows the hidden .prow-full:
+// the phrase large, normal and slow audio, the X-Ray with its rules, and word by word.
 import type { XPhrase } from '../data/phrases';
-import { REGISTER_LABEL } from '../data/phrases';
+import { REGISTER_LABEL, REGISTER_WHO } from '../data/phrases';
 import SoundXray from './SoundXray.astro';
 
 interface Props { p: XPhrase; note?: string; hidden?: boolean }
 const { p, note, hidden } = Astro.props;
+const extra = note && note !== p.situation && note !== REGISTER_WHO[p.register] ? note : null;
 ---
 
 <li class="prow" id={p.id} hidden={hidden} data-reg={p.register} data-pack={p.pack?.id} data-q={`${p.ko} ${p.rom} ${p.en} ${p.situation}`.toLowerCase()}>
-  <details>
-    <summary class="prow-sum">
-      <span class="prow-main">
-        <b lang="ko" class="prow-ko">{p.ko}</b>
-        <span class="prow-en">{p.en}</span>
-        <span class="t-meta">{p.rom}{p.said !== p.ko && <> · said <span lang="ko" class="ko">{p.said}</span></>}</span>
-        {note && <span class="prow-note">{note}</span>}
-      </span>
-      <span class={`he-register he-register--${p.register} prow-reg`}>{REGISTER_LABEL[p.register]}</span>
-    </summary>
-    <div class="prow-body">
-      {p.situation && p.situation !== note && <p class="t-meta">{p.situation}</p>}
-      <SoundXray p={p} />
-    </div>
-  </details>
+  <button type="button" class="prow-sum" data-pdlg aria-haspopup="dialog">
+    <span class="prow-main">
+      <b lang="ko" class="prow-ko">{p.ko}</b>
+      <span class="prow-en">{p.en}</span>
+      <span class="t-meta">{p.rom}{p.said !== p.ko && <> · said <span lang="ko" class="ko">{p.said}</span></>}</span>
+      {note && <span class="prow-note">{note}</span>}
+    </span>
+    <span class={`he-register he-register--${p.register} prow-reg`}>{REGISTER_LABEL[p.register]}</span>
+  </button>
   {p.audio && <button type="button" class="he-play he-play--sm prow-play" data-src={p.audio} aria-label={`Play ${p.ko}`}><svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></button>}
+  <div class="prow-full" hidden>
+    <div class="pd-top">
+      <b lang="ko" class="pd-ko">{p.ko}</b>
+      <p class="pd-en">{p.en}</p>
+      <p class="t-meta">{p.rom} · <b>{REGISTER_LABEL[p.register]}</b>, for {REGISTER_WHO[p.register].toLowerCase()}</p>
+      {p.audio && (
+        <div class="pd-play">
+          <button type="button" class="he-play" data-src={p.audio} aria-label={`Play ${p.ko}`}><svg class="he-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></button>
+          <button type="button" class="he-play he-play--slow" data-src={p.audio} data-slow aria-label={`Play ${p.ko} slowly`}><svg class="he-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0"></path><circle cx="10" cy="13" r="8"></circle><path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6"></path></svg>Slow</button>
+        </div>
+      )}
+    </div>
+    {(p.situation || extra) && (
+      <div class="pd-sit">
+        {p.situation && <p class="t-body">{p.situation}</p>}
+        {extra && <p class="prow-note">{extra}</p>}
+      </div>
+    )}
+    <section class="pd-sec">
+      <h3 class="t-label">How it sounds</h3>
+      <SoundXray p={p} open />
+    </section>
+    {p.parts.length > 1 && (
+      <section class="pd-sec">
+        <h3 class="t-label">Word by word</h3>
+        <div class="pd-parts">
+          {p.parts.map((x, i) => <>{i > 0 && <span class="pd-plus" aria-hidden="true">+</span>}<span class="pd-part"><b lang="ko">{x.ko}</b><small>{x.gloss}</small></span></>)}
+        </div>
+        {p.literal && <p class="t-meta">Literally: "{p.literal}"</p>}
+      </section>
+    )}
+    {p.pack && (
+      <div class="pd-app">
+        <span class="t-meta">From the <b>{p.pack.title}</b> pack in Hangul Hero</span>
+        <button type="button" class="he-btn he-btn--outline" data-app-open data-pack={p.pack.id}>Practice in the app</button>
+      </div>
+    )}
+  </div>
 </li>

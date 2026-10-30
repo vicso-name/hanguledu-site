@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import PhraseCard from '../../components/PhraseCard.astro';
 import PhraseRow from '../../components/PhraseRow.astro';
+import PhraseDialog from '../../components/PhraseDialog.astro';
 import Faq from '../../components/Faq.astro';
 import AppCta from '../../components/AppCta.astro';
 import { PHRASE_PAGES, checkOptions, type PhrasePage } from '../../data/phrase-pages';
@@ -104,6 +105,7 @@ const schema = [
   </section>
 
   <AppCta title={page.cta} />
+  <PhraseDialog />
 </Layout>
 
 <script>

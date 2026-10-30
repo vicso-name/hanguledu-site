@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PhraseRow from '../../components/PhraseRow.astro';
+import PhraseDialog from '../../components/PhraseDialog.astro';
 import Faq from '../../components/Faq.astro';
 import AppCta from '../../components/AppCta.astro';
 import { form, phrase } from '../../data/phrases';
@@ -69,4 +70,5 @@ const schema = [
   </section>
 
   <AppCta title="240 phrases in 8 packs, offline" />
+  <PhraseDialog />
 </Layout>

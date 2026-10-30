@@ -1,0 +1,71 @@
+---
+// One dialog per page for every PhraseRow: tapping a row copies its hidden .prow-full in.
+// Arrows (and ←/→) step through the rows on screen. Includes the app dialog, which the
+// "Practice in the app" button inside opens on top.
+import AppDialog from './AppDialog.astro';
+---
+
+<dialog class="pdlg" id="pdlg" aria-label="Phrase">
+  <div class="pdlg__bar">
+    <span class="t-meta" data-pdlg-pos></span>
+    <div class="pdlg__nav">
+      <button type="button" class="pdlg__btn" aria-label="Previous phrase" data-pdlg-step="-1">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+      </button>
+      <button type="button" class="pdlg__btn" aria-label="Next phrase" data-pdlg-step="1">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+      </button>
+      <button type="button" class="pdlg__btn" aria-label="Close" autofocus data-pdlg-close>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+  </div>
+  <div class="pdlg__body" data-pdlg-body></div>
+</dialog>
+<AppDialog />
+
+<script>
+  const dlg = document.getElementById('pdlg') as HTMLDialogElement;
+  const body = dlg.querySelector<HTMLElement>('[data-pdlg-body]')!;
+  const pos = dlg.querySelector<HTMLElement>('[data-pdlg-pos]')!;
+  const steps = [...dlg.querySelectorAll<HTMLButtonElement>('[data-pdlg-step]')];
+  let cur: HTMLElement | null = null;
+
+  // the rows a visitor can see right now (the hub hides filtered ones)
+  const shown = () => [...document.querySelectorAll<HTMLElement>('.prow')].filter((r) => !r.hidden && r.offsetParent);
+
+  function show(row: HTMLElement) {
+    cur = row;
+    const full = row.querySelector('.prow-full')!.cloneNode(true) as HTMLElement;
+    full.hidden = false;
+    body.replaceChildren(full);
+    body.scrollTop = 0;
+    dlg.setAttribute('aria-label', row.querySelector('.prow-en')?.textContent ?? 'Phrase');
+    const list = shown();
+    const i = list.indexOf(row);
+    pos.textContent = list.length > 1 && i >= 0 ? `${i + 1} of ${list.length}` : '';
+    steps[0].disabled = i <= 0;
+    steps[1].disabled = i < 0 || i >= list.length - 1;
+  }
+
+  function step(d: number) {
+    const list = shown();
+    const next = cur && list[list.indexOf(cur) + d];
+    if (next) show(next);
+  }
+
+  document.addEventListener('click', (e) => {
+    const sum = (e.target as HTMLElement).closest<HTMLElement>('[data-pdlg]');
+    if (!sum) return;
+    show(sum.closest<HTMLElement>('.prow')!);
+    if (!dlg.open) dlg.showModal();
+  });
+  steps.forEach((b) => b.addEventListener('click', () => step(Number(b.dataset.pdlgStep))));
+  dlg.querySelector('[data-pdlg-close]')!.addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', (e) => e.target === dlg && dlg.close());
+  dlg.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); step(e.key === 'ArrowLeft' ? -1 : 1); }
+  });
+  // back on the page, focus the row you ended on, so the arrows are not a way to get lost
+  dlg.addEventListener('close', () => cur?.querySelector<HTMLElement>('.prow-sum')?.focus());
+</script>
