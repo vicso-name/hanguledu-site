@@ -7,9 +7,8 @@ import appIcon from '../assets/app-icon.png';
 import { site } from '../data/site';
 import Play from '../components/Play.astro';
 import Icon from '../components/Icon.astro';
-import { ALL } from '../lib/progress';
 import { PACKS } from '../data/phrases';
-import { BY, initialRom, jamo, letterSyllable } from '../data/hangul';
+import { BY, LETTERS, initialRom, jamo, letterSyllable } from '../data/hangul';
 
 const FIRST = [
   { g: 'ㅎ', rom: 'h', role: 'Consonant', cls: 'consonant', say: '하', hint: 'ㅎ sounds like h in "hat".' },
@@ -137,7 +136,7 @@ const schema = {
         <ol class="lw-steps">
           <li><span class="lw-n">1</span><span>The 40 letters, each one with sound.</span></li>
           <li><span class="lw-n">2</span><span>Letters packed into blocks, so you can read any word.</span></li>
-          <li><span class="lw-n">3</span><span>240 everyday phrases, each with an X-Ray of how it is really said.</span></li>
+          <li><span class="lw-n">3</span><span>240 everyday phrases, each with an <span class="nw">X-Ray</span> of how it is really said.</span></li>
         </ol>
       </div>
 
@@ -262,17 +261,23 @@ const schema = {
     </div>
   </section>
 
-  <section class="wrap sec--tight">
+  <section class="wrap sec">
+    <div class="head">
+      <p class="t-label">Inside Hangul Hero</p>
+      <h2 class="t-h2">40 letters, 240 phrases, no signal needed.</h2>
+    </div>
     <div class="facts facts--live">
       <div class="he-glass he-glass--dense fact">
-        <div class="fact-head"><b>40</b><p class="t-meta">letters, each one you can hear</p></div>
-        <div class="grid40" lang="ko" role="img" aria-label="Your letters out of 40" data-grid40>
-          {[...ALL].map((g, i) => <span class="cell" data-g={g} data-r={i < 19 ? 'c' : 'v'}>{g}</span>)}
+        <div class="fact-head"><b>40</b><p class="t-meta">letters: 19 consonants and 21 vowels</p></div>
+        <div class="grid40" lang="ko">
+          {LETTERS.map((l) => (
+            <button type="button" class={`cell cell--${l.role === 'vowel' ? 'v' : 'c'}`} data-say={letterSyllable(l)} aria-label={`Play ${l.g}, ${l.rom}`}>{l.g}</button>
+          ))}
         </div>
-        <p class="t-meta"><span data-mine-count>0</span> of them are yours so far. Every letter you learn lights up here. <a href="/korean-alphabet/chart/">Open the chart</a></p>
+        <p class="t-meta">Tap any letter to hear it. <a href="/korean-alphabet/chart/">Open the full chart</a></p>
       </div>
       <div class="he-glass he-glass--dense fact" data-xray>
-        <div class="fact-head"><b>240</b><p class="t-meta">phrases in the Hangul Hero app, each with an X-Ray of how it is really said</p></div>
+        <div class="fact-head"><b>240</b><p class="t-meta">everyday phrases, each with an <span class="nw">X-Ray</span> of how it is really said</p></div>
         {XRAY.map((x, i) => (
           <div class="xr-item" data-xr={i} hidden={i > 0}>
             <div class="xr" lang="ko">
@@ -292,13 +297,16 @@ const schema = {
         ))}
       </div>
       <div class="he-glass he-glass--dense fact">
-        <div class="fact-head"><b>0</b><p class="t-meta">sign-ups. Your progress is saved in this browser, nowhere else.</p></div>
-        <div class="kept">
-          <p class="t-label">Saved here now</p>
-          <div class="row" style="gap: 6px;" data-kept hidden></div>
-          <p class="t-body" data-kept-none>Nothing yet. Tap a letter in the <a href="/korean-alphabet/chart/">chart</a> and watch it appear here.</p>
+        <div class="fact-head"><b>0</b><p class="t-meta">bars of signal needed: the app works offline</p></div>
+        <div class="offline">
+          <span class="offline__icon"><Icon name="wifi_off" /></span>
+          <ul class="offline__list">
+            <li><Icon name="directions_subway" />On the subway</li>
+            <li><Icon name="mobile" />In airplane mode</li>
+            <li><Icon name="schedule" />In a spare five minutes</li>
+          </ul>
         </div>
-        <button type="button" class="he-btn he-btn--outline" data-clear disabled style="justify-self: start;">Clear my progress</button>
+        <p class="t-meta">Letters, phrases and audio live on your phone, so practice works wherever you are.</p>
       </div>
     </div>
   </section>
@@ -307,8 +315,6 @@ const schema = {
 </Layout>
 
 <script>
-  import { clear, onChange } from '../lib/progress';
-
   // Your first word: ㅎ ㅏ ㄴ fill the block, then a one-question quiz. Nothing is saved.
   const card = document.querySelector<HTMLElement>('[data-first]')!;
   const q = <T extends HTMLElement>(s: string) => card.querySelector<T>(s)!;
@@ -373,28 +379,6 @@ const schema = {
     syls.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
     learns.querySelectorAll<HTMLElement>('[data-lw-part]').forEach((p) => (p.hidden = p.dataset.lwPart !== b.dataset.lw));
   }));
-
-  // Live facts: the 40 grid and what is saved.
-  const kept = document.querySelector<HTMLElement>('[data-kept]')!;
-  onChange((set) => {
-    document.querySelectorAll<HTMLElement>('[data-grid40] .cell').forEach((c) => {
-      c.className = 'cell' + (set.has(c.dataset.g!) ? ' on--' + c.dataset.r : '');
-    });
-    document.querySelector('[data-mine-count]')!.textContent = String(set.size);
-    kept.replaceChildren(...[...set].map((g) => {
-      const s = document.createElement('span');
-      s.lang = 'ko';
-      s.className = 'jm jm--' + ('ㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣㅐㅒㅔㅖㅘㅙㅚㅝㅞㅟㅢ'.includes(g) ? 'v' : 'c');
-      s.textContent = g;
-      return s;
-    }));
-    kept.hidden = set.size === 0;
-    document.querySelector<HTMLElement>('[data-kept-none]')!.hidden = set.size > 0;
-    document.querySelector<HTMLButtonElement>('[data-clear]')!.disabled = set.size === 0;
-    const title = document.querySelector<HTMLElement>('[data-cta-title]');
-    if (title) title.textContent = set.size ? `Take your ${set.size} letters to your phone` : title.dataset.ctaTitle!;
-  });
-  document.querySelector('[data-clear]')!.addEventListener('click', () => clear());
 
   // X-Ray: step through three phrases.
   const items = [...document.querySelectorAll<HTMLElement>('[data-xr]')];
