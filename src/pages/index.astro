@@ -40,7 +40,11 @@ const XRAY = [
   { w: '고백할게', s: '고배칼께', en: "I'm going to confess", rom: 'gobaekalkke', tag: 'ㄱ + ㅎ → ㅋ', rule: 'ㄱ and ㅎ merge into ㅋ, and the ending -ㄹ게 turns tense.', src: '/audio/phrases/lv_gobaek.mp3' },
   { w: '실수해서 죄송합니다', s: '실쑤해서 죄송함니다', en: "I'm sorry for the mistake", rom: 'silssuhaeseo joesonghamnida', tag: 'ㅂ → ㅁ', rule: 'ㅅ after ㄹ turns tense in 실수, and ㅂ turns into ㅁ before ㄴ.', src: '/audio/phrases/wk_silsu.mp3' },
 ];
-const syls = (w: string, s: string) => [...w].map((k, i) => ({ k, hit: k !== s[i] }));
+// Word by word, so a long phrase wraps between words, never inside one.
+const words = (w: string, s: string) => {
+  const said = s.split(' ');
+  return w.split(' ').map((word, j) => [...word].map((k, i) => ({ k, hit: k !== said[j][i] })));
+};
 
 const schema = {
   '@context': 'https://schema.org',
@@ -267,22 +271,28 @@ const schema = {
       <h2 class="t-h2">40 letters, 240 phrases, no signal needed.</h2>
     </div>
     <div class="facts facts--live">
-      <div class="he-glass he-glass--dense fact">
-        <div class="fact-head"><b>40</b><p class="t-meta">letters: 19 consonants and 21 vowels</p></div>
+      <div class="he-glass he-glass--dense fact fact--letters">
+        <div class="fact-head">
+          <h3 class="fact-title"><b>40</b> letters</h3>
+          <p class="t-body he-ink-2">19 consonants and 21 vowels. Tap any one to hear it.</p>
+        </div>
         <div class="grid40" lang="ko">
           {LETTERS.map((l) => (
             <button type="button" class={`cell cell--${l.role === 'vowel' ? 'v' : 'c'}`} data-say={letterSyllable(l)} aria-label={`Play ${l.g}, ${l.rom}`}>{l.g}</button>
           ))}
         </div>
-        <p class="t-meta">Tap any letter to hear it. <a href="/korean-alphabet/chart/">Open the full chart</a></p>
+        <a class="fact-more" href="/korean-alphabet/chart/">Open the full chart<Icon name="chevron_right" /></a>
       </div>
-      <div class="he-glass he-glass--dense fact" data-xray>
-        <div class="fact-head"><b>240</b><p class="t-meta">everyday phrases, each with an <span class="nw">X-Ray</span> of how it is really said</p></div>
+      <div class="he-glass he-glass--dense fact fact--xray" data-xray>
+        <div class="fact-head">
+          <h3 class="fact-title"><b>240</b> phrases</h3>
+          <p class="t-body he-ink-2">Everyday Korean, each with an <span class="nw">X-Ray</span> of how it is really said.</p>
+        </div>
         {XRAY.map((x, i) => (
           <div class="xr-item" data-xr={i} hidden={i > 0}>
             <div class="xr" lang="ko">
-              <div class="xr-line"><span class="t-label" lang="en">Written</span><span class="xr-syl">{syls(x.w, x.s).map((s) => <span class:list={[s.hit && 'hit', s.k === ' ' && 'gap']}>{s.k}</span>)}</span></div>
-              <div class="xr-line"><span class="t-label" lang="en">Said</span><span class="xr-syl">{syls(x.s, x.w).map((s) => <span class:list={[s.hit && 'hit', s.k === ' ' && 'gap']}>{s.k}</span>)}</span></div>
+              <div class="xr-line"><span class="t-label" lang="en">Written</span><span class="xr-syl xr-words">{words(x.w, x.s).map((word) => <span class="xr-w">{word.map((s) => <span class:list={[s.hit && 'hit']}>{s.k}</span>)}</span>)}</span></div>
+              <div class="xr-line"><span class="t-label" lang="en">Said</span><span class="xr-syl xr-words">{words(x.s, x.w).map((word) => <span class="xr-w">{word.map((s) => <span class:list={[s.hit && 'hit']}>{s.k}</span>)}</span>)}</span></div>
             </div>
             <div style="display: grid; gap: 2px;">
               <p class="t-h3">{x.en}</p>
@@ -296,8 +306,11 @@ const schema = {
           </div>
         ))}
       </div>
-      <div class="he-glass he-glass--dense fact">
-        <div class="fact-head"><b>0</b><p class="t-meta">bars of signal needed: the app works offline</p></div>
+      <div class="he-glass he-glass--dense fact fact--offline">
+        <div class="fact-head">
+          <h3 class="fact-title"><b>0</b> bars of signal</h3>
+          <p class="t-body he-ink-2">The app works offline: letters, phrases and audio live on your phone.</p>
+        </div>
         <div class="offline">
           <span class="offline__icon"><Icon name="wifi_off" /></span>
           <ul class="offline__list">
@@ -306,7 +319,6 @@ const schema = {
             <li><Icon name="schedule" />In a spare five minutes</li>
           </ul>
         </div>
-        <p class="t-meta">Letters, phrases and audio live on your phone, so practice works wherever you are.</p>
       </div>
     </div>
   </section>
