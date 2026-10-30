@@ -930,7 +930,7 @@ p.pcard-said { margin: 10px 0 0; }
 @media (min-width: 900px) { .plist--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; } }
 .prow { position: relative; border-radius: var(--radius-card); background: var(--glassTint); border: 1px solid var(--outline); }
 /* phrase row: play on the left, the register as quiet text in the top-right corner */
-.prow > details > summary { display: flex; align-items: center; gap: 12px; padding: 20px 24px 20px 80px; cursor: pointer; list-style: none; }
+.prow > details > summary, .prow--locked > .prow-sum { display: flex; align-items: center; gap: 12px; padding: 20px 24px 20px 80px; cursor: pointer; list-style: none; }
 .prow:not(:has(.prow-play)) > details > summary { padding-left: 24px; }
 .prow > details > summary::-webkit-details-marker { display: none; }
 .prow-main { display: grid; gap: 2px; min-width: 0; flex: 1; }
@@ -942,12 +942,48 @@ p.pcard-said { margin: 10px 0 0; }
 /* centre the play button on the row's summary, and keep it there when the row opens */
 @supports (anchor-name: --a) {
   .prow { anchor-scope: --prow; }
-  .prow > details > summary { anchor-name: --prow; }
+  .prow > details > summary, .prow--locked > .prow-sum { anchor-name: --prow; }
   .prow-play { position-anchor: --prow; top: anchor(center); translate: 0 -50%; }
 }
 .prow-body { display: grid; gap: 10px; padding: 0 24px 20px 80px; }
 .prow-body > .t-meta { margin: 0; }
 .prow.is-pick { border-color: var(--action); box-shadow: 0 0 0 1px var(--action); }
+/* a phrase whose audio and X-Ray live in the app: the row opens the app dialog */
+.prow--locked > .prow-sum { width: 100%; border: 0; background: none; color: inherit; font: inherit; text-align: left; border-radius: inherit; }
+.prow--locked > .prow-sum:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.prow--locked:hover { border-color: var(--action); }
+.prow-lock { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--surfaceVariant); color: var(--textSecondary); pointer-events: none; }
+.prow-lock .mi { width: 18px; height: 18px; vertical-align: 0; }
+.prow-app { margin-top: 4px; font: 600 13px/18px var(--font-ui); color: var(--primary); }
+
+/* the app dialog: opened from a locked phrase */
+.appdlg { width: min(480px, calc(100% - 24px)); max-height: calc(100% - 24px); padding: 0; border: 0; border-radius: 24px; background: var(--surface); color: var(--textPrimary); box-shadow: 0 24px 64px rgb(15 23 42 / .28); }
+.appdlg::backdrop { background: rgb(15 23 42 / .5); }
+[data-theme="dark"] .appdlg { border: 1px solid var(--outline); }
+[data-theme="dark"] .appdlg::backdrop { background: rgb(0 0 0 / .65); }
+.appdlg[open] { animation: appdlg-in .22s ease-out; }
+html:has(.appdlg[open]) { overflow: hidden; }
+.appdlg__in { position: relative; display: grid; gap: 20px; padding: 28px; }
+.appdlg__x { position: absolute; top: 16px; right: 16px; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--outline); background: var(--surface); color: var(--textPrimary); cursor: pointer; }
+.appdlg__phrase { display: grid; gap: 2px; margin-right: 48px; padding: 14px 18px; border-radius: 16px; background: var(--surfaceVariant); }
+.appdlg__phrase b { font: 700 24px/32px var(--font-ko); }
+.appdlg__phrase span { font: 500 15px/20px var(--font-ui); color: var(--textSecondary); }
+.appdlg__head { display: flex; align-items: flex-start; gap: 16px; }
+.appdlg__icon { width: 56px; height: 56px; border-radius: 14px; flex: none; }
+.appdlg__title { margin: 0 0 4px; font: 700 22px/28px var(--font-ui); }
+.appdlg__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.appdlg__list li { display: flex; align-items: center; gap: 12px; font: 600 15px/20px var(--font-ui); }
+.appdlg__list .mi { width: 20px; height: 20px; vertical-align: 0; color: var(--primary); }
+.appdlg__get { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; padding-top: 20px; border-top: 1px solid var(--divider); }
+.appdlg__qr { display: grid; justify-items: center; gap: 8px; }
+.appdlg__qr svg { display: block; width: 116px; height: 116px; padding: 8px; border-radius: 12px; background: #fff; }
+.appdlg__qr .t-meta { font-size: 12px; text-align: center; }
+.appdlg .he-cta__badges img { height: 48px; }
+/* phones install from the badge; the QR code is for a computer */
+@media (max-width: 760px), (hover: none) { .appdlg__qr { display: none; } }
+@media (max-width: 760px) { .appdlg__in { padding: 24px 20px; gap: 18px; } .appdlg__title { font-size: 20px; line-height: 26px; } }
+@keyframes appdlg-in { from { opacity: 0; transform: translateY(12px) scale(.98); } }
+@media (prefers-reduced-motion: reduce) { .appdlg[open] { animation: none; } }
 .prow-note { display: block; margin-top: 2px; font: 600 13px/18px var(--font-ui); color: var(--action); }
 
 /* phrases: who-are-you-talking-to picker */
@@ -999,7 +1035,7 @@ p.pcard-said { margin: 10px 0 0; }
   .pcard { padding: 16px; }
   .cards { grid-template-columns: minmax(0, 1fr); }
   .prog--md .s b { font-size: 30px; line-height: 38px; }
-  .prow > details > summary { padding: 16px 16px 16px 68px; }
+  .prow > details > summary, .prow--locked > .prow-sum { padding: 16px 16px 16px 68px; }
   .prow:not(:has(.prow-play)) > details > summary { padding-left: 16px; }
   .prow-play { left: 16px; }
   .prow .prow-reg { top: 14px; right: 16px; }

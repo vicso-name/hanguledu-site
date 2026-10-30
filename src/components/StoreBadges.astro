@@ -2,9 +2,11 @@
 // Store badges for the stores the app is live in; a store with no url renders nothing.
 import { site, storeHref } from '../data/site';
 
-interface Props { class?: string }
+// `page` overrides the page the store link is tagged with (a dialog tags its own campaign).
+interface Props { class?: string; page?: string }
+const page = Astro.props.page ?? Astro.url.pathname;
 const badges = site.stores
-  .map((s) => ({ ...s, href: storeHref(s, Astro.url.pathname) }))
+  .map((s) => ({ ...s, href: storeHref(s, page) }))
   .filter((s) => s.href);
 ---
 
