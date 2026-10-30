@@ -94,7 +94,7 @@ html:has(.msheet[open]) { overflow: hidden; }
 
 /* segmented control (real buttons, aria-pressed) */
 .seg { justify-self: start; display: inline-flex; padding: 4px; gap: 4px; border-radius: var(--radius-button); background: var(--glassDense); border: 1px solid var(--outline); flex-wrap: nowrap; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
-.seg button { display: inline-flex; align-items: center; gap: 6px; flex: none; white-space: nowrap; min-height: 40px; padding: 0 16px; border: 0; border-radius: 10px; background: transparent; color: var(--textPrimary); font: 600 15px/20px var(--font-ui); cursor: pointer; }
+.seg button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex: none; white-space: nowrap; min-height: 40px; padding: 0 16px; border: 0; border-radius: 10px; background: transparent; color: var(--textPrimary); font: 600 15px/20px var(--font-ui); cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--action); color: var(--onAction); }
 .switch { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font: 600 15px/20px var(--font-ui); cursor: pointer; background: none; border: 0; color: var(--textPrimary); padding: 0; }
 .switch i { width: 40px; height: 24px; border-radius: 12px; background: var(--divider); position: relative; transition: background .15s; }
