@@ -2,13 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import AppCta from '../components/AppCta.astro';
 import { site } from '../data/site';
+import Play from '../components/Play.astro';
+import Icon from '../components/Icon.astro';
 import { ALL } from '../lib/progress';
+import { BY, initialRom, letterSyllable } from '../data/hangul';
 
 const FIRST = [
   { g: 'ㅎ', rom: 'h', role: 'Consonant', cls: 'consonant', say: '하', hint: 'ㅎ sounds like h in "hat".' },
   { g: 'ㅏ', rom: 'a', role: 'Vowel', cls: 'vowel', say: '아', hint: 'ㅏ sounds like a in "father".' },
   { g: 'ㄴ', rom: 'n', role: 'Consonant', cls: 'consonant', say: '나', hint: 'ㄴ sounds like n in "no". At the bottom of a block it is a final consonant, a batchim.' },
 ];
+
+// The eight letters of 안녕하세요, in reading order.
+const HELLO_LETTERS = [...'ㅇㅏㄴㅕㅎㅅㅔㅛ'].map((g) => BY[g]);
 
 const HELLO = [['안', 'an', 'ㅇㅏㄴ'], ['녕', 'nyeong', 'ㄴㅕㅇ'], ['하', 'ha', 'ㅎㅏ'], ['세', 'se', 'ㅅㅔ'], ['요', 'yo', 'ㅇㅛ']];
 
@@ -95,23 +101,50 @@ const schema = {
   </section>
 
   <section class="wrap sec--tight">
-    <div class="he-glass he-glass--dense learns">
-      <div class="split" style="align-items: start;">
+    <div class="he-glass he-glass--dense learns" data-learns>
+      <div class="lw-text">
         <div class="head" style="margin: 0;">
           <p class="t-label">Only here</p>
           <h2 class="t-h2">The site learns with you.</h2>
-          <p class="t-body he-ink-2">Every letter you learn, in the chart, the block builder or a listening quiz, joins your 40. From then on, Korean on every page shows those letters as plain hangul and keeps a romanization hint only where you still need one. The crutch disappears as you learn.</p>
+          <p class="t-body he-ink-2">Every letter you learn joins your 40. From then on, Korean on every page drops the romanization under the letters you know. The crutch disappears as you learn.</p>
         </div>
-        <div style="display: grid; gap: 16px;" data-levels>
-          <div class="seg" role="group" aria-label="Letters you know">
-            <button type="button" aria-pressed="true" data-level="mine">Your letters</button>
-            <button type="button" aria-pressed="false" data-level="ㅇㅏㄴㅎㅅㅔㅕㅛ">8 letters</button>
-            <button type="button" aria-pressed="false" data-level={ALL}>All 40</button>
+        <ol class="lw-steps">
+          <li><span class="lw-n">1</span><span>Learn a letter anywhere: in the chart, the block builder or a listening quiz.</span></li>
+          <li><span class="lw-n">2</span><span>It joins your 40, saved in this browser. No sign-up.</span></li>
+          <li><span class="lw-n">3</span><span>Every page shows it as plain hangul, with no hint.</span></li>
+        </ol>
+      </div>
+
+      <div class="lw-stage">
+        <div class="lw-top">
+          <p class="t-label">Try it on 안녕하세요, "Hello"</p>
+          <Play ko="안녕하세요" label="annyeonghaseyo" size="sm" />
+        </div>
+        <div class="lw-word" lang="ko">
+          {HELLO.map(([k, r, j]) => (
+            <span class="lw-syl" data-hello={j}>
+              <b>{k}</b>
+              <em lang="en">{r}</em>
+              <i aria-hidden="true"><Icon name="check" /></i>
+            </span>
+          ))}
+        </div>
+        <div class="lw-meter" aria-hidden="true">{HELLO.map(() => <span></span>)}</div>
+        <p class="t-meta lw-count">You read <b data-readable>0</b> of 5 syllables on your own.</p>
+
+        <div class="lw-learn">
+          <p class="t-body" style="font-weight: 600;">Tap a letter to hear it and make it yours.</p>
+          <div class="lw-chips" lang="ko">
+            {HELLO_LETTERS.map((l) => (
+              <button type="button" class={`lw-chip lw-chip--${l.role === 'vowel' ? 'v' : 'c'}`} data-learn={l.g} data-say={letterSyllable(l)} aria-pressed="false" aria-label={`${l.g}, ${initialRom(l) || 'silent'}`}>
+                <b>{l.g}</b>
+                <small lang="en">{initialRom(l) || 'silent'}</small>
+              </button>
+            ))}
           </div>
-          <div class="prog" lang="ko">
-            {HELLO.map(([k, r, j]) => <span class="s" data-hello={j}><b>{k}</b><em lang="en">{r}</em></span>)}
-          </div>
-          <p class="t-meta">안녕하세요 (annyeonghaseyo), "Hello". You read <span data-readable>0</span> of 5 syllables on your own.</p>
+        </div>
+        <div class="feedback feedback--ok" data-lw-done hidden>
+          <div><b>You read <span lang="ko" class="ko">안녕하세요</span> with no crutch.</b> Every Korean word on this site now does the same with your letters. <a href="/korean-alphabet/chart/">Learn the next ones</a></div>
         </div>
       </div>
     </div>
@@ -175,7 +208,7 @@ const schema = {
 </Layout>
 
 <script>
-  import { learn, clear, onChange, has, knowsAll, list } from '../lib/progress';
+  import { learn, clear, onChange, has, knowsAll } from '../lib/progress';
 
   // Your first word: ㅎ ㅏ ㄴ fill the block, then a one-question quiz.
   const card = document.querySelector<HTMLElement>('[data-first]')!;
@@ -230,24 +263,32 @@ const schema = {
   tiles.forEach((t) => has(t.dataset.g!) && done.add(t.dataset.g!));
   paintFirst();
 
-  // The site learns with you: hints under 안녕하세요 by letters known.
-  const levels = document.querySelector<HTMLElement>('[data-levels]')!;
-  let level = 'mine';
+  // The site learns with you: the eight letters of 안녕하세요 drop the hints as they are learned.
+  const learns = document.querySelector<HTMLElement>('[data-learns]')!;
+  const hello = [...learns.querySelectorAll<HTMLElement>('[data-hello]')];
+  const chips = [...learns.querySelectorAll<HTMLButtonElement>('[data-learn]')];
+  const bars = [...learns.querySelectorAll<HTMLElement>('.lw-meter span')];
   function paintHello(set: Set<string>) {
-    const letters = level === 'mine' ? set : new Set(level);
     let n = 0;
-    levels.querySelectorAll<HTMLElement>('[data-hello]').forEach((s) => {
-      const k = knowsAll(s.dataset.hello!, letters);
+    hello.forEach((s) => {
+      const k = knowsAll(s.dataset.hello!, set);
       s.classList.toggle('known', k);
       n += Number(k);
     });
-    levels.querySelector('[data-readable]')!.textContent = String(n);
+    bars.forEach((b, i) => b.classList.toggle('on', i < n));
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(set.has(c.dataset.learn!))));
+    learns.querySelector('[data-readable]')!.textContent = String(n);
+    learns.querySelector<HTMLElement>('[data-lw-done]')!.hidden = n < hello.length;
   }
-  levels.querySelectorAll<HTMLElement>('[data-level]').forEach((b) => b.addEventListener('click', () => {
-    level = b.dataset.level!;
-    levels.querySelectorAll('[data-level]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    paintHello(new Set(list()));
-  }));
+  // The shared play handler sounds the letter; this click also learns it.
+  chips.forEach((c) => {
+    c.addEventListener('click', () => learn(c.dataset.learn!));
+    const lit = (on: boolean) => hello.forEach((s) => s.classList.toggle('lit', on && s.dataset.hello!.includes(c.dataset.learn!)));
+    c.addEventListener('pointerenter', () => lit(true));
+    c.addEventListener('pointerleave', () => lit(false));
+    c.addEventListener('focus', () => lit(true));
+    c.addEventListener('blur', () => lit(false));
+  });
 
   // Live facts: the 40 grid and what is saved.
   const kept = document.querySelector<HTMLElement>('[data-kept]')!;
