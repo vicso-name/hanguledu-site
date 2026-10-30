@@ -378,6 +378,58 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
 .split--top { align-items: start; }
 .pad { padding: 24px; }
 .next .tool { min-height: 0; }
+/* home: tools. Each card shows a small preview of the page it opens; the title link covers the card */
+.tcards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.tcard { position: relative; display: grid; grid-template-rows: auto 1fr; gap: 20px; padding: 16px 16px 24px; transition: background .2s; }
+.tcard:hover { background: var(--surfaceContainer); }
+.tcard:has(.tcard-link:focus-visible) { outline: 2px solid var(--focus); outline-offset: 3px; }
+.tcard-pre { display: grid; place-items: center; height: 148px; border-radius: 14px; background: var(--surfaceVariant); }
+.tcard:hover .tcard-pre { background: var(--surface); }
+.tcard-body { display: grid; gap: 8px; align-content: start; padding: 0 8px; }
+.tcard-body .t-label { color: var(--primary); }
+.tcard-body .t-meta { font-size: 14px; line-height: 20px; }
+.tcard-link { color: var(--textPrimary); text-decoration: none; }
+.tcard-link:focus-visible { outline: none; }
+.tcard-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.tcard-pre button { position: relative; z-index: 1; }
+.tp-letters { display: grid; grid-template-columns: repeat(4, 40px); gap: 8px; }
+.tp-letters .jm { height: 40px; font-size: 21px; }
+.jm--b { background: var(--letterBatchimContainer); color: var(--letterBatchimInk); }
+.tp-trio { display: flex; gap: 10px; }
+.tp-say { display: grid; justify-items: center; gap: 4px; width: 68px; padding: 10px 0 8px; border-radius: 12px; border: 1.5px solid var(--outline); background: var(--surface); color: var(--textPrimary); cursor: pointer; transition: border-color .2s; }
+.tp-say b { font: 700 28px/34px var(--font-ko); color: var(--letterConsonantInk); }
+.tp-say small { display: inline-flex; align-items: center; font: 600 12px/16px var(--font-ui); color: var(--textSecondary); }
+.tp-say small .mi { width: 14px; height: 14px; vertical-align: 0; color: var(--primary); }
+.tp-say:hover, .tp-say.is-playing { border-color: var(--action); }
+.tp-say:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.tp-sum { display: flex; align-items: center; gap: 8px; }
+.tp-sum .jm { height: 40px; min-width: 40px; font-size: 21px; }
+.tp-sum i { font: 600 18px/1 var(--font-ui); font-style: normal; color: var(--textSecondary); }
+.tp-sum b { font: 700 44px/1 var(--font-ko); color: var(--textPrimary); margin-left: 2px; }
+.tp-grid { display: grid; grid-template-columns: repeat(5, 36px); gap: 6px; }
+.tp-grid span { display: grid; place-items: center; height: 32px; border-radius: 8px; background: var(--surface); font: 700 17px/1 var(--font-ko); color: var(--textPrimary); }
+.tp-grid span:nth-child(5n+1) { color: var(--primary); }
+.tp-packs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 300px; padding: 0 12px; }
+.tp-packs span { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; border-radius: var(--radius-pill); border: 1px solid var(--outline); background: var(--surface); font: 600 13px/1 var(--font-ui); color: var(--textPrimary); white-space: nowrap; }
+.tp-packs span:first-child { background: var(--action); border-color: var(--action); color: var(--onAction); }
+.tp-pick { display: grid; gap: 8px; width: min(280px, 100% - 32px); }
+.tp-pick span { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 44px; padding: 0 14px; border-radius: 12px; border: 1.5px solid var(--outline); background: var(--surface); }
+.tp-pick em { font: 600 13px/1 var(--font-ui); font-style: normal; color: var(--textSecondary); }
+.tp-pick b { font: 700 17px/1 var(--font-ko); color: var(--textPrimary); }
+.tp-pick .on { border-color: var(--primary); }
+.tp-pick .on em { color: var(--textPrimary); }
+.tp-pick .on b { color: var(--primary); }
+@media (max-width: 1100px) {
+  .tcards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .tcards { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .tcard { gap: 16px; padding: 12px 12px 20px; }
+  .tcard-pre { height: 124px; }
+  .tcard-body { padding: 0 6px; }
+  .tp-packs span { height: 32px; padding: 0 10px; font-size: 12px; }
+}
+
 /* home: how Hangul Hero teaches. Text and steps on the left, 안녕하세요 on a tinted stage on the right */
 .learns { padding: clamp(24px, 3.2vw, 44px); display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: center; }
 .lw-text { display: grid; gap: 28px; }

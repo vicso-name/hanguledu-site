@@ -3,7 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import AppCta from '../components/AppCta.astro';
 import { site } from '../data/site';
 import Play from '../components/Play.astro';
+import Icon from '../components/Icon.astro';
 import { ALL } from '../lib/progress';
+import { PACKS } from '../data/phrases';
 import { BY, initialRom, jamo, letterSyllable } from '../data/hangul';
 
 const FIRST = [
@@ -166,12 +168,85 @@ const schema = {
     <div class="head">
       <p class="t-label">Tools, not articles</p>
       <h2 class="t-h2">Every page lets you do something.</h2>
+      <p class="t-body he-ink-2">Listen, build, pick, check. Free, on your phone, no sign-up.</p>
     </div>
-    <div class="cols-4 keep-2 tools" style="gap: 12px;">
-      <a class="he-glass tool" href="/korean-alphabet/chart/"><span class="ti ti--n" lang="ko" aria-hidden="true">가</span><span class="t-h3">Alphabet chart</span><p class="t-meta">Hear all 40 letters. Hide the romanization to test yourself.</p></a>
-      <a class="he-glass tool" href="/korean-alphabet/chart/#syllables"><span class="ti ti--s" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"></path></svg></span><span class="t-h3">190 blocks with sound</span><p class="t-meta">Every consonant with every basic vowel, out loud.</p></a>
-      <a class="he-glass tool" href="/korean-alphabet/consonants/"><span class="ti ti--c" lang="ko" aria-hidden="true">ㄲ</span><span class="t-h3">가, 카 or 까?</span><p class="t-meta">The three-way contrast English lacks. Hear it, then test your ears.</p></a>
-      <a class="he-glass tool" href="/korean-alphabet/#builder"><span class="ti ti--t" lang="ko" aria-hidden="true">한</span><span class="t-h3">Block builder</span><p class="t-meta">Put letters together and watch a syllable take shape.</p></a>
+    <div class="tcards">
+      <article class="he-glass tcard">
+        <div class="tcard-pre">
+          <div class="tp-letters" lang="ko" aria-hidden="true">
+            {[...'ㄱㄴㄷㄹ'].map((g) => <span class="jm jm--c">{g}</span>)}
+            {[...'ㅏㅓㅗㅜ'].map((g) => <span class="jm jm--v">{g}</span>)}
+          </div>
+        </div>
+        <div class="tcard-body">
+          <p class="t-label">Alphabet</p>
+          <h3 class="t-h3"><a class="tcard-link" href="/korean-alphabet/chart/">Alphabet chart</a></h3>
+          <p class="t-meta">Hear all 40 letters. Hide the romanization to test yourself.</p>
+        </div>
+      </article>
+      <article class="he-glass tcard">
+        <div class="tcard-pre">
+          <div class="tp-trio" lang="ko">
+            {[['가', 'ga'], ['카', 'ka'], ['까', 'kka']].map(([k, r]) => (
+              <button type="button" class="tp-say" data-say={k} aria-label={`Play ${k}, ${r}`}><b>{k}</b><small lang="en"><Icon name="play_arrow" />{r}</small></button>
+            ))}
+          </div>
+        </div>
+        <div class="tcard-body">
+          <p class="t-label">Alphabet</p>
+          <h3 class="t-h3"><a class="tcard-link" href="/korean-alphabet/consonants/"><span lang="ko">가, 카</span> or <span lang="ko">까</span>?</a></h3>
+          <p class="t-meta">The three-way contrast English lacks. Tap to hear it here, then test your ears.</p>
+        </div>
+      </article>
+      <article class="he-glass tcard">
+        <div class="tcard-pre">
+          <div class="tp-sum" lang="ko" aria-hidden="true">
+            <span class="jm jm--c">ㅎ</span><i>+</i><span class="jm jm--v">ㅏ</span><i>+</i><span class="jm jm--b">ㄴ</span><i>=</i><b>한</b>
+          </div>
+        </div>
+        <div class="tcard-body">
+          <p class="t-label">Alphabet</p>
+          <h3 class="t-h3"><a class="tcard-link" href="/korean-alphabet/#builder">Block builder</a></h3>
+          <p class="t-meta">Put letters together and watch a syllable take shape.</p>
+        </div>
+      </article>
+      <article class="he-glass tcard">
+        <div class="tcard-pre">
+          <div class="tp-grid" lang="ko" aria-hidden="true">
+            {['가나다라마', '거너더러머', '고노도로모'].map((r) => [...r].map((k) => <span>{k}</span>))}
+          </div>
+        </div>
+        <div class="tcard-body">
+          <p class="t-label">Alphabet</p>
+          <h3 class="t-h3"><a class="tcard-link" href="/korean-alphabet/chart/#syllables">190 blocks with sound</a></h3>
+          <p class="t-meta">Every consonant with every basic vowel, out loud.</p>
+        </div>
+      </article>
+      <article class="he-glass tcard">
+        <div class="tcard-pre">
+          <div class="tp-packs" aria-hidden="true">
+            {PACKS.filter((p) => ['kdrama', 'food', 'love', 'work'].includes(p.id)).map((p) => <span><Icon name={p.icon} />{p.title}</span>)}
+          </div>
+        </div>
+        <div class="tcard-body">
+          <p class="t-label">Phrases</p>
+          <h3 class="t-h3"><a class="tcard-link" href="/phrases/">240 phrases with audio</a></h3>
+          <p class="t-meta">Search by English or Korean, filter by situation and politeness.</p>
+        </div>
+      </article>
+      <article class="he-glass tcard">
+        <div class="tcard-pre">
+          <div class="tp-pick" aria-hidden="true">
+            <span><em>A close friend</em><b lang="ko">고마워</b></span>
+            <span class="on"><em>A shop assistant</em><b lang="ko">감사합니다</b></span>
+          </div>
+        </div>
+        <div class="tcard-body">
+          <p class="t-label">Phrases</p>
+          <h3 class="t-h3"><a class="tcard-link" href="/phrases/thank-you-in-korean/">Pick the right thank you</a></h3>
+          <p class="t-meta">Say who you are talking to and get the form that fits.</p>
+        </div>
+      </article>
     </div>
   </section>
 
