@@ -3,9 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import AppCta from '../components/AppCta.astro';
 import { site } from '../data/site';
 import Play from '../components/Play.astro';
-import Icon from '../components/Icon.astro';
 import { ALL } from '../lib/progress';
-import { BY, initialRom, letterSyllable } from '../data/hangul';
+import { BY, initialRom, jamo, letterSyllable } from '../data/hangul';
 
 const FIRST = [
   { g: 'ㅎ', rom: 'h', role: 'Consonant', cls: 'consonant', say: '하', hint: 'ㅎ sounds like h in "hat".' },
@@ -13,10 +12,23 @@ const FIRST = [
   { g: 'ㄴ', rom: 'n', role: 'Consonant', cls: 'consonant', say: '나', hint: 'ㄴ sounds like n in "no". At the bottom of a block it is a final consonant, a batchim.' },
 ];
 
-// The eight letters of 안녕하세요, in reading order.
-const HELLO_LETTERS = [...'ㅇㅏㄴㅕㅎㅅㅔㅛ'].map((g) => BY[g]);
-
-const HELLO = [['안', 'an', 'ㅇㅏㄴ'], ['녕', 'nyeong', 'ㄴㅕㅇ'], ['하', 'ha', 'ㅎㅏ'], ['세', 'se', 'ㅅㅔ'], ['요', 'yo', 'ㅇㅛ']];
+// 안녕하세요 taken apart: each block, its letters and what to notice.
+const HELLO = [
+  { k: '안', rom: 'an', note: 'ㅇ is silent at the start of a block, so 안 begins with the vowel. ㄴ at the bottom closes it: an.' },
+  { k: '녕', rom: 'nyeong', note: 'ㅕ is yu in "young". ㅇ at the bottom is not silent: it is ng, as in "sing".' },
+  { k: '하', rom: 'ha', note: 'Two letters side by side: ㅎ is h in "hat", ㅏ is a in "father".' },
+  { k: '세', rom: 'se', note: 'ㅅ is s in "sun", ㅔ is e in "bed".' },
+  { k: '요', rom: 'yo', note: 'Silent ㅇ again, then ㅛ on the bottom: yo, as in "yoga".' },
+].map((h) => ({
+  ...h,
+  // The third letter sits at the bottom, a batchim: ㅇ there is ng, not silent.
+  letters: jamo(h.k).map((g, i) => ({
+    g,
+    say: letterSyllable(BY[g]),
+    kind: i === 2 ? 'b' : BY[g].role === 'vowel' ? 'v' : 'c',
+    rom: i === 2 && g === 'ㅇ' ? 'ng' : initialRom(BY[g]) || 'silent',
+  })),
+}));
 
 // Phrases from the Hangul Hero app whose spelling and sound differ (pronunciationOverride).
 const XRAY = [
@@ -104,48 +116,48 @@ const schema = {
     <div class="he-glass he-glass--dense learns" data-learns>
       <div class="lw-text">
         <div class="head" style="margin: 0;">
-          <p class="t-label">Only here</p>
-          <h2 class="t-h2">The site learns with you.</h2>
-          <p class="t-body he-ink-2">Every letter you learn joins your 40. From then on, Korean on every page drops the romanization under the letters you know. The crutch disappears as you learn.</p>
+          <p class="t-label">How Hangul Hero teaches</p>
+          <h2 class="t-h2">Every word comes apart into letters.</h2>
+          <p class="t-body he-ink-2">Korean packs its letters into blocks, one block per syllable. Learn the letters and a new word stops being a picture to memorize: you take it apart and read it. Tap a block of 안녕하세요 to see how.</p>
         </div>
         <ol class="lw-steps">
-          <li><span class="lw-n">1</span><span>Learn a letter anywhere: in the chart, the block builder or a listening quiz.</span></li>
-          <li><span class="lw-n">2</span><span>It joins your 40, saved in this browser. No sign-up.</span></li>
-          <li><span class="lw-n">3</span><span>Every page shows it as plain hangul, with no hint.</span></li>
+          <li><span class="lw-n">1</span><span>The 40 letters, each one with sound.</span></li>
+          <li><span class="lw-n">2</span><span>Letters packed into blocks, so you can read any word.</span></li>
+          <li><span class="lw-n">3</span><span>240 everyday phrases, each with an X-Ray of how it is really said.</span></li>
         </ol>
       </div>
 
       <div class="lw-stage">
         <div class="lw-top">
-          <p class="t-label">Try it on 안녕하세요, "Hello"</p>
+          <p class="t-label"><span lang="ko">안녕하세요</span> · "Hello"</p>
           <Play ko="안녕하세요" label="annyeonghaseyo" size="sm" />
         </div>
-        <div class="lw-word" lang="ko">
-          {HELLO.map(([k, r, j]) => (
-            <span class="lw-syl" data-hello={j}>
-              <b>{k}</b>
-              <em lang="en">{r}</em>
-              <i aria-hidden="true"><Icon name="check" /></i>
-            </span>
+        <div class="lw-word" lang="ko" role="group" aria-label="Blocks of 안녕하세요">
+          {HELLO.map((h, i) => (
+            <button type="button" class="lw-syl" data-lw={i} aria-pressed={String(i === 0)}>
+              <b>{h.k}</b>
+              <em lang="en">{h.rom}</em>
+            </button>
           ))}
         </div>
-        <div class="lw-meter" aria-hidden="true">{HELLO.map(() => <span></span>)}</div>
-        <p class="t-meta lw-count">You read <b data-readable>0</b> of 5 syllables on your own.</p>
-
-        <div class="lw-learn">
-          <p class="t-body" style="font-weight: 600;">Tap a letter to hear it and make it yours.</p>
-          <div class="lw-chips" lang="ko">
-            {HELLO_LETTERS.map((l) => (
-              <button type="button" class={`lw-chip lw-chip--${l.role === 'vowel' ? 'v' : 'c'}`} data-learn={l.g} data-say={letterSyllable(l)} aria-pressed="false" aria-label={`${l.g}, ${initialRom(l) || 'silent'}`}>
-                <b>{l.g}</b>
-                <small lang="en">{initialRom(l) || 'silent'}</small>
-              </button>
-            ))}
+        {HELLO.map((h, i) => (
+          <div class="lw-part" data-lw-part={i} hidden={i > 0}>
+            <div class="lw-sum" lang="ko">
+              {h.letters.map((l, j) => (
+                <>
+                  {j > 0 && <span class="lw-plus" aria-hidden="true">+</span>}
+                  <button type="button" class={`lw-chip lw-chip--${l.kind}`} data-say={l.say} aria-label={`Play ${l.g}, ${l.rom}`}>
+                    <b>{l.g}</b>
+                    <small lang="en">{l.rom}</small>
+                  </button>
+                </>
+              ))}
+              <span class="lw-plus" aria-hidden="true">=</span>
+              <span class="lw-res"><b>{h.k}</b><small lang="en">{h.rom}</small></span>
+            </div>
+            <p class="t-body">{h.note}</p>
           </div>
-        </div>
-        <div class="feedback feedback--ok" data-lw-done hidden>
-          <div><b>You read <span lang="ko" class="ko">안녕하세요</span> with no crutch.</b> Every Korean word on this site now does the same with your letters. <a href="/korean-alphabet/chart/">Learn the next ones</a></div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -208,7 +220,7 @@ const schema = {
 </Layout>
 
 <script>
-  import { learn, clear, onChange, has, knowsAll } from '../lib/progress';
+  import { learn, clear, onChange, has } from '../lib/progress';
 
   // Your first word: ㅎ ㅏ ㄴ fill the block, then a one-question quiz.
   const card = document.querySelector<HTMLElement>('[data-first]')!;
@@ -263,32 +275,13 @@ const schema = {
   tiles.forEach((t) => has(t.dataset.g!) && done.add(t.dataset.g!));
   paintFirst();
 
-  // The site learns with you: the eight letters of 안녕하세요 drop the hints as they are learned.
+  // How Hangul Hero teaches: tap a block of 안녕하세요 to take it apart.
   const learns = document.querySelector<HTMLElement>('[data-learns]')!;
-  const hello = [...learns.querySelectorAll<HTMLElement>('[data-hello]')];
-  const chips = [...learns.querySelectorAll<HTMLButtonElement>('[data-learn]')];
-  const bars = [...learns.querySelectorAll<HTMLElement>('.lw-meter span')];
-  function paintHello(set: Set<string>) {
-    let n = 0;
-    hello.forEach((s) => {
-      const k = knowsAll(s.dataset.hello!, set);
-      s.classList.toggle('known', k);
-      n += Number(k);
-    });
-    bars.forEach((b, i) => b.classList.toggle('on', i < n));
-    chips.forEach((c) => c.setAttribute('aria-pressed', String(set.has(c.dataset.learn!))));
-    learns.querySelector('[data-readable]')!.textContent = String(n);
-    learns.querySelector<HTMLElement>('[data-lw-done]')!.hidden = n < hello.length;
-  }
-  // The shared play handler sounds the letter; this click also learns it.
-  chips.forEach((c) => {
-    c.addEventListener('click', () => learn(c.dataset.learn!));
-    const lit = (on: boolean) => hello.forEach((s) => s.classList.toggle('lit', on && s.dataset.hello!.includes(c.dataset.learn!)));
-    c.addEventListener('pointerenter', () => lit(true));
-    c.addEventListener('pointerleave', () => lit(false));
-    c.addEventListener('focus', () => lit(true));
-    c.addEventListener('blur', () => lit(false));
-  });
+  const syls = [...learns.querySelectorAll<HTMLButtonElement>('[data-lw]')];
+  syls.forEach((b) => b.addEventListener('click', () => {
+    syls.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    learns.querySelectorAll<HTMLElement>('[data-lw-part]').forEach((p) => (p.hidden = p.dataset.lwPart !== b.dataset.lw));
+  }));
 
   // Live facts: the 40 grid and what is saved.
   const kept = document.querySelector<HTMLElement>('[data-kept]')!;
@@ -309,7 +302,6 @@ const schema = {
     document.querySelector<HTMLButtonElement>('[data-clear]')!.disabled = set.size === 0;
     const title = document.querySelector<HTMLElement>('[data-cta-title]');
     if (title) title.textContent = set.size ? `Take your ${set.size} letters to your phone` : title.dataset.ctaTitle!;
-    paintHello(set);
   });
   document.querySelector('[data-clear]')!.addEventListener('click', () => {
     clear();
