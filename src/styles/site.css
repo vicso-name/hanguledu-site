@@ -343,7 +343,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
   .menu-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: var(--radius-button); border: 1px solid var(--outline); background: var(--glassDense); color: var(--textPrimary); margin-left: auto; }
   .hdr { flex-wrap: nowrap; gap: 10px; }
   .brand { font-size: 17px; }
-  .hero-text { gap: 16px; }
+  .hero-text { gap: 22px; }
+  .hero-cta { margin-top: 6px; }
   .hero-cta .he-btn { min-height: 48px; }
   .hero-badges img { height: 48px; }
   .he-cta { gap: 16px; }
@@ -383,12 +384,13 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
   .gen { gap: 8px; }
   .gen .person { width: calc(50% - 4px); min-height: 0; padding: 10px 6px; }
   .fact-title { font-size: 22px; line-height: 28px; }
-  .facts--live .fact { padding: 18px; }
+  .facts--live { gap: 24px; }
+  .facts--live .fact { padding: 24px 22px; gap: 22px; }
   .facts--live { grid-template-areas: "letters" "xray" "offline"; }
   .offline { grid-template-columns: auto minmax(0, 1fr); align-items: center; padding: 16px; }
   .offline__icon { width: 52px; height: 52px; }
   .offline__icon .mi { width: 26px; height: 26px; }
-  .grid40 { gap: 3px; }
+  .grid40 { gap: 5px; }
   .grid40 .cell { font-size: 17px; border-radius: 6px; }
   .aside { grid-template-columns: minmax(0, 1fr); }
   .tiles8 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
@@ -407,7 +409,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
   .seg { display: flex; width: 100%; }
   .seg button { flex: 1 0 auto; padding: 0 12px; }
   .glyph-box { max-width: 180px; justify-self: center; }
-  .first { padding: 18px; gap: 16px; }
+  .first { padding: 24px 20px; gap: 22px; }
   .first-row { padding: 16px; }
   .first-steps li { height: 26px; padding-right: 8px; font-size: 11px; }
   .first-steps li::before { width: 18px; height: 18px; font-size: 10px; }
@@ -481,8 +483,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
   .tcards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
-  .tcards { grid-template-columns: minmax(0, 1fr); gap: 14px; }
-  .tcard { gap: 16px; padding: 12px 12px 20px; }
+  .tcards { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .tcard { gap: 20px; padding: 14px 14px 26px; }
   .tcard-pre { height: 124px; }
   .tcard-body { padding: 0 6px; }
   .tp-packs span { height: 32px; padding: 0 10px; font-size: 12px; }
@@ -529,8 +531,10 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
   .learns { grid-template-columns: 1fr; gap: 32px; }
 }
 @media (max-width: 760px) {
-  .learns { padding: 24px 20px; }
-  .lw-stage { padding: 20px 14px; gap: 18px; }
+  .learns { padding: 28px 22px; gap: 40px; }
+  .lw-text { gap: 32px; }
+  .lw-steps { gap: 18px; }
+  .lw-stage { padding: 22px 16px; gap: 22px; }
   .lw-word { gap: 6px; }
   .lw-syl { padding: 10px 2px; }
   .lw-syl b { font-size: 30px; line-height: 38px; }
@@ -791,7 +795,9 @@ html { scroll-behavior: smooth; scroll-padding-top: 24px; }
 .xr-item { display: grid; gap: 16px; }
 
 @media (max-width: 760px) {
-  .hero { padding-top: 16px; }
+  .hero { padding-top: 36px; }
+  .hero .split { gap: 48px; }
+  .head { gap: 14px; margin-bottom: 32px; }
   .hdr { position: relative; }
   .hdr.is-open .nav { display: grid; position: absolute; top: 100%; left: 16px; right: 16px; z-index: 20; gap: 2px; padding: 8px; border-radius: var(--radius-card); background: var(--glassDense); border: 1px solid var(--outline); }
   .pg .hdr.is-open .nav a { padding: 14px 12px; }
