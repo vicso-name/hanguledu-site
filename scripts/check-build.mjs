@@ -43,6 +43,22 @@ for (const file of pages) {
   }
 }
 
+// The self-hosted Korean font is cut to the site's text: a new syllable needs a re-cut.
+const fontChars = new Set(readFileSync('src/fonts/noto-sans-kr.txt', 'utf8'));
+const missing = new Set();
+(function walk(d) {
+  for (const f of readdirSync(d)) {
+    const p = join(d, f);
+    if (statSync(p).isDirectory()) walk(p);
+    else if (/\.(html|js|json)$/.test(f)) {
+      for (const c of readFileSync(p, 'utf8').match(/[ᄀ-ᇿ㄰-㆏가-힣]/g) ?? []) {
+        if (!fontChars.has(c)) missing.add(c);
+      }
+    }
+  }
+})(dist);
+if (missing.size) errors.push(`Korean font lacks ${[...missing].join('')}: run scripts/fonts/subset_ko.py (see its header)`);
+
 if (errors.length) {
   console.error(errors.join('\n'));
   process.exit(1);

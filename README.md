@@ -22,6 +22,12 @@ npm run test:engine  # X-Ray engine port vs the app's golden set (also runs befo
   varies between runs, so listen to every new clip before copying it. Then
   `cd ~/Developer/android/hangul_hero/tools/korean_tts && .venv/bin/python generate.py ~/Developer/web/hanguledu-site/scripts/tts/web_forms.json`
   and copy `out/web_forms/*.mp3` into `public/audio/ko/`. Only new lines are synthesized (`--force --only <id>` redoes one).
+- Korean font: Noto Sans KR is self-hosted, cut to the Korean the site shows (`src/fonts/`, one
+  variable file with every weight, ~62 KB). Syllables only the block builder can make sit in a second
+  file that loads on demand. When new Korean text lands, `npm run build` fails with "Korean font lacks …";
+  re-cut with `scripts/fonts/subset_ko.py` (needs Python fonttools, see its header) and build again.
+- Page CSS is inlined into each page and shared JS chunks get `modulepreload` links
+  (`scripts/modulepreload.mjs`): nothing blocks the first paint.
 - "Your 40 letters" progress lives in `localStorage` (`hanguledu.letters.v1`), see `src/lib/progress.ts`.
   Any element with `data-jamo="ㄱㅏ"` gets `.known` once all its letters are learned.
 - Korean facts and example words still need a native-speaker review before launch.
