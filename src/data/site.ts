@@ -36,12 +36,12 @@ export const site = {
   title: 'Learn the Korean Alphabet (Hangul) with Audio | HangulEdu',
   description: 'Learn to read Korean: all 40 Hangul letters with audio, a sound chart of every syllable, and quizzes that remember what you know. Free, no sign-up.',
   stores: [googlePlay, appStore],
-  // glyph, sub and tone dress the tiles of the mobile menu; the desktop bar shows the label only.
+  // glyph and tone dress the menu tiles.
   nav: [
-    { href: '/korean-alphabet/', label: 'Alphabet', sub: 'How Hangul works', glyph: '한', tone: 'a' },
-    { href: '/korean-alphabet/chart/', label: 'Chart', sub: 'All 40 letters, with sound', glyph: '가', tone: 'n' },
-    { href: '/korean-alphabet/consonants/', label: 'Consonants', sub: '가, 카 or 까?', glyph: 'ㄲ', tone: 'c' },
-    { href: '/korean-alphabet/vowels/', label: 'Vowels', sub: '21 vowels, three strokes', glyph: 'ㅏ', tone: 'v' },
-    { href: '/phrases/', label: 'Phrases', sub: '240 everyday phrases with audio', glyph: '안녕', tone: 'p' },
+    { href: '/korean-alphabet/', label: 'Alphabet', glyph: '한', tone: 'a' },
+    { href: '/korean-alphabet/chart/', label: 'Chart', glyph: '가', tone: 'n' },
+    { href: '/korean-alphabet/consonants/', label: 'Consonants', glyph: 'ㄲ', tone: 'c' },
+    { href: '/korean-alphabet/vowels/', label: 'Vowels', glyph: 'ㅏ', tone: 'v' },
+    { href: '/phrases/', label: 'Phrases', glyph: '안녕', tone: 'p' },
   ],
 };

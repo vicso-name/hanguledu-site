@@ -102,14 +102,13 @@ html:has(.msheet[open]) { overflow: hidden; }
 .mtile[aria-current="page"] { border-color: var(--primary); }
 .mtile__glyph { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 12px; border-radius: 14px; font: 700 26px/1 var(--font-ko); }
 .mtile__label { font: 700 17px/22px var(--font-ui); }
-.mtile__sub { font: 500 13px/18px var(--font-ui); color: var(--textSecondary); }
 .mtile--a .mtile__glyph { background: var(--primaryContainer); color: var(--onPrimaryContainer); }
 .mtile--n .mtile__glyph { background: var(--surfaceVariant); color: var(--textPrimary); }
 .mtile--c .mtile__glyph { background: var(--letterConsonantContainer); color: var(--letterConsonantInk); }
 .mtile--v .mtile__glyph { background: var(--letterVowelContainer); color: var(--letterVowelInk); }
 .mtile--p .mtile__glyph { width: auto; padding: 0 12px; background: var(--action); color: var(--onAction); font-size: 22px; }
 .mtile--wide { grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; align-items: center; }
-.mtile--wide .mtile__glyph { grid-row: span 2; margin: 0; }
+.mtile--wide .mtile__glyph { margin: 0; }
 .mapp { margin-top: auto; display: grid; gap: 16px; padding: 20px; border-radius: 20px; background: var(--primaryContainer); animation: mtile-in .32s ease-out both; animation-delay: calc(var(--i) * 45ms + 60ms); }
 /* at least 28px above the app card, more when the screen is tall */
 .msheet__body > .mtile--wide { margin-bottom: 14px; }
