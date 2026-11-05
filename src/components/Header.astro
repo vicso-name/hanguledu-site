@@ -39,7 +39,6 @@ const here = (prefix: string) => path.startsWith(prefix);
               <a class={`mtile mtile--${n.tone}`} href={n.href} aria-current={path === n.href ? 'page' : undefined}>
                 <span class="mtile__glyph" lang="ko" aria-hidden="true">{n.glyph}</span>
                 <span class="mtile__label">{n.label}</span>
-                <span class="mtile__sub">{n.sub}</span>
               </a>
             ))}
           </div>
@@ -55,7 +54,6 @@ const here = (prefix: string) => path.startsWith(prefix);
               <a class="mtile mtile--p" href="/phrases/" aria-current={path === '/phrases/' ? 'page' : undefined}>
                 <span class="mtile__glyph" lang="ko" aria-hidden="true">{phrases.glyph}</span>
                 <span class="mtile__label">All phrases</span>
-                <span class="mtile__sub">{phrases.sub}</span>
               </a>
               {sets.map((s) => <a class="nlink" href={s.href} aria-current={path === s.href ? 'page' : undefined}><b lang="ko">{s.ko}</b><span>{s.label}</span></a>)}
             </div>
