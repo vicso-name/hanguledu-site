@@ -7,12 +7,11 @@ import { Image } from 'astro:assets';
 import icon from '../assets/app-icon.png';
 import StoreBadges from './StoreBadges.astro';
 import Icon from './Icon.astro';
-import { site, storeHref } from '../data/site';
+import { appQrHref } from '../data/site';
 import { PACKS, PHRASES, ofPack } from '../data/phrases';
 
 const PAGE = '/phrases/app-dialog/';
-const play = site.stores.find((s) => s.id === 'google_play')!;
-const qr = await QRCode.toString(storeHref(play, PAGE)!, { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#1f2937', light: '#ffffff' } });
+const qr = await QRCode.toString(appQrHref(PAGE), { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#1f2937', light: '#ffffff' } });
 const packs = Object.fromEntries(PACKS.map((p) => [p.id, { title: p.title, n: ofPack(p.id).length }]));
 const free = PACKS.find((p) => p.free);
 const all = `${PHRASES.length} phrases in ${PACKS.length} packs`;

@@ -1,0 +1,31 @@
+---
+// Where the QR codes point: a phone goes straight to its own store, the campaign from ?from=
+// carried into the Google Play referrer. Anything else (a computer, no JS) sees both badges.
+import Layout from '../layouts/Layout.astro';
+import StoreBadges from '../components/StoreBadges.astro';
+import { Image } from 'astro:assets';
+import icon from '../assets/app-icon.png';
+import { site, playHref } from '../data/site';
+
+const url = (id: string) => site.stores.find((s) => s.id === id)?.url ?? null;
+const play = url('google_play');
+const ios = url('app_store');
+// The campaign is already safe in a URL (letters, digits, _ and -), so it replaces the marker as is.
+const playTagged = play && playHref(play, 'CAMPAIGN');
+---
+
+<Layout title="Get the Hangul Hero app | HangulEdu" description="Hangul Hero (Korean Alphabet & Phrases) on Google Play and the App Store: the Korean letters, 240 phrases and quiz games, offline." robots="noindex">
+  <script is:inline define:vars={{ playTagged, ios }}>
+    var ua = navigator.userAgent;
+    var from = (new URLSearchParams(location.search).get('from') || 'app').replace(/[^a-z0-9_-]/gi, '').slice(0, 60) || 'app';
+    var apple = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    if (apple && ios) location.replace(ios);
+    else if (/Android/.test(ua) && playTagged) location.replace(playTagged.replace('CAMPAIGN', from));
+  </script>
+  <section class="wrap sec wrap--medium" style="display: grid; gap: 16px; justify-items: start;">
+    <Image src={icon} width={72} height={72} densities={[1, 2]} alt="" style="border-radius: 18px;" />
+    <h1 class="t-h1">Get Hangul Hero</h1>
+    <p class="t-lead">Korean Alphabet &amp; Phrases for Android and iPhone: all 40 letters, 240 everyday phrases and quiz games. Works offline.</p>
+    <StoreBadges page="/app/" />
+  </section>
+</Layout>

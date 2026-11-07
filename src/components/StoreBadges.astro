@@ -11,5 +11,5 @@ const badges = site.stores
 ---
 
 <div class:list={['he-cta__badges', Astro.props.class]}>
-  {badges.map((b) => <a href={b.href} data-store={b.id} rel="noopener"><img src={b.badge} alt={b.label} width="150" height="44" /></a>)}
+  {badges.map((b) => <a href={b.href} data-store={b.id} rel="noopener"><img src={b.badge} alt={b.label} width={b.width} height="44" /></a>)}
 </div>

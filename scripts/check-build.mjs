@@ -1,6 +1,6 @@
 // Post-build guardrails: every page has one h1, a title and a description;
 // every internal link and every audio clip it references exists in dist/;
-// every page is in the sitemap (except 404).
+// every indexable page is in the sitemap.
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -25,7 +25,8 @@ for (const file of pages) {
   if (h1 !== 1) errors.push(`${url}: ${h1} <h1>`);
   if (!/<title>[^<]{10,}<\/title>/.test(html)) errors.push(`${url}: missing title`);
   if (!/<meta name="description" content="[^"]{50,}"/.test(html)) errors.push(`${url}: missing description`);
-  if (!file.endsWith('404.html') && !sitemap.includes(`<loc>https://hanguledu.com${url}</loc>`)) errors.push(`${url}: not in sitemap`);
+  const noindex = /<meta name="robots" content="noindex/.test(html);
+  if (!noindex && !sitemap.includes(`<loc>https://hanguledu.com${url}</loc>`)) errors.push(`${url}: not in sitemap`);
   for (const [, href] of html.matchAll(/href="(\/[^"#?]*)/g)) {
     const target = href.endsWith('/') ? join(dist, href, 'index.html') : join(dist, href);
     if (!existsSync(target)) errors.push(`${url}: broken link ${href}`);

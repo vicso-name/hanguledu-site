@@ -1,6 +1,6 @@
 ---
 import QRCode from 'qrcode';
-import { site, storeHref } from '../data/site';
+import { site, appQrHref } from '../data/site';
 import { PHRASE_PAGES } from '../data/phrase-pages';
 import icon from '../assets/app-icon.png';
 import { Image } from 'astro:assets';
@@ -20,8 +20,7 @@ const sets = [
   { href: '/phrases/love/', ko: '사랑', label: 'Love phrases' },
 ];
 const APP_PAGE = '/header/';
-const play = site.stores.find((s) => s.id === 'google_play')!;
-const qr = await QRCode.toString(storeHref(play, APP_PAGE)!, { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#1f2937', light: '#ffffff' } });
+const qr = await QRCode.toString(appQrHref(APP_PAGE), { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#1f2937', light: '#ffffff' } });
 const here = (prefix: string) => path.startsWith(prefix);
 ---
 

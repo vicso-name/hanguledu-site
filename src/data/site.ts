@@ -5,6 +5,8 @@ export interface Store {
   url: string | null;
   label: string;
   badge: string;
+  /** Badge artwork size in CSS px at 44px high, so the layout holds before it loads. */
+  width: number;
 }
 
 const googlePlay: Store = {
@@ -12,23 +14,32 @@ const googlePlay: Store = {
   url: 'https://play.google.com/store/apps/details?id=com.vicsothemes.hangulhero',
   label: 'Get it on Google Play',
   badge: '/googleplay-badge.svg',
+  width: 148,
 };
 
 const appStore: Store = {
   id: 'app_store',
-  url: null,
+  url: 'https://apps.apple.com/us/app/korean-alphabet-phrases/id6827157088',
   label: 'Download on the App Store',
   badge: '/appstore-badge.svg',
+  width: 132,
 };
 
-/** Store link tagged with the page it was tapped on, so installs can be traced to pages. */
+/** The campaign name for a page: '/phrases/love/' → 'phrases_love'. */
+export const campaignOf = (page: string) => page.replace(/^\/|\/$/g, '').replace(/\//g, '_') || 'home';
+
+/** Google Play link tagged with a campaign, so installs can be traced to pages. */
+export const playHref = (url: string, campaign: string) =>
+  `${url}&referrer=${encodeURIComponent(`utm_source=hanguledu&utm_medium=web&utm_campaign=${campaign}`)}`;
+
+/** Store link tagged with the page it was tapped on (Google Play only; the App Store link is plain). */
 export function storeHref(store: Store, page: string): string | null {
   if (!store.url) return null;
-  if (store.id !== 'google_play') return store.url;
-  const campaign = page.replace(/^\/|\/$/g, '').replace(/\//g, '_') || 'home';
-  const referrer = `utm_source=hanguledu&utm_medium=web&utm_campaign=${campaign}`;
-  return `${store.url}&referrer=${encodeURIComponent(referrer)}`;
+  return store.id === 'google_play' ? playHref(store.url, campaignOf(page)) : store.url;
 }
+
+/** What a QR code opens: /app/ sends the phone to its own store and keeps the campaign. */
+export const appQrHref = (page: string) => `${site.url}/app/?from=${campaignOf(page)}`;
 
 export const site = {
   name: 'HangulEdu',

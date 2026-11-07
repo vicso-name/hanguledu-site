@@ -7,11 +7,12 @@ Setup and commands: README.md.
 - Live at https://hanguledu.com on GitHub Pages. Public repo vicso-name/hanguledu-site; every push to `main`
   deploys (.github/workflows/deploy.yml; the build runs the X-Ray engine test and scripts/check-build.mjs).
   DNS at GoDaddy (4 GitHub A records + `www` CNAME to vicso-name.github.io), HTTPS enforced.
-- Branches: `sprint/1-alphabet`, `sprint/2-phrases`, `design/fixes`, `main`. 23 pages: home, alphabet hub, chart,
+- Branches: `sprint/1-alphabet`, `sprint/2-phrases`, `design/fixes`, `main`. 23 pages (+ the /app/ redirect): home, alphabet hub, chart,
   consonants, vowels, /phrases/ hub (240 app phrases, filters), k-drama, love, basic-korean-phrases,
   10 `/phrases/{phrase}-in-korean/` pages, privacy, terms, support, 404.
-- Android app is live on Google Play (`com.vicsothemes.hangulhero`). iOS ships within days of 2026-10-28:
-  then set the App Store `url` in src/data/site.ts (now `null`, badge hidden).
+- The app is live on Google Play (`com.vicsothemes.hangulhero`) and, since 2026-11-07, on the App Store
+  (id6827157088); both urls are in src/data/site.ts. The QR codes (header, /phrases/ dialog) open `/app/?from=…`,
+  a noindex page that sends iPhone to the App Store and Android to Google Play with the campaign referrer.
 - Design pass (in progress, page by page): each fix is one commit on `design/fixes`, pushed, then `main` is
   fast-forwarded and pushed (the owner approved deploying every fix). Done so far: #f2f4f1 background with white
   cards; one accent #0369a1 (no violet); header without the letters counter, with a rule under it; roomier page
